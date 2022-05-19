@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="consoByEmploye" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5b1a78df-fc7a-4683-8412-dcd32bfe3ccc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="datedebut" class="java.lang.String"/>
+	<parameter name="datefin" class="java.lang.String"/>
+	<field name="employe" class="java.lang.String"/>
+	<field name="produit" class="java.lang.String"/>
+	<field name="quantite" class="java.math.BigDecimal"/>
+	<field name="date" class="java.lang.String"/>
+	<variable name="totalProdui" class="java.lang.String"/>
+	<group name="GroupeEmploye">
+		<groupExpression><![CDATA[$F{employe}]]></groupExpression>
+		<groupHeader>
+			<band height="26">
+				<textField>
+					<reportElement x="90" y="0" width="365" height="20" uuid="e2efec71-3e97-4eac-a1dd-508d4060230d"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{employe}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<group name="produitGroupe">
+		<groupExpression><![CDATA[$F{produit}]]></groupExpression>
+		<groupHeader>
+			<band height="22">
+				<textField>
+					<reportElement x="0" y="0" width="301" height="20" uuid="db97289f-3339-4e2e-ab16-d24748fd4bd4"/>
+					<textFieldExpression><![CDATA[$F{produit}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="26">
+				<textField>
+					<reportElement x="1" y="0" width="100" height="20" uuid="ece0118e-63f1-4085-bcd5-4d249eaa3834"/>
+					<textFieldExpression><![CDATA[$V{totalProdui}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="23" width="543" height="20" uuid="635d778a-328a-4e4f-918a-336aaf847766"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Liste des consommations par employés sur une période]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement x="9" y="9" width="66" height="20" uuid="fed42091-1ae0-4b29-8e3c-62e03b0c0b54"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Période : du ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="9" width="67" height="20" uuid="4f0cf60f-7e3c-4a2e-8045-99018299de66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{datedebut}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="201" y="9" width="100" height="20" uuid="d5bdd801-79f5-4607-b795-d738b9493f16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{datefin}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="157" y="9" width="33" height="20" uuid="f84b4a84-a146-4175-a2cc-1155c3387d43"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[au]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="5" width="100" height="20" uuid="7c28e746-92a8-4d3b-b02c-0f4b06891633"/>
+				<textFieldExpression><![CDATA[$F{quantite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="5" width="100" height="20" uuid="9396eb1f-0183-48a2-a7a6-a0c1d79d6745"/>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="0" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fbcb0133-36da-4b84-b043-17247be5994d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CAFG" class="java.lang.String"/>
+	<parameter name="DISTRIBUTION_DE_DIVIDENDES_DANS_EXERCICE" class="java.lang.String"/>
+	<parameter name="AF" class="java.lang.String"/>
+	<parameter name="CAFGN1" class="java.lang.String"/>
+	<parameter name="AFN1" class="java.lang.String"/>
+	<field name="libelleActif" class="java.lang.String"/>
+	<field name="montantActif" class="java.lang.String"/>
+	<field name="libellePassif" class="java.lang.String"/>
+	<field name="montantPassif" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="24" uuid="ec95d5d5-f726-4a18-9817-68b828055a94"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[. CAPACITE D'AUTOFINANCEMENT GLOBALE (C.A.F.G.)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="147" y="24" width="304" height="37" uuid="fe9ee7a5-0c9d-4882-a03e-e5ae113509c0"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA[" - Charges décaissables restantes à l'exclusion des cessions  \n + Produits encaissables restants d'actif immobilisé CAFG = EBE "]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="178" height="20" uuid="c28ebb8f-5d5d-4b2f-878e-9e2d15e47970"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="178" y="0" width="100" height="20" uuid="b3dad025-3d10-4038-9a94-ba7804f8d2a1"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="171" height="20" uuid="b225959e-7bad-4169-ab88-1c8a0e59487a"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[E.B.E.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="451" y="0" width="100" height="20" uuid="47149a43-f34f-471e-a65c-89e80e1636db"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="0" width="1" height="20" uuid="14c57dea-7097-4151-ae18-3515b5953ba3"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="178" height="20" uuid="6ff7a2a2-6905-46d4-8a51-1498e8fa8460">
+					<printWhenExpression><![CDATA[(!($F{libelleActif}.equalsIgnoreCase("Total (1)")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelleActif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="171" height="20" uuid="52da48e8-c5fa-4e92-a5cf-63c28e553c00">
+					<printWhenExpression><![CDATA[(!($F{libelleActif}.equalsIgnoreCase("Total (1)")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libellePassif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="0" width="100" height="20" uuid="b4d00709-934e-4f16-96a7-8615481d9f46">
+					<printWhenExpression><![CDATA[(!($F{libelleActif}.equalsIgnoreCase("Total (1)")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantPassif}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="277" y="0" width="1" height="20" uuid="cfb52a60-8e35-406b-9815-a3f473d1a002">
+					<printWhenExpression><![CDATA[(!($F{libelleActif}.equalsIgnoreCase("Total(1)")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="0" width="171" height="20" uuid="1511c156-c131-46e2-860b-be3d5f7a6a36">
+					<printWhenExpression><![CDATA[($F{libelleActif}.equalsIgnoreCase("Total (1)"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libellePassif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="0" width="100" height="20" uuid="cbcd812f-93cf-483e-a6e3-5d129e50db52">
+					<printWhenExpression><![CDATA[($F{libelleActif}.equalsIgnoreCase("Total (1)"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantPassif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="178" height="20" uuid="a99f4d30-afa3-4c31-bd22-5d0c8b7a5fb3">
+					<printWhenExpression><![CDATA[($F{libelleActif}.equalsIgnoreCase("Total (1)"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelleActif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="178" y="0" width="100" height="20" uuid="48229917-ad69-4e22-ad8f-bc8f9b51e6c1">
+					<printWhenExpression><![CDATA[($F{libelleActif}.equalsIgnoreCase("Total (1)"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantActif}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="278" y="0" width="1" height="20" uuid="d1e1b389-41fe-40c6-83ea-02658985221a">
+					<printWhenExpression><![CDATA[($F{libelleActif}.equalsIgnoreCase("Total (1)"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="178" y="0" width="100" height="20" uuid="809dc971-23a2-4562-ab01-78e1792f4bd7">
+					<printWhenExpression><![CDATA[(!($F{libelleActif}.equalsIgnoreCase("Total (1)")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantActif}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="193">
+			<frame>
+				<reportElement mode="Transparent" x="329" y="18" width="246" height="163" forecolor="#000000" backcolor="#FFFFFF" uuid="e8d173b3-ef99-43d4-8364-2890430303e3"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+				</box>
+				<textField>
+					<reportElement x="12" y="10" width="234" height="20" uuid="b32e6c90-4154-433f-828c-07a1cbffc969"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["(N - 1) : "+$P{CAFGN1}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement x="0" y="28" width="136" height="20" uuid="33ae9df7-2232-4456-8151-7170c63467a8"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[CAFG : Total (II) - Total (I) =]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="67" width="147" height="20" uuid="964073f0-fcc7-40a6-8478-ff6c746643dd"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[. AUTOFINANCEMENT (A.F.)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="104" width="263" height="20" uuid="7e0669ed-6bca-4ef7-b7f7-38d62eb90778"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[AF = CAFG - Distributions de dividendes dans l'exercice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="263" y="104" width="17" height="20" uuid="90411771-77a3-4cee-9b45-80ca41618995"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[(1)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="146" width="280" height="20" uuid="bc5bc80f-b55c-478f-be5f-2881b93c73da"/>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA["AF = "+$P{CAFG}+" - "+$P{DISTRIBUTION_DE_DIVIDENDES_DANS_EXERCICE}+" = "+$P{AF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="341" y="146" width="234" height="20" uuid="098f222e-cad9-4f5f-9e77-8c5237e2f66f"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["(N - 1) : "+$P{AFN1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

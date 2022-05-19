@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="de6fc9c2-9de2-4a79-a119-29525c8255a2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="INSTITUTION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Fonds National de la Finance Inclusive"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SIGLE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["FNFI"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["08, Rue Akéï face CFBT"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IDENTIFICATION_FISCALE" class="java.lang.String"/>
+	<parameter name="EXERCICE" class="java.lang.String"/>
+	<parameter name="DUREE_EXERCICE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["12"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SYSTEME" class="java.lang.String">
+		<defaultValueExpression><![CDATA["SYSTEME NORMAL"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateParam" class="java.lang.String"/>
+	<parameter name="MICROFINA" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Microfina++"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="COLONNE_GAUCHE_RESULTAT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Charges"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="COLONNE_DROITE_RESULTAT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Produits"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="COLONNE_GAUCHE_BILAN" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Actif (Emplois)"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="COLONNE_DROITE_BILAN" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Passif (Ressources)"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATA_SOURCE_RESULTAT" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="DATA_SOURCE_BILAN" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["G:\\java\\dev\\microfina\\src\\main\\webapp\\resources\\report\\compta\\"]]></defaultValueExpression>
+	</parameter>
+	<field name="test" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="21" width="555" height="20" uuid="e8f67d3a-0468-43ad-bd70-1a6127454483"/>
+				<textFieldExpression><![CDATA["Sigle usuel : "+$P{SIGLE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="60" width="555" height="20" uuid="51290997-2a7f-4925-90f7-45a834665c5d"/>
+				<textFieldExpression><![CDATA["N° d'identification fiscale :   Exercice clos le 31-12 : 2014 Durée (en mois) : 12"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="41" width="555" height="20" uuid="db154e69-4265-4e33-89c4-5ae266ee784d"/>
+				<textFieldExpression><![CDATA["Adresse : "+$P{ADRESSE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="1" width="555" height="20" uuid="623f5af7-9b0c-4209-8a35-ba3f911b0683"/>
+				<textFieldExpression><![CDATA["Dénomination sociale de l'entreprise : "+$P{INSTITUTION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="80" width="555" height="31" uuid="b8965df9-5d86-48f1-888f-1230f1040956"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ETATS FINANCIERS DU SYSTEME MINIMAL DE TRESORERIE (SMT) \n (Présentation minimale)"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="210" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="100" uuid="493e71b1-0100-448b-a375-32be41dd292f"/>
+				<subreportParameter name="COLONNE_GAUCHE">
+					<subreportParameterExpression><![CDATA[$P{COLONNE_GAUCHE_RESULTAT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="COLONNE_DROITE">
+					<subreportParameterExpression><![CDATA[$P{COLONNE_DROITE_RESULTAT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{DATA_SOURCE_RESULTAT}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "compteDeResultatSMT.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="110" width="555" height="100" uuid="9717d6f2-e20d-4c9a-b427-45b74c5e4600"/>
+				<subreportParameter name="COLONNE_GAUCHE">
+					<subreportParameterExpression><![CDATA[$P{COLONNE_GAUCHE_BILAN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="COLONNE_DROITE">
+					<subreportParameterExpression><![CDATA[$P{COLONNE_DROITE_BILAN}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{DATA_SOURCE_BILAN}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "compteDeResultatSMT.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="25">
+			<textField>
+				<reportElement x="0" y="11" width="196" height="14" uuid="48582bdf-d325-44b9-b083-d87bf441d33e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Imprimé le "+$P{dateParam}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="434" y="11" width="80" height="14" uuid="5d2dadc2-c373-457e-8ab1-0f777aa00024"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="242" y="11" width="117" height="14" uuid="6e400f0b-c794-4f18-ab91-32f9ce7104d2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MICROFINA}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="514" y="11" width="40" height="14" uuid="82116c30-f551-4906-a0e4-e2de256c2d8a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

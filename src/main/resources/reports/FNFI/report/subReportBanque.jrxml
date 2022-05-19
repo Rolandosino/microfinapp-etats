@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subReportBanque" language="groovy" pageWidth="350" pageHeight="62" columnWidth="340" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5" uuid="93e12262-d653-40c9-a6da-0466d6508dc3">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="para_totalBanque" class="java.lang.String"/>
+	<field name="dateoperation" class="java.lang.String"/>
+	<field name="libelle" class="java.lang.String"/>
+	<field name="debit" class="java.lang.String"/>
+	<field name="credit" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="0" y="0" width="77" height="15" backcolor="#EFEFEF" uuid="61dfc9bb-059b-4f80-b6d3-a3e20212f82d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date Opération]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="77" y="0" width="116" height="15" backcolor="#EFEFEF" uuid="8943944c-3e31-411b-a5dd-c073c071358d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Libellé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="193" y="0" width="73" height="15" backcolor="#EFEFEF" uuid="1c8f0ae9-4fc0-4bde-9b4d-6e5633d39175"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Débit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="266" y="0" width="73" height="15" backcolor="#EFEFEF" uuid="018a2439-26b9-430a-a56b-6f1c4cabe2f8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Crédit]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="0" y="0" width="77" height="15" uuid="a7d4b102-3ade-42b5-8771-8e1efc9b79b9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateoperation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="77" y="0" width="116" height="15" uuid="0aa892ce-6181-403a-9e3b-6ab3fb058bd5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="193" y="0" width="73" height="15" uuid="abffb0b1-a2d2-45df-9f0b-f9e2bcff083e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{debit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="266" y="0" width="73" height="15" uuid="61ebb564-15f7-44c3-a40a-b0ce861b1a9e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{credit}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="30">
+			<textField>
+				<reportElement style="table_TD" x="193" y="0" width="73" height="15" uuid="81409a65-9d10-47a2-81b6-699d1d59f2e0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="0" y="0" width="193" height="15" uuid="6e0d15d9-7126-4e93-8f3b-b660522eb4c5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Solde rapproché"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="266" y="0" width="73" height="15" uuid="635621fb-2680-418a-ba50-717154448d95"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{para_totalBanque}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

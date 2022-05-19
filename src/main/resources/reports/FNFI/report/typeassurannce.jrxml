@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="typeassurannce" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="69629140-d7d3-4411-8420-007ca64e0197">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<field name="libelleTypeAssurance" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="42" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="554" height="42" uuid="fef02b98-87f9-4fac-ae52-d5e7d9df1eb9"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="25">
+			<staticText>
+				<reportElement x="0" y="0" width="554" height="20" uuid="d0a94d77-eac5-4561-af1a-8308c7497d92"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LISTE DES TYPES ASSURANCE]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20">
+			<staticText>
+				<reportElement style="table_CH" x="0" y="0" width="61" height="20" backcolor="#EFEFEF" uuid="5b7f5717-cfab-47dd-85fa-92074f2b4a8a"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="61" y="0" width="493" height="20" backcolor="#EFEFEF" uuid="8c1e3972-f0f3-4f58-949e-52386eed61af"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[TYPE ASSURANCE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="0" y="0" width="61" height="15" uuid="05486de4-f21a-44f3-a8bb-5b5e3617c285"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="61" y="0" width="493" height="15" uuid="d64ab89c-7158-42d3-9da3-6531c177541e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelleTypeAssurance}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="554" height="21" uuid="08722b92-f886-4932-9bbe-78761738d849"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="numero_page"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" mode="Opaque" x="60" y="0" width="494" height="20" uuid="af2b478e-0c4a-4088-9242-356f6bd28365"/>
+				<textElement verticalAlignment="Middle"/>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="0" y="0" width="61" height="20" uuid="28d179a8-83c6-48ca-b279-450987696276"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

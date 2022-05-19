@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1080" pageHeight="595" orientation="Landscape" columnWidth="1040" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="10" uuid="08275b72-7dbf-48a5-9bac-16cec7d9fba4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_TD_Chaine" hAlign="Left" vAlign="Middle" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+		</box>
+		<paragraph leftIndent="3"/>
+	</style>
+	<style name="table_TD_Nombre" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+		</box>
+		<paragraph rightIndent="3"/>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E5E5E5" hAlign="Center" vAlign="Middle" fontSize="10" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<topPen lineWidth="0.5"/>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+		</box>
+	</style>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String"/>
+	<parameter name="FICHIER_EXCEL" class="java.lang.Boolean"/>
+	<parameter name="TITRE_ETAT" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATE_PARAM" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<field name="designation" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="montantEnCours" class="java.lang.String"/>
+	<field name="capitalRetard" class="java.lang.String"/>
+	<field name="interetRetard" class="java.lang.String"/>
+	<field name="montantTotalRetard" class="java.lang.String"/>
+	<field name="taux" class="java.lang.String"/>
+	<field name="encoursHomme" class="java.lang.String"/>
+	<field name="retardHomme" class="java.lang.String"/>
+	<field name="retardFemme" class="java.lang.String"/>
+	<field name="encoursFemme" class="java.lang.String"/>
+	<field name="retardGroupe" class="java.lang.String"/>
+	<field name="encoursGroupe" class="java.lang.String"/>
+	<field name="retardEntreprise" class="java.lang.String"/>
+	<field name="encoursEntreprise" class="java.lang.String"/>
+	<field name="sommeRetard" class="java.lang.String"/>
+	<field name="sommeEncours" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="105" splitType="Stretch">
+			<textField>
+				<reportElement x="-1" y="19" width="226" height="20" uuid="12e7da4f-c1c5-4d12-a788-78dfc501e030"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ADRESSE_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="109" y="38" width="116" height="20" uuid="1f736ace-8b25-444e-8b50-c8ade03edf60"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["TEL: "+$P{TEL_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-1" y="38" width="111" height="20" uuid="65c42b4b-ba7d-484a-91f1-5a0df88047d8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{BP_AGENCE}+" /"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="73" width="1041" height="21" uuid="b09571fa-80b9-4731-9a8b-72368d8016fa"/>
+				<textElement textAlignment="Center">
+					<font size="14" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITRE_ETAT}+ " AU "+ $P{DATE_PARAM}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="432" height="20" uuid="6e13579b-ea37-4cf2-8d09-4a9bbaee7bc8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_AGENCE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="0" y="0" width="146" height="40" uuid="6f141cef-90ee-445b-9bf1-733879491b93">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Libellé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="146" y="0" width="48" height="40" uuid="861c0025-bc21-410e-9469-700ea0399bb8">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="194" y="20" width="79" height="20" uuid="20f2def3-3995-4aa5-88d7-de5c5f069382">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Encours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="273" y="20" width="79" height="20" uuid="adebb91d-b246-4de6-b38e-0d052639a5c8">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Capital retard]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="194" y="0" width="158" height="20" uuid="140611ae-75c2-42cd-95ef-62516dd20b42">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Homme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="352" y="20" width="79" height="20" uuid="c33c6bcb-0022-4cf1-95f7-d5a5132f876e">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Encours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="431" y="20" width="79" height="20" uuid="db90d261-4c0f-42ca-a443-7a52a672e824">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Capital retard]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="352" y="0" width="158" height="20" uuid="abd5b1f0-1ca7-45aa-bcaf-a5526833fd8a">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Femme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="510" y="20" width="79" height="20" uuid="b5712318-b0db-4b16-aa46-840ccec2fe3b">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Encours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="589" y="20" width="79" height="20" uuid="2fdf7da5-00d4-4eb2-8cd2-9bc0aa6ef052">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Capital retard]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="510" y="0" width="158" height="20" uuid="1d8ecf11-2bf5-4971-aa95-2fafd3dfa9c3">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Groupe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="668" y="20" width="79" height="20" uuid="cab1814c-c45a-47f0-9926-26df7bcc1810">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Encours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="747" y="20" width="79" height="20" uuid="3455b2bc-62a2-4eff-a8f5-dfde767026eb">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Capital retard]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="668" y="0" width="158" height="20" uuid="89899ca1-fce3-4248-aa54-0bab5fbc1deb">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Entreprise]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="826" y="20" width="79" height="20" uuid="87fe417b-821f-4a32-8d1a-6488aee2ef68">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Encours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="905" y="20" width="79" height="20" uuid="0f13f1ca-bc78-4ffe-a291-2517ebd15805">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Capital retard]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="826" y="0" width="200" height="20" uuid="b0bc4a03-2cba-4da5-9ba5-a4bc2ddca79e">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="984" y="20" width="42" height="20" uuid="e8731da4-9f93-48bd-8fd8-eb595fa339e0">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[Taux (%)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD_Chaine" x="0" y="0" width="146" height="15" uuid="9189397f-6477-4353-9a1c-428369116ebc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{designation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="146" y="0" width="48" height="15" uuid="a67b2cd2-72b1-433e-ad55-629249b670ce"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="194" y="0" width="79" height="15" uuid="9862200c-cb23-47fa-b63c-8d3e36c9ab1f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encoursHomme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="273" y="0" width="79" height="15" uuid="1e55cb7a-d95c-48bf-9548-c8108b295b5e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{retardHomme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="352" y="0" width="79" height="15" uuid="04dd0b2c-2468-421d-81fc-ecb5adbea10d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encoursFemme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="431" y="0" width="79" height="15" uuid="948d5237-b000-44af-82ea-da937f8226ca"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{retardFemme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="984" y="0" width="42" height="15" uuid="81382e51-7808-488a-a097-ea533add350a"/>
+				<box>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{taux}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="510" y="0" width="79" height="15" uuid="499fa1d2-c985-4403-be19-36c3bbb809ff"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encoursGroupe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="589" y="0" width="79" height="15" uuid="dba9a83d-5749-4fbd-8dc2-796fe2d641ec"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{retardGroupe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="668" y="0" width="79" height="15" uuid="f1ae03dd-9198-4574-88ab-70f5144e180e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encoursEntreprise}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="747" y="0" width="79" height="15" uuid="e659f14c-f260-4fe1-a617-e897bdc6b4c6"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{retardEntreprise}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="826" y="0" width="79" height="15" uuid="959a7f46-fb2a-4f61-af8a-f0ca3806e8fd"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sommeEncours}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="905" y="0" width="79" height="15" uuid="bb015ad7-47e8-4e9a-abac-81044f07451c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sommeRetard}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="181" height="15" uuid="6cb777dd-be12-4f83-9f25-ffd5f871fc4f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Imprimer le "+$P{DATE_EDITION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="920" y="0" width="80" height="15" uuid="5e7b64be-e633-4c16-9f9f-776b15d63599"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="1000" y="0" width="40" height="15" uuid="471df398-31ed-48f6-8324-f24d35f64bf3"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="0" width="181" height="15" uuid="996758cd-2816-4785-9df1-9526fd50b0a9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

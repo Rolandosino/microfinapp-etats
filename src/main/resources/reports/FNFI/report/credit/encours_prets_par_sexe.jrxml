@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aaf634ed-5fb8-4fc9-9597-102223fc5e31">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <style name="table_CH" mode="Opaque" forecolor="#000000" backcolor="#CCCCCC" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="table_TD" mode="Opaque" forecolor="#000000" backcolor="#FFFFFF" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <parameter name="LIBELLE_AGENCE" class="java.lang.String"/>
+    <parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+    <parameter name="BP_AGENCE" class="java.lang.String"/>
+    <parameter name="TEL_AGENCE" class="java.lang.String"/>
+    <parameter name="DATE_EDITION" class="java.lang.String"/>
+    <parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+    <parameter name="TITRE_ETAT" class="java.lang.String"/>
+    <parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="SUBREPORT_DIR_PIED" class="java.lang.String">
+        <defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+    </parameter>
+    <field name="TYPE_CREDIT" class="java.lang.String"/>
+    <variable name="NBRE_FEMME" class="java.lang.String"/>
+    <variable name="NBRE_HOMME" class="java.lang.String"/>
+    <variable name="NBRE_MORALE" class="java.lang.String"/>
+    <variable name="MT_FEMME" class="java.lang.String"/>
+    <variable name="MT_HOMME" class="java.lang.String"/>
+    <variable name="MT_MORALE" class="java.lang.String"/>
+    <variable name="TOTAL_NBRE" class="java.lang.String"/>
+    <variable name="TOTAL_MT" class="java.lang.String"/>
+    <variable name="TX_NBRE_FEMME" class="java.lang.String"/>
+    <variable name="TX_NBRE_HOMME" class="java.lang.String"/>
+    <variable name="TX_NBRE_MORALE" class="java.lang.String"/>
+    <variable name="TX_MT_FEMME" class="java.lang.String"/>
+    <variable name="TX_MT_HOMME" class="java.lang.String"/>
+    <variable name="TX_MT_MORALE" class="java.lang.String"/>
+    <variable name="TOTAL_TX" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="90" splitType="Stretch">
+            <subreport>
+                <reportElement x="1" y="0" width="554" height="90" uuid="f4e19b2d-c91a-4643-9fea-6f486f8b3ffa"/>
+                <subreportParameter name="LIBELLE_AGENCE">
+                    <subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="TITRE_ETAT">
+                    <subreportParameterExpression><![CDATA[$P{TITRE_ETAT}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="ADRESSE_AGENCE">
+                    <subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="BP_AGENCE">
+                    <subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="DATE_EDITION">
+                    <subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="TEL_AGENCE">
+                    <subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+                </subreportParameter>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "entete_de_page.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+    </title>
+    <pageHeader>
+        <band splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band splitType="Stretch"/>
+    </columnHeader>
+    <detail>
+        <band height="115" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="0" width="555" height="20" uuid="3541f518-6244-4379-aa14-71cd25d5f313"/>
+                <box>
+                    <topPen lineWidth="0.5"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Crédits : "+$F{TYPE_CREDIT}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="1" y="19" width="100" height="20" uuid="1b0c35af-5229-4046-89bc-9fa356295cbb"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Femmes :"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="1" y="38" width="100" height="20" uuid="a4652b0b-8baa-4930-a229-5b1e38c0bf35"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Hommes :"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="1" y="57" width="100" height="20" uuid="e697abb1-ae08-4b08-81fd-7ecda6e5ab51"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Morales : "]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="1" y="76" width="100" height="20" uuid="c6bdc3cf-e125-4d30-bae4-eab39b4c5735"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA["TOTAL "]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="103" y="19" width="100" height="20" uuid="8f5bdce8-3d86-4b03-bf79-c5db08f27406"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{NBRE_FEMME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="103" y="57" width="100" height="20" uuid="fa0d2db1-378a-4dd6-8259-3cf9f7484b3b"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{NBRE_MORALE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="103" y="76" width="100" height="20" uuid="2ae6ea0a-fde3-4617-ba22-0e834e1e1d57"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{TOTAL_NBRE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="103" y="38" width="100" height="20" uuid="2ae1f570-fd5a-406c-87cc-235f6b46e6c0"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{NBRE_HOMME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="205" y="57" width="100" height="20" uuid="dba5721f-752d-4871-a05a-1ae52d896e7f"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{TX_NBRE_MORALE}+" %"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="205" y="38" width="100" height="20" uuid="6b441c98-5737-4d32-aecc-c782b682a525"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{TX_NBRE_HOMME}+" %"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="205" y="76" width="100" height="20" uuid="52e97806-c96a-472f-b7ce-4c7ae97f740f"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA["100%"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="205" y="19" width="100" height="20" uuid="078ca194-cc8a-47e9-b0e5-dda14a38e803"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{TX_NBRE_FEMME}+" %"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="307" y="38" width="100" height="20" uuid="bc196747-f1a4-45eb-b493-a2bf872d7f37"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{MT_HOMME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="307" y="57" width="100" height="20" uuid="c8905175-294b-4d64-87f0-8acd856f50b8"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{MT_MORALE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="307" y="76" width="100" height="20" uuid="be9a18ee-2da0-4018-ae09-297660fa2332"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{TOTAL_MT}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="307" y="19" width="100" height="20" uuid="e8ad9ac3-b4a7-42bf-873e-985671c18202"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{MT_FEMME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="409" y="19" width="100" height="20" uuid="d7711ad5-ebaf-48ad-97c9-186a48df9fa8"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{TX_MT_FEMME}+" %"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="409" y="57" width="100" height="20" uuid="75f10397-97b6-43ce-90f5-454663fb01eb"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{TX_MT_MORALE}+" %"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="409" y="76" width="100" height="20" uuid="d90c92e1-cbf8-4fec-87ea-56c2a590803f"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA["100%"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="409" y="38" width="100" height="20" uuid="f3aa702f-c47e-497f-949c-c0d700202a00"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{TX_MT_HOMME}+" %"]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="0" y="95" width="555" height="20" uuid="854f5ea7-3b72-415a-ad48-b4db91536cbe"/>
+                <box>
+                    <bottomPen lineWidth="0.5"/>
+                </box>
+                <text><![CDATA[]]></text>
+            </staticText>
+        </band>
+    </detail>
+    <columnFooter>
+        <band splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="20" splitType="Stretch">
+            <subreport>
+                <reportElement x="1" y="0" width="554" height="20" uuid="28ed2f8b-7641-47df-a84d-5050f6351719"/>
+                <subreportParameter name="LIBELLE_APPLICATION">
+                    <subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+                </subreportParameter>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+    </pageFooter>
+    <summary>
+        <band splitType="Stretch"/>
+    </summary>
+</jasperReport>

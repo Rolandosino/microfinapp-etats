@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ordreVirementUtbPlusieurs" language="groovy" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="10" rightMargin="10" topMargin="10" bottomMargin="10" uuid="dcbcdc98-3c28-433a-9606-f878aea3576c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="NUMERO_COMPTE_BANQUE" class="java.lang.String"/>
+	<parameter name="NOM_INSTITUTION" class="java.lang.String"/>
+	<parameter name="ADRESSE_INSTITUTION" class="java.lang.String"/>
+	<parameter name="professionDonneurOrdre" class="java.lang.String"/>
+	<parameter name="montantVireLettres" class="java.lang.String"/>
+	<parameter name="motifDetailleTransfert" class="java.lang.String"/>
+	<parameter name="MONTANT_TOTAL" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATE_EDITION_LETTRE" class="java.lang.String"/>
+	<field name="beneficiaire" class="java.lang.String"/>
+	<field name="banqueDuBeneficiaire" class="java.lang.String"/>
+	<field name="compteBeneficiaire" class="java.lang.String"/>
+	<field name="montantVire" class="java.lang.String"/>
+	<field name="adresseBeneficiaire" class="java.lang.String"/>
+	<field name="motifDetailleTransfert" class="java.lang.String"/>
+	<field name="montantVireLettres" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="411" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="575" height="411" uuid="7b10f31e-51e1-41d9-bcad-ed9f53278f37"/>
+				<subreportParameter name="dateOperation">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION_LETTRE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="totalMontant_p"/>
+				<subreportParameter name="totalMontantLettre_p"/>
+				<subreportParameter name="logoutb"/>
+				<subreportParameter name="NUMERO_COMPTE_BANQUE">
+					<subreportParameterExpression><![CDATA[$P{NUMERO_COMPTE_BANQUE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NOM_INSTITUTION">
+					<subreportParameterExpression><![CDATA[$P{NOM_INSTITUTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_INSTITUTION">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_INSTITUTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="professionDonneurOrdre">
+					<subreportParameterExpression><![CDATA[$P{professionDonneurOrdre}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="montantVireLettres">
+					<subreportParameterExpression><![CDATA[$F{montantVireLettres}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="motifDetailleTransfert">
+					<subreportParameterExpression><![CDATA[$F{motifDetailleTransfert}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="MONTANT_TOTAL">
+					<subreportParameterExpression><![CDATA[$F{montantVire}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="beneficiaire">
+					<subreportParameterExpression><![CDATA[$F{beneficiaire}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="banqueDuBeneficiaire">
+					<subreportParameterExpression><![CDATA[$F{banqueDuBeneficiaire}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="compteBeneficiaire">
+					<subreportParameterExpression><![CDATA[$F{compteBeneficiaire}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="montantVire">
+					<subreportParameterExpression><![CDATA[$F{montantVire}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="adresseBeneficiaire">
+					<subreportParameterExpression><![CDATA[$F{adresseBeneficiaire}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ordreVirementUtbSub.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

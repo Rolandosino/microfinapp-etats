@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Recus" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <parameter name="totalDebitParam" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["30 000"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="totalCreditParam" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["30 000"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="dateParam" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["25/06/2014"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="sigleParam" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["MUDECK"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="designationParam" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["MUTUELLE D'EPARGNE ET DE  CREDIT- KOMDEDJI"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="origineParam" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["COMPTABILITE"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="journalParam" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["4"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="saisieParam" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["Administrateur"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="dateImpressionParam" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["26/06/2014"]]></defaultValueExpression>
+    </parameter>
+    <field name="piece" class="java.lang.String"/>
+    <field name="compte" class="java.lang.String"/>
+    <field name="libelle" class="java.lang.String"/>
+    <field name="debit" class="java.lang.String"/>
+    <field name="credit" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="110" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="67" width="62" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[N° Journal : ]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="0" y="48" width="62" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Origine : ]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="576" y="83" width="60" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <text><![CDATA[Saisie par : ]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="576" y="17" width="100" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$P{dateParam}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="0" width="145" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{sigleParam}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="19" width="181" height="30"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$P{designationParam}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="253" y="11" width="270" height="20"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[PIECE COMPTABLE]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="253" y="40" width="270" height="20"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[PIECE CONSTITUTION DE D.A.T]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="61" y="48" width="120" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$P{origineParam}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="61" y="67" width="100" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$P{journalParam}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="635" y="83" width="167" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{saisieParam}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="20" splitType="Stretch">
+            <rectangle>
+                <reportElement x="0" y="0" width="81" height="20"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="81" y="0" width="133" height="20"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="214" y="0" width="389" height="20"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="602" y="0" width="100" height="20"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="702" y="0" width="100" height="20"/>
+            </rectangle>
+            <staticText>
+                <reportElement x="-1" y="0" width="82" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[ N° PIECE]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="81" y="0" width="134" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[ COMPTE]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="214" y="0" width="389" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[ LIBELLE]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="602" y="0" width="100" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[ DEBIT]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="702" y="0" width="100" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[ CREDIT]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="20" splitType="Stretch">
+            <rectangle>
+                <reportElement x="0" y="0" width="81" height="20"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="81" y="0" width="133" height="20"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="214" y="0" width="389" height="20"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="602" y="0" width="100" height="20"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="702" y="0" width="100" height="20"/>
+            </rectangle>
+            <textField>
+                <reportElement x="3" y="0" width="78" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{piece}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="84" y="0" width="130" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{compte}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="218" y="0" width="384" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="605" y="0" width="97" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{debit}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="705" y="0" width="97" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$F{credit}]]></textFieldExpression>
+            </textField>
+        </band>
+        <band height="366">
+            <rectangle>
+                <reportElement x="0" y="0" width="214" height="20" backcolor="#CCCCCC"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="214" y="0" width="388" height="20" backcolor="#CCCCCC"/>
+            </rectangle>
+            <staticText>
+                <reportElement x="292" y="0" width="174" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <text><![CDATA[Approuvé par:]]></text>
+            </staticText>
+            <rectangle>
+                <reportElement x="602" y="0" width="100" height="20" backcolor="#CCCCCC"/>
+            </rectangle>
+            <rectangle>
+                <reportElement x="702" y="0" width="100" height="20" backcolor="#CCCCCC"/>
+            </rectangle>
+            <textField>
+                <reportElement x="605" y="0" width="97" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$P{totalDebitParam}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="705" y="0" width="97" height="20"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$P{totalCreditParam}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="0" y="326" width="42" height="21"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8"/>
+                </textElement>
+                <text><![CDATA[Imprimé le ]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="41" y="326" width="113" height="21"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{dateImpressionParam}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="312" y="327" width="154" height="20"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8" isBold="false"/>
+                </textElement>
+                <text><![CDATA[(C)Microfina]]></text>
+            </staticText>
+            <line>
+                <reportElement x="0" y="262" width="802" height="1"/>
+            </line>
+            <line>
+                <reportElement x="0" y="242" width="802" height="1"/>
+            </line>
+        </band>
+    </detail>
+</jasperReport>

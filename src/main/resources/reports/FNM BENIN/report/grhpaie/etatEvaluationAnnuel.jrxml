@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etatEvaluationAnnuel" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="BlankPage" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1cbd47c8-84a6-4e56-bea2-04ab9c7a7ddd">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#EFEFEF" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="paraExo1Label" class="java.lang.String"/>
+	<parameter name="paraExo2Label" class="java.lang.String"/>
+	<parameter name="paraExo3Label" class="java.lang.String"/>
+	<parameter name="paraExo4Label" class="java.lang.String"/>
+	<parameter name="paraExo5Label" class="java.lang.String"/>
+	<parameter name="paranoteA" class="java.lang.String"/>
+	<parameter name="paranoteB" class="java.lang.String"/>
+	<field name="nomPrenoms" class="java.lang.String"/>
+	<field name="fonction" class="java.lang.String"/>
+	<field name="agence" class="java.lang.String"/>
+	<field name="anne1" class="java.lang.String"/>
+	<field name="anne2" class="java.lang.String"/>
+	<field name="anne3" class="java.lang.String"/>
+	<field name="anne4" class="java.lang.String"/>
+	<field name="anne5" class="java.lang.String"/>
+	<field name="noteA" class="java.lang.String"/>
+	<field name="noteB" class="java.lang.String"/>
+	<field name="moyenne" class="java.lang.String"/>
+	<field name="noteD" class="java.lang.String"/>
+	<field name="echellonGagne" class="java.lang.String"/>
+	<field name="salaireBase" class="java.lang.String"/>
+	<field name="indemniteDeplacement" class="java.lang.String"/>
+	<field name="comEvaluateur" class="java.lang.String"/>
+	<field name="comEvalue" class="java.lang.String"/>
+	<variable name="nbre" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{nomPrenoms}]]></variableExpression>
+	</variable>
+	<group name="groupAgence">
+		<groupExpression><![CDATA[$F{agence}]]></groupExpression>
+		<groupHeader>
+			<band height="16">
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="0" y="0" width="802" height="16" uuid="646fe32f-8d39-4774-9e42-dd9e5796ff20"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+						<paragraph leftIndent="5" rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{agence}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="0" y="0" width="22" height="40" uuid="cc658a7a-efe0-44bb-b569-ecb4ae33133c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="22" y="0" width="119" height="40" uuid="dc43b9e9-6d6d-4b9e-bf30-a29b8aa8cda0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[NOM & PRENOM(S)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="598" y="0" width="44" height="40" uuid="e32ca863-0e6f-4a27-8c6a-e891257513e4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Indemnité Déplac.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="554" y="0" width="44" height="40" uuid="bc96e80c-7bbd-4b29-bc21-18d532ab8cf7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[SALAIRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="214" y="0" width="340" height="20" uuid="703c3928-7159-4664-b238-06dbfa4ae70d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[CLASSIFICATION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="141" y="0" width="73" height="40" uuid="8c509f24-51ea-429b-aee8-8efd1f2c5076"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[FONCTION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="642" y="0" width="160" height="20" uuid="3f552e74-fa5e-410d-a91a-0b657f7fbbf5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[COMMENTAIRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="722" y="20" width="80" height="20" uuid="256faf96-54f3-42ab-a5c4-67ce586eaa17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Evalué]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="642" y="20" width="80" height="20" uuid="6e8b2f37-a631-4be2-b500-c81e8ebe46c1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Evaluateur]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="328" y="20" width="38" height="20" uuid="6a54e2eb-b352-49eb-8c2c-edc14300319a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paraExo4Label}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="290" y="20" width="38" height="20" uuid="da6de5ba-a267-4477-8856-067b17b529a0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paraExo3Label}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="252" y="20" width="38" height="20" uuid="599b5e1e-427c-4b7c-9847-baa32df05aad"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paraExo2Label}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="214" y="20" width="38" height="20" uuid="1f5c67af-7854-424a-bffb-afa469435466"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paraExo1Label}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="366" y="20" width="38" height="20" uuid="d5de60c5-4ff5-4948-a1d2-35b644412ef6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paraExo5Label}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="404" y="20" width="35" height="20" uuid="924ccb0f-e9d6-4ab7-9d6a-4c706a03d472"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paranoteA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="439" y="20" width="35" height="20" uuid="89e908b0-8c20-4c0e-a1bc-47a7231b945b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paranoteB}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table_CH" x="524" y="20" width="30" height="20" uuid="b91be2bc-82d3-4497-ab32-a9934308749f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="4" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Echellon gagné]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="499" y="20" width="25" height="20" uuid="9bae8158-e587-4f9f-a540-6e95b7510752"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Note]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="474" y="20" width="25" height="20" uuid="b7bd2044-2442-4e6a-9ac2-38c87673e7c5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="5" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Moyenne]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="22" y="0" width="119" height="16" uuid="9a3d4e41-cc4a-48c5-9e90-7b3729ec0b1e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomPrenoms}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="141" y="0" width="73" height="16" uuid="fd187604-d3c1-4501-ab9f-7570c8f85b92"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fonction}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="214" y="0" width="38" height="16" uuid="0add3eb4-6081-4238-b13f-28fa7215bf3f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{anne1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="252" y="0" width="38" height="16" uuid="d2b4ecc4-eeb7-4375-9437-d42db9899060"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{anne2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="290" y="0" width="38" height="16" uuid="17f7f3f8-3712-40b3-9462-827cc90cb9de"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{anne3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="328" y="0" width="38" height="16" uuid="bfdf1789-3107-4c7e-bd0d-d343e1871253"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{anne4}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="366" y="0" width="38" height="16" uuid="504ad0d0-72ab-41b1-ba93-73c45d7e6c1d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{anne5}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="404" y="0" width="35" height="16" uuid="9ed33c55-04dc-4163-a241-40495d445b61"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{noteA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="439" y="0" width="35" height="16" uuid="4ad229d6-bb8b-440a-b1cd-f55c469f6bc8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{noteB}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="474" y="0" width="25" height="16" uuid="be170f7a-7d5c-4da1-a573-4c3a00ce33aa"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{moyenne}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="499" y="0" width="25" height="16" uuid="175ae05d-8ef1-48fa-8cbf-86d37be2446a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{noteD}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="524" y="0" width="30" height="16" uuid="0ae0309b-a983-47ed-9b57-e2161fcb2bd4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{echellonGagne}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="554" y="0" width="44" height="16" uuid="9d396690-1c6f-4e3b-8564-03f6e3400657"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salaireBase}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="598" y="0" width="44" height="16" uuid="f21c2e14-0137-4d66-8e47-13fa2d069b75"/>
+				<textElement verticalAlignment="Middle">
+					<font size="5"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{indemniteDeplacement}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="642" y="0" width="80" height="16" uuid="3bbabd1f-129a-43bb-9f19-9b093cbbcfa0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{comEvaluateur}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="722" y="0" width="80" height="16" uuid="1a6f693b-dd65-4656-a90d-3a434d11a99d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{comEvalue}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="0" y="0" width="22" height="16" uuid="7c7c47f8-52ad-4926-9827-049df5e0d1a5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{nbre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="35" splitType="Stretch"/>
+	</columnFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+	<noData>
+		<band height="50">
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="20" uuid="b0a955a3-6f52-4d5e-b220-dce714ae2e29"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aucune donnée trouvée.]]></text>
+			</staticText>
+		</band>
+	</noData>
+</jasperReport>

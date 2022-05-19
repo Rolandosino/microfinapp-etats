@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Balance" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="0923c5ea-8afe-4528-a992-a7858129f4e9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="intervalDebParam" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["1011"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="intervalFinParam" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["99"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateDebParam" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["28/05/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateFinParam" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["28/05/2015"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="editeurParam" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["ADMIN ADMIN"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateParam" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["28/05/2014 16:21:32"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="date1" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="date2" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="lim1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="lim2" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="vid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="rupture" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nomAgence" class="java.lang.String"/>
+	<parameter name="PARAM_TEST" class="java.lang.String"/>
+	<parameter name="INSTITUTION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Fonds National de la Finance Inclusive"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="parameter2" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="libelle" class="java.lang.String">
+		<fieldDescription><![CDATA[libelle]]></fieldDescription>
+	</field>
+	<field name="mouvementExerciceCredit" class="java.lang.String">
+		<fieldDescription><![CDATA[mouvementExerciceCredit]]></fieldDescription>
+	</field>
+	<field name="mouvementExerciceDebit" class="java.lang.String">
+		<fieldDescription><![CDATA[mouvementExerciceDebit]]></fieldDescription>
+	</field>
+	<field name="mouvementReportCredit" class="java.lang.String">
+		<fieldDescription><![CDATA[mouvementReportCredit]]></fieldDescription>
+	</field>
+	<field name="mouvementReportDebit" class="java.lang.String">
+		<fieldDescription><![CDATA[mouvementReportDebit]]></fieldDescription>
+	</field>
+	<field name="numCompte" class="java.lang.String">
+		<fieldDescription><![CDATA[numCompte]]></fieldDescription>
+	</field>
+	<field name="soldeCredit" class="java.lang.String">
+		<fieldDescription><![CDATA[soldeCredit]]></fieldDescription>
+	</field>
+	<field name="soldeDebit" class="java.lang.String">
+		<fieldDescription><![CDATA[soldeDebit]]></fieldDescription>
+	</field>
+	<variable name="Mouv_Report_Debit" class="java.lang.String">
+		<variableExpression><![CDATA[java.text.NumberFormat.getInstance().format(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{mouvementReportDebit})).add(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($V{Mouv_Report_Debit}))))]]></variableExpression>
+		<initialValueExpression><![CDATA["0"]]></initialValueExpression>
+	</variable>
+	<variable name="Mouv_Report_Credit" class="java.lang.String">
+		<variableExpression><![CDATA[java.text.NumberFormat.getInstance().format(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{mouvementReportCredit})).add(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($V{Mouv_Report_Credit}))))]]></variableExpression>
+		<initialValueExpression><![CDATA["0"]]></initialValueExpression>
+	</variable>
+	<variable name="Mouv_Periode_Debit" class="java.lang.String">
+		<variableExpression><![CDATA[java.text.NumberFormat.getInstance().format(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{mouvementExerciceDebit})).add(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($V{Mouv_Periode_Debit}))))]]></variableExpression>
+		<initialValueExpression><![CDATA["0"]]></initialValueExpression>
+	</variable>
+	<variable name="Mouv_Periode_Credit" class="java.lang.String">
+		<variableExpression><![CDATA[java.text.NumberFormat.getInstance().format(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{mouvementExerciceCredit})).add(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($V{Mouv_Periode_Credit}))))]]></variableExpression>
+		<initialValueExpression><![CDATA["0"]]></initialValueExpression>
+	</variable>
+	<variable name="SoldeDebit" class="java.lang.String">
+		<variableExpression><![CDATA[$F{soldeDebit}]]></variableExpression>
+		<initialValueExpression><![CDATA["0"]]></initialValueExpression>
+	</variable>
+	<variable name="SoldeCredit" class="java.lang.String">
+		<variableExpression><![CDATA[$F{soldeCredit}]]></variableExpression>
+		<initialValueExpression><![CDATA["0"]]></initialValueExpression>
+	</variable>
+	<variable name="LIBELLE" class="java.lang.String">
+		<variableExpression><![CDATA[$F{libelle}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="155" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="802" height="85" uuid="86687cde-ac61-46d4-b4fa-5a74a56e73c5"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="1" width="802" height="20" uuid="1ef81db4-a5ee-468e-8143-df1272fa764d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BALANCES DES COMPTES ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="335" y="19" width="130" height="1" uuid="91269e77-eeef-4a51-94ed-41b5e02413a3"/>
+			</line>
+			<staticText>
+				<reportElement x="6" y="19" width="25" height="20" uuid="92dd437e-053e-4a52-a728-143316f8157d"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Etat :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="399" y="46" width="24" height="18" uuid="02ef85e9-5dc2-422e-98a9-2e2e80fab1b6"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{intervalDebParam}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="422" y="46" width="14" height="18" uuid="a8e69d42-6ce7-43c9-8136-99cb71c9f9f6"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ à ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="435" y="46" width="24" height="18" uuid="e87d6211-2613-457a-962e-e7b0eddc5158"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{intervalFinParam}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="340" y="27" width="58" height="20" uuid="21679fc6-ae06-4812-a7b9-5047ffd154f3"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Période du ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="397" y="27" width="69" height="20" uuid="d80bad24-70cb-4c2a-a722-3b88f87b024c"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateDebParam}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="466" y="27" width="22" height="20" uuid="bb58d123-0b21-4e2d-9c91-31ba95d6eec0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  au ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="487" y="27" width="69" height="20" uuid="20decfee-4ed9-44a7-b45c-39a7cd5bf435"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateFinParam}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="621" y="46" width="44" height="20" uuid="55b61f9c-30b3-4b1e-aea9-59b681216c92"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Edité par : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="664" y="46" width="128" height="20" uuid="aefeaf05-562f-455c-a39c-8ce8a2a48702"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{editeurParam}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="116" width="65" height="39" backcolor="#E5E5E5" uuid="7067a770-39ca-4af4-9bc1-90d462243d57"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comptes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="65" y="116" width="257" height="39" backcolor="#E5E5E5" uuid="ad055d5b-eaf6-405e-b4ba-449dcdd36e9e"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Libellés]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="322" y="116" width="160" height="20" backcolor="#E5E5E5" uuid="f1355a0d-d304-4e22-ad17-a20b5dd78b0d"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mouv. Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="322" y="137" width="80" height="18" backcolor="#E5E5E5" uuid="1ba42da5-5051-4c39-9932-9c3f164a9e92"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Débit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="402" y="137" width="80" height="18" backcolor="#E5E5E5" uuid="c8a6bdfc-ff89-4d38-96ae-286f6883222b"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Crédit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="642" y="116" width="160" height="20" backcolor="#E5E5E5" uuid="58a09132-8260-466a-a511-9e1fe7a49ea7"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Solde]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="482" y="116" width="160" height="20" backcolor="#E5E5E5" uuid="0889e314-66cf-455c-b526-b1f5fc195126"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mouv. Période]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="482" y="137" width="80" height="18" backcolor="#E5E5E5" uuid="91e252aa-04a0-4da3-a710-9c31d1785b5d"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Débit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="562" y="137" width="80" height="18" backcolor="#E5E5E5" uuid="9d1dd0b4-93b5-41b6-83c7-56bdb16a4e0f"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Crédit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="642" y="137" width="80" height="18" backcolor="#E5E5E5" uuid="9ad07dea-d40a-496e-bef6-7cc19a474af8"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Débit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="722" y="137" width="80" height="18" backcolor="#E5E5E5" uuid="42272903-e93c-4555-92c5-b8ce34b14de3"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Crédit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="64" width="59" height="20" uuid="a8050e6c-a20c-4a7e-9ae2-673e9bd307cc"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Agence : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="54" y="64" width="100" height="20" uuid="d424c406-2d7f-4f7e-81d9-22624e4a20c6"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{nomAgence}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="335" y="46" width="64" height="20" uuid="bda5f942-e546-4be6-b35d-6a6e02adaac4"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Comptes de ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="7" y="44" width="247" height="20" uuid="536b336e-4f11-4fd0-b140-cf6fef5620f2"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Institution : "+$P{INSTITUTION}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement x="65" y="0" width="257" height="15" uuid="d1c94dec-4b42-4513-ba55-9d3076eef506">
+					<printWhenExpression><![CDATA[(!($F{libelle}.trim().contains("Sous total classe")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="322" y="0" width="80" height="15" uuid="54f3f936-6901-40c4-bac3-6c4d8930b11b">
+					<printWhenExpression><![CDATA[(!($F{libelle}.trim().contains("Sous total classe")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mouvementReportDebit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="0" width="80" height="15" uuid="6044f58e-9a83-4e3f-93a8-7309d4de1381">
+					<printWhenExpression><![CDATA[(!($F{libelle}.trim().contains("Sous total classe")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mouvementReportCredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="482" y="0" width="80" height="15" uuid="c57b90f4-dac7-4bdf-af02-303fe13a5dd7">
+					<printWhenExpression><![CDATA[(!($F{libelle}.trim().contains("Sous total classe")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mouvementExerciceDebit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="562" y="0" width="80" height="15" uuid="39aa8194-053e-4a8d-a361-a17794319417">
+					<printWhenExpression><![CDATA[(!($F{libelle}.trim().contains("Sous total classe")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mouvementExerciceCredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="642" y="0" width="80" height="15" uuid="f76074c2-0d1e-4427-ac53-030b192cabbb">
+					<printWhenExpression><![CDATA[(!($F{libelle}.trim().contains("Sous total classe")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{soldeDebit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="722" y="0" width="80" height="15" uuid="7b556fe2-b885-483e-aea1-041f21700563">
+					<printWhenExpression><![CDATA[(!($F{libelle}.trim().contains("Sous total classe")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{soldeCredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="65" height="15" uuid="1042747d-b288-45c2-a61d-46803fc8ea4d">
+					<printWhenExpression><![CDATA[(!($F{libelle}.trim().contains("Sous total classe")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numCompte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="65" y="0" width="257" height="15" backcolor="#E5E5E5" uuid="8c5246fc-ebe3-4791-96de-fd6e50a7b851">
+					<printWhenExpression><![CDATA[($F{libelle}.trim().contains("Sous total classe"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="322" y="0" width="80" height="15" backcolor="#E5E5E5" uuid="e264c98c-37fc-44f4-8a7b-202a93665c74">
+					<printWhenExpression><![CDATA[($F{libelle}.trim().contains("Sous total classe"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mouvementReportDebit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="402" y="0" width="80" height="15" backcolor="#E5E5E5" uuid="80dd7377-74a7-4ab1-bfe2-6b21afb36535">
+					<printWhenExpression><![CDATA[($F{libelle}.trim().contains("Sous total classe"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mouvementReportCredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="482" y="0" width="80" height="15" backcolor="#E5E5E5" uuid="d9ff0bff-4403-49df-872f-f00b4688b507">
+					<printWhenExpression><![CDATA[($F{libelle}.trim().contains("Sous total classe"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mouvementExerciceDebit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="562" y="0" width="80" height="15" backcolor="#E5E5E5" uuid="fce6a5a0-7b7b-4c78-a2ed-5c720983e7a6">
+					<printWhenExpression><![CDATA[($F{libelle}.trim().contains("Sous total classe"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mouvementExerciceCredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="642" y="0" width="80" height="15" backcolor="#E5E5E5" uuid="c27c1937-9131-45f8-aaa5-0d0f5ef560ef">
+					<printWhenExpression><![CDATA[($F{libelle}.trim().contains("Sous total classe"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{soldeDebit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="722" y="0" width="80" height="15" backcolor="#E5E5E5" uuid="dcb2c229-940a-4a34-a087-bb56a88630ba">
+					<printWhenExpression><![CDATA[($F{libelle}.trim().contains("Sous total classe"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{soldeCredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="65" height="15" backcolor="#E5E5E5" uuid="d3328ece-898c-4c8c-a45e-9b843ce8816c">
+					<printWhenExpression><![CDATA[($F{libelle}.trim().contains("Sous total classe"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numCompte}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="15"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="304" y="10" width="131" height="15" uuid="f027269b-a087-4663-96ae-8f48db03cad0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Microfina++]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="10" width="57" height="15" uuid="bad2146e-a4b4-4796-85df-0361281eb1be"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Imprimé le ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="63" y="10" width="100" height="15" uuid="c150d7b2-bfdc-4cff-856c-ff3c814229c7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateParam}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="762" y="10" width="40" height="15" uuid="565d7937-2846-4785-9724-aa9fa4222e38"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="682" y="10" width="80" height="15" uuid="43e7ec47-233e-4d2d-b45f-8cd7b6f7e0e0"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

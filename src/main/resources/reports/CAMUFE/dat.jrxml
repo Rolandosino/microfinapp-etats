@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dat" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8eecbef8-56c1-4ca1-8164-28e37eaadce4">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="372"/>
+	<parameter name="numcontrat" class="java.lang.String"/>
+	<parameter name="nomParam" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["AZIADZO Kokou Lolonyo A."]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paramAdresse" class="java.lang.String"/>
+	<parameter name="profession" class="java.lang.String"/>
+	<parameter name="montantDepotParam" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["100 000 FCFA"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tauxParam" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["5.0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dureeParam" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["12"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateDepotParam" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["02/06/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="paratitre" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="NUMERO_CREDIT" class="java.lang.String"/>
+	<parameter name="GARANTIE_NON_FINANCIERE" class="java.lang.String"/>
+	<parameter name="dateImpression" class="java.lang.String"/>
+	<parameter name="adresse_client" class="java.lang.String"/>
+	<parameter name="numeroParam" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["000011"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ENTETE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PIED_DE_PAGE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page.jasper"]]></defaultValueExpression>
+	</parameter>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="42" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="42" uuid="efbb8061-2e25-4e74-8f68-e11cfc2c0035"/>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{ENTETE}]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="479">
+			<staticText>
+				<reportElement x="0" y="22" width="233" height="12" uuid="57f468a3-3085-4092-80d5-54dc949859f7"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N° du contrat : …….]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="ff1f9cd8-4f53-44e7-9131-21ccc9a54282"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[CONTRAT DE DEPÔT A TERME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="42" width="41" height="15" uuid="ef0fce3c-ef9c-4ceb-b2ba-71b374c1e970"/>
+				<textElement>
+					<font size="8" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Article 1 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="42" width="62" height="15" uuid="581e267e-eef5-4f19-911a-b69af4f5b611"/>
+				<textElement>
+					<font size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Objet du dépôt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="57" width="555" height="74" uuid="78e049bf-0272-41a4-8eee-bde3cb688a44"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[La Caisse Mutuelle des Femmes (CAMUFE), ayant son siège au carré 631 Gbégamey Rue Mosquée, place Bulgary, représentée par sa gérante, Madame LIMA Cécile, consent au soussigné :…………………………………………………………………………
+Adresse : ……………………………………………………………………………………………………………………..                                                                                              Profession : ………………………………………………………………………………………………………………. En acceptant de mettre en Dépôt à Terme la somme de ……………………………………………….................................................................................................. (FCFA en chiffres et en lettres).
+Au taux annuel de : ……%.
+]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="172" y="67" width="284" height="12" uuid="d54291aa-6f43-4114-adf6-e095cafeaa25"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nomParam}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="40" y="77" width="352" height="12" uuid="ac226d67-8ac1-403b-a53e-81f1612fbad5"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paramAdresse}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="45" y="87" width="336" height="12" uuid="3c383efc-e193-41f0-82d1-f6d708ccab08"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{profession}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="45" y="97" width="336" height="11" uuid="503a425a-d317-406e-aa0a-e0c8785cfd7d"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{montantDepotParam}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="71" y="108" width="13" height="12" uuid="5f6486f6-c084-4802-ba22-43f795e154cb"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tauxParam}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="143" width="41" height="15" uuid="9a104b9a-4e3b-44e1-af0b-84dd2e07dfb1"/>
+				<textElement>
+					<font size="8" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Article 2 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="143" width="183" height="15" uuid="587516a4-3d62-403b-85d4-2003a9b74d1c"/>
+				<textElement>
+					<font size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Fonctionnement du compte de DAT : la durée]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="158" width="555" height="44" uuid="15fd1de1-7d60-48a5-ab15-5e112a61fa73"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[La durée du compte de dépôt à terme est fixée à …………….mois. Ce  dépôt n’est récupérable (en principal  et  intérêts produits) qu’à compter du…………………………………
+En conséquence Mlle/Mme/Mr/…………………………………………………………………………………. renonce à toute demande  de récupération de tout ou partie du dépôt jusqu’au terme du contrat.
+
+]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="185" y="159" width="27" height="11" uuid="b2b7b60f-719b-46a0-ad83-869cebe77d55"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dureeParam}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="16" y="169" width="100" height="11" uuid="513c04f1-1937-4532-8ad1-40d925aac8c8"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateDepotParam}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="122" y="178" width="234" height="12" uuid="31f2b2e2-3925-4093-969f-0dcbf504f945"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nomParam}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="40" y="214" width="100" height="15" uuid="c5e0422a-0fc1-453f-83bd-f575434a7efe"/>
+				<textElement>
+					<font size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[retrait avant l’échéance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="214" width="41" height="15" uuid="a870ad14-11f2-4ad9-b313-4cab4d608d49"/>
+				<textElement>
+					<font size="8" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Article 3 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="229" width="555" height="44" uuid="294c1767-0747-4758-aefe-d81f569b1249"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Le Déposant accepte de mettre les fonds du présent DAT à la disposition de la CAMUFE depuis la date de la signature du présent contrat jusqu’à la date de son échéance.  Cependant, si les fonds doivent faire l’objet d’un retrait avant la date d’échéance, la CAMUFE  dispose d’un délai  de grâces de 90 jours pour rembourser les fonds au Déposant. Par conséquent des pénalités de vingt pour cent (20%) du montant total déposé seront déduites du montant total à payer au Déposant.
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="286" width="132" height="15" uuid="d028c73e-2812-45df-997c-2dbb330193d4"/>
+				<textElement>
+					<font size="8" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Cas du respect des engagements du  souscripteur :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="286" width="41" height="15" uuid="dacba278-60f7-4ff4-bd17-2678fef77519"/>
+				<textElement>
+					<font size="8" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Article 4 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="301" width="555" height="21" uuid="e25ed652-af23-4b41-9fb2-9d5d2430c7be"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Sauf dispositions contraires du  souscripteur, le montant du D.A.T. (en capital et intérêts) est  automatiquement versé dans son compte de dépôt à vue. Il a le choix entre les deux autres options suivantes :
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="321" width="555" height="12" uuid="89efb15c-0af3-45b6-9b0b-6462e54e6d5d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1-   Oui, j’aimerais qu’à l’échéance,  seuls les intérêts de mon D.A.T. soient  reversés dans mon compte de dépôt à vue et  le Capital reconduit  de manière tacite.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="332" width="122" height="12" uuid="8fd359f7-e34c-4f24-852b-1e9306982f8f"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIGNATURE  ……………………]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="344" width="381" height="12" uuid="74bed09a-c290-4321-bf77-ecae1dd81e6e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2-  Oui, j’aimerais  qu’à l’échéance,  mon D.A.T. (capital et intérêts) soient reconduits de manière tacite.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="344" width="135" height="12" uuid="c729c3f8-ef44-478f-a419-cc8692276eb2"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SIGNATURE  …………………… !!]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="369" width="105" height="15" uuid="e231f903-1c06-4bbb-8be6-55d068e3f2cd"/>
+				<textElement>
+					<font size="8" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Article 5 : Date  de Valeur : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="104" y="369" width="316" height="15" uuid="dd5bb804-0b8d-4d95-b36f-56860bb9864c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[La date de valeur sur les dépôts à terme est  de 15 jours après l’ouverture du compte. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="393" width="154" height="15" uuid="dc0025ac-c2c7-49a2-94c3-e0b267ebcb94"/>
+				<textElement>
+					<font size="8" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Article 6 : Attribution de compétences :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="409" width="555" height="11" uuid="ea3a35df-8dce-45f8-9064-3a11a714ccd8"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Pour l’exécution du présent contrat, les parties conviennent de régler leur différend à l’amiable. A défaut,  seul  le tribunal de première instance de Cotonou est compétent.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="447" width="71" height="12" uuid="9eaad649-84f6-4877-a334-324d131f0aac"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fait à Cotonou, le …………………………………….]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="467" width="54" height="12" uuid="036e5014-57d4-4adb-b5b3-905adbeddd98"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Le  Déposant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="467" width="47" height="12" uuid="675d682b-9550-4831-a34d-5df3ac54d810"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[La Gérante]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="67" y="447" width="100" height="12" uuid="c0f860ad-f9d8-4cb3-94a0-15e919d6acd8"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateDepotParam}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="54" y="20" width="118" height="15" uuid="36ec6d5b-ec45-4dd6-b829-b6af2802e723"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numeroParam}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="30">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="30" uuid="5583894e-0374-4f5e-b283-b6233b62772e"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="numero_page"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{PIED_DE_PAGE}]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

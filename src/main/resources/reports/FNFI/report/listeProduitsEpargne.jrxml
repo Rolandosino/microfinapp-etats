@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="listeProduitsEpargne" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fb1822be-32c7-4aea-b684-b784bbe3dd5b">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="table_TD" mode="Opaque" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <parameter name="TITRE_ETAT" class="java.lang.String"/>
+    <field name="IG" class="java.lang.String"/>
+    <field name="familleProduit" class="java.lang.String"/>
+    <field name="libelleProduit" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="79" splitType="Stretch">
+            <staticText>
+                <reportElement style="table_CH" x="360" y="59" width="195" height="20" backcolor="#EFEFEF" uuid="f717275b-4b24-4416-a5e6-92dd0ba827e5"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <text><![CDATA[Produit]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="0" y="59" width="148" height="20" forecolor="#000000" backcolor="#EFEFEF" uuid="688f27d0-71cf-454f-b9aa-6a2574b55643"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+                    <font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+                    <paragraph lineSpacing="Single" leftIndent="5"/>
+                </textElement>
+                <text><![CDATA[Code produit]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="148" y="59" width="212" height="20" backcolor="#EFEFEF" uuid="d6811656-d0d1-4007-9ecf-6f65f7dae7c4"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <text><![CDATA[Famille]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="0" y="19" width="555" height="20" uuid="36c79575-9b55-47f4-8686-21671578acec"/>
+                <textElement textAlignment="Center">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{TITRE_ETAT}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <detail>
+        <band height="21" splitType="Stretch">
+            <textField>
+                <reportElement style="table_TD" x="0" y="0" width="148" height="20" uuid="b655efdf-3d17-4994-a5ce-dc7eeaac468e"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{IG}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="148" y="0" width="212" height="20" uuid="8d0d0f66-7bd4-4659-8d7e-b29c30f1f667"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{familleProduit}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="360" y="0" width="195" height="20" uuid="dfb1e8c6-aaf1-4139-86f0-4cca4c4e3005"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{libelleProduit}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <summary>
+        <band height="42" splitType="Stretch">
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="0" y="0" width="148" height="20" uuid="dc555fce-c5b8-4ae5-91bf-5a21df96b58b"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" mode="Opaque" x="148" y="0" width="407" height="20" uuid="43be918c-c724-4d92-b0c5-90f7609fbcc9"/>
+                <textElement verticalAlignment="Middle"/>
+            </textField>
+        </band>
+    </summary>
+</jasperReport>

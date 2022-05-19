@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="demandeCongeDirecteur" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="984d2eaf-2544-4d29-88a4-764c137d50e6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="154"/>
+	<style name="table_CH" mode="Opaque" backcolor="#EFEFEF" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="paraNom" class="java.lang.String"/>
+	<parameter name="paraService" class="java.lang.String"/>
+	<parameter name="paraDateEngag" class="java.lang.String"/>
+	<parameter name="paraFonction" class="java.lang.String"/>
+	<parameter name="paraDateDebutAccord" class="java.lang.String"/>
+	<parameter name="paraSoldeInitiale" class="java.lang.String"/>
+	<parameter name="paraMois" class="java.lang.String"/>
+	<parameter name="paracommentaire1" class="java.lang.String"/>
+	<parameter name="paracommentaire2" class="java.lang.String"/>
+	<parameter name="paracommentaire3" class="java.lang.String"/>
+	<parameter name="paraJourA" class="java.lang.String"/>
+	<parameter name="paraNouveauSolde" class="java.lang.String"/>
+	<parameter name="paraDateFinAccord" class="java.lang.String"/>
+	<parameter name="paraDebutdemande" class="java.lang.String"/>
+	<parameter name="paraFindemande" class="java.lang.String"/>
+	<parameter name="paramoisFin" class="java.lang.String"/>
+	<parameter name="paraMotifs" class="java.lang.String"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateDemande" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="378">
+			<staticText>
+				<reportElement x="-2" y="97" width="555" height="35" uuid="92908f54-16df-4da8-ab33-c47a3b23d3ba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEMANDE DE CONGES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="142" width="110" height="20" uuid="e009e1f0-3fac-49e8-ab0b-16d7f6c2e671"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Nom et Prénoms]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="162" width="183" height="20" uuid="2be2773e-ac9a-4ce3-bb75-72bf543978f0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Service (Agences / Direction)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="182" width="124" height="20" uuid="fc724980-304c-46cf-94e5-724d8470e14f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date d’engagement]]></text>
+			</staticText>
+			<line>
+				<reportElement x="112" y="158" width="443" height="1" uuid="753cfcd5-0c4a-493b-ba72-b9a608feb9a5"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="185" y="176" width="370" height="1" uuid="0d8e0dc7-b493-4333-9be6-747b3092ccd9"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="127" y="195" width="428" height="1" uuid="12ca7900-c036-4c78-aac9-56b97b61fba6"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="64" y="220" width="491" height="1" uuid="0ec35565-18f7-46b8-a0b5-6ffda0393236"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="64" y="204" width="491" height="15" uuid="8e1133e5-f07c-4fc4-8df2-17bbae697c89"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{paraFonction}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="185" y="162" width="370" height="20" uuid="41d95ea5-5a17-4058-a302-298667ab2c30"/>
+				<textFieldExpression><![CDATA[$P{paraService}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="126" y="183" width="427" height="18" uuid="97b10d48-598f-408f-8f1b-4aa3608ef265"/>
+				<textFieldExpression><![CDATA[$P{paraDateEngag}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="112" y="142" width="433" height="20" uuid="d249ca4c-e1a6-45e2-81f0-6e77bcdffb11"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{paraNom}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="222" width="125" height="20" uuid="6c7161f6-885b-4ac5-8b2e-fc3c2e045869"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Congés sollicités du ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="243" width="39" height="20" uuid="19fde4f4-f4bf-4b61-8261-c5ffaf1a1a0b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Soit :     ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="152" y="243" width="104" height="20" uuid="f60eee89-e550-4c8c-8dee-f3325f996a81"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[jours ouvrables]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="308" width="84" height="20" uuid="82fb8f7f-403e-405f-865c-fe9962b16fb0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Solde initial :  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="358" width="555" height="20" uuid="a13f9aea-a847-4466-a6d2-6779c0037ab2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[AVIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="287" width="131" height="20" uuid="3f228b0b-d030-4c02-9c95-d09316133aa3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date de la demande :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="62" y="284" width="493" height="1" uuid="4dfc799c-cbf3-41b6-a911-b80314f04222"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="409" y="301" width="148" height="20" uuid="4b26abda-e3d8-4f47-9a88-fe4b31761eb4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Signature du demandeur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="152" y="307" width="104" height="20" uuid="6b905339-d178-49e0-9c06-0250eec45f8d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[jours à fin (mois) ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="137" y="302" width="105" height="1" uuid="ed59faef-5412-4713-8a25-fabb9abd6cea"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="261" y="321" width="60" height="1" uuid="26cf2fb1-ff54-4126-84e3-1d0535934e05"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="134" y="322" width="20" height="1" uuid="ee2aff0d-3699-4c9a-8ec5-9aa5588565d3"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="62" y="267" width="492" height="21" uuid="3e2af944-c2d3-46be-896c-db90000e4fbc"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{paraMotifs}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="202" y="222" width="55" height="19" uuid="c43b3332-5acf-4139-8abb-d92dd2b220e0"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{paraFindemande}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="256" y="308" width="70" height="20" uuid="90d34c01-68e5-4b4a-ace7-843c8e98d0f6"/>
+				<textFieldExpression><![CDATA[$P{paraMois}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="132" y="308" width="22" height="20" uuid="17521ee6-8dd6-45b7-acc8-bd183c3205d1"/>
+				<textFieldExpression><![CDATA[$P{paraSoldeInitiale}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="127" y="243" width="25" height="19" uuid="73f7a892-5086-4757-b2c9-ea3bd1a79a6d"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{paraJourA}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="126" y="222" width="55" height="20" uuid="d6ec3950-cbe6-4278-a16e-96907c4f41f9"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{paraDebutdemande}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="267" width="62" height="20" uuid="a9413bba-329e-4a97-a15a-9d293969d454"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Motifs :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="201" width="60" height="20" uuid="68c22c31-c06b-44b5-9a75-3256b71247e4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Fonction]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="181" y="222" width="21" height="19" uuid="aa2a4fe4-289c-4c28-9d39-5427bc0bf3e9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[au]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="134" y="287" width="108" height="19" uuid="687bdfb5-60ce-4c13-b6fd-defecc4b4cab"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{dateDemande}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="2" y="0" width="555" height="81" uuid="9b16e30f-e792-44b3-83d1-4194fd7f2473"/>
+				<subreportParameter name="OPTION"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<detail>
+		<band height="246" splitType="Stretch">
+			<staticText>
+				<reportElement x="172" y="160" width="30" height="18" uuid="7af8fa11-29eb-4d6b-95b8-1e5e9a06e1ab"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[au]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="160" width="52" height="19" uuid="87b1e7c0-c761-4474-8204-618b1ca0d458"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[inclus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="0" y="24" width="100" height="126" uuid="6cab8c7e-0a9f-479d-82c3-473c51d34b4f"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Président du CA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="429" y="24" width="126" height="126" uuid="487909b4-ce44-4c3c-b7d0-8d653d94db67"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="429" y="4" width="126" height="20" uuid="7526b357-979f-407e-bf67-a5f865b8d120"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Signature et date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="0" y="4" width="429" height="20" uuid="1a7be2b9-b6b5-4b64-86cf-4bbf3cc18ecb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Favorable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="159" width="110" height="20" uuid="05f2ac51-c7f1-4213-b5d7-1a323adb1690"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Congés accordés : du  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="100" y="24" width="329" height="126" uuid="3ce84973-a441-4821-b86d-e897f5a8182a"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<line>
+				<reportElement x="115" y="138" width="267" height="1" uuid="a8860300-5e99-45c1-9282-b6ac3fede492"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="115" y="121" width="267" height="1" uuid="c8a180c4-e30c-40de-8c3e-4c5fb5eb015c"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="110" y="36" width="41" height="20" uuid="188a93f9-6edd-4153-9abe-068f76fdcb98"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[OUI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="87" width="100" height="20" uuid="8ac32ec1-ef4d-4ee8-8c65-38f218989b8f"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Si non motivez : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="171" y="36" width="40" height="20" uuid="93aa62c8-73c3-4509-b248-b5c9eeef052e"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="56" width="41" height="20" uuid="0d34e786-5d10-4f85-bde1-011a129e8c5d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[NON]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="171" y="56" width="40" height="20" uuid="e9b9b19c-ab7b-4e6d-bd2c-608884f05b85"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="210" width="555" height="20" uuid="e5767207-42b1-4aa2-96e4-1fc58e5205f6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Visa du Président du CA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="114" y="194" width="18" height="1" uuid="b45cb1e1-e8ff-4d9d-8af1-1fab5a15a6e4"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="240" y="193" width="76" height="1" uuid="f327301b-0cfa-4e23-bd51-b18607248719"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="136" y="179" width="111" height="21" uuid="99d82f2d-d261-4948-b363-595cacbffc4d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[jours à fin (mois) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="180" width="110" height="20" uuid="8644efee-e5cc-4084-a848-28aa1f01be84"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Nouveau Solde :  ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="114" y="174" width="57" height="1" uuid="8a3a56ee-db56-47f4-91cd-aaed987fe69c"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="114" y="107" width="267" height="31" uuid="30efee95-5fc6-47e6-9723-7032c9f48bf8"/>
+				<textFieldExpression><![CDATA[$P{paracommentaire1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="241" y="180" width="82" height="20" uuid="08a6e22e-a3b3-46c7-9563-f6c2d8f14e59"/>
+				<textFieldExpression><![CDATA[$P{paramoisFin}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="112" y="180" width="24" height="20" uuid="170e44e2-01e1-4053-9f9e-1f0481a96a75"/>
+				<textFieldExpression><![CDATA[$P{paraNouveauSolde}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="112" y="160" width="60" height="15" uuid="cef63787-2b28-424e-a37b-1b49c51e28a9"/>
+				<textFieldExpression><![CDATA[$P{paraDateDebutAccord}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="202" y="160" width="60" height="18" uuid="9057e108-b8b1-43e7-8a30-be95b4124ff7"/>
+				<textFieldExpression><![CDATA[$P{paraDateFinAccord}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50">
+			<subreport>
+				<reportElement x="1" y="0" width="555" height="50" uuid="2829f249-43ba-46af-870f-0598a88cd4d0"/>
+				<subreportParameter name="OPTION"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pageportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

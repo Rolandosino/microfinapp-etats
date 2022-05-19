@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1eda3a8c-139c-42e4-978d-22fa1b647742">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="libelleActif" class="java.lang.String"/>
+	<field name="montantActif" class="java.lang.String"/>
+	<field name="montantPassif" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="283" height="20" uuid="ac8d8521-d35a-4c9e-8999-caf967be4adf"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Variation des créances : N - (N - 1)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="0" width="136" height="20" uuid="553f49cb-023b-4668-8ecd-4300ccb2650e"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Ressources diminution (-)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="283" y="0" width="136" height="20" uuid="aa6db768-7b5f-474a-b271-5799b9620e9b"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Emplois augmentation (+)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="283" height="20" uuid="af877962-ebad-41ea-bdf7-6a1eb051d7de">
+					<printWhenExpression><![CDATA[($F{libelleActif}.equalsIgnoreCase("(B) Variation globale nette des créances"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelleActif}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="398" y="0" width="46" height="20" uuid="1cf08668-9fad-490a-abcd-1aa5ecb7021a">
+					<printWhenExpression><![CDATA[($F{libelleActif}.equalsIgnoreCase("(B) Variation globale nette des créances"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[OU]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="283" y="0" width="115" height="20" uuid="3c3745a0-ade6-4341-9a48-42622536051b">
+					<printWhenExpression><![CDATA[($F{libelleActif}.equalsIgnoreCase("(B) Variation globale nette des créances"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantActif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="0" width="111" height="20" uuid="2871ee68-f872-447a-a697-070365ee72c1">
+					<printWhenExpression><![CDATA[($F{libelleActif}.equalsIgnoreCase("(B) Variation globale nette des créances"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantPassif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="283" y="0" width="115" height="20" uuid="e0e97611-b974-4a8a-9b94-72564e6db5bd">
+					<printWhenExpression><![CDATA[(!($F{libelleActif}.equalsIgnoreCase("(B) Variation globale nette des créances")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantActif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="283" height="20" uuid="c89a024e-6b3f-4303-a9f5-983bbf1f2197">
+					<printWhenExpression><![CDATA[(!($F{libelleActif}.equalsIgnoreCase("(B) Variation globale nette des créances")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelleActif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="0" width="111" height="20" uuid="1b93299c-bebc-4437-86c6-3c6b49f920b7">
+					<printWhenExpression><![CDATA[(!($F{libelleActif}.equalsIgnoreCase("(B) Variation globale nette des créances")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantPassif}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="398" y="0" width="46" height="20" uuid="3063524b-c8e8-42b3-a1a1-53f479c592b4">
+					<printWhenExpression><![CDATA[(!($F{libelleActif}.equalsIgnoreCase("(B) Variation globale nette des créances")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[OU]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

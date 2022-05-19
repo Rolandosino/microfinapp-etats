@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etatAppuimateriels" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8ed18607-bb85-400b-9710-452ae179709e">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<field name="numDossier" class="java.lang.String"/>
+	<field name="sourceFinancement" class="java.lang.String"/>
+	<field name="theme" class="java.lang.String"/>
+	<field name="sfd" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="poste" class="java.lang.String"/>
+	<field name="contact" class="java.lang.String"/>
+	<field name="element" class="java.lang.String"/>
+	<field name="montant" class="java.lang.String"/>
+	<field name="prestataire" class="java.lang.String"/>
+	<variable name="sommemontant" class="java.math.BigDecimal" resetType="Group" resetGroup="group_theme" calculation="Sum">
+		<variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{montant}))]]></variableExpression>
+	</variable>
+	<variable name="sommenombre" class="java.math.BigDecimal" resetType="Group" resetGroup="group_theme" calculation="Sum">
+		<variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombre}))]]></variableExpression>
+	</variable>
+	<variable name="sommemontantFinal" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{montant}))]]></variableExpression>
+	</variable>
+	<variable name="sommenombreFinal" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombre}))]]></variableExpression>
+	</variable>
+	<group name="group_dossier">
+		<groupExpression><![CDATA[$F{numDossier}]]></groupExpression>
+	</group>
+	<group name="group_source_f">
+		<groupExpression><![CDATA[$F{sourceFinancement}]]></groupExpression>
+	</group>
+	<group name="group_theme">
+		<groupExpression><![CDATA[$F{theme}]]></groupExpression>
+		<groupFooter>
+			<band height="20">
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="697" y="0" width="103" height="20" uuid="7c43e472-5cc8-42b3-b23c-0599081f21ba"/>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5" rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="0" y="0" width="457" height="20" uuid="f21acb2b-f69a-4421-8825-d3a68a1d9abb"/>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5" rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="537" y="0" width="80" height="20" uuid="ac2de8d3-1e7b-408c-828d-801856dc904d"/>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5" rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="457" y="0" width="80" height="20" uuid="64f2a021-ea0a-4cee-a2b2-42150ebee91a"/>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5" rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{sommenombre})]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="617" y="0" width="80" height="20" uuid="c84facf8-067a-4d3d-a147-1e94d1e7bb7e"/>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5" rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{sommemontant})]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="59" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="800" height="20" uuid="6f802c3e-c8e8-4f54-9fed-f60e867fbca4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[LISTES EN APPUI MATERIELS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="0" y="0" width="64" height="32" backcolor="#EFEFEF" uuid="69a27023-2ac2-4fde-81a6-7f0e78a3c8ec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Dossier]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="64" y="0" width="113" height="32" backcolor="#EFEFEF" uuid="b8538de1-6421-43ad-9923-0ea6b74188fe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Source de finacement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="177" y="0" width="131" height="32" backcolor="#EFEFEF" uuid="10b036ba-ffcb-4648-9b60-c73c450a1494"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Type d'appuis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="308" y="17" width="149" height="15" backcolor="#EFEFEF" uuid="0435300d-cf28-44ac-88eb-2351c6257f82"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SFD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="457" y="17" width="80" height="15" backcolor="#EFEFEF" uuid="99f49d02-c8c4-471a-a626-83d93537bcdc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="537" y="17" width="80" height="15" backcolor="#EFEFEF" uuid="5deb7c68-8424-4c59-a717-a08683f83434"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Coût]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="617" y="17" width="80" height="15" backcolor="#EFEFEF" uuid="df2e8d95-259a-4e1b-9721-e22b08c18e31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="697" y="0" width="103" height="32" backcolor="#EFEFEF" uuid="55c23496-b73c-4b51-abaf-37663eb017cf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prestataires]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="308" y="0" width="389" height="17" backcolor="#EFEFEF" uuid="c9fe1033-380e-45db-a816-41a74d3b2656"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Coût de la formation]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="0" y="0" width="64" height="20" uuid="15d79f94-9c91-47ea-a84f-7fb1036df14f"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numDossier}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="64" y="0" width="113" height="20" uuid="0891a588-5724-4a34-a737-62fdd3c997de"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sourceFinancement}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="177" y="0" width="131" height="20" uuid="c2ab0a0d-ef06-4609-a49b-d38362567938"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{theme}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="308" y="0" width="149" height="20" uuid="ca4a0904-2ffe-4831-ab74-9959c261fcae"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sfd}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="457" y="0" width="80" height="20" uuid="c456c22a-38cf-4c6b-a23a-1d64d973f74f"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="537" y="0" width="80" height="20" uuid="6a1a0d61-ea2d-420a-bfc2-8fb3a115c6fa"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contact}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="617" y="0" width="80" height="20" uuid="b9b43e71-ef5c-4b46-98c6-b742ec3e69b7"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montant}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="697" y="0" width="103" height="20" uuid="392eb7e1-b482-4bac-84e1-f1aab6e115f1"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prestataire}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="28" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="537" y="0" width="80" height="20" uuid="bd5c1cce-ecf4-45e1-90a1-1b09a221fe7c"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="697" y="0" width="103" height="20" uuid="44e593f0-ca90-44e4-9dd0-26ef3387a66e"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="457" y="0" width="80" height="20" uuid="ca08263c-0ed9-426c-afad-fff31fcc3c1e"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{sommenombreFinal})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="0" y="0" width="457" height="20" uuid="4648cb95-4548-4e70-9abf-86d181527402"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="617" y="0" width="80" height="20" uuid="4a5ee087-4230-49ae-88ce-4d5961f7e242"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{sommemontantFinal})]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

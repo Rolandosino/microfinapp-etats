@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etatSinistreDetails" language="groovy" pageWidth="1684" pageHeight="1190" orientation="Landscape" columnWidth="1644" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a5346d77-add1-4e7c-a272-a07a469c9f90">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#EFEFEF" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="INSTITUTION" class="java.lang.String"/>
+	<parameter name="CLIENT" class="java.lang.String"/>
+	<parameter name="titre" class="java.lang.String"/>
+	<parameter name="totalMtnDeclare" class="java.lang.String"/>
+	<parameter name="totalEncoursCouvert" class="java.lang.String"/>
+	<parameter name="totalIndemniteApaye" class="java.lang.String"/>
+	<parameter name="totalEncoursPayeRg" class="java.lang.String"/>
+	<parameter name="totalIndemnitePayeRg" class="java.lang.String"/>
+	<parameter name="totalEncoursRestRg" class="java.lang.String"/>
+	<parameter name="totalIndemniteRestRg" class="java.lang.String"/>
+	<parameter name="totalEncoursPayeRemb" class="java.lang.String"/>
+	<parameter name="totalIndemnitePayeRemb" class="java.lang.String"/>
+	<parameter name="totalEncoursRestRemb" class="java.lang.String"/>
+	<parameter name="totalIndemniteRestRemb" class="java.lang.String"/>
+	<field name="codeSinistre" class="java.lang.String"/>
+	<field name="typeSinistre" class="java.lang.String"/>
+	<field name="identiteSFD" class="java.lang.String"/>
+	<field name="numCredit" class="java.lang.String"/>
+	<field name="identiteAssureur" class="java.lang.String"/>
+	<field name="etatSinistre" class="java.lang.String"/>
+	<field name="dateSinistre" class="java.lang.String"/>
+	<field name="dateDeclaration" class="java.lang.String"/>
+	<field name="dateTraitement" class="java.lang.String"/>
+	<field name="dernierReglement" class="java.lang.String"/>
+	<field name="dernierRemb" class="java.lang.String"/>
+	<field name="mtnDeclare" class="java.lang.String"/>
+	<field name="encoursCouvert" class="java.lang.String"/>
+	<field name="indemniteApayer" class="java.lang.String"/>
+	<field name="encoursPayeRg" class="java.lang.String"/>
+	<field name="indemnitePayeRg" class="java.lang.String"/>
+	<field name="encoursRestRg" class="java.lang.String"/>
+	<field name="indemniteRestRg" class="java.lang.String"/>
+	<field name="encoursPayeRemb" class="java.lang.String"/>
+	<field name="indemnitePayeRemb" class="java.lang.String"/>
+	<field name="encoursRestRemb" class="java.lang.String"/>
+	<field name="indemniteRestRemb" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="44" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="107" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="62" width="1644" height="20" uuid="b38a6296-c1e0-4780-aad5-690fca7449d4"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{titre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="0" y="0" width="52" height="50" uuid="4fe8d5bf-f366-449f-8e62-fa86b62e3ada"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="52" y="0" width="101" height="50" uuid="fb7d7352-0e90-4cdf-b97d-009a49b1793b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Type]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table_CH" x="153" y="0" width="157" height="50" uuid="fc668e16-1147-4acf-b4bd-0ba75ae6252c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CLIENT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table_CH" x="310" y="0" width="76" height="50" uuid="0717941a-4c7c-4b1f-b5c9-ffd8d5f0241b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[N° Crédit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="386" y="0" width="126" height="50" uuid="75b47f4b-2511-4ab3-8b19-0a4e037c3ac2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Assusseur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="512" y="0" width="80" height="50" uuid="3e9c89f0-3bbd-48f8-a9c8-2ae780ba4b86"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Etat Sinoistre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="592" y="20" width="72" height="30" uuid="140131ab-54d7-45fd-bc7d-c406b3888d5d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Sinistre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="664" y="20" width="55" height="30" uuid="5966a384-12b2-41d6-b078-168d431af5f1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Déclaration]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="719" y="20" width="51" height="30" uuid="3a67114b-2cc6-457a-9bc4-f0ac884d9ec8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Traitement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="770" y="20" width="68" height="30" uuid="8385b209-4fca-4f91-a986-2c01ae176205"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Dernier Règlement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="838" y="20" width="75" height="30" uuid="cb335f5b-2e04-45c7-8e2b-6db6365b4587"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Derniere Indemnisation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="912" y="20" width="83" height="30" uuid="926ef09c-afd2-4bdc-b8b4-451b6814a6f1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Déclare]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="995" y="20" width="74" height="30" uuid="4be7a423-398b-40ac-b510-e9b5e1d9ed76"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Encours couvert]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="1069" y="20" width="87" height="30" uuid="3cdd3d3c-542b-46f1-b0e4-553f623cd720"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[indemnité à payer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="1400" y="20" width="58" height="30" uuid="a098acbf-f8bf-4fb0-82ac-4c4c047becb2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Encours payé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="1458" y="20" width="62" height="30" uuid="9a77cf47-6f08-4977-af30-46d76e503a68"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Idemnité payé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="1520" y="20" width="63" height="30" uuid="bd79a75d-fe52-41d4-80bb-39326e33698f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Reste encours à payé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="1583" y="20" width="61" height="30" uuid="50c278e5-2c66-4d05-93dd-9fd0e1d451d6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Reste idemnité à payé]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table_CH" x="1400" y="0" width="244" height="20" uuid="9a26012c-e8e4-4028-8737-308adf96b6ce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Indemnisation au "+$P{CLIENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" x="1156" y="0" width="244" height="20" uuid="6a37e8a1-ef9a-4498-acd6-51e7840c0eb6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Règlement au "+$P{INSTITUTION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table_CH" x="912" y="0" width="244" height="20" uuid="acd2d80a-969d-4de3-854a-0862d451ef72"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Montant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="592" y="0" width="320" height="20" uuid="1d7189a4-e384-4782-a4b2-86a20382e2c5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="1276" y="20" width="63" height="30" uuid="2ce533a7-3395-41c8-a0fb-c0c433a3c0b0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Reste encours à payé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="1339" y="20" width="61" height="30" uuid="cbed47cf-2ed1-41f2-891e-e3e56d73f570"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Reste idemnité à payé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="1214" y="20" width="62" height="30" uuid="23cee4f4-d703-4c70-8844-e8ac8930aa76"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Idemnité payé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="1156" y="20" width="58" height="30" uuid="e00f31c4-625b-4204-9e47-d27aa092f081"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Encours payé]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="52" y="0" width="101" height="30" uuid="134f08a6-3b38-454e-9fe1-f76dbd0adca4"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{typeSinistre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="153" y="0" width="157" height="30" uuid="b0779643-143b-45d2-aa72-d61fd497c448"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{identiteSFD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="310" y="0" width="76" height="30" uuid="a8bdc280-01e2-4df4-b33f-7df06460d5b7"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numCredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="386" y="0" width="126" height="30" uuid="3cba25d6-f154-4f32-8809-cf7f3032b3cb"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{identiteAssureur}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="512" y="0" width="80" height="30" uuid="d703f3c6-8cdb-4549-86ea-cc0a28179bb6"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{etatSinistre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="592" y="0" width="72" height="30" uuid="0e4ce60f-1359-4d46-bae5-e8ee59a23485"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateSinistre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="664" y="0" width="55" height="30" uuid="05f60941-3d95-4e66-a475-8f8508eaa917"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateDeclaration}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="912" y="0" width="83" height="30" uuid="87e48cf6-cc1f-41da-b036-f5e9ff6bd9c9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mtnDeclare}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="995" y="0" width="74" height="30" uuid="5e063da3-8a07-4f8e-8764-4e2f0330fe66"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encoursCouvert}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="1069" y="0" width="87" height="30" uuid="fed90e64-941e-4822-aadf-e0cafb1741a4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{indemniteApayer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="1156" y="0" width="58" height="30" uuid="c53a3122-1980-4be7-9ecc-d6ff13d85c82"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encoursPayeRg}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="1214" y="0" width="62" height="30" uuid="5005752e-172a-4b84-be82-fb9075a785c7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{indemnitePayeRg}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="1276" y="0" width="63" height="30" uuid="810788d4-4195-4b64-bf56-78abbc0c8bbe"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encoursRestRg}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="1339" y="0" width="61" height="30" uuid="8038d6e7-a92e-4a50-ab91-cc1685e8cff1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{indemniteRestRg}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="1400" y="0" width="58" height="30" uuid="0b423072-0f91-40e0-a102-1d87cafcf8e1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encoursPayeRemb}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="1458" y="0" width="62" height="30" uuid="fa1d84cb-4d17-4116-ae7c-32d1c39acb12"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{indemnitePayeRemb}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="1520" y="0" width="63" height="30" uuid="d7b51dc9-fe63-412f-a337-a6666ae343bf"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encoursRestRemb}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="1583" y="0" width="61" height="30" uuid="f8bc0f2f-e2a7-4a96-81e8-fca7449c60e2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{indemniteRestRemb}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="0" y="0" width="52" height="30" uuid="5114cfd9-287b-4c30-b6a5-56e8f9a53ce8"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codeSinistre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="719" y="0" width="51" height="30" uuid="86593b58-7016-48f4-a8c5-d7dee248dc67"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dateTraitement}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="770" y="0" width="68" height="30" uuid="d2804fcd-8bca-42b3-b087-33d4caabe777"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dernierReglement}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="838" y="0" width="74" height="30" uuid="4976001c-844d-45c9-9556-a9b4c92972f9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{dernierRemb}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="0" y="0" width="52" height="30" uuid="3fee72ff-62cf-4643-b8a2-cb8f9ca2dff7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="52" y="0" width="101" height="30" uuid="078f3233-3a7e-44f6-9689-ba6df476f435"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="153" y="0" width="157" height="30" uuid="fa7f611a-87d6-4f3b-8da0-905be6707c33"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="310" y="0" width="76" height="30" uuid="828480de-95b7-4739-b7c0-784f816feed4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="386" y="0" width="126" height="30" uuid="42bff2ec-f5e1-4c6c-acab-855bc8e5f49b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="512" y="0" width="80" height="30" uuid="6dd5cdc0-cbd6-487c-b23f-eed4d3421a05"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="592" y="0" width="72" height="30" uuid="5bcfd2e5-92ff-488b-b82b-c5c226d1b2ec"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="664" y="0" width="55" height="30" uuid="e2e41202-4d11-4563-aaa3-01ea62165358"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="719" y="0" width="51" height="30" uuid="9f029d06-28cf-44f8-8805-b4036aa0d1ce"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="770" y="0" width="68" height="30" uuid="f526d28b-ff2a-4ebb-8634-1c44642ff30e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="838" y="0" width="74" height="30" uuid="9860b59e-b4b4-47d6-b0d9-f807c4c9cf1f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="912" y="0" width="83" height="30" uuid="41d3e4fb-999d-448d-9cdb-6e1c7ccd685b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalMtnDeclare}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="995" y="0" width="74" height="30" uuid="b663befa-3a2b-46e7-a604-8475f53592b8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalEncoursCouvert}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="1069" y="0" width="87" height="30" uuid="098daa81-f016-479c-92b4-8c48f7a1b126"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalIndemniteApaye}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="1156" y="0" width="58" height="30" uuid="78bbe21c-34dd-4454-898a-fd4231ca8592"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalEncoursPayeRg}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="1214" y="0" width="62" height="30" uuid="6e113f2d-230a-47f5-9c4e-4d52d1f073bc"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalIndemnitePayeRg}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="1276" y="0" width="63" height="30" uuid="608819bf-c5bd-4f77-a338-d4e1cd5dbf11"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalEncoursRestRg}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="1339" y="0" width="61" height="30" uuid="6aa8d66f-b664-4dde-b4fb-334c3cfa9862"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalIndemniteRestRg}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="1339" y="0" width="61" height="30" uuid="869227d0-353b-4b11-8202-3ae1fcc9ea8d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalIndemniteRestRg}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="1400" y="0" width="58" height="30" uuid="3777937e-95ff-45da-8793-0686a16e1358"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalEncoursPayeRemb}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="1458" y="0" width="62" height="30" uuid="7e499c6a-3365-4097-a0e7-126c89331c04"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalIndemnitePayeRemb}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="1520" y="0" width="63" height="30" uuid="5b374862-e437-46d1-bc89-39095d105c0f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalEncoursRestRemb}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" x="1583" y="0" width="61" height="30" uuid="d7e73c1a-d4ea-4897-8f00-125c9b3c28a4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalIndemniteRestRemb}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

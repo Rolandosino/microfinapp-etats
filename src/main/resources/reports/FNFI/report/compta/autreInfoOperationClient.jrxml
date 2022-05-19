@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="autreInfoOperationClient" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="10" uuid="6d73e722-595d-4ae0-9ab1-1783cec2e917">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="147"/>
+	<parameter name="INF1_DATASOURCE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="INF2_DATASOURCE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="INF3_DATASOURCE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="INF4_DATASOURCE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="EXERCICE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="20" uuid="adde44b2-c6f1-4d01-99ff-e0f26bfc6a53"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Exercice : "+$P{EXERCICE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="475" splitType="Stretch">
+			<subreport>
+				<reportElement positionType="Float" x="0" y="0" width="555" height="100" uuid="2c2c0be7-3b06-4fb2-a180-32fe0c7236e6"/>
+				<dataSourceExpression><![CDATA[$P{INF1_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "autreInfoOperationClient_tableauUn.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="0" y="131" width="555" height="100" uuid="15650ede-24c5-4d84-91af-8f6aeb703ba4"/>
+				<subreportParameter name="TEXTE_SUMMARY">
+					<subreportParameterExpression><![CDATA[""]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TITRE_TABLEAU">
+					<subreportParameterExpression><![CDATA["Tableau n°6.2 : Répartition des crédits selon leurs objets (en milliers de FCFA)"]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_PREMIERE_COLONNE">
+					<subreportParameterExpression><![CDATA["Indicateurs"]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{INF2_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "autreInfoOperationClient_tableauDeux.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="0" y="262" width="555" height="100" uuid="1d51664e-5cc9-405a-ab27-baea3b397bf8"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "autreInfoOperationClient_tableauTrois.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="238">
+			<subreport>
+				<reportElement positionType="Float" x="0" y="4" width="555" height="100" uuid="6f2cdb3c-54c0-4689-b524-330c68e11328"/>
+				<subreportParameter name="TEXTE_SUMMARY">
+					<subreportParameterExpression><![CDATA["(*)La sectorisation retenue dans ce tableau est celle prévue"]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TITRE_TABLEAU">
+					<subreportParameterExpression><![CDATA["Tableau n°6.4: Répartition sectorielle des crédits accordés (*)"]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_PREMIERE_COLONNE">
+					<subreportParameterExpression><![CDATA["Secteurs d'activités"]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{INF3_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "autreInfoOperationClient_tableauDeux.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="0" y="118" width="555" height="100" uuid="fe8eaeab-4f05-4106-be4a-b41b8ed97bb6"/>
+				<subreportParameter name="TEXTE_SUMMARY">
+					<subreportParameterExpression><![CDATA["(*) A renseigner par les institution, coopératives ou mutuelles d'épargne et de crédit"]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TITRE_TABLEAU">
+					<subreportParameterExpression><![CDATA["VII. OPERATION AVEC LES AUTRES INSTITUTIONS FINANCIERES\n\n\nTableau n°7: Opérations avec les autres institutions financières (établissements de crédits, SFD, autres institutions financières) et les partenaires au développement"]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_PREMIERE_COLONNE">
+					<subreportParameterExpression><![CDATA["Indicateurs"]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{INF4_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "autreInfoOperationClient_tableauDeux.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="18" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="0" width="40" height="14" uuid="f513319c-6df1-4384-9756-70dd0ff9d64f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="0" width="80" height="14" uuid="ddaf3e9f-2097-4552-bc98-500bc4e05739"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="196" height="14" uuid="746764d3-da06-41a4-ac68-8b9081590851"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Imprimé le "+$P{DATE_EDITION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="0" width="117" height="14" uuid="7b696571-5cb9-4135-8c66-7d0cc8eeaeb6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

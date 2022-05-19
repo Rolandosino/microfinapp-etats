@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ENTETE_DE_PAGE_ARRETE_DE_CAISSE" language="groovy" pageWidth="555" pageHeight="95" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="99d20ac5-9c3b-4863-9e15-4c4978d707de">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <parameter name="LIBELLE_AGENCE" class="java.lang.String">
+        <defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="TITRE_ETAT" class="java.lang.String"/>
+    <parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+    <parameter name="BP_AGENCE" class="java.lang.String"/>
+    <parameter name="DATE_EDITION" class="java.lang.String">
+        <defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+    </parameter>
+    <parameter name="TEL_AGENCE" class="java.lang.String">
+        <defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="DATE_DEBUT" class="java.lang.String"/>
+    <parameter name="DATE_FIN" class="java.lang.String"/>
+    <queryString language="SQL">
+		<![CDATA[]]>
+    </queryString>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="95" splitType="Stretch">
+            <textField>
+                <reportElement x="6" y="59" width="540" height="35" uuid="b90c1a95-bfcd-4eff-ba70-ba80353b2aae"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="15" isBold="true" isUnderline="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{TITRE_ETAT}+" DU "+$P{DATE_DEBUT}+" AU "+$P{DATE_FIN}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="6" y="21" width="226" height="20" uuid="e0a4aed9-546f-401a-bffd-c8f75a18995f"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{ADRESSE_AGENCE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="437" y="2" width="108" height="20" uuid="a2cf9329-8c66-43eb-ab7e-55e6ae226790"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$P{DATE_EDITION}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="6" y="2" width="432" height="20" uuid="702eb9f6-a943-4081-bd59-68a65df2ec59"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{LIBELLE_AGENCE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="116" y="40" width="116" height="20" uuid="2647f9f6-904f-4248-9432-a5157e6cba9f"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA["TEL: "+$P{TEL_AGENCE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="6" y="40" width="111" height="20" uuid="96c24750-16c5-427d-9f3a-a333742ae4dd"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$P{BP_AGENCE}+" /"]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <pageHeader>
+        <band splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band splitType="Stretch"/>
+    </columnHeader>
+    <detail>
+        <band splitType="Stretch"/>
+    </detail>
+    <columnFooter>
+        <band splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band splitType="Stretch"/>
+    </summary>
+</jasperReport>

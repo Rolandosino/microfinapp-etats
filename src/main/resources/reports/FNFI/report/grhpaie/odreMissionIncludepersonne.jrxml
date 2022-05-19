@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="odreMissionIncludepersonne" language="groovy" pageWidth="555" pageHeight="160" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="6e8bc52f-c753-43d7-ae2e-93473dba9474">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="lieu" class="java.lang.String"/>
+	<parameter name="duree" class="java.lang.String"/>
+	<parameter name="depart" class="java.lang.String"/>
+	<parameter name="retour" class="java.lang.String"/>
+	<parameter name="motif" class="java.lang.String"/>
+	<field name="nomprenoms" class="java.lang.String"/>
+	<field name="poste" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="15">
+			<staticText>
+				<reportElement style="table_CH" x="0" y="0" width="287" height="15" backcolor="#EFEFEF" uuid="bf5d48a2-3f61-4b90-baf4-194700475fbc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMS ET PRENOMS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" mode="Opaque" x="287" y="0" width="268" height="15" forecolor="#000000" backcolor="#EFEFEF" uuid="d36eb82d-1742-4c07-b4ec-6446ad3bf2fe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[POSTE OCCUPE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" mode="Transparent" x="0" y="0" width="287" height="14" uuid="422a063b-5c6e-4596-a7e0-c30fddb749b5"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomprenoms}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement style="table_TD" mode="Transparent" x="287" y="0" width="268" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="0049d33f-f715-4468-9461-9b788c5e4d5c"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{poste}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="83">
+			<staticText>
+				<reportElement x="10" y="11" width="175" height="15" uuid="f5fed642-2f1a-480d-91fe-18f160b281dd"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Est (sont) autorisé (s) à se rendre à : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="143" y="46" width="313" height="15" uuid="1551acd8-5287-4729-8667-bf6378d79dfb"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{motif}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="429" y="43" width="122" height="1" uuid="86edf95a-ecf8-4b9d-8736-b6675ee35c35"/>
+			</line>
+			<line>
+				<reportElement x="110" y="61" width="441" height="2" uuid="9a1c0b00-040a-4531-b695-b7e24718dda0"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="49" width="100" height="15" uuid="408a7983-a99f-4f23-8250-067e1c90acdb"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Pour la mission suivante : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="65" width="174" height="15" uuid="a39f04f8-e06e-41d5-be97-0abb2de75357"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Il's)  sera (seront) accompagné(s) de :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="253" y="30" width="90" height="15" uuid="c1c8469a-ac3d-4eb0-879b-e1edeb29dc8e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{depart}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="350" y="30" width="77" height="15" uuid="f6ea7a20-8cca-4c81-8944-d88c87ca4ce7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[retour  le :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="190" y="24" width="361" height="1" uuid="a80679c9-95f3-4540-931c-32ebed265b12"/>
+			</line>
+			<line>
+				<reportElement x="250" y="43" width="100" height="1" uuid="ee96ebbf-b7a6-492f-8c92-5d03d156141a"/>
+			</line>
+			<textField>
+				<reportElement x="201" y="8" width="313" height="15" uuid="2bce8a93-2865-4333-8155-8f367d75aef2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lieu}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="30" width="101" height="15" uuid="e665a8e2-4f77-4615-a506-5837ead7e878"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[pour une durée  de :]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="441" y="28" width="88" height="15" uuid="3b5a5a14-5c0a-4076-a3a7-85891c6c6643"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{retour}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="110" y="43" width="74" height="1" uuid="994fb4f4-d29e-4062-9ec8-191a842b31c1"/>
+			</line>
+			<textField>
+				<reportElement x="120" y="30" width="53" height="13" uuid="13b2158d-52ed-455d-988d-c4fcd68db67d"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{duree}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="184" y="31" width="66" height="15" uuid="0197e5df-c74b-4650-9262-c9d522953bdd"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[départ le :]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

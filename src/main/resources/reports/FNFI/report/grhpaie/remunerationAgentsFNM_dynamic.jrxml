@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="remunerationAgentsFNM_dynamic" language="groovy" pageWidth="1500" pageHeight="595" orientation="Landscape" columnWidth="1460" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e1815c56-6216-46c5-945e-be4977120de3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="33"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Microfina++"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="nbre_employe" class="java.lang.Integer"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="nomPrenoms" class="java.lang.String"/>
+	<parameter name="classification" class="java.lang.String"/>
+	<parameter name="salaireBase" class="java.lang.String"/>
+	<parameter name="indemnResidence" class="java.lang.String"/>
+	<parameter name="indemnLogement" class="java.lang.String"/>
+	<parameter name="indemnTransport" class="java.lang.String"/>
+	<parameter name="primeSujetion" class="java.lang.String"/>
+	<parameter name="primeCaisse" class="java.lang.String"/>
+	<parameter name="montantAnciennete" class="java.lang.String"/>
+	<parameter name="salaireBrutAvantBon" class="java.lang.String"/>
+	<parameter name="salaireNetAvantBon" class="java.lang.String"/>
+	<parameter name="primeResponsabilite" class="java.lang.String"/>
+	<parameter name="montantBonification" class="java.lang.String"/>
+	<parameter name="salaireNet" class="java.lang.String"/>
+	<parameter name="salaireNetPrecedent" class="java.lang.String"/>
+	<parameter name="variationSalaire" class="java.lang.String"/>
+	<parameter name="ipts" class="java.lang.String"/>
+	<parameter name="vps" class="java.lang.String"/>
+	<parameter name="cnssPat" class="java.lang.String"/>
+	<parameter name="cnssOuv" class="java.lang.String"/>
+	<parameter name="autresRetenues" class="java.lang.String"/>
+	<parameter name="autresGains" class="java.lang.String"/>
+	<parameter name="matricule" class="java.lang.String"/>
+	<parameter name="NOM_SIGNATAIRE_1" class="java.lang.String"/>
+	<parameter name="NOM_SIGNATAIRE_2" class="java.lang.String"/>
+	<parameter name="NOM_SIGNATAIRE_3" class="java.lang.String"/>
+	<parameter name="NOM_SIGNATAIRE_4" class="java.lang.String"/>
+	<parameter name="POSTE_SIGNATAIRE_1" class="java.lang.String"/>
+	<parameter name="POSTE_SIGNATAIRE_2" class="java.lang.String"/>
+	<parameter name="POSTE_SIGNATAIRE_3" class="java.lang.String"/>
+	<parameter name="POSTE_SIGNATAIRE_4" class="java.lang.String"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<title>
+		<band height="79" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="1460" height="79" uuid="0076b607-24b1-46fa-b08c-6f2dd8cade3f"/>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententepaysage.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="1460" height="35" uuid="0b534941-eb90-471c-9f94-41471140c980"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Etat des éléments de rémunération des agents du FNM (Simulation)]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="1460" height="50" uuid="e3b94957-b362-410b-9639-824ea774761c"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page_en_paysage.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="127">
+			<subreport>
+				<reportElement x="0" y="0" width="1460" height="127" uuid="8ec4962d-18fa-4c94-8eb4-dcfb7ecad56d"/>
+				<subreportParameter name="POSTE_SIGNATAIRE_4">
+					<subreportParameterExpression><![CDATA[$P{POSTE_SIGNATAIRE_4}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "signatairesPaysage.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</lastPageFooter>
+</jasperReport>

@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AdhesionMembre" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="95c2b8ce-a3f5-419c-a1ac-3adc313b263c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="190"/>
+	<parameter name="nomAgence" class="java.lang.String"/>
+	<parameter name="objet" class="java.lang.String"/>
+	<parameter name="jeSousigne" class="java.lang.String"/>
+	<parameter name="profession" class="java.lang.String"/>
+	<parameter name="mere" class="java.lang.String"/>
+	<parameter name="pere" class="java.lang.String"/>
+	<parameter name="adresse" class="java.lang.String"/>
+	<parameter name="telephone" class="java.lang.String"/>
+	<parameter name="numero" class="java.lang.String"/>
+	<parameter name="nomDesBeneficiaires" class="java.lang.String"/>
+	<parameter name="membre" class="java.lang.String"/>
+	<parameter name="naissance" class="java.lang.String"/>
+	<parameter name="lieuNaissance" class="java.lang.String"/>
+	<parameter name="lieu" class="java.lang.String"/>
+	<parameter name="dateSignature" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="institution" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<field name="libFrais" class="java.lang.String"/>
+	<field name="montant" class="java.math.BigDecimal"/>
+	<variable name="sommetotal" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<textField>
+				<reportElement x="176" y="15" width="303" height="16" uuid="29c39ad1-ef01-4e10-ba92-94d5cfc5ad69"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{institution}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="176" y="41" width="303" height="17" uuid="463cb5f7-cc90-444c-a637-838b310c50e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEMANDE D'ADHÉSION]]></text>
+			</staticText>
+			<image>
+				<reportElement x="16" y="3" width="115" height="82" uuid="e2a39262-71be-4f55-8be3-34ff6ea12f28"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="173" splitType="Stretch">
+			<textField>
+				<reportElement x="120" y="7" width="261" height="14" uuid="bba0eada-b2f9-4266-aeb8-7eaa655b5a03"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{membre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="119" y="24" width="251" height="14" uuid="9b7b8acd-0206-480b-b174-1ebab0bc7550"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{profession}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="436" y="24" width="108" height="14" uuid="bbe81c48-c2d5-4657-850f-fffa1707c03b"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{naissance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="43" width="186" height="14" uuid="f4ac1d93-3ca4-4400-beb5-0a0112cae6a1"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pere}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="338" y="43" width="206" height="14" uuid="cf5032e5-da36-4af7-9a20-4b2d51e1ed0d"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mere}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="119" y="60" width="251" height="14" uuid="4d1a8a93-133a-42e8-8e60-7f8cf4915dd6"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{adresse}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="436" y="60" width="108" height="14" uuid="a9fc8c29-6348-43cd-9768-784a5dd58a0e"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{telephone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="119" y="77" width="425" height="14" uuid="5dcd1a7d-9e9a-496c-8ed2-a8e80ce534e1"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nomAgence}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="7" width="115" height="14" uuid="aa3822df-efd9-45d1-9c88-d3799dee73e9"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Je soussigné(e) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="24" width="115" height="14" uuid="c2a3b6bf-eb5d-498b-83fc-73f5b5526a07"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Profession :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="381" y="24" width="43" height="14" uuid="be78253f-066d-412f-8faf-dec6bb1c57ca"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Né(e) le ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="43" width="115" height="14" uuid="78121043-8e9e-427e-9f2b-26bec20579d0"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Fils de :	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="119" height="14" uuid="58bccc87-e95f-42c5-a841-45ced69865b4"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Adresse :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="77" width="119" height="14" uuid="efabce4e-59ba-40b5-a0e0-685ddafd6a4c"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Sollicite mon adhésion à la ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="60" width="66" height="14" uuid="6af0be43-8a22-4511-86f6-d224940c1034"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Telephone : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="303" y="43" width="35" height="14" uuid="c27a6e61-838e-4fd1-8257-4311e6b8b486"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[et de ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="93" width="544" height="14" uuid="a7cf13a3-87b0-428e-aef0-2602d466d516"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Je m'engage à respecter ses statuts, ses règlements et les décisions des  organes d'administration, à défendre les intérêts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="153" width="270" height="17" uuid="4658369e-ae5c-4f95-b911-1d0cd2f6b2ba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[VERSEMENTS INITIAUX]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="114" width="544" height="14" uuid="b653e894-ea44-4a2a-9a2c-2ad4d7026eff"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ de la COOPEC et à être loyal(e) envers elle.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="7" width="27" height="14" uuid="850a7a35-61aa-48e6-bbfa-434b2b17b58f"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="436" y="7" width="108" height="14" uuid="fefdb90e-deac-49f2-afb6-4e2587c57082"/>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numero}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<textField pattern="#,##0">
+				<reportElement x="325" y="0" width="76" height="12" uuid="7bf798c2-c786-41df-bb49-f943d8fa28eb"/>
+				<textElement textAlignment="Right">
+					<font size="9" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="131" y="0" width="194" height="12" uuid="8cfa9587-8796-4b69-8269-6035d96c991d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libFrais}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="40" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="15" width="555" height="25" uuid="6434470f-83bc-43eb-8c07-640a0aa596ca"/>
+				<subreportParameter name="LIBELLE_APPLICATION"/>
+				<subreportParameter name="numero_page"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="294" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="302" y="185" width="242" height="14" uuid="5cf521af-abba-444a-850b-416a0fd30cec"/>
+				<textElement>
+					<font size="9"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nomDesBeneficiaires}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="20" width="100" height="14" uuid="2ca8d0ae-cb02-49f4-900e-1c1de0bf253f"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Fait à]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="130" width="282" height="14" uuid="e72989d6-78c4-4be3-8fae-7162d4fbc93a"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Le nouveau membre est inscrit au registre des membres ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="116" width="544" height="14" uuid="4495a377-d66b-4bb0-b2f6-339d4ab3043b"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA["Rayer les mentions inutiles et préciser les raisons de la mise en instance et  du rejet sur la ligne en dessous"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="166" width="544" height="14" uuid="3176bd2b-0285-49a2-b54a-c751dbe3de4b"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[En cas de dècès, j'autorise la COOPEC à déduire des mes avoirs ce que je lui dois]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="185" width="301" height="14" uuid="da59cb77-b4a9-4c2d-b43f-bd63857907ce"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Par ailleurs, je lui ordonne de verser le reste de mes avoirs à ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="96" width="232" height="14" uuid="f48911a8-3af9-440e-aa01-42b403c605e9"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Le Conseil d'Administration de la COOPEC, réuni le]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="231" width="119" height="14" uuid="d5ede2b9-6a10-4fc5-8fc4-0c96fe612f8a"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Le président CA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="436" y="231" width="108" height="14" uuid="fc20f865-b28f-4e59-af47-4458683c2dff"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Signature membre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="69" width="270" height="17" uuid="130cd35f-0e6a-4d16-8b75-f100cbc871d6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[DÉCISION DU CONSEIL D'ADMINISTRATION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="149" width="270" height="17" uuid="a908a2c6-97ee-44ff-8b71-53a02ccfbfd6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[HÉRITIER DÉSIGNÉ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="292" y="20" width="46" height="14" uuid="21827c7d-5827-4ba0-b573-b0e1834bd225"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[le]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="41" width="100" height="14" uuid="7a196848-a34d-4e2e-b11f-5f3a3b8075ea"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Signature]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="131" y="20" width="152" height="14" uuid="7f21c214-5dec-4a5a-ab30-2032c2d95900"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lieu}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="294" y="96" width="250" height="14" uuid="6dff3449-7556-47fa-8254-1b8fad7613bc"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[<<approuve, met en instance, rejette>> la présente demande ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="239" y="96" width="53" height="14" uuid="db7c107f-c08a-43bb-b4e6-2e5d1fd0911c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateSignature}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="283" y="130" width="261" height="14" uuid="87555eb8-c78a-4bb6-88b4-f45612a92dd5"/>
+				<textElement>
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numero}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="131" y="0" width="194" height="13" uuid="0bc33039-dd77-4a97-afd2-a5b66effe821"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="325" y="0" width="76" height="13" uuid="c7f8173b-c9d8-452d-8b08-bc468ec3291e"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sommetotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="274" width="100" height="20" uuid="01235e05-caba-4907-86bb-ddbe60b86149"/>
+				<textFieldExpression><![CDATA[$P{dateSignature}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1080" pageHeight="595" orientation="Landscape" columnWidth="1040" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cb4b0b23-5d19-45e1-9d99-4af0b005616a">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <style name="table_TD_Chaine" hAlign="Left" vAlign="Middle" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+        <box>
+            <leftPen lineWidth="0.5"/>
+            <bottomPen lineWidth="0.5"/>
+        </box>
+        <paragraph leftIndent="3"/>
+    </style>
+    <style name="table_TD_Nombre" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+        <box>
+            <leftPen lineWidth="0.5"/>
+            <bottomPen lineWidth="0.5"/>
+        </box>
+        <paragraph rightIndent="3"/>
+    </style>
+    <style name="table_CH" mode="Opaque" backcolor="#E5E5E5" hAlign="Center" vAlign="Middle" fontSize="10" isItalic="false" isUnderline="false" isStrikeThrough="false">
+        <box>
+            <topPen lineWidth="0.5"/>
+            <leftPen lineWidth="0.5"/>
+            <bottomPen lineWidth="0.5"/>
+        </box>
+    </style>
+    <parameter name="BP_AGENCE" class="java.lang.String"/>
+    <parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+    <parameter name="TEL_AGENCE" class="java.lang.String"/>
+    <parameter name="DATE_EDITION" class="java.lang.String"/>
+    <parameter name="FICHIER_EXCEL" class="java.lang.Boolean"/>
+    <parameter name="TITRE_ETAT" class="java.lang.String"/>
+    <parameter name="LIBELLE_AGENCE" class="java.lang.String"/>
+    <parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["G:\\java\\dev\\microfina\\src\\main\\webapp\\resources\\report\\credit\\"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="DATE_PARAM" class="java.lang.String"/>
+    <parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+    <field name="libelle" class="java.lang.String"/>
+    <field name="libelleProvision" class="java.lang.String"/>
+    <field name="montantCourtTerme" class="java.lang.String"/>
+    <field name="montantMoyenTerme" class="java.lang.String"/>
+    <field name="montantLongTerme" class="java.lang.String"/>
+    <field name="montantTotalEnSouffrance" class="java.lang.String"/>
+    <field name="garantie" class="java.lang.String"/>
+    <field name="soldeRestantDu" class="java.lang.String"/>
+    <field name="provision" class="java.lang.String"/>
+    <field name="montantNet" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="79" splitType="Stretch">
+            <subreport>
+                <reportElement x="0" y="0" width="1040" height="79" uuid="5be832eb-4937-4ddf-98d6-7060555c8852"/>
+                <subreportParameter name="TITRE_ETAT">
+                    <subreportParameterExpression><![CDATA[$P{TITRE_ETAT}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="LIBELLE_AGENCE">
+                    <subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="ADRESSE_AGENCE">
+                    <subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="BP">
+                    <subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="TEL">
+                    <subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="DATE_EDITION">
+                    <subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="DATE_PARAM">
+                    <subreportParameterExpression><![CDATA[$P{DATE_PARAM}]]></subreportParameterExpression>
+                </subreportParameter>
+                <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "entete_de_page_en_paysage_date.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="35" splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="40" splitType="Stretch">
+            <staticText>
+                <reportElement style="table_CH" x="198" y="0" width="103" height="40" uuid="f6c759aa-b7a1-4745-a5d9-15012521c959"/>
+                <text><![CDATA[COURT TERME]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="404" y="0" width="103" height="40" uuid="d460953f-c142-4350-92ad-34dbe8bbbf0c"/>
+                <text><![CDATA[LONG TERME]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="507" y="0" width="103" height="40" uuid="8c7a7368-a16d-4062-8636-e76cfbc81940"/>
+                <text><![CDATA[CREDIT EN SOUFFRANCE (1)]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="301" y="0" width="103" height="40" uuid="49f50c3d-905b-4147-89f7-6b47a9a550fb"/>
+                <text><![CDATA[MOYEN TERME]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="610" y="0" width="103" height="40" uuid="2e25dbdf-f590-461f-a03a-535f2e4b9266"/>
+                <text><![CDATA[DEPOT DE GARANTIE (2)]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="816" y="0" width="103" height="40" uuid="3e86ddca-6e95-43fc-ac59-a69e8b489363"/>
+                <text><![CDATA[PROVISION (4)]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="713" y="0" width="103" height="40" uuid="82a3cbf8-9b72-4c87-b950-15073116d51c"/>
+                <text><![CDATA[SOLDE RESTANT DU (3) = 1-2]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="919" y="0" width="103" height="40" uuid="8247ea63-e0bb-42a7-8dfe-8b3f6d81ae77"/>
+                <box>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <text><![CDATA[MONTANT NET         (5) = 3-4]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="0" y="0" width="198" height="40" uuid="aad15f4d-080d-4697-bfeb-5d86325a8430"/>
+                <text><![CDATA[RETARD CONTATE DANS LE REGLEMENT]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="30" splitType="Stretch">
+            <textField>
+                <reportElement style="table_TD_Nombre" x="198" y="0" width="103" height="30" uuid="968d7728-8ade-435b-9fb2-5d4103efd0c4"/>
+                <textFieldExpression><![CDATA[$F{montantCourtTerme}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="404" y="0" width="103" height="30" uuid="a49e81e8-9c02-4136-9f5b-e8ead072d6d0"/>
+                <textFieldExpression><![CDATA[$F{montantLongTerme}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="713" y="0" width="103" height="30" uuid="ca46fb5e-8225-46f9-a2ff-c2b05e8febb4"/>
+                <textFieldExpression><![CDATA[$F{soldeRestantDu}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Chaine" x="0" y="0" width="198" height="30" uuid="2e012286-8606-47c5-a8ec-83038ecf26c4"/>
+                <textFieldExpression><![CDATA[$F{libelle}+"\n"+$F{libelleProvision}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="919" y="0" width="103" height="30" uuid="ad52683e-9886-445f-aa78-86325b6534d6"/>
+                <box>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textFieldExpression><![CDATA[$F{montantNet}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="816" y="0" width="103" height="30" uuid="34a4e458-9d02-4e6b-aa2c-08688d37216b"/>
+                <textFieldExpression><![CDATA[$F{provision}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="507" y="0" width="103" height="30" uuid="dcef1c3f-f78d-48f6-9409-b7b382ff771f"/>
+                <textFieldExpression><![CDATA[$F{montantTotalEnSouffrance}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="301" y="0" width="103" height="30" uuid="dc268737-c7c5-41f3-950c-226f99a6c6a5"/>
+                <textFieldExpression><![CDATA[$F{montantMoyenTerme}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="610" y="0" width="103" height="30" uuid="0443e495-d6fc-4b31-b5fe-aefabf3a6df0"/>
+                <textFieldExpression><![CDATA[$F{garantie}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="45" splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="54" splitType="Stretch">
+            <subreport>
+                <reportElement x="0" y="0" width="1040" height="54" uuid="9ef8663d-5d66-46ca-a39d-71761fdaf837"/>
+                <subreportParameter name="LIBELLE_APPLICATION">
+                    <subreportParameterExpression><![CDATA[$P{SORT_FIELDS}]]></subreportParameterExpression>
+                </subreportParameter>
+                <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page_en_paysage.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+    </pageFooter>
+    <summary>
+        <band height="42" splitType="Stretch"/>
+    </summary>
+</jasperReport>

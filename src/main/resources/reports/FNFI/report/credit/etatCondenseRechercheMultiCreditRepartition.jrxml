@@ -1,0 +1,1120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etatCondenseRechercheMultiCreditRepartition" language="groovy" pageWidth="595" pageHeight="842" columnWidth="585" leftMargin="5" rightMargin="5" topMargin="20" bottomMargin="20" uuid="3ff260ed-339f-404f-acc1-9d4e12fc6859">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<parameter name="FICHIER_EXCEL" class="java.lang.Boolean"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="TITRE_ETAT" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="EDITEUR" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String"/>
+	<parameter name="NOMBRE_CRITERE" class="java.lang.Integer"/>
+	<parameter name="PRODUIT_CREDIT" class="java.lang.String"/>
+	<parameter name="CYCLE" class="java.lang.String"/>
+	<parameter name="ANNEE_DU_CYCLE" class="java.lang.String"/>
+	<parameter name="PSF" class="java.lang.String"/>
+	<parameter name="POUR_LE_COMPTE_DE" class="java.lang.String"/>
+	<field name="libelle" class="java.lang.String"/>
+	<field name="nombreCredit" class="java.lang.String"/>
+	<field name="nombreGs" class="java.lang.String"/>
+	<field name="nombreHomme" class="java.lang.String"/>
+	<field name="montantHomme" class="java.lang.String"/>
+	<field name="nombreFemme" class="java.lang.String"/>
+	<field name="montantFemme" class="java.lang.String"/>
+	<field name="nombreTotal" class="java.lang.String"/>
+	<field name="montantTotal" class="java.lang.String"/>
+	<field name="niveau" class="java.lang.Integer"/>
+	<variable name="NOMBRE_TOTAL_CREDIT" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[($F{niveau} == 1) ? (new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombreCredit}).toString())) : java.math.BigDecimal.ZERO]]></variableExpression>
+	</variable>
+	<variable name="NOMBRE_TOTAL_GS" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[($F{niveau} == 1) ? (new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombreGs}).toString())) : java.math.BigDecimal.ZERO]]></variableExpression>
+	</variable>
+	<variable name="NOMBRE_TOTAL_HOMME" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[($F{niveau} == 1) ? (new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombreHomme}).toString())) : java.math.BigDecimal.ZERO]]></variableExpression>
+	</variable>
+	<variable name="NOMBRE_TOTAL_FEMME" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[($F{niveau} == 1) ? (new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombreFemme}).toString())) : java.math.BigDecimal.ZERO]]></variableExpression>
+	</variable>
+	<variable name="NOMBRE_TOTAUX" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[($F{niveau} == 1) ? (new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombreTotal}).toString())) : java.math.BigDecimal.ZERO]]></variableExpression>
+	</variable>
+	<variable name="MONTANT_TOTAL_HOMME" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[($F{niveau} == 1) ? (new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantHomme}).toString())) : java.math.BigDecimal.ZERO]]></variableExpression>
+	</variable>
+	<variable name="MONTANT_TOTAL_FEMME" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[($F{niveau} == 1) ? (new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantFemme}).toString())) : java.math.BigDecimal.ZERO]]></variableExpression>
+	</variable>
+	<variable name="MONTANT_TOTAUX" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[($F{niveau} == 1) ? (new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantTotal}).toString())) : java.math.BigDecimal.ZERO]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="169" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="585" height="96" uuid="f15e7cbd-4617-4ed0-a574-719f1bab5a31">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="0" y="149" width="585" height="20" uuid="4ff6e39c-1f53-4c1e-884c-66a391943a72">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITRE_ETAT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="121" width="57" height="15" uuid="f5b8c58c-b7ef-4ea9-a6c4-e540a12eeb57"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PSF : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="106" width="57" height="15" uuid="8d8afc99-231f-4d5b-8998-dd3c3cd82376"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Produit crédit : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="412" y="106" width="80" height="15" uuid="14684e02-15d4-4c75-9d55-0908e3ccb261"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Année du 1er crédit : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="207" y="121" width="83" height="15" uuid="4ae14544-7f48-4af4-852a-5a4fbd7383c8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pour le compte de : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="207" y="106" width="83" height="15" uuid="5d2416b4-c315-4faf-99fb-5dce3c2c2b17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Cycle : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="57" y="121" width="133" height="15" uuid="7b65b6b0-d675-48ce-88ed-b82b304f9026"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PSF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="57" y="106" width="133" height="15" uuid="0097f2a3-4bdc-40a0-8c85-b24812a81ff0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PRODUIT_CREDIT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="492" y="106" width="93" height="15" uuid="cde66b2b-89bc-44e9-b59d-b31890133a2f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ANNEE_DU_CYCLE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="121" width="96" height="15" uuid="7a3eac98-a59e-4e39-b748-f26ab83eb38b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{POUR_LE_COMPTE_DE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="106" width="96" height="15" uuid="477798ab-d0b5-4fdf-bdc4-fe9a5c4bc1c8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CYCLE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="175" height="40" backcolor="#E5E5E5" uuid="5f7335f5-51ae-41ce-b9fe-4b52ab199dde"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Libellé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="175" y="0" width="43" height="40" backcolor="#E5E5E5" uuid="d514b4a8-51c1-47dc-b022-1918e6540844"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nbre    Crédit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="218" y="0" width="43" height="40" backcolor="#E5E5E5" uuid="fcb09317-c6ff-4a6b-9609-2e81200bb3c0"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nbre Gs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="261" y="20" width="43" height="20" backcolor="#E5E5E5" uuid="c330f486-b9ef-4045-bb03-2a68a0127669"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="304" y="20" width="65" height="20" backcolor="#E5E5E5" uuid="fd3aaeb4-e1af-4622-92d4-8e3f496d22e2"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="369" y="20" width="43" height="20" backcolor="#E5E5E5" uuid="f218ca6f-77ff-4701-a128-e1af6a70d19b"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="412" y="20" width="65" height="20" backcolor="#E5E5E5" uuid="8d9b573f-5df7-442a-83c6-1c7818190f29"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="477" y="20" width="43" height="20" backcolor="#E5E5E5" uuid="dcd62c4e-287d-4ec1-b3e1-502a6979ad13"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="520" y="20" width="65" height="20" backcolor="#E5E5E5" uuid="19c7b87f-6cbf-413b-8ac1-b7e2f884dbcb"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="261" y="0" width="108" height="20" backcolor="#E5E5E5" uuid="face0815-a197-4ce2-8eb7-4312e4cd5861"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Homme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="369" y="0" width="108" height="20" backcolor="#E5E5E5" uuid="4e200f9f-a539-4d9b-a4e6-09f1b9da26eb"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Femme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="477" y="0" width="108" height="20" backcolor="#E5E5E5" uuid="92900c00-ae49-4a8c-927c-8e3e0636d5a9"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="175" height="20" uuid="e2bd9a5e-142c-4dc7-a34e-61e7e5acf622">
+					<printWhenExpression><![CDATA[($P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="0" width="43" height="20" uuid="717d8248-5bdb-4b45-af93-3c428a5b1c68">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL} && $P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreCredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="218" y="0" width="43" height="20" uuid="b7a021f4-f7fa-4d16-975c-c3cc033c3933">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL} && $P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreGs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="261" y="0" width="43" height="20" uuid="0c29150e-a5f4-4502-a8ba-638aec759b84">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL} && $P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreHomme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="304" y="0" width="65" height="20" uuid="bc729bd3-6416-4f7a-95f0-043ad7c7acef">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL} && $P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantHomme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="369" y="0" width="43" height="20" uuid="bdaa7259-a903-4736-abe3-776ea74d5fca">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL} && $P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreFemme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="412" y="0" width="65" height="20" uuid="9ab8ee1c-cfad-40cb-aa3d-f3185c740266">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL} && $P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantFemme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="0" width="43" height="20" uuid="056be945-6a89-45c0-9033-4b77070b0538">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL} && $P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="520" y="0" width="65" height="20" uuid="461e75eb-71b5-4c8d-a625-16affd4443d7">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL} && $P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="218" y="0" width="43" height="20" uuid="b6d075a3-b38c-436c-88a6-966b909e65d1">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL} &&  $P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombreGs}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="0" width="43" height="20" uuid="eb4a5408-e567-4f22-9263-3bf58b8ae39d">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL} &&  $P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombreCredit}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="0" width="43" height="20" uuid="bfb8ae19-24ef-4d4e-aa04-f2fd36f0a5d7">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL} &&  $P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombreTotal}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="304" y="0" width="65" height="20" uuid="aafd5d1e-81a4-4ff1-b688-537685d51948">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL} &&  $P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantHomme}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="261" y="0" width="43" height="20" uuid="ce8c830a-94c0-439e-8261-4223c7670c3d">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL} &&  $P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombreHomme}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="520" y="0" width="65" height="20" uuid="3701c63b-19ee-46eb-b1de-eee72337e17c">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL} &&  $P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantTotal}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="412" y="0" width="65" height="20" uuid="c65349d9-8f57-4582-8ed8-df009b28a288">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL} &&  $P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantFemme}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="369" y="0" width="43" height="20" uuid="8b8d0bfe-1e8d-4cd0-9f2b-4d6f22255bf8">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL} &&  $P{NOMBRE_CRITERE} == $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombreFemme}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="261" y="0" width="43" height="20" backcolor="#E0E0E0" uuid="d421e697-567c-4085-81a6-1d72a56378e5">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL} && $P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreHomme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="520" y="0" width="65" height="20" backcolor="#E0E0E0" uuid="a5f919f1-0f40-4e23-ba72-4b9448f38fbd">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL} && $P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="412" y="0" width="65" height="20" backcolor="#E0E0E0" uuid="f7148f6b-0945-44f5-b208-3fea3251c097">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL} && $P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantFemme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="369" y="0" width="43" height="20" backcolor="#E0E0E0" uuid="4346dded-da2b-4f12-98e1-ac0c3db849c7">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL} && $P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreFemme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="175" height="20" backcolor="#E0E0E0" uuid="8040694a-b082-452b-98b0-f05423ca5271">
+					<printWhenExpression><![CDATA[($P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="218" y="0" width="43" height="20" backcolor="#E0E0E0" uuid="d8a1c41a-c6a3-4d24-a0d6-2ad149a2e769">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL} && $P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreGs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="175" y="0" width="43" height="20" backcolor="#E0E0E0" uuid="88034288-cf45-47e2-bed6-f6bccd3122fe">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL} && $P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreCredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="477" y="0" width="43" height="20" backcolor="#E0E0E0" uuid="0ed35b71-5d8e-4986-a6aa-4bf3d548db09">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL} && $P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="304" y="0" width="65" height="20" backcolor="#E0E0E0" uuid="22d76826-570a-4420-9706-94f05afe7e0f">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL} && $P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantHomme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="520" y="0" width="65" height="20" backcolor="#E1E1E1" uuid="6e495dc6-59a0-4b12-af3b-8bb12285e812">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL} &&  $P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantTotal}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="261" y="0" width="43" height="20" backcolor="#E1E1E1" uuid="3115e14b-969b-46e3-938c-9caa3dc2d441">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL} &&  $P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombreHomme}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="369" y="0" width="43" height="20" backcolor="#E1E1E1" uuid="dff1155b-2caf-4105-8bd6-59225e7239cf">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL} &&  $P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombreFemme}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="218" y="0" width="43" height="20" backcolor="#E1E1E1" uuid="826ae83d-c2c5-4c3d-80f7-30474530fa93">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL} &&  $P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombreGs}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="477" y="0" width="43" height="20" backcolor="#E1E1E1" uuid="c9569300-dde7-45e2-8e7d-24141f26ab91">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL} &&  $P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombreTotal}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="412" y="0" width="65" height="20" backcolor="#E1E1E1" uuid="1591e929-d75b-4f5a-ae9a-ecfe30ef7020">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL} &&  $P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantFemme}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="175" y="0" width="43" height="20" backcolor="#E1E1E1" uuid="9a636542-56d2-408b-8d4e-481a7a80ca7e">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL} &&  $P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{nombreCredit}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="304" y="0" width="65" height="20" backcolor="#E1E1E1" uuid="d65db3bd-5e16-4983-9065-83a74ebaf446">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL} &&  $P{NOMBRE_CRITERE} > $F{niveau})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantHomme}).toString()))]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="75" splitType="Stretch">
+			<textField>
+				<reportElement x="249" y="0" width="120" height="15" uuid="b6348cea-4b45-46b1-abdd-9c4b4b60f36c">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="557" y="0" width="28" height="15" uuid="aa2200da-6b93-4e66-8d14-3967bb1b9706">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="230" height="15" uuid="9cce4fc4-acec-4380-b3b9-7798a9a9fa82">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Imprimer le "+$P{DATE_EDITION}+" par "+$P{EDITEUR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="489" y="0" width="68" height="15" uuid="6862280e-e789-41db-8151-ef8a7c144dfa">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="17" y="25" width="568" height="50" uuid="5503b168-fb28-4625-a892-5bed2a1ddd75">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pageportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="520" y="0" width="65" height="20" backcolor="#E5E5E5" uuid="59aa4ca5-2e84-473d-9be9-505385d67ad5">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{MONTANT_TOTAUX}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="261" y="0" width="43" height="20" backcolor="#E5E5E5" uuid="499b53ac-fb34-4676-a864-1b3f97555974">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{NOMBRE_TOTAL_HOMME}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="175" y="0" width="43" height="20" backcolor="#E5E5E5" uuid="6ffeab7f-62a6-4382-bd10-a98a9d56b3c2">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{NOMBRE_TOTAL_CREDIT}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="369" y="0" width="43" height="20" backcolor="#E5E5E5" uuid="86b826b4-fa57-45c0-8b0e-bea19ea87b5b">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{NOMBRE_TOTAL_FEMME}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="218" y="0" width="43" height="20" backcolor="#E5E5E5" uuid="5c67efb4-52ad-4f60-a595-572faac879d8">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{NOMBRE_TOTAL_GS}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="477" y="0" width="43" height="20" backcolor="#E5E5E5" uuid="7778427b-a09c-49e0-abd9-2df08107a936">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{NOMBRE_TOTAUX}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="304" y="0" width="65" height="20" backcolor="#E5E5E5" uuid="c06ad98f-aff0-4853-bbc4-13b62d2da538">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{MONTANT_TOTAL_HOMME}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="412" y="0" width="65" height="20" backcolor="#E5E5E5" uuid="284257e7-4af0-464b-ab2b-02bff240e83d">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{MONTANT_TOTAL_FEMME}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="261" y="0" width="43" height="20" backcolor="#E5E5E5" uuid="912f941f-e4d0-44a3-b924-c5eb5d8dc9ee">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{NOMBRE_TOTAL_HOMME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="412" y="0" width="65" height="20" backcolor="#E5E5E5" uuid="c1643913-3b01-4092-9f53-9fa70464e15c">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{MONTANT_TOTAL_FEMME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="304" y="0" width="65" height="20" backcolor="#E5E5E5" uuid="4ad83d6e-4ea9-41bf-9c81-629613c0035c">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{MONTANT_TOTAL_HOMME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="369" y="0" width="43" height="20" backcolor="#E5E5E5" uuid="e9ca044b-07d0-463c-9e0a-c570cf3e6a36">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{NOMBRE_TOTAL_FEMME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="175" y="0" width="43" height="20" backcolor="#E5E5E5" uuid="7c49d16a-6833-4f50-b204-f0d8e9098ba9">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{NOMBRE_TOTAL_CREDIT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="477" y="0" width="43" height="20" backcolor="#E5E5E5" uuid="6f047e27-fbbc-4c04-b1ba-e4a29b1e942f">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{NOMBRE_TOTAUX}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="520" y="0" width="65" height="20" backcolor="#E5E5E5" uuid="767c1348-4a07-4702-8472-6d4a65d6e53d">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{MONTANT_TOTAUX}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="218" y="0" width="43" height="20" backcolor="#E5E5E5" uuid="ef4ac568-b982-41a1-9bd9-640c87fc73b2">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{NOMBRE_TOTAL_GS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="175" height="20" backcolor="#E5E5E5" uuid="1536f9b5-b4f6-42fa-b654-61651c1ccef8"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAUX"]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

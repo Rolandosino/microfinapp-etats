@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="3024" pageHeight="595" orientation="Landscape" columnWidth="2984" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8ef48c93-5337-4c1b-9c55-0a6ec1d6ee01">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="1231"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style_CH" mode="Opaque" backcolor="#EFEFEF" hAlign="Center" vAlign="Middle" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<pen lineWidth="0.5" lineColor="#000000"/>
+		<box>
+			<topPen lineWidth="0.5"/>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+			<rightPen lineWidth="0.5"/>
+		</box>
+	</style>
+	<style name="style_TD_Nombre" mode="Opaque" hAlign="Right" vAlign="Middle" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<topPen lineWidth="0.5"/>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+			<rightPen lineWidth="0.5"/>
+		</box>
+		<paragraph rightIndent="5"/>
+	</style>
+	<style name="style_TD_Chaine" mode="Opaque" hAlign="Left" vAlign="Middle" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<topPen lineWidth="0.5"/>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+			<rightPen lineWidth="0.5"/>
+		</box>
+		<paragraph leftIndent="5"/>
+	</style>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String"/>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String"/>
+	<parameter name="DATE_BALANCE_AGEE" class="java.lang.String"/>
+	<field name="numeroCredit" class="java.lang.String"/>
+	<field name="numeroClient" class="java.lang.String"/>
+	<field name="nomPrenom" class="java.lang.String"/>
+	<field name="montantPret" class="java.lang.String"/>
+	<field name="dateDeblocage" class="java.lang.String"/>
+	<field name="dateDebutRemboursement" class="java.lang.String"/>
+	<field name="dureePret" class="java.lang.String"/>
+	<field name="tauxAnnuel" class="java.lang.String"/>
+	<field name="mensualite" class="java.lang.String"/>
+	<field name="capitalRestant" class="java.lang.String"/>
+	<field name="capitalRetard" class="java.lang.String"/>
+	<field name="interetsRetard" class="java.lang.String"/>
+	<field name="totalRetard" class="java.lang.String"/>
+	<field name="echeanceRetard" class="java.lang.String"/>
+	<field name="joursRetard" class="java.lang.String"/>
+	<field name="garantie" class="java.lang.String"/>
+	<field name="provision" class="java.lang.String"/>
+	<field name="taux" class="java.lang.String"/>
+	<field name="degre" class="java.lang.String"/>
+	<field name="interetNonEchus" class="java.lang.String"/>
+	<field name="avoir" class="java.lang.String"/>
+	<field name="risque" class="java.lang.String"/>
+	<field name="un30jours" class="java.lang.String"/>
+	<field name="trenteUn60jours" class="java.lang.String"/>
+	<field name="soixanteUn90jours" class="java.lang.String"/>
+	<field name="plus90jours" class="java.lang.String"/>
+	<field name="dirigeants" class="java.lang.String"/>
+	<field name="nombreMembre" class="java.lang.String"/>
+	<field name="produit" class="java.lang.String"/>
+	<field name="hommes" class="java.lang.String"/>
+	<field name="femmes" class="java.lang.String"/>
+	<field name="zone" class="java.lang.String"/>
+	<field name="dernierPayement" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="55" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="2984" height="55" uuid="1672acad-774d-43f4-8e40-5679cb3f5b80"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["BALANCE AGEE des crédits à la date du "+$P{DATE_BALANCE_AGEE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="60">
+			<textField>
+				<reportElement x="0" y="0" width="2762" height="20" uuid="05c8f54c-3267-472a-9ace-df72c7c95ef0"/>
+				<textFieldExpression><![CDATA[$P{LIBELLE_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="20" width="2984" height="20" uuid="f09cbc63-a376-4593-9eab-100dfbb2ba28"/>
+				<textFieldExpression><![CDATA[$P{ADRESSE_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="40" width="2984" height="20" uuid="6da78804-39b6-4c3e-b94b-d5675db6e4dc"/>
+				<textFieldExpression><![CDATA[$P{BP_AGENCE}+" TEL: "+$P{TEL_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2762" y="0" width="222" height="20" uuid="bdf8bd2e-9a1c-4ffa-80aa-39359b283218"/>
+				<textFieldExpression><![CDATA["Date édition : "+$P{DATE_EDITION}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement style="style_CH" x="0" y="0" width="73" height="20" uuid="8888f06b-de3a-44da-832b-6435689df7c3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Crédit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="73" y="0" width="73" height="20" uuid="ead4e79e-b824-4b9e-bf07-676f89d9f3e5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° Client]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="146" y="0" width="188" height="20" uuid="3b6674bb-fd0b-4d70-87fe-88e1f13e995f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nom et prénoms]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="334" y="0" width="89" height="20" uuid="2d277457-d31b-4dbc-b8fa-01c2b50baaca"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant prèt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="423" y="0" width="92" height="20" uuid="123cce56-0620-4c21-bf15-38657d490c5a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date déblocage]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="515" y="0" width="96" height="20" uuid="753bf762-e75f-4582-adec-8b430ccc5ae1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Debut rembours.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="611" y="0" width="73" height="20" uuid="65a194e5-da39-49c2-b6a1-7202969768ff"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Durée prèt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="684" y="0" width="73" height="20" uuid="2444bab1-78fd-4160-9d70-f0d28a99eaa7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Taux annuel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="757" y="0" width="89" height="20" uuid="01343ade-3786-4f24-a569-36a0e16a22f1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mensualité]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="846" y="0" width="89" height="20" uuid="4a07eba9-6fd1-4d0d-bb2a-5964c2bfb44e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Capital restant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="935" y="0" width="89" height="20" uuid="8730a841-260d-4dba-9b96-2625a02dd463"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Capital retard]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="1024" y="0" width="89" height="20" uuid="4d533fb2-b53b-475d-9690-215d4272c905"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Intérèt retard]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="1113" y="0" width="89" height="20" uuid="62bc1af7-fd0e-44c6-a3ac-0c89b7432fbf"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total retard]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="1202" y="0" width="73" height="20" uuid="5161a5f6-7bba-4748-9392-cc2c83e95eb7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ech. retard]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="1275" y="0" width="73" height="20" uuid="f74c91a4-7068-4528-83eb-04f4f4e813fa"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jours retard]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="1348" y="0" width="89" height="20" uuid="a5e727dc-179b-4fb0-9ca0-859bcb6232b8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Garantie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="1437" y="0" width="89" height="20" uuid="f6117fd3-a028-4a3d-9a6b-48d68c406dad"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Provision]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="1526" y="0" width="73" height="20" uuid="fdc50cc4-8c7c-49fc-9a48-a7427aa7db1c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Taux]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="1599" y="0" width="73" height="20" uuid="56b63f0e-9933-479a-a466-d836295af50b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Degré]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="1672" y="0" width="102" height="20" uuid="d0187861-acf8-42b4-b4cd-47eb455a83d2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Intérèt non échus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="1774" y="0" width="89" height="20" uuid="d1110a72-f7a0-4578-866f-6ccf0372ea60"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Avoir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="1863" y="0" width="89" height="20" uuid="48121e96-45c2-454d-92f9-73edd6ce886d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Risque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="1952" y="0" width="89" height="20" uuid="ed9bd1e8-0117-4dcf-9d41-2a90bf45045a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[1-30 j]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="2041" y="0" width="89" height="20" uuid="9a9440df-81e0-411a-a1ac-baf5ec4634c8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[31-60 j]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="2130" y="0" width="89" height="20" uuid="ec0d75a3-765f-46b4-a417-83125f1ec86b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[61-90 j]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="2219" y="0" width="89" height="20" uuid="b06954bc-6087-4f4e-aece-d334c35a6e84"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[+90 j]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="2308" y="0" width="89" height="20" uuid="21463c73-4508-48c8-a867-b8844bacd452"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirigeant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="2397" y="0" width="73" height="20" uuid="894b8266-b6f7-4bfa-925e-4ccd767e8f62"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nbr membre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="2470" y="0" width="73" height="20" uuid="c5ec99db-f04f-4e17-ab60-49f2fac54948"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Produit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="2543" y="0" width="73" height="20" uuid="3fae3dd6-3542-4fc2-9a5f-10100460c2bb"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hommes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="2616" y="0" width="73" height="20" uuid="6190cbea-1cc8-408d-9aaf-b9ab27630ae6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Femmes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="2689" y="0" width="73" height="20" uuid="eaff531e-1616-48b1-8ef4-082f3d01ac7c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Zone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="style_CH" x="2762" y="0" width="103" height="20" uuid="614125b2-bfc2-4883-a978-2abdebd27085"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dernier payement]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="style_TD_Chaine" x="0" y="0" width="73" height="20" uuid="d028099f-e2f0-4830-a2db-9c1a9d9ae152"/>
+				<textFieldExpression><![CDATA[$F{numeroCredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Chaine" x="73" y="0" width="73" height="20" uuid="3c83ad64-228f-40f2-822e-84ebec6a7b1b"/>
+				<textFieldExpression><![CDATA[$F{numeroClient}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Chaine" x="146" y="0" width="188" height="20" uuid="5bdf5786-ff0f-4d7e-959d-977161f8ee2d"/>
+				<textFieldExpression><![CDATA[$F{nomPrenom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="334" y="0" width="89" height="20" uuid="9427dd1d-8750-48bb-a4dc-002f03fafca1"/>
+				<textFieldExpression><![CDATA[$F{montantPret}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Chaine" x="423" y="0" width="92" height="20" uuid="878c0fed-4405-4f13-adaf-23f9479e5024"/>
+				<textFieldExpression><![CDATA[$F{dateDeblocage}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Chaine" x="515" y="0" width="96" height="20" uuid="a831e68b-722f-446c-aa26-1cc4b5d67fef"/>
+				<textFieldExpression><![CDATA[$F{dateDebutRemboursement}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="611" y="0" width="73" height="20" uuid="14812089-45b4-4f9a-a34b-490621b3971f"/>
+				<textFieldExpression><![CDATA[$F{dureePret}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="684" y="0" width="73" height="20" uuid="09e1e2f4-7457-43ad-9e82-042c42de663d"/>
+				<textFieldExpression><![CDATA[$F{tauxAnnuel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="757" y="0" width="89" height="20" uuid="6073ce0e-194e-4e13-b09d-242437b6592d"/>
+				<textFieldExpression><![CDATA[$F{mensualite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="846" y="0" width="89" height="20" uuid="39edd29b-3c3c-4673-ae10-c2eab4ec40ba"/>
+				<textFieldExpression><![CDATA[$F{capitalRestant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="935" y="0" width="89" height="20" uuid="d5ff1a42-1646-4fb3-8650-96829ff27da1"/>
+				<textFieldExpression><![CDATA[$F{capitalRetard}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="1024" y="0" width="89" height="20" uuid="4e3e5438-9101-4b2c-91eb-0b88775c5cc8"/>
+				<textFieldExpression><![CDATA[$F{interetsRetard}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="1113" y="0" width="89" height="20" uuid="b63a8d01-6c79-4b28-a7fd-0e66715adc93"/>
+				<textFieldExpression><![CDATA[$F{totalRetard}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="1202" y="0" width="73" height="20" uuid="4c003b70-8a7d-453d-bde3-7911d6aabcd6"/>
+				<textFieldExpression><![CDATA[$F{echeanceRetard}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="1275" y="0" width="73" height="20" uuid="6238cab0-8a73-4c3b-9fa3-41684e9bb7c3"/>
+				<textFieldExpression><![CDATA[$F{joursRetard}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="1348" y="0" width="89" height="20" uuid="17e272ad-51b6-48f1-95a7-fca66849f91e"/>
+				<textFieldExpression><![CDATA[$F{garantie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="1437" y="0" width="89" height="20" uuid="b1cdb4f2-677a-42a6-bedb-316659ca3e8f"/>
+				<textFieldExpression><![CDATA[$F{provision}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="1526" y="0" width="73" height="20" uuid="de740463-9cc1-4f65-b4db-c37613d2c12f"/>
+				<textFieldExpression><![CDATA[$F{taux}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="1599" y="0" width="73" height="20" uuid="e9ecdc64-eb0a-45b6-96a8-cd78a29d5a7b"/>
+				<textFieldExpression><![CDATA[$F{degre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="1672" y="0" width="102" height="20" uuid="8ba19a8a-c4fb-4669-b1e1-76155e05a1c6"/>
+				<textFieldExpression><![CDATA[$F{interetNonEchus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="1774" y="0" width="89" height="20" uuid="25782b6d-a9c0-4a1f-aef8-88cfd7d2c936"/>
+				<textFieldExpression><![CDATA[$F{avoir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="1863" y="0" width="89" height="20" uuid="4200c909-5b2e-4b3c-a406-1ff95afc8290"/>
+				<textFieldExpression><![CDATA[$F{risque}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="1952" y="0" width="89" height="20" uuid="f52c1369-26de-4ee2-829c-b04bc4b64bbc"/>
+				<textFieldExpression><![CDATA[$F{un30jours}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="2041" y="0" width="89" height="20" uuid="374b8d79-dca2-4fa2-91b8-7e39b28adcb0"/>
+				<textFieldExpression><![CDATA[$F{trenteUn60jours}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="2130" y="0" width="89" height="20" uuid="402ed035-8297-45df-861f-584386e41973"/>
+				<textFieldExpression><![CDATA[$F{soixanteUn90jours}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="2219" y="0" width="89" height="20" uuid="2162516b-a47f-496d-86c8-3a800e69ae5a"/>
+				<textFieldExpression><![CDATA[$F{plus90jours}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Chaine" x="2308" y="0" width="89" height="20" uuid="35e0ec7c-51de-40c6-88d4-b574d9bf1018"/>
+				<textFieldExpression><![CDATA[$F{dirigeants}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="2397" y="0" width="73" height="20" uuid="5e07c6c7-f656-4b0f-9c0b-d3da125297a0"/>
+				<textFieldExpression><![CDATA[$F{nombreMembre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Chaine" x="2470" y="0" width="73" height="20" uuid="24f7acd4-0785-4c3f-8781-3a1faf913607"/>
+				<textFieldExpression><![CDATA[$F{produit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="2543" y="0" width="73" height="20" uuid="e2b4cfa3-d28a-425d-a0e6-b911d769f2e4"/>
+				<textFieldExpression><![CDATA[$F{hommes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Nombre" x="2616" y="0" width="73" height="20" uuid="884aa11e-c36b-46dc-b67b-60887e81a5d9"/>
+				<textFieldExpression><![CDATA[$F{femmes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Chaine" x="2689" y="0" width="73" height="20" uuid="277f5b9f-030f-480a-9c66-58f79a3df111"/>
+				<textFieldExpression><![CDATA[$F{zone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="style_TD_Chaine" x="2762" y="0" width="103" height="20" uuid="90e2a833-06c1-4227-9c6d-f0efb50924a1"/>
+				<textFieldExpression><![CDATA[$F{dernierPayement}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="2984" height="54" uuid="6b6c148e-e742-4bca-9101-0c33f3002e70"/>
+				<subreportParameter name="LIBELLE_APPLICATION"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

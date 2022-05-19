@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="listeMissionPeriode" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="188f011f-8af1-459c-ae20-ad00cc651b8d">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="datedebut" class="java.lang.String"/>
+	<parameter name="datefin" class="java.lang.String"/>
+	<parameter name="etatMission" class="java.lang.String"/>
+	<field name="ref" class="java.lang.String"/>
+	<field name="motif" class="java.lang.String"/>
+	<field name="duree" class="java.lang.String"/>
+	<field name="datedebut" class="java.lang.String"/>
+	<field name="datefin" class="java.lang.String"/>
+	<field name="moyentransport" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="20">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="20" uuid="5f0e59d6-d418-4da1-bf96-0a2b62c53f1f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["LISTE DES MISSIONS DU  "+ $P{datedebut}+" AU  "+$P{datefin}+"         "+ $P{etatMission}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="0" y="0" width="59" height="15" backcolor="#EFEFEF" uuid="494592e6-1ece-48b7-ae1a-8d4f48b653c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REFERENCE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="59" y="0" width="201" height="15" backcolor="#EFEFEF" uuid="8a6a81bf-e13e-4aee-af0e-e7eaf3edddda"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MOTIF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="260" y="0" width="50" height="15" backcolor="#EFEFEF" uuid="60709c0b-54b9-4fa5-9e1b-3308742b7807"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DUREE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="310" y="0" width="75" height="15" backcolor="#EFEFEF" uuid="393624c9-0b7b-4759-a9d8-b13b09be1dc6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATE DEBUT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="385" y="0" width="78" height="15" backcolor="#EFEFEF" uuid="d842e261-755c-477c-931d-6523f4f2485b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATE FIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="463" y="0" width="92" height="15" backcolor="#EFEFEF" uuid="7390dd84-0182-4d5e-aa59-96de70374de9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MOYEN TRANSPORT]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="0" y="0" width="59" height="15" uuid="4259eedf-a666-4320-b676-e97e20845e73"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ref}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="59" y="0" width="201" height="15" uuid="0a102d70-4736-4bef-be96-d02eadc65883"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{motif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="260" y="0" width="50" height="15" uuid="12f1c1ce-9b6e-4f6d-9169-bbec4841f850"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{duree}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="310" y="0" width="75" height="15" uuid="539853dd-d301-4ef0-8d77-2dcc67c06f32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datedebut}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="385" y="0" width="78" height="15" uuid="83767af5-adf2-4562-98ce-c807afc6511c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datefin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="463" y="0" width="92" height="15" uuid="b7dd8fae-4559-4482-97bb-14da2dbab15d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{moyentransport}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

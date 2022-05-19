@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="1008" pageHeight="595" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" isFloatColumnFooter="true" uuid="80d6c78f-ca10-46e8-91a9-8ac12bfd12c5">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" forecolor="#000000" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" forecolor="#000000" backcolor="#FFFFFF" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="DATE_ENCOURS" class="java.lang.String"/>
+	<parameter name="AGENT_CREDIT" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="TITRE_ETAT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["BALANCE AGEE ANALYTIQUE DU PORTEFEUILLE DE CREDITS"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String"/>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP" class="java.lang.String"/>
+	<parameter name="TEL" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR_PIED" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DATA_SOURCE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="typeCredit" class="java.lang.String"/>
+	<field name="totalCreditEnCours" class="java.lang.String"/>
+	<field name="totalRetard_1_30" class="java.lang.String"/>
+	<field name="totalRetard_1_3" class="java.lang.String"/>
+	<field name="totalRetard_3_6" class="java.lang.String"/>
+	<field name="totalRetard_6_12" class="java.lang.String"/>
+	<field name="totalRetard_12_24" class="java.lang.String"/>
+	<field name="totalRetard_24_plus" class="java.lang.String"/>
+	<field name="totalRetard" class="java.lang.String"/>
+	<field name="tauxRetard" class="java.lang.String"/>
+	<field name="totalBeneficeConcerne" class="java.lang.String"/>
+	<field name="dontDirigeantsElus" class="java.lang.String"/>
+	<variable name="TOTAL_RTC_C1" class="java.lang.String"/>
+	<variable name="TOTAL_RTC_C2" class="java.lang.String"/>
+	<variable name="TOTAL_BENEFICE" class="java.lang.String"/>
+	<variable name="DONT_DIRIGEANT_ET_ELUS" class="java.lang.String"/>
+	<variable name="TOTAL_ENCOURS" class="java.lang.String"/>
+	<variable name="TOTAL_RETARDS_P1" class="java.lang.String"/>
+	<variable name="TOTAL_RETARDS_P2" class="java.lang.String"/>
+	<variable name="TOTAL_RETARDS_P3" class="java.lang.String"/>
+	<variable name="TOTAL_RETARDS_P4" class="java.lang.String"/>
+	<variable name="TOTAL_RETARDS_P5" class="java.lang.String"/>
+	<variable name="TOTAUX_RTC_C1" class="java.lang.String"/>
+	<variable name="TOTAUX_RTC_C2" class="java.lang.String"/>
+	<variable name="TOTAUX_BENEFICE" class="java.lang.String"/>
+	<variable name="TOTAUX_DONT" class="java.lang.String"/>
+	<variable name="%_RETARDS_P1" class="java.lang.String"/>
+	<variable name="%_RETARDS_P2" class="java.lang.String"/>
+	<variable name="%_RETARDS_P3" class="java.lang.String"/>
+	<variable name="%_RETARDS_P4" class="java.lang.String"/>
+	<variable name="%_RETARDS_P5" class="java.lang.String"/>
+	<variable name="TX_PAR1_RETARDS_P1" class="java.lang.String"/>
+	<variable name="TX_PAR1_RETARDS_P2" class="java.lang.String"/>
+	<variable name="TX_PAR1_RETARDS_P3" class="java.lang.String"/>
+	<variable name="TX_PAR1_RETARDS_P4" class="java.lang.String"/>
+	<variable name="TX_PAR1_RETARDS_P5" class="java.lang.String"/>
+	<variable name="TX_PAR_TOTAUX_RTC_C1" class="java.lang.String"/>
+	<variable name="TX_PAR2_RETARDS_P2" class="java.lang.String"/>
+	<variable name="TX_PAR2_RETARDS_P3" class="java.lang.String"/>
+	<variable name="TX_PAR2_RETARDS_P4" class="java.lang.String"/>
+	<variable name="TX_PAR2_RETARDS_P5" class="java.lang.String"/>
+	<variable name="TX_PAR2_TOTAUX_RTC_C1" class="java.lang.String"/>
+	<variable name="TX_PAR3_RETARDS_P3" class="java.lang.String"/>
+	<variable name="TX_PAR3_RETARDS_P4" class="java.lang.String"/>
+	<variable name="TX_PAR3_RETARDS_P5" class="java.lang.String"/>
+	<variable name="TX_PAR3_TOTAUX_RTC_C1" class="java.lang.String"/>
+	<variable name="TX_PAR4_RETARDS_P4" class="java.lang.String"/>
+	<variable name="TX_PAR4_RETARDS_P5" class="java.lang.String"/>
+	<variable name="TX_PAR4_TOTAUX_RTC_C1" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="121" splitType="Stretch">
+			<subreport>
+				<reportElement x="59" y="0" width="842" height="93" uuid="eb0925e7-4fbc-4ccd-aaf1-fedb5aa46b78"/>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL">
+					<subreportParameterExpression><![CDATA[$P{TEL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP">
+					<subreportParameterExpression><![CDATA[$P{BP}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententepaysage.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="0" y="101" width="968" height="20" uuid="c1cc3de8-9850-4f0c-935a-17217f48b566"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Balance âgée analytique au "+$P{DATE_ENCOURS}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="78" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" mode="Opaque" x="0" y="0" width="189" height="20" backcolor="#F0F0F0" uuid="0d552299-3369-4797-9baf-e20001abc337"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="188" y="0" width="525" height="20" backcolor="#F0F0F0" uuid="40a4dbb5-57dd-48b4-a2a7-acb1ec92e30f"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Encours au : "+$P{DATE_ENCOURS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="713" y="0" width="217" height="20" backcolor="#F0F0F0" uuid="c4414648-adda-4f91-9f79-15e5ad5cb6ec"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" Total "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table_CH" mode="Opaque" x="0" y="19" width="189" height="59" backcolor="#F0F0F0" uuid="49400584-4dc4-4d0f-9866-98f9b25f8f23"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Type de crédits]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" mode="Opaque" x="188" y="19" width="97" height="59" backcolor="#F0F0F0" uuid="a8d71ad7-d024-4c30-abf4-6272b4ee602d"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Encours par type de crédit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" mode="Opaque" x="285" y="19" width="428" height="20" backcolor="#F0F0F0" uuid="bdc5fee8-d8dc-4245-9273-733f2adc71de"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Crédits en retard par tranche d'âge]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" mode="Opaque" x="285" y="38" width="72" height="40" backcolor="#F0F0F0" uuid="1aa395c0-3392-4951-b67b-a86c8a9a4cc4"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Retards de 1-30jours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" mode="Opaque" x="356" y="38" width="72" height="40" backcolor="#F0F0F0" uuid="6ae0d4d3-1f08-4924-a99d-de1448eac38a"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Retards de 1-3Mois]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" mode="Opaque" x="427" y="38" width="72" height="40" backcolor="#F0F0F0" uuid="20af03b5-707d-499f-aaa2-6242722b93ec"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Retards de 3-6Mois]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" mode="Opaque" x="498" y="38" width="72" height="40" backcolor="#F0F0F0" uuid="dd1e22df-ebdf-484b-900f-8f121cf0a602"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Retards de 6-12Mois]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" mode="Opaque" x="569" y="38" width="72" height="40" backcolor="#F0F0F0" uuid="727b15e4-49e6-433b-addf-2260b8c84f1a"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Retards de 12-24Mois]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" mode="Opaque" x="713" y="19" width="93" height="59" backcolor="#F0F0F0" uuid="dfb9519d-28a9-4e29-a2ac-23766b40cadf"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Total retards par type de crédit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" mode="Opaque" x="805" y="19" width="125" height="20" backcolor="#F0F0F0" uuid="44531569-7c8e-495e-a121-7c63a4146611"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Nbre de bénéf. concernés]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" mode="Opaque" x="805" y="38" width="63" height="40" backcolor="#F0F0F0" uuid="6ff60634-7015-4445-bbd5-fd45f1afd799"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Total Bénéf. concernés]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" mode="Opaque" x="867" y="38" width="63" height="40" backcolor="#F0F0F0" uuid="8bb22b40-33b8-45de-b8ca-12351ca9184b"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Dont dirigeants et élus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" mode="Opaque" x="641" y="38" width="72" height="40" backcolor="#F0F0F0" uuid="46d85b7e-1564-4e29-98e7-1bee95b6d455"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Retards >2 an]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="0" y="0" width="188" height="20" isRemoveLineWhenBlank="true" uuid="d2fd2220-abdd-4a0c-92b1-de3a964d1d56">
+					<printWhenExpression><![CDATA[!($F{typeCredit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{typeCredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="188" y="0" width="97" height="20" isRemoveLineWhenBlank="true" uuid="fd8aac15-ef18-45f1-bb7e-e25c9749364a">
+					<printWhenExpression><![CDATA[!($F{typeCredit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalCreditEnCours}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="285" y="0" width="71" height="20" isRemoveLineWhenBlank="true" uuid="8e8b19c9-07b1-479c-9615-2dbff0f05b58">
+					<printWhenExpression><![CDATA[!($F{typeCredit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalRetard_1_30}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="356" y="0" width="71" height="20" isRemoveLineWhenBlank="true" uuid="d5dd04c9-a7fd-4a33-86d0-d2aa04f5bcb8">
+					<printWhenExpression><![CDATA[!($F{typeCredit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalRetard_1_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="427" y="0" width="71" height="20" isRemoveLineWhenBlank="true" uuid="c683c019-b67d-4637-a339-b23811b2e3b7">
+					<printWhenExpression><![CDATA[!($F{typeCredit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalRetard_3_6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="498" y="0" width="71" height="20" isRemoveLineWhenBlank="true" uuid="926e36f3-f458-4281-8f07-039145c574d4">
+					<printWhenExpression><![CDATA[!($F{typeCredit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalRetard_6_12}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="569" y="0" width="72" height="20" isRemoveLineWhenBlank="true" uuid="b7c131b2-1fa4-4471-b7c2-f97c348f9b13">
+					<printWhenExpression><![CDATA[!($F{typeCredit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalRetard_12_24}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="713" y="0" width="54" height="20" isRemoveLineWhenBlank="true" uuid="23f61319-448d-4176-b65a-f653bdaabd34">
+					<printWhenExpression><![CDATA[!($F{typeCredit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalRetard}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement style="table_TD" x="805" y="0" width="62" height="20" uuid="0c6a7863-2e1f-45c1-a862-5a79c0f814c8">
+					<printWhenExpression><![CDATA[!($F{typeCredit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalBeneficeConcerne}==null ? "" : $F{totalBeneficeConcerne}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement style="table_TD" x="867" y="0" width="63" height="20" isRemoveLineWhenBlank="true" uuid="eb10b88a-a987-47dd-b406-5d5fe7d7aa4d">
+					<printWhenExpression><![CDATA[!($F{typeCredit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dontDirigeantsElus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="767" y="0" width="38" height="20" isRemoveLineWhenBlank="true" uuid="6f0e9af2-08dd-4c57-86c7-71555b53341c">
+					<printWhenExpression><![CDATA[!($F{typeCredit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tauxRetard}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="641" y="0" width="72" height="20" isRemoveLineWhenBlank="true" uuid="3ca76628-7d38-4be1-b7d8-7d3be900a7ce">
+					<printWhenExpression><![CDATA[!($F{typeCredit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalRetard_24_plus}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="70" splitType="Stretch">
+			<subreport>
+				<reportElement x="59" y="20" width="842" height="50" uuid="a92f0f82-9090-43a6-a3ab-55bea8c324f3"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR_PIED} + "pied_de_page_en_paysage.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="1" y="0" width="312" height="15" uuid="41448274-e8b3-43f5-9c9f-c89a456e432b"/>
+				<textFieldExpression><![CDATA["Imprimer le "+$P{DATE_EDITION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="0" width="100" height="15" uuid="c296ea3b-4f72-4aee-b287-addf8b455c94"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Microfina++"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="848" y="0" width="80" height="15" uuid="0c36395e-4505-4818-8953-7bf40a065a58"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="928" y="0" width="40" height="15" uuid="a5ed6744-9520-4567-815e-7ba4dd0889d9"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="134" splitType="Stretch">
+			<subreport>
+				<reportElement x="1" y="24" width="967" height="110" uuid="a4cf4689-3a3d-4eeb-81ff-e93ff436bccd"/>
+				<dataSourceExpression><![CDATA[$P{SUBREPORT_DATA_SOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "balance_agee_subTab.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="713" y="0" width="54" height="20" backcolor="#F0F0F0" uuid="459b780e-1117-4e40-8792-778866084cf1"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalRetard}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="641" y="0" width="72" height="20" backcolor="#F0F0F0" uuid="3756b0cf-4bd5-420f-b59b-7e2c8211d6b5"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalRetard_24_plus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="356" y="0" width="71" height="20" backcolor="#F0F0F0" uuid="94004874-c033-4d04-955c-d4b1b12ced7c"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalRetard_1_3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" mode="Opaque" x="767" y="0" width="38" height="20" backcolor="#F0F0F0" uuid="99cdc48d-830e-46b4-981c-0987a9bdb9e4"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="569" y="0" width="72" height="20" backcolor="#F0F0F0" uuid="7878d8a1-46ca-4731-b3f9-94baf1d07ec3"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalRetard_12_24}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="188" y="0" width="97" height="20" backcolor="#F0F0F0" uuid="1b06dedc-94bf-48f6-ade8-d8f31957050f"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalCreditEnCours}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" mode="Opaque" x="805" y="0" width="62" height="20" backcolor="#F0F0F0" uuid="458fbc32-85df-42de-9fcb-a87f4fc5c14f"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="285" y="0" width="71" height="20" backcolor="#F0F0F0" uuid="dc59263a-ec98-4686-a9d8-426db65761f6"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalRetard_1_30}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="498" y="0" width="71" height="20" backcolor="#F0F0F0" uuid="e59b1930-d83c-493c-9eff-d09a154670d3"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalRetard_6_12}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="427" y="0" width="71" height="20" backcolor="#F0F0F0" uuid="db98e16b-ec8f-4350-8133-206f69acc23c"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalRetard_3_6}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_CH" mode="Opaque" x="867" y="0" width="63" height="20" backcolor="#F0F0F0" uuid="45fd4965-e127-4e95-a76b-bc8da397fed0"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="3"/>
+				</textElement>
+			</textField>
+			<staticText>
+				<reportElement style="table_CH" mode="Opaque" x="0" y="0" width="188" height="20" backcolor="#F0F0F0" uuid="b5661ca2-8873-4e7a-a385-071c9a3e953a"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

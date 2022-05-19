@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="refus_stage" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0465ba65-b71a-43f2-98a9-0cfd414044db">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paraAdresseStagiaire" class="java.lang.String"/>
+	<parameter name="nomStagiaire" class="java.lang.String"/>
+	<parameter name="dateaccuseVise" class="java.lang.String"/>
+	<field name="noms" class="java.lang.String"/>
+	<field name="adesse" class="java.lang.String"/>
+	<field name="ist" class="java.io.InputStream"/>
+	<group name="group_p" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{noms}]]></groupExpression>
+		<groupHeader>
+			<band height="20"/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="409" splitType="Stretch">
+			<staticText>
+				<reportElement x="347" y="349" width="170" height="20" uuid="138ef039-3e79-4475-b561-f43fd4d3ea80"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Signature]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="178" width="555" height="149" uuid="4b88a4d9-9559-4246-baf0-f7465961c840"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Nous vous remercions de l'intérêt que vous portez à notre société.
+
+Toutefois, malgré tout l'intérêt de votre candidature, nous sommes au regret de ne pouvoir donner une suite favorable à votre demande de stage au sein de notre service .
+
+Nous vous prions d'agréer, Madame, Monsieur, nos respectueuses salutations.
+]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="10" width="127" height="60" uuid="33cda604-a433-455d-ade6-7d776d843181"/>
+				<imageExpression><![CDATA[$F{ist}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="139" y="10" width="228" height="20" uuid="e2690f2e-5f7e-4b31-8c1b-6705f0eca7a0"/>
+				<textFieldExpression><![CDATA[$P{LIBELLE_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="30" width="228" height="20" uuid="93436cd1-62dc-4c3e-8f2a-0dc57a8aea87"/>
+				<textFieldExpression><![CDATA[$P{BP_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="50" width="228" height="20" uuid="7c391d79-50e5-44a9-b354-4dade828c245"/>
+				<textFieldExpression><![CDATA[$P{TEL_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="307" y="90" width="238" height="20" uuid="12806c53-9429-44b0-89d1-12f0750d4832"/>
+				<textFieldExpression><![CDATA[$F{noms}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="307" y="110" width="238" height="20" uuid="9a060b6e-4f61-4ade-b71f-7de88aea55a8"/>
+				<textFieldExpression><![CDATA[$F{adesse}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="373" y="70" width="100" height="20" uuid="91ef8b7b-1549-4f65-bbd6-f4ccbb38f6ba"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="20" y="143" width="453" height="20" uuid="1a9c11f9-9fbf-4455-ac1e-485fb34235a5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{noms}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="143" width="17" height="20" uuid="6c79acdb-aee1-49d8-b095-abc124b98d46"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[M]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

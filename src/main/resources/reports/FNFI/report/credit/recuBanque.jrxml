@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="recuRemboursement" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="734eacd9-1013-48d5-bb42-e19374b54c82">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="27"/>
+	<parameter name="numpiece" class="java.lang.String"/>
+	<parameter name="produitCredit" class="java.lang.String"/>
+	<parameter name="libelleremb" class="java.lang.String"/>
+	<parameter name="origine" class="java.lang.String"/>
+	<parameter name="dateoperation" class="java.lang.String"/>
+	<parameter name="dataSource" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="typecompte" class="java.lang.String"/>
+	<parameter name="montant" class="java.lang.String"/>
+	<parameter name="montantlettre" class="java.lang.String"/>
+	<parameter name="mandataire" class="java.lang.String"/>
+	<parameter name="administrateur" class="java.lang.String"/>
+	<parameter name="utilisateur" class="java.lang.String"/>
+	<parameter name="membre" class="java.lang.String"/>
+	<parameter name="numCompte" class="java.lang.String"/>
+	<parameter name="source1" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="source2" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DEVISE" class="java.lang.String"/>
+	<parameter name="JOURNEE" class="java.lang.String"/>
+	<parameter name="TEL_ORG" class="java.lang.String"/>
+	<parameter name="IMPRIME_LE" class="java.lang.String"/>
+	<parameter name="LIBELLE_ORGANISME" class="java.lang.String"/>
+	<parameter name="IMPRIME_PAR" class="java.lang.String"/>
+	<parameter name="BP_ORG" class="java.lang.String"/>
+	<parameter name="dataSource2" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="nomclient" class="java.lang.String"/>
+	<parameter name="TYPE_BUDGETAIRE" class="java.lang.String"/>
+	<parameter name="LIGNE_PLAN_BUDGETAIRE" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="402">
+			<textField>
+				<reportElement x="6" y="86" width="240" height="15" uuid="c48efb5f-14cd-496e-b193-445ab9bcc3a5"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Libellé : "+$P{libelleremb}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="6" y="69" width="297" height="15" uuid="8dc8ac1a-703d-41e2-a5ec-cde1c52f0038"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["N°Pièce : "+$P{numpiece}+"  "+($P{produitCredit}!=null?$P{produitCredit}:"")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="143" width="554" height="16" uuid="8c05af59-b49d-4ae6-b485-0e7329394a3f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["  Montant en  lettre:  "+$P{montantlettre}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="143" width="555" height="1" uuid="22396a2a-53eb-4471-9827-1d0f6b05d308"/>
+			</line>
+			<line>
+				<reportElement x="0" y="69" width="1" height="313" uuid="10a9b665-ee29-4cc5-bc80-2136d995bd7f"/>
+			</line>
+			<line>
+				<reportElement x="0" y="329" width="555" height="1" uuid="3cb0bd74-d707-4c07-88e6-ea25d632b800"/>
+			</line>
+			<line>
+				<reportElement x="0" y="68" width="555" height="1" uuid="edb45911-33bb-4996-8bd6-4b376876b6c8"/>
+			</line>
+			<line>
+				<reportElement x="0" y="382" width="555" height="1" uuid="90e0573b-db69-4964-a0ba-0094fb955c7f"/>
+			</line>
+			<rectangle>
+				<reportElement x="303" y="352" width="238" height="25" uuid="801cb75b-bd26-42eb-b789-ea12e08a797b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="352" width="113" height="25" uuid="ac991dcb-1c25-446a-9b0a-9340ea23c0c4"/>
+			</rectangle>
+			<textField>
+				<reportElement x="20" y="330" width="159" height="15" uuid="4f64940f-fc3c-4e08-8857-e6da7b2e9ada"/>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA["Saisie par:"+$P{IMPRIME_PAR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="401" y="69" width="152" height="15" uuid="4e50651d-c114-49db-9390-cca4e36f70df"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Date : "+$P{dateoperation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="401" y="88" width="152" height="15" uuid="f13381e2-13ce-4655-8415-b976cbfb6f36"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Montant : "+$P{montant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="301" y="69" width="100" height="15" uuid="48deea9b-edc0-4f92-b324-99ff1fe88ab5"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Origine]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="301" y="88" width="100" height="15" uuid="7a18c58f-0111-4388-a909-c807e355284b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{origine}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="49" y="105" width="198" height="15" uuid="dd65fc67-a0cb-4f06-af28-19beb2ab66e8"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numCompte}+"  "+$P{membre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="30" width="88" height="11" uuid="605b69ea-f73b-4a9c-820a-029eeb1f95fe"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$P{BP_ORG}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="434" y="32" width="119" height="16" uuid="b3d3d869-77a5-473e-aaf5-f8fcd3904f73"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$P{JOURNEE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="18" width="88" height="12" uuid="9455097d-8924-4237-89ae-79cd94dbf5d4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$P{TEL_ORG}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="358" height="20" uuid="aa20436c-a9b2-4b21-83e2-37ec794f637b"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_ORGANISME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="379" y="0" width="55" height="16" uuid="9ee02479-7257-4393-b6e2-f9e8d645cbe1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Imprimé le]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="379" y="32" width="55" height="16" uuid="b8c47a25-61ae-4746-acb5-b08bd3c78e56"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Journée]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="379" y="16" width="55" height="16" uuid="e3648b2d-d92a-4e8f-a7f2-e712d80baf9c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Imprimé par]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="434" y="16" width="119" height="16" uuid="f891757d-cfd4-4339-9f9d-57c3cd29efdf"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$P{IMPRIME_PAR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="434" y="0" width="119" height="16" uuid="0b4a1641-3483-4389-896c-843cd4d17890"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$P{IMPRIME_LE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="19" width="19" height="11" uuid="93d02cf6-4d3f-4c2f-b32e-a9876b93e64b"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tél]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="29" width="18" height="12" uuid="33e6806b-4ada-41ad-a555-4606ea606493"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[BP]]></text>
+			</staticText>
+			<line>
+				<reportElement x="554" y="68" width="1" height="314" uuid="50abd1fc-0d61-40db-8ae4-120e560819a2"/>
+			</line>
+			<subreport>
+				<reportElement x="6" y="160" width="547" height="124" uuid="7c994685-47d5-4a0f-984d-29e6bb11fea6"/>
+				<dataSourceExpression><![CDATA[$P{dataSource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "recuRembourmeInclude.jasper"]]></subreportExpression>
+			</subreport>
+			<textField isBlankWhenNull="true">
+				<reportElement x="337" y="329" width="162" height="15" uuid="d994ecca-c324-4ddf-be75-af88e1e235f9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["Nom /signature du bénéficiaire"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="105" width="252" height="15" uuid="e78b47d1-169a-4f4d-a6e2-1ee60338306b">
+					<printWhenExpression><![CDATA[($P{TYPE_BUDGETAIRE} != null && !$P{TYPE_BUDGETAIRE}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Type budget : "+$P{TYPE_BUDGETAIRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="302" y="123" width="252" height="15" uuid="6cd6a5bf-255b-4d8b-9136-cec2e41b09f4">
+					<printWhenExpression><![CDATA[($P{LIGNE_PLAN_BUDGETAIRE} != null && !$P{LIGNE_PLAN_BUDGETAIRE}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Ligne budgetaire : "+$P{LIGNE_PLAN_BUDGETAIRE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<columnFooter>
+		<band height="396">
+			<line>
+				<reportElement x="1" y="384" width="555" height="1" uuid="25b4408b-67e8-439d-a94e-b87d4c086d9d"/>
+			</line>
+			<staticText>
+				<reportElement x="380" y="32" width="55" height="16" uuid="213d26fe-085e-4b77-8572-1e89809ab198"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Journée]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="2" y="0" width="358" height="20" uuid="06b7603c-104c-41ee-8d4e-82b766277e69"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_ORGANISME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="88" width="100" height="15" uuid="ac39faec-085f-4de1-bd72-27021dfb08cb"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{origine}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="29" width="18" height="12" uuid="7a0267f0-d4e5-41e7-95f9-32fabf4c671a"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[BP]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="21" y="332" width="159" height="15" uuid="be42cdc8-2247-4162-8bb2-68c9e03b798b"/>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA["Saisie par:"+$P{IMPRIME_PAR}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="304" y="354" width="237" height="25" uuid="65b01541-3d22-4b36-bf00-2c49520b0f35"/>
+			</rectangle>
+			<line>
+				<reportElement x="555" y="68" width="1" height="316" uuid="ff5f354a-28f3-4ac8-bb22-d82e6cd6e913"/>
+			</line>
+			<textField>
+				<reportElement x="1" y="143" width="554" height="16" uuid="74c41d1e-ef42-47c6-8e1c-2767bce4b81d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["  Montant en  lettre:  "+$P{montantlettre}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="337" y="331" width="162" height="15" uuid="75e8f5b9-4b76-4a27-b4b2-9c3e528c61a9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["Nom /signature du bénéficiaire"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="32" width="119" height="16" uuid="12e2f61b-b57f-46b9-be16-77e56093a571"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$P{JOURNEE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="401" y="88" width="152" height="15" uuid="16871881-dd7d-4b73-ba79-575878bbd477"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Montant : "+$P{montant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="301" y="69" width="100" height="15" uuid="a10d5f97-44f1-4eb0-8286-87e33cd724fe"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Origine]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="302" y="123" width="252" height="15" uuid="d38fa31f-0b56-48da-bb99-ba370f658c40">
+					<printWhenExpression><![CDATA[($P{LIGNE_PLAN_BUDGETAIRE} != null && !$P{LIGNE_PLAN_BUDGETAIRE}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Ligne budgetaire : "+$P{LIGNE_PLAN_BUDGETAIRE}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="21" y="354" width="113" height="25" uuid="2486cfb2-683e-44a6-898f-c3c6f06fb5d6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="19" width="19" height="11" uuid="4f4c5937-73a9-4476-b204-db28b85c26c7"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tél]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="401" y="69" width="152" height="15" uuid="2f47e004-5a1d-49cd-a9b4-09ac92c2f617"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Date : "+$P{dateoperation}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="7" y="160" width="546" height="124" uuid="ce6a98a2-4617-4d3f-82b9-bb39059ea2d2"/>
+				<dataSourceExpression><![CDATA[$P{dataSource2}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "recuRembourmeInclude.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="21" y="30" width="88" height="11" uuid="18553d61-70d1-4c78-a4d5-8fa6292cebf4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$P{BP_ORG}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="16" width="119" height="16" uuid="08df3925-9ced-40a3-b9f6-922d6e09bffb"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$P{IMPRIME_PAR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="380" y="0" width="55" height="16" uuid="c8d5c071-4a76-449b-bf62-7c2edd7e3379"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Imprimé le]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="68" width="555" height="1" uuid="c25e1e97-b43a-412a-8b14-f83b7d9c4d3f"/>
+			</line>
+			<textField>
+				<reportElement x="7" y="69" width="297" height="15" uuid="1be4b760-b4ca-4037-b849-06605b342ede"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["N°Pièce : "+$P{numpiece}+"  "+($P{produitCredit}!=null?$P{produitCredit}:"")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="7" y="86" width="240" height="15" uuid="a1156c13-46cd-43d8-87c3-b66f3bf20431"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Libellé : "+$P{libelleremb}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="143" width="555" height="1" uuid="fed37935-cb1b-4288-a196-d9b7b2a002b2"/>
+			</line>
+			<line>
+				<reportElement x="1" y="331" width="555" height="1" uuid="bd0a4f01-35d2-4149-a5d2-78084288e68b"/>
+			</line>
+			<textField>
+				<reportElement x="435" y="0" width="119" height="16" uuid="61fc5c13-830e-49c6-87c9-7f6107ed1aee"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$P{IMPRIME_LE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="50" y="105" width="198" height="15" uuid="2378227e-7312-4a75-ad2f-f0f16adf7fea"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numCompte}+"  "+$P{membre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="105" width="252" height="15" uuid="997c7866-1e9d-4703-ad1d-b52f2676c96f">
+					<printWhenExpression><![CDATA[($P{TYPE_BUDGETAIRE} != null && !$P{TYPE_BUDGETAIRE}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Type budget : "+$P{TYPE_BUDGETAIRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="21" y="18" width="88" height="12" uuid="d5551a39-13d7-4017-bd0d-2f71ff19397c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$P{TEL_ORG}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="69" width="1" height="315" uuid="967e9a97-4db0-4454-ae33-89bb886e08e6"/>
+			</line>
+			<staticText>
+				<reportElement x="380" y="16" width="55" height="16" uuid="a60484f8-6918-4362-892d-7c7bf58404c1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Imprimé par]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>

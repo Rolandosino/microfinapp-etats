@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etatRapprochementBancaire" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="0" uuid="4277ed6b-aca5-4b8a-a1fb-3d8ef3955518">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#EFEFEF" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="para_totalBanque" class="java.math.BigDecimal"/>
+	<parameter name="para_raprochesNous" class="java.math.BigDecimal"/>
+	<parameter name="TOTAL_DEBIT_CHEZ_NOUS" class="java.lang.String"/>
+	<parameter name="TOTAL_CREDIT_CHEZ_NOUS" class="java.lang.String"/>
+	<parameter name="TOTAL_DEBIT_CHEZ_LA_BANQUE" class="java.lang.String"/>
+	<parameter name="TOTAL_CREDIT_CHEZ_LA_BANQUE" class="java.lang.String"/>
+	<parameter name="TITRE_ETAT" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String"/>
+	<parameter name="EDITEUR" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<field name="libelle" class="java.lang.String"/>
+	<field name="debitChezNous" class="java.lang.String"/>
+	<field name="creditChezNous" class="java.lang.String"/>
+	<field name="debitChezLaBanque" class="java.lang.String"/>
+	<field name="creditChezLaBanque" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="113" splitType="Stretch">
+			<textField>
+				<reportElement x="21" y="93" width="555" height="20" uuid="6d850872-b99c-4049-9f6e-60abb5c92667"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITRE_ETAT}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="21" y="0" width="555" height="93" uuid="e79ee89e-111c-4a23-884e-99d72d7d7a03"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="21" y="0" width="215" height="35" uuid="ce6104b3-538d-4e70-b91a-feb37433a570"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Libellés]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="236" y="20" width="85" height="15" uuid="e83ae553-1ff0-4e89-a40a-ecbbd079d6bd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Débit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="321" y="20" width="85" height="15" uuid="a8d6f16c-ab70-4e04-a02e-7163abfb0e08"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Crédit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="406" y="20" width="85" height="15" uuid="9df1ce84-f778-4a05-be24-2267cd24a54b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Débit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="491" y="20" width="85" height="15" uuid="83194c5a-af78-4e44-9085-0704cd1f8c96"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Crédit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="236" y="0" width="170" height="20" uuid="66e835ef-2186-4b8e-86e0-7f018180de6d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Banque chez nous]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="406" y="0" width="170" height="20" uuid="88272dea-21dd-4994-a8f3-cf093e1529a3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Notre compte à la banque]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="21" y="0" width="215" height="20" uuid="25ccb0c9-ffbe-4389-b992-7af1341b7662"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="236" y="0" width="85" height="20" uuid="5eb820eb-34d6-48e3-8d6f-3f2df1e117a0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{debitChezNous}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="321" y="0" width="85" height="20" uuid="32869dcd-d3e0-414c-80b1-c459eace663c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{creditChezNous}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="406" y="0" width="85" height="20" uuid="0020cc2c-a18c-4700-8399-76ee5344a38e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{creditChezLaBanque}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="491" y="0" width="85" height="20" uuid="91c3f4cf-2d8e-43c2-b90e-cb8a8098e0a2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{debitChezLaBanque}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="65" splitType="Stretch">
+			<textField>
+				<reportElement x="21" y="0" width="230" height="15" uuid="7078645f-dcdf-44e5-96a1-6c07caa648a2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Imprimer le "+$P{DATE_EDITION}+" par "+$P{EDITEUR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="0" width="120" height="15" uuid="f88a8f98-4976-4fa1-b3c0-6b31f658c22f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="68" height="15" uuid="e2a1f2a2-49be-4248-8802-3c047809de5e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="548" y="0" width="28" height="15" uuid="3086c12e-b4ac-46fa-9b17-6b6c9fe58b66"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="0" y="15" width="596" height="50" uuid="8a83db1f-e002-492e-983e-1e798941a02f"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pageportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_TD" x="21" y="0" width="215" height="20" uuid="5ef71d15-4a97-4827-9e3b-39043482d59f"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Solde rapproché]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table_TD" x="236" y="0" width="85" height="20" uuid="2290a9a3-3dfa-4b24-9ab8-be6e2e40f27a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TOTAL_DEBIT_CHEZ_NOUS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="321" y="0" width="85" height="20" uuid="18ff0af7-cb7b-4fe1-bd84-43975dca3fbb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TOTAL_CREDIT_CHEZ_NOUS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="406" y="0" width="85" height="20" uuid="9556492a-2ccb-4184-a1cc-b2b70a5b1711"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TOTAL_DEBIT_CHEZ_LA_BANQUE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="491" y="0" width="85" height="20" uuid="fdf44312-22cf-4e0c-91fc-1f460fbb2f5c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TOTAL_CREDIT_CHEZ_LA_BANQUE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table_TD" x="21" y="20" width="215" height="20" uuid="b105ea39-4f6f-4c6b-a360-a2c8042385d1"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Balance]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table_TD" x="236" y="20" width="85" height="20" uuid="65291669-45d5-4a8d-b489-76cc8f0b6a9c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{para_raprochesNous}.compareTo(java.math.BigDecimal.ZERO) >= 0 ? java.text.NumberFormat.getInstance().format($P{para_raprochesNous}) : "")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="321" y="20" width="85" height="20" uuid="255b3e2a-842c-422f-834b-d2ca504567ed"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{para_raprochesNous}.compareTo(java.math.BigDecimal.ZERO) < 0 ? java.text.NumberFormat.getInstance().format($P{para_raprochesNous}.negate()) : "")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="406" y="20" width="85" height="20" uuid="48f2fc0f-f37c-4484-a7f1-14133bd8653e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{para_totalBanque}.compareTo(java.math.BigDecimal.ZERO) < 0 ? java.text.NumberFormat.getInstance().format($P{para_totalBanque}.negate()) : "")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="491" y="20" width="85" height="20" uuid="ee33d4ae-f58f-4cae-b44c-9ad4a0d0e824"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($P{para_totalBanque}.compareTo(java.math.BigDecimal.ZERO) >= 0 ? java.text.NumberFormat.getInstance().format($P{para_totalBanque}) : "")]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

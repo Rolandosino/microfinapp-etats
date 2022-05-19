@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ENTETE_DE_PAGE_EN_PAYSAGE" language="groovy" pageWidth="802" pageHeight="90" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="598b204b-d28c-44bc-8769-ef3fcc5dfcb6">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <parameter name="TITRE_ETAT" class="java.lang.String">
+        <defaultValueExpression><![CDATA["BALANCE AGEE ANALYTIQUE DU PORTEFEUILLE DE CREDITS"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="LIBELLE_AGENCE" class="java.lang.String"/>
+    <parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+    <parameter name="DATE_EDITION" class="java.lang.String">
+        <defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+    </parameter>
+    <parameter name="DATE_PARAM" class="java.lang.String"/>
+    <queryString language="SQL">
+		<![CDATA[]]>
+    </queryString>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="89" splitType="Stretch">
+            <textField>
+                <reportElement x="2" y="21" width="792" height="20" uuid="8c515927-d453-409d-8afa-db2f71753c13"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{ADRESSE_AGENCE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="633" y="2" width="161" height="20" uuid="d74b84b6-cd6d-4a78-82dc-2a84eef450d1"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$P{DATE_EDITION}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <pageHeader>
+        <band splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band splitType="Stretch"/>
+    </columnHeader>
+    <detail>
+        <band splitType="Stretch">
+            <textField>
+                <reportElement x="2" y="-49" width="792" height="49" uuid="acbc5c09-9622-4498-a678-be1698a3b9da"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="15" isBold="false" isUnderline="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{TITRE_ETAT}+ " AU "+ $P{DATE_PARAM}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="2" y="-87" width="640" height="20" uuid="9e97392a-aaad-4421-9d01-3cc9c926349b"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{LIBELLE_AGENCE}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band splitType="Stretch"/>
+    </summary>
+</jasperReport>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="declarationAnnuelle" language="groovy" pageWidth="802" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="79405569-550c-4523-88ab-927f98573982">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="4"/>
+	<property name="ireport.y" value="32"/>
+	<parameter name="PAYS" class="java.lang.String">
+		<defaultValueExpression><![CDATA["République Togolaise"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="MINISTERE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["MINISTERE DE L'ECONOMIE ET DES FINANCES"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SERVICE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Direction Générale des Impôts"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TITRE_ETAT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["DECLARATION ANNUELLE DES REMUNERATIONS VERSEES A DES TIERS"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ANNEE" class="java.lang.String"/>
+	<parameter name="DEBUT_PERIODE" class="java.lang.String"/>
+	<parameter name="FIN_PERIODE" class="java.lang.String"/>
+	<parameter name="INSTITUTION" class="java.lang.String"/>
+	<parameter name="PROFESSION" class="java.lang.String"/>
+	<parameter name="ADRESSE" class="java.lang.String"/>
+	<parameter name="MATRICULE" class="java.lang.String"/>
+	<parameter name="NOMBRE_HOMME" class="java.lang.String"/>
+	<parameter name="NOMBRE_FEMME" class="java.lang.String"/>
+	<parameter name="NOMBRE_TOTAL" class="java.lang.String"/>
+	<parameter name="TOTAL_VERSEMENT" class="java.lang.String"/>
+	<parameter name="TOTAL_IRPP" class="java.lang.String"/>
+	<parameter name="TOTAL_TCS" class="java.lang.String"/>
+	<parameter name="TOTAL_TS" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TABLEAU_DATA_SOURCE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="192" splitType="Immediate">
+			<line>
+				<reportElement x="95" y="30" width="100" height="1" uuid="fe4af56d-7d96-45e5-8f6d-0b1bf57c891a"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="10" y="83" width="265" height="20" uuid="882b72b5-1827-48be-a67d-e95f0d408ef1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CADRE RESERVE AU SERVICE"]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="10" y="83" width="265" height="70" uuid="8c4f88de-4568-4898-ab59-d3d9daf60edf"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="313" y="83" width="499" height="70" uuid="2954bcb5-103c-47f8-bae8-8cb6976dd62f"/>
+				<textElement>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[TRAITEMENTS SALAIRES RETRIBUTIONS DIVERSES ET ACCESSOIRES,PENSIONS ET RENTES VIAGERES, COMMISSIONS, COURTAGE, VACATION, HONORAIRES, DROITS D'AUTEUR OU D'INVENTEUR ETC ... A L'EXCLUSION DES REVENUS DE VALEURS ET CAPITAUX
+MOBILIERS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="313" y="53" width="372" height="20" uuid="5336d9e3-0a79-4a43-b2cc-cffaaf6c9965"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PERIODE DU "+$P{DEBUT_PERIODE}+" AU "+$P{FIN_PERIODE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="110" width="100" height="20" uuid="f04e606a-431c-4df0-959f-7de142f9b746"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[CODE LOCALITE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="313" y="33" width="372" height="20" uuid="c4068f28-4ea4-457e-84be-1f7d7d55525b"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PENDANT L'ANNEE "+$P{ANNEE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="11" width="280" height="20" uuid="3a028fa9-2454-4e2f-aab2-68a32d405c0a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{PAYS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="130" width="100" height="20" uuid="b6cd4077-b9bb-459c-981f-7c645d4d89cc"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[CODE SERVICE]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="53" width="280" height="20" uuid="3e4e50b5-0d4f-4996-93c8-f565c3a91900"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SERVICE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="313" y="10" width="372" height="23" uuid="8acbfc78-7580-4dd1-839a-b1b44e4717a6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITRE_ETAT}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="33" width="280" height="20" uuid="aef8a6f2-c626-4d25-b83c-ec689bef44e5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MINISTERE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="275" y="172" width="203" height="20" uuid="6fb179d6-e41d-4c99-9cd0-06dad812e3dd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[COMPTE CONTRIBUABLE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="83" width="265" height="20" uuid="b1d730c0-2be5-45a3-a6f9-fd81d4770029"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CADRE RESERVE AU SERVICE"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="240" splitType="Immediate">
+			<textField>
+				<reportElement x="0" y="93" width="802" height="20" uuid="44ffd1c7-057f-42bd-90ae-4a06c16af162"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["N° Matricule Employeur au Centre National de Sécurité Sociale : "+$P{MATRICULE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="1" width="802" height="20" uuid="c43a9e7b-7652-443c-985f-f402112c6d0e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[I - IDENTITE DE LA PARTIE VERSANTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="158" width="58" height="20" uuid="111b02ae-b0b9-441c-a965-f20a7ec33d7c"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[HOMMES]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="338" y="158" width="66" height="20" uuid="d718a00f-3c2c-440e-870d-2bcc7e4d7051"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NOMBRE_HOMME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="212" width="802" height="28" uuid="e27a09f0-6ebb-4689-8d89-dde8b994b2c1"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[II - TABLEAU RECAPITULATIF DES VERSEMENTS EFFECTUES AU TITRE DES DIVERS IMPOTS ET TAXES RETENUS
+       A LA SOURCE OU A LA CHARGE EXCLUSIVE DE L'ENTREPRISE A RAISON DES REMUNERATIONS VERSEES]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="338" y="177" width="66" height="20" uuid="df17b364-5a02-49ac-a0d9-b4499bbd90e5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NOMBRE_FEMME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="113" width="802" height="45" uuid="5c20885d-2121-4e1a-99ee-617526196fa8"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["PRECISEZ CI-CONTRE LE NOMBRE DE SALARIES PERMANENTS (DIRIGEANTS ET CADRES COMPRIS TAXABLE OU NON AUX DIVERS IMPOTS ET TAXES PERSONNELS)INSCRITS DANS L'ETABLISSEMENT OU LA SUCCURSALE AU COURS DE L'ANNEE : "+$P{ANNEE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="565" y="177" width="66" height="20" uuid="258db502-9ffc-4c70-af29-24503ec55064"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NOMBRE_TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="73" width="802" height="20" uuid="36a7c78a-af01-42ab-bc7d-2f71140334f3"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Adresse : "+$P{ADRESSE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="177" width="58" height="20" uuid="3e35ab05-6b92-47fe-a08a-26312085f39a"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[FEMMES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="515" y="177" width="50" height="20" uuid="ed9f6c80-b44f-482c-a775-ee790452016f"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="53" width="802" height="20" uuid="32c41a7c-3d6e-499e-80e9-5bdc731bd81e"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Profession : "+$P{PROFESSION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="33" width="802" height="20" uuid="d768c789-1741-422c-bd5e-6fd2deb39676"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Mr, Mme, Mlle ou Personne Morale : "+$P{INSTITUTION}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="100">
+			<subreport>
+				<reportElement x="10" y="0" width="802" height="100" uuid="e11efa30-02f0-464c-8140-2dc823708475"/>
+				<subreportParameter name="TOTAL_TS">
+					<subreportParameterExpression><![CDATA[$P{TOTAL_TS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{TABLEAU_DATA_SOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "sousDeclarationAnnuelle.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

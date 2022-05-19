@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fichierPersonnel" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="0" uuid="9a28c90f-3c25-4db5-8921-f9f359a37219">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<field name="matricule" class="java.lang.String"/>
+	<field name="nomprenoms" class="java.lang.String"/>
+	<field name="sexe" class="java.lang.String"/>
+	<field name="nationalite" class="java.lang.String"/>
+	<field name="categorie" class="java.lang.String"/>
+	<field name="classe" class="java.lang.String"/>
+	<field name="echelon" class="java.lang.String"/>
+	<field name="anciennete" class="java.lang.String"/>
+	<field name="nomjeunneville" class="java.lang.String"/>
+	<field name="numcnss" class="java.lang.String"/>
+	<field name="civilite" class="java.lang.String"/>
+	<field name="groupsanguin" class="java.lang.String"/>
+	<field name="datenaiss" class="java.lang.String"/>
+	<field name="situationmat" class="java.lang.String"/>
+	<field name="lieunaiss" class="java.lang.String"/>
+	<field name="nbrepers" class="java.lang.String"/>
+	<field name="datedebutcarrriere" class="java.lang.String"/>
+	<field name="dateEmbauche" class="java.lang.String"/>
+	<field name="fonction" class="java.lang.String"/>
+	<field name="structure" class="java.lang.String"/>
+	<field name="regime" class="java.lang.String"/>
+	<field name="salairebase" class="java.lang.String"/>
+	<field name="sursalaire" class="java.lang.String"/>
+	<field name="telephones" class="java.lang.String"/>
+	<field name="adresse" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="dateDebutContrat" class="java.lang.String"/>
+	<field name="posteOccupee" class="java.lang.String"/>
+	<field name="interne" class="java.lang.String"/>
+	<field name="dateFinContrat" class="java.lang.String"/>
+	<field name="typeEmploye" class="java.lang.String"/>
+	<field name="typeContrat" class="java.lang.String"/>
+	<field name="diplomes" class="java.lang.String"/>
+	<field name="personnePrevenue" class="java.lang.String"/>
+	<field name="dateSignature" class="java.lang.String"/>
+	<group name="group_matricule" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{matricule}]]></groupExpression>
+		<groupHeader>
+			<band height="128">
+				<textField isBlankWhenNull="true">
+					<reportElement x="84" y="113" width="148" height="15" uuid="8bc71794-8de5-47ad-8a1c-04a5721daf51"/>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5" rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{matricule}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="26" y="113" width="58" height="15" uuid="f4dee625-7c96-402c-81e8-402499cd865c"/>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5" rightIndent="5"/>
+					</textElement>
+					<text><![CDATA[Matricule :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="257" y="113" width="63" height="15" uuid="b9e70bbf-9550-4868-9529-16ec3d94649f"/>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5" rightIndent="5"/>
+					</textElement>
+					<text><![CDATA[N°CNSS :]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="320" y="113" width="258" height="15" uuid="86f9a2ec-d122-4004-9c9d-753c2df874e8"/>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5" rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numcnss}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="25" y="106" width="553" height="1" uuid="a53d2685-9706-419d-ae13-2e166b162683"/>
+				</line>
+				<textField>
+					<reportElement x="26" y="86" width="553" height="20" uuid="33dc4e8d-4336-4485-82ae-a7e173a122b1"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11" isBold="true" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["  FICHE DU PERSONNEL"]]></textFieldExpression>
+				</textField>
+				<subreport>
+					<reportElement x="25" y="0" width="555" height="60" uuid="d88320b2-5884-4d21-9ef7-bf96e1c39c98"/>
+					<subreportParameter name="logo">
+						<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="ADRESSE_AGENCE">
+						<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="LIBELLE_AGENCE">
+						<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="BP_AGENCE">
+						<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="TEL_AGENCE">
+						<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="DATE_EDITION">
+						<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="503" splitType="Stretch">
+			<staticText>
+				<reportElement x="25" y="0" width="147" height="15" uuid="a1221512-3fef-454e-8a1f-d22f96be3388"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Nom et Prénom(s) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="15" width="147" height="15" uuid="2865263c-b30d-4000-a08a-5d93923cf608"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Nom de Jeune fille :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="30" width="147" height="15" uuid="4ba7e290-7b86-4a86-8705-4afe84f52efe"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Sexe:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="75" width="147" height="15" uuid="e6371f58-dad6-4c0b-8537-ee48d078d1ce"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Groupe sanguin :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="90" width="147" height="15" uuid="89f09d96-cea1-4de9-a12b-0d79db7efe65"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Civilité :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="60" width="147" height="15" uuid="304d3d70-7b0a-429b-9c7a-2a4b6823cc93"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Lieu de naissance :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="105" width="147" height="15" uuid="bd003b75-35a4-4f0c-9d91-75e19c19bd29"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Nationalité :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="45" width="147" height="15" uuid="1532c5de-3179-492c-82b0-bca6da37227e"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Situation Matrimoniale :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="278" width="147" height="15" uuid="8d0a78ff-a508-4784-8f9e-87cd3be0a163"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Poste Occupée :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="120" width="147" height="15" uuid="0a958263-add5-4412-9c3d-4088b61d14b0"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Tél :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="150" width="147" height="15" uuid="f8c78cad-d031-42f6-9b13-b877b4189663"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Email :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="135" width="147" height="15" uuid="c6f77f41-6657-476d-8f15-97a64636a8a6"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Adresse :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="195" width="148" height="15" uuid="2b98d155-fcff-4bce-81c1-5f9240f33d5f"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date de début de carrière:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="165" width="147" height="15" uuid="6f8d92d6-224f-4597-a317-c2d8999acecb"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Nbre Personne à charge :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="210" width="147" height="15" uuid="e5ed8ab9-3a7e-4873-a7a3-8a764296047b"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Qualification :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="263" width="147" height="15" uuid="509036ad-5691-4326-912e-71a87d4ea5b4"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Département :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="293" width="147" height="15" uuid="f6b41c67-4b7f-4aae-90da-72f202998834"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Employé Interne :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="416" width="147" height="15" uuid="b91f968b-e62a-4944-bbba-304b4db58b43"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Catégorie :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="345" width="147" height="15" uuid="5bd40425-d4ae-4951-920b-76e03fd1e66c"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date de signature :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="330" width="147" height="15" uuid="e9b71f57-d495-432f-92a5-0957d3a41924"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Type de contrat :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="360" width="147" height="15" uuid="c5a4bce2-786c-4b1b-95de-c85edc03748c"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Durée :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="461" width="147" height="15" uuid="17478fe9-0495-434c-bf86-5e14d5c6939d"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Régime :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="401" width="147" height="15" uuid="e2fc4193-1aa4-42be-b057-e555e22b33dd"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Type d'employé :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="446" width="147" height="15" uuid="11cb3ca7-92c6-4e48-9c37-bb85dc8ca2a1"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Echelon  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="431" width="147" height="15" uuid="6b372bd9-7aca-4e83-bc2c-5a82136cfb1c"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Classe :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="360" width="95" height="15" uuid="798e1a48-8fc1-43c8-981b-61263f1ea270"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date de début :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="476" width="147" height="15" uuid="cc18e570-87c3-4511-88a4-6724fa3c4760"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Salaire de Base :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="412" y="476" width="94" height="15" uuid="051da530-7663-40dc-9ff6-7c3dbd64a432"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Ancienneté (ans) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="476" width="72" height="15" uuid="e47dede4-28b0-4612-8202-ec5852158b2e"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Sur salaire :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="345" width="95" height="15" uuid="92a0b536-3efd-4f4c-9ab6-b2af9e7ae8e3"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date d'embauche :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="444" y="360" width="64" height="15" uuid="01d6095c-bd84-4de7-944e-12a10d3daeed"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date de fin :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="0" width="401" height="15" uuid="d8e48285-36b0-4d65-a585-4b697aeaf61e"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomprenoms}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="15" width="401" height="15" uuid="5b6cf60e-2f26-4c92-81c1-ef9c37c61e36"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomjeunneville}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="263" width="401" height="15" uuid="ffe8ce30-f4b6-4450-91ac-f149930c169c"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{structure}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="75" width="217" height="15" uuid="31a047cd-9d50-428b-993d-4023bb7c161a"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{groupsanguin}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="30" width="55" height="15" uuid="4f290c50-55e1-4e64-a1bb-51e6e9f36353"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sexe}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="105" width="217" height="15" uuid="1624ebb2-eb29-43f9-8654-f9ead157bbbd"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nationalite}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="175" y="416" width="237" height="15" uuid="0cdfcaa1-b3c5-49f0-a08e-3d8eaf6c6820"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{categorie}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="175" y="431" width="237" height="15" uuid="b6c68843-bae6-4085-9fdf-73594df52edb"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{classe}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="90" width="217" height="15" uuid="d75ce4ab-6e0a-43c4-b7d8-639006efe52e"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{civilite}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="177" y="210" width="403" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="94be005c-1847-46ea-bcaa-40a76bab738e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fonction}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="175" y="476" width="82" height="15" uuid="ea3710c6-3cc5-418f-8dea-0caa0b432c91"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salairebase}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="328" y="476" width="83" height="15" uuid="f1773d47-7db3-48f8-87a9-9272a43912d4"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sursalaire}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="175" y="461" width="237" height="15" uuid="8236ac21-3afa-4b89-9386-f2f405794596"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{regime}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="196" width="102" height="14" uuid="db22f4b3-de0a-4974-91f1-9c75762e6caa"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datedebutcarrriere}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="45" width="323" height="15" uuid="b0def1c0-6152-4e7b-ba86-060b56d05e7c"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{situationmat}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="165" width="102" height="15" uuid="37b46d6d-6b3e-4972-99ab-0a4642dbc46f"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nbrepers}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="60" width="401" height="15" uuid="f7092800-fe9f-45e6-9778-a1d388afc652"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lieunaiss}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="374" y="345" width="70" height="15" uuid="11543b85-82fd-42a1-a893-f4923fe0910e"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateEmbauche}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="175" y="446" width="237" height="15" uuid="55345de7-e567-4cbe-804e-62afbfe78f38"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{echelon}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="579" y="-22" width="1" height="525" uuid="eb7dd059-c06e-4288-bab6-4ba99b8d6006"/>
+			</line>
+			<line>
+				<reportElement x="25" y="-22" width="1" height="524" uuid="c4fdbed8-2977-4890-82da-2dfe20f5d088"/>
+			</line>
+			<line>
+				<reportElement x="25" y="502" width="555" height="1" uuid="f78484cd-7b6e-453b-828a-212b626ff85d"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="120" width="217" height="15" uuid="7fbbb1e0-6f18-41f6-a809-cb091703a40a"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telephones}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="135" width="401" height="15" uuid="1173fe40-6fa2-483b-b4a4-c04c9f15cb5b"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adresse}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="150" width="217" height="15" uuid="c32ee2ed-481e-4d87-b640-4ae8c64b6efd"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="374" y="360" width="70" height="15" uuid="beff0a00-9edf-4b5a-ac18-ba789072dba1"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateDebutContrat}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="278" width="401" height="15" uuid="e4ed2697-e67f-4b54-acf5-44318f312ff8"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{posteOccupee}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="293" width="102" height="15" uuid="a92b7f9f-b7f4-4110-b762-461869a64167"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{interne}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="330" width="268" height="15" uuid="71a1ae8c-494f-4e94-9a5e-792031622486"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{typeContrat}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="508" y="360" width="70" height="15" uuid="2788b0b3-dddf-447e-ba14-2108d4eb6a50"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateFinContrat}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="175" y="401" width="237" height="15" uuid="f4f66390-ea10-4099-88b6-cbe86ed23129"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{typeEmploye}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="506" y="476" width="45" height="15" uuid="2d2c7a5b-e745-47f8-98e1-18085fe36619"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{anciennete}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="26" y="225" width="147" height="15" uuid="5fd6b18b-6ef4-4c52-8aca-9fdc3c473e46"/>
+				<text><![CDATA[  Diplômes de recrutement :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="225" width="404" height="15" uuid="0236971c-15e9-4d40-94f2-0040c6f1588b"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diplomes}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="345" width="81" height="15" uuid="76fe0500-0b44-4556-9aa8-f1fa2535177c"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateSignature}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="25" y="180" width="147" height="15" uuid="65db0d13-5bc7-4642-85ff-10dc6c4eff76"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Personne à prévenir :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="177" y="180" width="402" height="15" uuid="37be4104-9468-45f6-a2b3-eef85d20aefa"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{personnePrevenue}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="595" height="50" uuid="676982ab-5b63-4f42-8ffa-3179736191c8"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pageportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

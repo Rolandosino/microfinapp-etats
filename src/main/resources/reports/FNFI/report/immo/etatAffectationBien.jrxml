@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etatImmobilisation" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="BlankPage" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="0" uuid="c35104a0-44a2-4e9c-a86f-08a419aa95db">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="DATE_DEBUT" class="java.lang.String"/>
+	<parameter name="DATE_FIN" class="java.lang.String"/>
+	<parameter name="EXERCICE" class="java.lang.String"/>
+	<parameter name="AFFICHER_EXERCICE" class="java.lang.String"/>
+	<parameter name="SOCIETE" class="java.lang.String"/>
+	<parameter name="BP" class="java.lang.String"/>
+	<parameter name="EMAIL" class="java.lang.String"/>
+	<parameter name="ADRESSE" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String"/>
+	<parameter name="TITRE_ETAT" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<field name="codeBien" class="java.lang.String"/>
+	<field name="identiteAncienEmp" class="java.lang.String"/>
+	<field name="identiteNouveauEmp" class="java.lang.String"/>
+	<field name="dateTransfert" class="java.lang.String"/>
+	<field name="dateAnnulerTransfert" class="java.lang.String"/>
+	<field name="annulerTransfert" class="java.lang.Boolean"/>
+	<field name="libStructureNouveau" class="java.lang.String"/>
+	<field name="libStructureAncien" class="java.lang.String"/>
+	<field name="referenceBien" class="java.lang.String"/>
+	<field name="designationBien" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="90" splitType="Stretch">
+			<subreport>
+				<reportElement x="13" y="0" width="822" height="90" uuid="ca011f66-405f-49a3-bdc6-d2fd23d553bf"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententepaysage.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="56">
+			<textField>
+				<reportElement x="205" y="0" width="398" height="20" uuid="9da701ff-c8bb-4f0a-a5a8-ee7ac38d22e0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITRE_ETAT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="205" y="20" width="398" height="20" uuid="dcc2e3f1-dc6a-423c-bef9-6ead5084732c">
+					<printWhenExpression><![CDATA[$P{AFFICHER_EXERCICE}.equalsIgnoreCase("false")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pour la période du "+$P{DATE_DEBUT}+" au "+$P{DATE_FIN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="205" y="20" width="398" height="20" uuid="54c484db-a0ea-4ea7-9918-0723d426676f">
+					<printWhenExpression><![CDATA[$P{AFFICHER_EXERCICE}.equalsIgnoreCase("true")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pour l'exercice "+$P{EXERCICE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="40">
+			<staticText>
+				<reportElement mode="Opaque" x="189" y="0" width="119" height="40" backcolor="#E5E5E5" uuid="9da37b9d-4e5e-40ff-8fbb-0de85a45f7a5"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ancien département]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="679" y="0" width="83" height="40" backcolor="#E5E5E5" uuid="4fd811ca-2b9d-4602-bc9b-38e8450de9b6"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date transfert]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="126" y="0" width="63" height="40" backcolor="#E5E5E5" uuid="9dcf92a1-2ec2-46cb-acea-036d3e47e2d5"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Libellé bien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="557" y="0" width="122" height="40" backcolor="#E5E5E5" uuid="d7103668-e326-4ee3-9e72-751de3a83133"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nouveau détenteur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="66" y="0" width="60" height="40" backcolor="#E5E5E5" uuid="8a0c6404-0881-4aa9-9617-9c62b970ea3a"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Référence bien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="762" y="0" width="73" height="40" backcolor="#E5E5E5" uuid="f7907897-ebd2-45a3-96ea-a4cefb861302"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date annulation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="308" y="0" width="124" height="40" backcolor="#E5E5E5" uuid="b41ee0d9-31c9-4099-a0e9-eab617675b25"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ancien détenteur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="13" y="0" width="53" height="40" backcolor="#E5E5E5" uuid="dfe344ea-39d9-4a9a-8e3e-5e0d6f4f23cf"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="432" y="0" width="125" height="40" backcolor="#E5E5E5" uuid="c2f36e86-4ec5-4a33-b61d-a0fea781be2d"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nouveau département]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="126" y="0" width="63" height="30" uuid="77ffb4ea-e8ed-4e47-a6f1-996a3d8cf72d"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{designationBien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="189" y="0" width="119" height="30" uuid="3e344142-6004-409d-b672-e87a517544c9"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph firstLineIndent="4" leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libStructureAncien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="308" y="0" width="124" height="30" uuid="7131a558-6012-4a30-924b-51316868bb0a"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph firstLineIndent="4" leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{identiteAncienEmp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="432" y="0" width="125" height="30" uuid="0a4958ed-a303-4444-9cf1-7b4a35106a8d"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph firstLineIndent="4" leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libStructureNouveau}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="557" y="0" width="122" height="30" uuid="0c23f09d-ac4e-4f9c-9e53-e98357136619"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{identiteNouveauEmp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="679" y="0" width="83" height="30" uuid="9b8831a9-543e-4efd-ae60-8918d6c4b352"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateTransfert}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="762" y="0" width="73" height="30" uuid="53501e63-78a6-4c2d-b812-4398d52be953"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateAnnulerTransfert}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="13" y="0" width="53" height="30" uuid="3438a925-d1de-40a7-8d02-9ed5ad21d1de"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph firstLineIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codeBien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="66" y="0" width="60" height="30" uuid="cc3a8e89-4541-433f-8571-12cbdc946457"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{referenceBien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="189" y="0" width="119" height="30" backcolor="#FFDFDF" uuid="e5879ce1-7b3d-434e-9931-eb59fe61d7dd">
+					<printWhenExpression><![CDATA[$F{annulerTransfert}==true]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph firstLineIndent="4" leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libStructureAncien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="308" y="0" width="124" height="30" backcolor="#FFDFDF" uuid="a7bcd61f-a721-483d-83dc-34337914c28e">
+					<printWhenExpression><![CDATA[$F{annulerTransfert}==true]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph firstLineIndent="4" leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{identiteAncienEmp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="679" y="0" width="83" height="30" backcolor="#FFDFDF" uuid="96c60dc4-cb5c-4480-b85b-cd60836a000f">
+					<printWhenExpression><![CDATA[$F{annulerTransfert}==true]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateTransfert}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="432" y="0" width="125" height="30" backcolor="#FFDFDF" uuid="2a104d8e-7b69-4fd0-a0ab-47bb845c3f4c">
+					<printWhenExpression><![CDATA[$F{annulerTransfert}==true]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph firstLineIndent="4" leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libStructureNouveau}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="762" y="0" width="73" height="30" backcolor="#FFDFDF" uuid="9d5ef91d-3597-48b7-9bf7-1d35766ce523">
+					<printWhenExpression><![CDATA[$F{annulerTransfert}==true]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateAnnulerTransfert}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="126" y="0" width="63" height="30" backcolor="#FFDFDF" uuid="95e0123f-da7c-4d95-ab59-666a74944b8e">
+					<printWhenExpression><![CDATA[$F{annulerTransfert}==true]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{designationBien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="66" y="0" width="60" height="30" backcolor="#FFDFDF" uuid="25fb89f8-9123-46ea-8a36-bf098148810f">
+					<printWhenExpression><![CDATA[$F{annulerTransfert}==true]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{referenceBien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="13" y="0" width="53" height="30" backcolor="#FFDFDF" uuid="7a3c9034-ff7d-4c5a-b9b4-48e344dc9a7f">
+					<printWhenExpression><![CDATA[$F{annulerTransfert}==true]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph firstLineIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codeBien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="557" y="0" width="122" height="30" backcolor="#FFDFDF" uuid="e72fe28e-6477-44b0-ac42-3c7fb4ad3741">
+					<printWhenExpression><![CDATA[$F{annulerTransfert}==true]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{identiteNouveauEmp}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="842" height="50" uuid="13ac8644-cbb2-4a38-ad37-738c26819490"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page_en_paysage.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

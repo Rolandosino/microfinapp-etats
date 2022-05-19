@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bordereauVersement" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="eae68953-2077-4768-82f9-1fd288836c97">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#EFEFEF" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="dateDebut" class="java.lang.String"/>
+	<parameter name="dateFin" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="adresse" class="java.lang.String"/>
+	<parameter name="quartierVille" class="java.lang.String"/>
+	<parameter name="profession" class="java.lang.String"/>
+	<parameter name="personne" class="java.lang.String"/>
+	<field name="codeInf" class="java.lang.String"/>
+	<field name="montant" class="java.lang.String"/>
+	<field name="observations" class="java.lang.String"/>
+	<field name="natureVersement" class="java.lang.String"/>
+	<variable name="totalMontant" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse(($F{montant}.isEmpty()?"0":$F{montant}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="num" class="java.lang.String" calculation="Count">
+		<variableExpression><![CDATA[$F{natureVersement}]]></variableExpression>
+	</variable>
+	<title>
+		<band height="370" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="135" height="16" uuid="8a4cceff-9df7-4d35-8701-0c0d21bd7199"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[République Togolaise]]></text>
+			</staticText>
+			<line>
+				<reportElement x="12" y="16" width="100" height="1" uuid="eccdabca-cbe6-4cf5-933a-de1265ae69d6"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="17" width="135" height="46" uuid="156f0af4-5399-4029-8231-41817025b730"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[MINISTERE DE L'ECONOMIE ET DES FINANCES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="0" width="351" height="20" uuid="f829b934-abab-4762-a58a-2463f6a81e68"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BORDEREAU DE VERSEMENT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="144" y="34" width="342" height="60" uuid="8ece10fc-9b08-49c1-838b-4e46de7fed3b"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[1 - Des retenues à la source,
+Sur salaires, pensions et rentes viagères ( Articles 1165 à 1172 CGI) ;
+2-De la taxe sur les salaires (Articles 1187 CGI);
+3 - Retenues à la source sur revenus des capitaux mobiliers;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="144" y="130" width="75" height="20" uuid="d2025d50-3706-4c92-9cf0-6eb772a233d7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERIODE DU ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="130" width="28" height="20" uuid="9f43a1ef-2717-45c7-8407-419efa9f85f9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[AU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="76" y="160" width="442" height="28" uuid="e546cd04-311b-4ae5-a661-96c68d80dd27"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[(Inscrire les renseignements demandés en caractères majuscules seulement par case sans déborder des cadres)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="200" width="229" height="20" uuid="e5596810-cadd-4a98-83a0-799252848331"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[I. Identité de la partie versante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="228" width="173" height="20" uuid="e4c24dc2-7c76-4ee5-a06c-d8fc3547e29d"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[M., Mme, Mlle ou Partie morale :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="248" width="173" height="20" uuid="bfeaf011-b4f2-4727-8278-f0e491df5e8b"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Profession - Qualité :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="268" width="173" height="20" uuid="1d88226a-5af3-4ba7-bf90-1d976e960390"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Adresse - Tel : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="288" width="173" height="20" uuid="27cc66f0-f788-4594-8114-542441b3f20b"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Quartier - Ville - BP : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="350" width="219" height="20" uuid="0393ef62-e204-4f25-81be-89fd1c90e2de"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[II. Versement]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="229" y="130" width="76" height="20" uuid="93a9e1c0-dbe5-4875-8aa5-f8b7b86e6005"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateDebut}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="333" y="130" width="100" height="20" uuid="7c28eed2-9e2e-4583-a3f4-5df961ae830e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateFin}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="173" y="228" width="382" height="20" uuid="1fc71c41-2cc8-4841-870b-117fd5a3e175"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{personne}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="173" y="248" width="382" height="20" uuid="89c5c553-d38b-47c2-baeb-ddbfb7cd48d6"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{profession}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="173" y="268" width="382" height="20" uuid="0ca394dd-d32b-41c5-bc18-9a001af61718"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{adresse}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="173" y="288" width="382" height="20" uuid="fe5d9764-6b58-4618-a251-579a4e343f68"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{quartierVille}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20">
+			<staticText>
+				<reportElement style="table_CH" x="0" y="0" width="247" height="20" uuid="f7c79a3d-c712-443f-8cb5-890ebd14ac52"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Nature du versement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="247" y="0" width="100" height="20" uuid="67bdbc2f-d589-4906-9b3a-a290c0bd498f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Code informatique]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="347" y="0" width="100" height="20" uuid="55527cf5-3d15-41a7-b839-2c0383f603cb"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Montant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="447" y="0" width="108" height="20" uuid="7ea009d1-60ff-4098-ac16-d3a36bf4f467"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Observations]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="247" height="20" uuid="f83c792d-94ec-45db-b0d9-9c12c5bafeec"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{natureVersement}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="247" y="0" width="100" height="20" uuid="e9df2040-c17e-48fd-a114-860cdd3b4ecf"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codeInf}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="347" y="0" width="100" height="20" uuid="9937ccb8-b6e5-4f72-9118-3e59fccdb9c4"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montant}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="447" y="0" width="108" height="20" uuid="1b668d74-161a-4bd7-962c-e43b8f2a29c0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{observations}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="247" y="0" width="100" height="20" uuid="3b9471a7-a9b3-45ca-8635-3a322c62f6bc"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Total à payer]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="347" y="0" width="100" height="20" uuid="2993d94b-07d7-47e3-8c42-35800910be16"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{totalMontant})]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="247" y="0" width="100" height="20" uuid="2722f2b6-7886-4e82-b534-a1f6afddd151"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

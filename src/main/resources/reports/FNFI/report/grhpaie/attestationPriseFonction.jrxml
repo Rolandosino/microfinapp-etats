@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="attestationPriseFonction" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2fb5649c-e4bc-4612-930d-da16d9def3a0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="DATE_EDITION" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String"/>
+	<parameter name="TITRE_ETAT" class="java.lang.String"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<field name="dateLettre" class="java.lang.String"/>
+	<field name="signataire" class="java.lang.String"/>
+	<field name="contenu" class="java.lang.String"/>
+	<field name="reference" class="java.lang.String"/>
+	<title>
+		<band height="79" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="79" uuid="05e2841a-52c9-4efc-9087-b7816bba9569"/>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="138">
+			<staticText>
+				<reportElement x="14" y="0" width="25" height="20" uuid="858ed651-1d2d-44c4-b64a-6ce54dd450e3"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="348" y="0" width="49" height="20" uuid="8aa8e3b0-d296-4d39-8f8f-c5262c57faea"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Lomé, le]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="109" y="0" width="167" height="20" uuid="13116562-3292-41cf-ad1d-49aea80281b7"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reference}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="397" y="18" width="105" height="1" uuid="f46fa3ae-4de3-4909-b0aa-3b00fb785706"/>
+			</line>
+			<line>
+				<reportElement x="39" y="18" width="70" height="1" uuid="d80b5504-e34f-4d10-af53-9838757383ca"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="90" width="555" height="20" uuid="e0668c8e-896f-4801-9e2b-83b1caf4f5e7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ATTESTATION ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="199" y="131" width="160" height="1" uuid="0dd3f384-c0fa-463f-8708-76a0ff1ddf1a"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="110" width="555" height="20" uuid="38fe1886-3220-4502-a799-4aef2d784826"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DE PRISE DE FONCTION]]></text>
+			</staticText>
+			<line>
+				<reportElement x="199" y="133" width="160" height="1" uuid="8c661718-721b-4a8f-9168-f0290ab3e2eb"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="199" y="137" width="158" height="1" uuid="807b08b4-8b7e-4670-bbcb-d4497cb866d3"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="452" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="28" y="44" width="506" height="233" uuid="2b20dc36-5804-42d6-9913-6a490a323d4f"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+					<paragraph lineSpacing="1_1_2" leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contenu}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="348" y="432" width="207" height="20" uuid="9d30f722-89ec-43ba-907d-ecd5e69be329"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{signataire}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="348" y="325" width="207" height="20" uuid="c19217ac-453d-4e0e-9659-6a275ac7af89"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Le Directeur Général]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="50" uuid="55a6d094-d048-4241-8c64-6915671b920f"/>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="recuRemboursement" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" isFloatColumnFooter="true" uuid="734eacd9-1013-48d5-bb42-e19374b54c82">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="numpiece" class="java.lang.String"/>
+	<parameter name="produitCredit" class="java.lang.String"/>
+	<parameter name="libelleremb" class="java.lang.String"/>
+	<parameter name="origine" class="java.lang.String"/>
+	<parameter name="dateoperation" class="java.lang.String"/>
+	<parameter name="dataSource" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="typecompte" class="java.lang.String"/>
+	<parameter name="montant" class="java.lang.String"/>
+	<parameter name="montantlettre" class="java.lang.String"/>
+	<parameter name="mandataire" class="java.lang.String"/>
+	<parameter name="administrateur" class="java.lang.String"/>
+	<parameter name="utilisateur" class="java.lang.String"/>
+	<parameter name="membre" class="java.lang.String"/>
+	<parameter name="numCompte" class="java.lang.String"/>
+	<parameter name="source1" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="source2" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DEVISE" class="java.lang.String"/>
+	<parameter name="JOURNEE" class="java.lang.String"/>
+	<parameter name="TEL_ORG" class="java.lang.String"/>
+	<parameter name="IMPRIME_LE" class="java.lang.String"/>
+	<parameter name="LIBELLE_ORGANISME" class="java.lang.String"/>
+	<parameter name="IMPRIME_PAR" class="java.lang.String"/>
+	<parameter name="BP_ORG" class="java.lang.String"/>
+	<parameter name="dataSource2" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="ENTETE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></defaultValueExpression>
+	</parameter>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="348">
+			<textField>
+				<reportElement x="6" y="99" width="240" height="15" uuid="c48efb5f-14cd-496e-b193-445ab9bcc3a5"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Libellé : "+$P{libelleremb}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="6" y="82" width="297" height="15" uuid="8dc8ac1a-703d-41e2-a5ec-cde1c52f0038"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["N°Pièce : "+$P{numpiece}+"  "+($P{produitCredit}!=null?$P{produitCredit}:"")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="132" width="554" height="16" uuid="8c05af59-b49d-4ae6-b485-0e7329394a3f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["  Montant en  lettre:  "+$P{montantlettre}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="130" width="555" height="1" uuid="22396a2a-53eb-4471-9827-1d0f6b05d308"/>
+			</line>
+			<line>
+				<reportElement x="0" y="81" width="2" height="261" uuid="10a9b665-ee29-4cc5-bc80-2136d995bd7f"/>
+			</line>
+			<line>
+				<reportElement x="0" y="288" width="555" height="1" uuid="3cb0bd74-d707-4c07-88e6-ea25d632b800"/>
+			</line>
+			<line>
+				<reportElement x="0" y="81" width="555" height="1" uuid="edb45911-33bb-4996-8bd6-4b376876b6c8"/>
+			</line>
+			<line>
+				<reportElement x="0" y="341" width="555" height="1" uuid="90e0573b-db69-4964-a0ba-0094fb955c7f"/>
+			</line>
+			<rectangle>
+				<reportElement x="423" y="311" width="117" height="25" uuid="801cb75b-bd26-42eb-b789-ea12e08a797b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="311" width="113" height="25" uuid="ac991dcb-1c25-446a-9b0a-9340ea23c0c4"/>
+			</rectangle>
+			<textField>
+				<reportElement x="20" y="289" width="148" height="15" uuid="e81ea3d1-b886-4450-a921-1c5e99f1f046"/>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA["Saisie par:"+$P{utilisateur}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="423" y="289" width="100" height="15" uuid="7ab49dcb-155e-455c-a1e8-9f49d09fad3e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<text><![CDATA[CLIENT :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="419" y="82" width="134" height="15" uuid="4e50651d-c114-49db-9390-cca4e36f70df"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Date : "+$P{dateoperation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="419" y="101" width="134" height="15" uuid="f13381e2-13ce-4655-8415-b976cbfb6f36"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Montant : "+$P{montant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="319" y="82" width="100" height="15" uuid="48deea9b-edc0-4f92-b324-99ff1fe88ab5"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Origine]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="319" y="101" width="100" height="15" uuid="7a18c58f-0111-4388-a909-c807e355284b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{origine}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="49" y="118" width="198" height="15" uuid="dd65fc67-a0cb-4f06-af28-19beb2ab66e8"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numCompte}+"  "+$P{membre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="66" width="92" height="12" uuid="2f27dc91-0f97-4d04-9202-c9ee6a592a51"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$P{DEVISE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="201" y="66" width="44" height="12" uuid="979c5b3d-a26e-45c5-a4c8-82a3287c0044"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Devise]]></text>
+			</staticText>
+			<line>
+				<reportElement x="554" y="72" width="1" height="270" uuid="50abd1fc-0d61-40db-8ae4-120e560819a2"/>
+			</line>
+			<subreport>
+				<reportElement x="6" y="149" width="123" height="36" uuid="7c994685-47d5-4a0f-984d-29e6bb11fea6"/>
+				<dataSourceExpression><![CDATA[$P{dataSource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "recuRembourmeInclude.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="-1" y="0" width="556" height="61" uuid="56f67c76-d9a8-4878-8d88-e446aee7454e"/>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{ENTETE}]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnHeader>
+	<columnFooter>
+		<band height="380">
+			<textField>
+				<reportElement x="6" y="126" width="240" height="15" uuid="a0c22ddf-f144-4e1d-a181-a400cfc52ea8"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Libellé : "+$P{libelleremb}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="6" y="109" width="297" height="15" uuid="5791ca9c-5ee9-4b19-a7c6-6014fa6ff093"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["N°Pièce : "+$P{numpiece}+"  "+($P{produitCredit}!=null?$P{produitCredit}:"")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="171" width="554" height="16" uuid="4d766f56-e769-4755-9998-efe457e0b79c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["  Montant en  lettre:  "+$P{montantlettre}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-1" y="164" width="555" height="1" uuid="bf1068d7-f291-4965-8ca8-c4b618917132"/>
+			</line>
+			<line>
+				<reportElement x="-1" y="108" width="1" height="270" uuid="5922f2e4-f1b6-48f1-a612-edbaaeb69d29"/>
+			</line>
+			<line>
+				<reportElement x="-1" y="327" width="555" height="1" uuid="1d2581c7-6a82-4269-9d8c-a8e500225662"/>
+			</line>
+			<line>
+				<reportElement x="-1" y="108" width="555" height="1" uuid="a4997794-2560-4293-a291-91134cf5e66e"/>
+			</line>
+			<line>
+				<reportElement x="-1" y="379" width="555" height="1" uuid="f8097fbb-13f9-4ffa-a325-80b3e6397af2"/>
+			</line>
+			<rectangle>
+				<reportElement x="423" y="350" width="117" height="25" uuid="8b86d8d8-0fb4-4bdc-9704-87536a64e877"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="20" y="351" width="113" height="25" uuid="dfb6ba3e-735a-4093-ab96-c1a90b19a5b6"/>
+			</rectangle>
+			<textField>
+				<reportElement x="20" y="329" width="148" height="15" uuid="0291db63-edb0-43a3-8fd9-19b04faacb84"/>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA["Saisie par:"+$P{utilisateur}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="423" y="328" width="100" height="15" uuid="445dec76-37f2-4707-b204-2d3ce885e6bf"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<text><![CDATA[CLIENT :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="419" y="109" width="134" height="15" uuid="a049b0e1-bebf-4abc-87d3-6cab1d9c1d53"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Date : "+$P{dateoperation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="419" y="128" width="134" height="15" uuid="6b543188-c81e-4720-bb1c-a6d090770263"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Montant : "+$P{montant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="319" y="109" width="100" height="15" uuid="91fc4f5d-d2ce-4638-875b-6e21728a72b2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Origine]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="319" y="128" width="100" height="15" uuid="981a3da5-3b4d-4642-bb51-80d51116a7d8"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{origine}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="49" y="145" width="198" height="15" uuid="3f72afb2-0651-4c82-954f-1b2a08d6a454"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numCompte}+"  "+$P{membre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="93" width="92" height="12" uuid="78d0f1cd-4125-454c-82cf-50954df5cfa4"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": "+$P{DEVISE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="203" y="93" width="44" height="12" uuid="5c7f5cb1-5c9f-41b0-97c0-2385ce0374d7"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Devise]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="6" y="185" width="123" height="36" uuid="a5a4bb0f-a701-4974-8e2a-1662046265ac"/>
+				<dataSourceExpression><![CDATA[$P{dataSource2}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "recuRembourmeInclude.jasper"]]></subreportExpression>
+			</subreport>
+			<line>
+				<reportElement x="-1" y="7" width="554" height="1" uuid="f8da0e0a-dd66-4026-8028-993d406f1fa6"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="554" y="108" width="1" height="270" uuid="1e0f52d2-8cfa-4ba1-8aa6-6f4bdc16f0ec"/>
+			</line>
+			<subreport>
+				<reportElement x="-1" y="15" width="554" height="62" uuid="764e9dba-aca7-4090-8800-b66faddc371e"/>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{ENTETE}]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnFooter>
+</jasperReport>

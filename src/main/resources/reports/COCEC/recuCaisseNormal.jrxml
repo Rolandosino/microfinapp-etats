@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="recuCaisseNormal" language="groovy" pageWidth="651" pageHeight="880" whenNoDataType="AllSectionsNoDetail" columnWidth="611" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" uuid="04f839fe-10f7-4a04-852c-d3de32cda51e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="DescriptionInstitution" class="java.lang.String"/>
+	<parameter name="AdresseInstitution" class="java.lang.String"/>
+	<parameter name="Adresse1Institution" class="java.lang.String"/>
+	<parameter name="NomInstitution" class="java.lang.String"/>
+	<parameter name="Espece" class="java.lang.String"/>
+	<parameter name="Duplicata" class="java.lang.String"/>
+	<parameter name="NumeroPiece" class="java.lang.String"/>
+	<parameter name="MontantEnLetre" class="java.lang.String"/>
+	<parameter name="Mandataire" class="java.lang.String"/>
+	<parameter name="DateValeur" class="java.lang.String"/>
+	<parameter name="Montant" class="java.math.BigDecimal"/>
+	<parameter name="TypeOperation" class="java.lang.String"/>
+	<parameter name="MontantAncienSolde" class="java.math.BigDecimal"/>
+	<parameter name="MontantNouveauSolde" class="java.math.BigDecimal"/>
+	<parameter name="MontantRetard" class="java.math.BigDecimal"/>
+	<parameter name="MontantCapitalRestant" class="java.math.BigDecimal"/>
+	<parameter name="InteretRestant" class="java.lang.String"/>
+	<parameter name="HeureServeur" class="java.lang.String"/>
+	<parameter name="NomCaissier" class="java.lang.String"/>
+	<parameter name="Lieu" class="java.lang.String"/>
+	<parameter name="DateOperation" class="java.lang.String"/>
+	<parameter name="SignatureMembre" class="java.lang.String"/>
+	<parameter name="NomPrenoms" class="java.lang.String"/>
+	<parameter name="Datevaleur" class="java.lang.String"/>
+	<parameter name="DateDuJour" class="java.lang.String"/>
+	<parameter name="NumeroCompteDepot" class="java.lang.String"/>
+	<parameter name="Produit" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="subReportDataSource" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="subReportDataSource2" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="nomcaisse" class="java.lang.String"/>
+	<parameter name="typeOperation" class="java.lang.String"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="billetage" class="java.lang.String"/>
+	<parameter name="afficheSignature" class="java.lang.Boolean"/>
+	<parameter name="INSTITUTION" class="java.lang.String"/>
+	<parameter name="ENTETE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></defaultValueExpression>
+	</parameter>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="430">
+			<frame>
+				<reportElement mode="Transparent" x="10" y="11" width="621" height="404" uuid="8654fd72-7ecf-4629-b76e-a3b719e4109d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textField isBlankWhenNull="true">
+					<reportElement x="71" y="125" width="150" height="13" uuid="8328d1ef-5c5a-44f9-9f37-93d87941e77e"/>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{Mandataire}]]></textFieldExpression>
+				</textField>
+				<subreport isUsingCache="false">
+					<reportElement x="6" y="147" width="200" height="70" uuid="4dd47bda-bcc8-4bd2-8b47-a160d17b9e55"/>
+					<dataSourceExpression><![CDATA[$P{subReportDataSource}]]></dataSourceExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "RecuPiece_subreport.jasper"]]></subreportExpression>
+				</subreport>
+				<textField>
+					<reportElement x="311" y="88" width="83" height="13" uuid="f23b83bd-1c79-4477-867a-16a5813f32b0"/>
+					<textFieldExpression><![CDATA[$P{DateValeur}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="528" y="230" width="93" height="13" uuid="13017f97-a4d4-4494-9beb-228bc340cdd9"/>
+					<textFieldExpression><![CDATA[$P{nomcaisse}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0" isBlankWhenNull="true">
+					<reportElement x="441" y="89" width="75" height="13" uuid="74be2bad-5aac-4ecb-836b-93958d50ba88"/>
+					<textElement textAlignment="Right"/>
+					<textFieldExpression><![CDATA[$P{Montant}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="419" y="58" width="100" height="18" uuid="7c525d06-579f-4611-8c93-0e8e3df5a3ee"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{typeOperation}]]></textFieldExpression>
+				</textField>
+				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+					<reportElement x="481" y="127" width="78" height="12" uuid="f8f20b5b-f6e9-494e-ad1b-75f529f89208"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{DateDuJour}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="420" y="126" width="87" height="12" uuid="7e2d1eac-7115-4f4b-971d-0683ec72d72c"/>
+					<textElement verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{Lieu}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="172" y="74" width="118" height="12" uuid="c556102f-5dce-47f5-9a48-4079bd58db24"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{Produit}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="90" y="74" width="82" height="12" uuid="a052fb3e-89f5-4ca9-a273-a7c5753ae842"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{NumeroCompteDepot}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="87" y="91" width="205" height="12" uuid="ef78fc77-0a7e-4a27-9325-ac3cf471986c"/>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{NomPrenoms}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="63" y="112" width="407" height="12" uuid="a0ec5505-a0b8-4c39-9eb4-db89d53d16c0"/>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{MontantEnLetre}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="245" y="53" width="127" height="13" uuid="80df4c18-980c-4c87-8522-257ef4c661ee"/>
+					<textFieldExpression><![CDATA[$P{LIBELLE_AGENCE}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField isBlankWhenNull="true">
+				<reportElement x="475" y="54" width="100" height="13" forecolor="#FF0000" uuid="83dd5ee5-7985-4963-ab85-14b45b2652f8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Duplicata}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="59" y="64" width="153" height="13" uuid="efeef431-a1c9-4b10-88b0-572b241fa61d"/>
+				<textFieldExpression><![CDATA[$P{NumeroPiece}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="539" y="270" width="92" height="13" forecolor="#FF0000" uuid="2801d325-4227-4e78-9f2a-b03566402480"/>
+				<textFieldExpression><![CDATA[$P{HeureServeur}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="539" y="255" width="92" height="13" uuid="66b7f6ac-5c59-4674-8f33-e4fc8d9c7e6c"/>
+				<textFieldExpression><![CDATA[$P{NomCaissier}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="120" y="243" width="74" height="12" uuid="b1e2c61e-d14d-4161-8b36-59ab81f0b5ed"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MontantAncienSolde}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="120" y="259" width="74" height="12" uuid="f4cd0610-c235-4c17-984b-9b5541e3798b"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MontantNouveauSolde}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="301" y="273" width="57" height="11" uuid="75453c13-e894-45fe-b58b-01bdd3db311f"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{InteretRestant}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="301" y="245" width="57" height="11" uuid="751df7b5-6df3-44e7-88a2-a172ef19da98"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MontantRetard}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="true">
+				<reportElement x="301" y="259" width="57" height="11" uuid="bdacfe4a-cdc7-4ba6-8a71-a3705e29105b"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MontantCapitalRestant}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+</jasperReport>

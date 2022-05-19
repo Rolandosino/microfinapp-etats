@@ -1,0 +1,904 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="planPrevionnelPassationMarches" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="822" leftMargin="10" rightMargin="10" topMargin="20" bottomMargin="20" uuid="3e9451b9-5a7f-4568-ba49-fa8c6af97ed9">
+	<property name="ireport.zoom" value="1.1269722013523664"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ANNE" class="java.lang.String"/>
+	<field name="numero" class="java.lang.String"/>
+	<field name="libelle" class="java.lang.String"/>
+	<field name="nature" class="java.lang.String"/>
+	<field name="modePassation" class="java.lang.String"/>
+	<field name="montantEstimatif" class="java.lang.String"/>
+	<field name="sourceFinancement" class="java.lang.String"/>
+	<field name="budget" class="java.lang.String"/>
+	<field name="dateTransmission" class="java.lang.String"/>
+	<field name="datePublicationAvis" class="java.lang.String"/>
+	<field name="datePublicationAttribution" class="java.lang.String"/>
+	<field name="dateFinalisation" class="java.lang.String"/>
+	<field name="dateApprobation" class="java.lang.String"/>
+	<field name="dateNotification" class="java.lang.String"/>
+	<variable name="totalMontantEstimatif" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantEstimatif}))]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="113" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="822" height="79" uuid="fc9b3c2d-9106-4ead-b929-9424e7e0b4e5"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententepaysage.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="0" y="84" width="822" height="20" uuid="d683e830-6ab6-4b60-923a-03e05aac316c"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" PLAN PREVISIONNEL DE PASSATION DES MARCHES PUBLICS "+ $P{ANNE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="77" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="29" height="77" uuid="a6901fc4-0371-48bb-86aa-1e69f34ea70d"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="0" width="61" height="77" uuid="744a908c-0b39-47c3-80bb-209f1fd9d040"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nature du marché]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="258" y="0" width="61" height="77" uuid="444dea4b-dbc8-4e43-88bb-b2f27d0c08db"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Mode de passation de marché (AOO, GG, AOG, AOR, AOI, AON, AMI)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="319" y="0" width="67" height="77" uuid="499a8dd7-c148-4ccb-a5ff-05b3c576193e"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Montant estimatif (en millions) F CFA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="386" y="0" width="61" height="77" uuid="20298926-3a0d-412d-9826-ce9a44ac945a"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Source de financement (BN, BA, FE et don)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="447" y="0" width="69" height="77" uuid="8a967ac2-0829-44b4-b4d9-45b48f1a34f7"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Chapitre d'imputation budgétaire]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="516" y="0" width="51" height="77" uuid="ba453b80-fcf9-477b-96e4-01e4a68fbea6"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Date de transmission du dossier à la DNCMP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="567" y="0" width="51" height="77" uuid="bf67bdff-ded2-4175-aaf6-b9544a4d97e3"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Date de publication de l'avis par la DNCMP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="618" y="0" width="51" height="77" uuid="75af2247-b546-45d0-b50c-0d3ec86632d4"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Date de publication de l'attribution définitive]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="669" y="0" width="51" height="77" uuid="2f3c30f4-376f-4795-ad9e-a1b5a820bd52"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Date de finalisation et signature du marché]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="720" y="0" width="51" height="77" uuid="998612f7-fa45-4081-8ebe-1816f8c3e70b"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Date d'approbation du marché]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="771" y="0" width="51" height="77" uuid="94eada93-f69b-4f76-b057-db98c615753c"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Date de notification]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="0" width="168" height="77" uuid="0458bda3-a3d3-4670-9d35-14844c31fcfa"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Libellé du projet de dossier]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="29" height="20" uuid="b677c62b-f44c-488b-838a-b9ac9f535d4a"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="29" y="0" width="168" height="20" uuid="abc2431b-aca9-4e41-9076-63a36b61ae9d"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="197" y="0" width="61" height="20" uuid="25f6112b-ed65-48ac-804f-5be24b405cd0"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nature}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="258" y="0" width="61" height="20" uuid="9743625f-2a74-400b-8a89-9f90171d056d"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{modePassation}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="319" y="0" width="67" height="20" uuid="8cb45d93-c813-4ece-9b4f-9c0faf8b0cad"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantEstimatif}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="386" y="0" width="61" height="20" uuid="f2a2b362-f42d-4694-83c8-5ce4534f3c79"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sourceFinancement}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="447" y="0" width="69" height="20" uuid="10069326-4e83-4868-89c3-54e57962bd94"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{budget}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="516" y="0" width="51" height="20" uuid="2c186d9b-f85d-4624-90d3-0992341eda24"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateTransmission}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="567" y="0" width="51" height="20" uuid="75ed6004-97e4-42a3-94b3-d3e0c0aa54e2"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datePublicationAvis}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="618" y="0" width="51" height="20" uuid="338ccc74-3622-4b6b-9806-c747d43251ba"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datePublicationAttribution}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="669" y="0" width="51" height="20" uuid="d242522c-2989-4add-a2d0-1f419727fc6f"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateFinalisation}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="720" y="0" width="51" height="20" uuid="cbd123dd-fe7b-49af-b745-6717ce545ae1"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateApprobation}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="771" y="0" width="51" height="20" uuid="e04f6205-c196-45d1-8f44-ee5fd3891264"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateNotification}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement x="704" y="0" width="79" height="15" uuid="d318bcdb-6b16-406b-8997-dc7bd094b5f2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="783" y="0" width="39" height="15" uuid="18aafb1f-4a7e-48c8-8095-0deb59c207c0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="386" y="0" width="57" height="15" uuid="572a82ae-c16e-4913-806e-911c507293e6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Microfina++"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="60" y="0" width="149" height="15" uuid="8f8d6451-0ad4-4f3e-9957-bb55acb6d13b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="165" height="15" uuid="ffb8819d-8855-4f85-9a60-56e7eb8ea201"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Imprimer le "]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="160" splitType="Stretch">
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="618" y="-1" width="51" height="21" backcolor="#E5E5E5" uuid="a545a894-91f0-47e0-bc87-d2a9618beafb"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="386" y="0" width="61" height="20" backcolor="#E5E5E5" uuid="6cd14ef9-2c81-4898-9ea1-c4ea0e4c08eb"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="447" y="0" width="69" height="20" backcolor="#E5E5E5" uuid="b929a6d4-a4a7-43c6-8d9f-4c82804d2136"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="771" y="0" width="51" height="20" backcolor="#E5E5E5" uuid="eed9e1d9-d4fb-4427-acfb-3669e4f76b02"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="516" y="0" width="51" height="20" backcolor="#E5E5E5" uuid="360c8e1e-a781-4dab-9046-c3981912668e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="0" width="319" height="20" backcolor="#E5E5E5" uuid="61b5ca77-f4a1-444b-9b79-e8dd482bbb4d"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Total"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="669" y="-1" width="51" height="21" backcolor="#E5E5E5" uuid="87952515-3179-42af-a856-01bdfcf50555"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="720" y="0" width="51" height="20" backcolor="#E5E5E5" uuid="1f78b91a-fc3a-4c09-9a7c-e4f32b63b800"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" mode="Opaque" x="567" y="0" width="51" height="20" backcolor="#E5E5E5" uuid="674b6d7b-039f-4596-b0a4-1ec355006c45"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="226" y="80" width="192" height="20" uuid="fb5ddb27-f82a-4d1c-a31d-a3255777ae8f"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Appel d'Offre Ouvert"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="418" y="100" width="29" height="20" uuid="3dfddaea-3e36-4208-8c2f-fb1910b10dc9"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["AOR : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="657" y="60" width="165" height="20" uuid="9caafd7e-cec6-4d98-b74e-771ac079417b"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Personne Responsable des Marchés"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="628" y="120" width="29" height="20" uuid="bc24ea22-0979-4f74-8ff3-4495734a3ede"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["MEF : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="226" y="60" width="192" height="20" uuid="51757e78-42a1-42cf-978b-5f09348296e7"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Avis à Manifestation d'Intérêt"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="447" y="60" width="181" height="20" uuid="6544b092-2d99-403e-abb0-7e5915613b43"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fournitures"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="657" y="120" width="165" height="20" uuid="6912ea41-a589-45f4-8212-a317dace242a"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Ministre de l'Economie et des Finance"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="197" y="60" width="29" height="20" uuid="56e6c152-8080-4548-b17d-d71984ff341d"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["AMI : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="100" width="29" height="20" uuid="aba2dce1-0202-4a74-a6cf-3701fa68826d"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["FE : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="628" y="60" width="29" height="20" uuid="41d8f643-d603-4a43-aa62-848c1e303db9"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PRMP : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="120" width="29" height="20" uuid="2e091b55-122b-440f-ad25-23fdb36e6c92"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PI : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="29" y="80" width="168" height="20" uuid="9541be4b-c4cb-47fe-9147-675d584295d0"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Budget Autonome"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="226" y="100" width="192" height="20" uuid="7ef73247-8204-4c99-8e6e-e47dcbf3007f"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Appel d'Offres International"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="657" y="100" width="165" height="20" uuid="df293fa4-a505-4afe-90fd-c34cd74dbf11"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Directeur Général"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="226" y="120" width="192" height="20" uuid="89dfa902-954d-46fa-8932-12cad51cfb07"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Appel d'Offres National"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="20" width="50" height="20" uuid="1852f707-b840-4e90-9690-2b583b54c41f"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Source"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="197" y="140" width="29" height="20" uuid="ae1098bd-a8ab-4886-ad6e-c29660c13830"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["GG : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="447" y="140" width="181" height="20" uuid="540f4578-16c4-46c9-b147-2d7fe3519b36"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Services"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="628" y="100" width="29" height="20" uuid="6e4aeb31-f646-4631-968d-8ec1b59a5e32"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["DG : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="60" width="29" height="20" uuid="c63fd923-b965-445e-8dc6-ed22ca175f41"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["BN : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="29" y="60" width="168" height="20" uuid="7abc7f65-0845-4e56-8511-b1d5f26073c2"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" Budget National"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="197" y="80" width="29" height="20" uuid="0ebe4bcd-8695-4783-9841-b707fedefddc"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["AOO : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="657" y="80" width="165" height="20" uuid="5f4d6f07-6f17-45a4-907c-c9e63bed4f05"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Directeur des Ressources Financières et du Materiel"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="29" y="100" width="168" height="20" uuid="27108e0e-0642-429e-83d1-0567e9c6b430"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Financement Extérieur"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="418" y="80" width="29" height="20" uuid="82d6fdf7-21a0-4a3e-a99c-ab949d5a9086"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["T : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="50" y="20" width="772" height="20" uuid="7eed5560-5579-4e3c-a4f8-aae2549f13d5"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": Données du FNM"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="226" y="140" width="192" height="20" uuid="546c6f2f-1e76-4203-872d-cbf7a4f71bcb"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Gré à Gré"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="418" y="120" width="29" height="20" uuid="663598af-827a-4f7a-ba43-03000be0d2c1"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["DAO : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="628" y="80" width="29" height="20" uuid="0289ff71-f8c8-4ad0-81cb-c1f0fa4c25fc"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["DRFM"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="447" y="100" width="181" height="20" uuid="5f106ab2-bed4-4e2c-943a-58b50bbcc078"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Appel d'Offres Restreint"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="29" y="120" width="168" height="20" uuid="1dfac820-8d8f-47b4-9d5e-07bf7e6b9cde"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Prestations Intellectuelles"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="447" y="80" width="181" height="20" uuid="4288d5dc-72cf-4a5b-8b16-72ddc28dfae1"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Marchés de Travaux"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="197" y="100" width="29" height="20" uuid="9fc0c18f-3e75-44a9-a534-1e464f968905"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["AOI : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="418" y="60" width="29" height="20" uuid="730def99-7723-463f-b97c-c315fe49e8ef"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["F : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="418" y="140" width="29" height="20" uuid="47b4204f-48f4-4d6c-8d3a-245607f68324"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["MS : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="80" width="29" height="20" uuid="44304f36-7ca2-4821-8c90-c508ebc56aec"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["BA : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="40" width="74" height="20" uuid="a32e38d0-a368-40d9-a1af-671e6060e88d"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Légende"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="197" y="120" width="29" height="20" uuid="7561df37-94d9-40ba-a4c4-d677a4aa7730"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["AON : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="447" y="120" width="181" height="20" uuid="1a933638-6eb5-40ce-913d-40de9325ab34"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Dossier d'Appel d'Offres"]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0" isBlankWhenNull="false">
+				<reportElement mode="Opaque" x="319" y="0" width="67" height="20" forecolor="#000000" backcolor="#E5E5E5" uuid="543ec525-7b83-4c18-84eb-f865ccce2729"/>
+				<box bottomPadding="0">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalMontantEstimatif}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ordreMissionALIDé" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="255c9689-0aa8-435f-9759-9033390d9f19">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="114"/>
+	<parameter name="referenceMission" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="destination" class="java.lang.String"/>
+	<parameter name="motifMission" class="java.lang.String"/>
+	<parameter name="dateDepart" class="java.lang.String"/>
+	<parameter name="dateRetour" class="java.lang.String"/>
+	<parameter name="moyenTransport" class="java.lang.String"/>
+	<parameter name="signataire" class="java.lang.String"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="nomprenoms" class="java.lang.String"/>
+	<parameter name="poste" class="java.lang.String"/>
+	<parameter name="subReportDataSource" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="datelieuEmission" class="java.lang.String"/>
+	<title>
+		<band height="752" splitType="Stretch">
+			<staticText>
+				<reportElement x="57" y="103" width="207" height="24" uuid="93bc54cb-c4e8-4482-9721-265ad8b69034"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="17" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ORDRE DE MISSION N° ]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="93" uuid="f9ca6f7b-8f31-4580-b148-3a517fea918a">
+					<printWhenExpression><![CDATA[$P{OPTION}.equals("Normal")||$P{OPTION}==null]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportraitfnfi.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="0" y="144" width="57" height="20" uuid="cc3a0f72-cc7c-4811-a31f-4308440fdeb2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Objet :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="57" y="144" width="498" height="20" uuid="9f253bf7-ad8d-4abc-b733-d6647538665b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{motifMission}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="200" width="156" height="20" uuid="3ce3c9a4-6d01-42cc-bb7f-588453797918"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Lieu :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="225" width="156" height="20" uuid="93af0bd6-e9ee-4136-9b53-a477de706ef4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date de départ :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="250" width="156" height="20" uuid="30ecb5bc-5692-417d-af1f-f685d30e0877"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date de retour :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="275" width="156" height="20" uuid="1faab403-6422-4dde-8171-289e0718d04a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Moyen de transport :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="300" width="156" height="20" uuid="251306b5-b6c1-46b7-890c-971e799b1aab"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Membre(s) de la mission :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="312" y="529" width="243" height="49" uuid="2d330670-6e88-4bf3-b78a-5066134507c5"/>
+				<textElement>
+					<font fontName="Century Gothic" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pour le Directeur Général et PO,
+						      Le Responsable Administratif et RH,
+]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="312" y="703" width="243" height="20" uuid="6a2115d2-41be-48de-944f-bd9b9b13e82e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{signataire}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="156" y="200" width="399" height="20" uuid="e12dbc34-d9fc-4a69-8f8e-345d34407c74"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{destination}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="156" y="225" width="399" height="20" uuid="86e3f600-1f08-4c85-9433-4dfe3f488dcc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateDepart}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="156" y="250" width="399" height="20" uuid="3792a28a-4df0-4e1b-a457-1fd16b2e817a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateRetour}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="156" y="275" width="399" height="20" uuid="b6bb1473-f273-4e2d-ac8c-63469bde5316"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{moyenTransport}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement positionType="Float" x="1" y="320" width="554" height="153" uuid="9ded3284-c3fe-4151-a4a6-4475f3aa3fd9"/>
+				<subreportParameter name="nomprenoms">
+					<subreportParameterExpression><![CDATA[$P{nomprenoms}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="poste">
+					<subreportParameterExpression><![CDATA[$P{poste}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{subReportDataSource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "includeParticipantMission.jasper"]]></subreportExpression>
+			</subreport>
+			<textField isBlankWhenNull="false">
+				<reportElement x="264" y="103" width="274" height="24" uuid="9857df5d-5c85-40a0-86e6-4a7dc91348cf"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="17" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{referenceMission}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="312" y="492" width="243" height="20" uuid="c9df1c11-8c64-4c21-86de-38e131032577"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{datelieuEmission}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<subreport runToBottom="true">
+				<reportElement x="0" y="0" width="555" height="50" uuid="fb54ebf6-6234-4fd4-95cc-7be21a25001d">
+					<printWhenExpression><![CDATA[$P{OPTION}.equals("Normal")||$P{OPTION}==null]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pageportraitfnfi.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="liste_produit_magain" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="40f8e166-3562-48dd-898a-ce259d8027a0">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<field name="numero" class="java.lang.String"/>
+	<field name="produit" class="java.lang.String"/>
+	<field name="entree" class="java.lang.String"/>
+	<field name="sortie" class="java.lang.String"/>
+	<field name="quantite" class="java.lang.String"/>
+	<field name="typemagasin" class="java.lang.String"/>
+	<group name="group_type_magasin">
+		<groupExpression><![CDATA[$F{typemagasin}]]></groupExpression>
+		<groupHeader>
+			<band height="6"/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="30" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="44">
+			<staticText>
+				<reportElement style="table_CH" x="0" y="30" width="51" height="14" backcolor="#EFEFEF" uuid="dc44238d-b70c-42a6-ae50-8818400bf5c1"/>
+				<textElement>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="51" y="30" width="285" height="14" backcolor="#EFEFEF" uuid="058fbb12-da13-4f78-9070-3a409812431e"/>
+				<textElement>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Produits]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="336" y="30" width="73" height="14" backcolor="#EFEFEF" uuid="9000fa5e-5970-4b76-abcf-04c9bc299f31"/>
+				<textElement>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Entrée]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="409" y="30" width="73" height="14" backcolor="#EFEFEF" uuid="ed052afd-c62c-4e6c-8295-e090bf8c25ee"/>
+				<textElement>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Sortie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="482" y="30" width="73" height="14" backcolor="#EFEFEF" uuid="28a2dfb2-9e6f-4f4f-9f49-792397686453"/>
+				<textElement>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Quantité]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="0" width="151" height="15" uuid="84274178-ebc7-4149-8e20-ec534b905ba7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Magasin : "+$F{typemagasin}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="0" y="0" width="51" height="15" uuid="8c385a12-3b0c-4604-907f-c6aff48d8e7b"/>
+				<textElement>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="51" y="0" width="285" height="15" uuid="e366a546-b75a-40d8-909f-f0403f6945ee"/>
+				<textElement>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{produit}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="336" y="0" width="73" height="15" uuid="46a7fb93-9aef-475d-956f-6cc1b8e18e39"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entree}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="409" y="0" width="73" height="15" uuid="4558ce56-cf3a-469e-9c14-3773b4e1bb8a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sortie}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="482" y="0" width="73" height="15" uuid="cdb37425-39b7-4cf6-9eab-76d34da963a5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quantite}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="23" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

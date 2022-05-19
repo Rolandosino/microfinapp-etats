@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratPretGroupement" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b458cff0-7b1c-4539-bbd1-0781ffc765e1">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="2198"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateImpression" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="GARANTIE_NON_FINANCIERE" class="java.lang.String"/>
+	<parameter name="ENTETE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PIED_DE_PAGE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pageportrait.jasper"]]></defaultValueExpression>
+	</parameter>
+	<field name="nomMembre" class="java.lang.String"/>
+	<field name="profession" class="java.lang.String"/>
+	<field name="nationalite" class="java.lang.String"/>
+	<field name="docmicile" class="java.lang.String"/>
+	<field name="quartier" class="java.lang.String"/>
+	<field name="contact" class="java.lang.String"/>
+	<field name="typeCredit" class="java.lang.String"/>
+	<field name="montDebut" class="java.lang.String"/>
+	<field name="montFin" class="java.lang.String"/>
+	<field name="dureeDebut" class="java.lang.String"/>
+	<field name="dureeFin" class="java.lang.String"/>
+	<field name="objetCredit" class="java.lang.String"/>
+	<field name="montantPret" class="java.lang.String"/>
+	<field name="enLettres" class="java.lang.String"/>
+	<field name="dureeCredit" class="java.lang.String"/>
+	<field name="echeancier" class="java.lang.String"/>
+	<field name="montantGarantie" class="java.lang.String"/>
+	<field name="garantieEnlettre" class="java.lang.String"/>
+	<field name="localite" class="java.lang.String"/>
+	<field name="interetMois" class="java.lang.String"/>
+	<field name="numContrat" class="java.lang.String"/>
+	<field name="adresse_client" class="java.lang.String"/>
+	<field name="compte" class="java.lang.String"/>
+	<field name="nomAgence" class="java.lang.String"/>
+	<field name="villeInstitution" class="java.lang.String"/>
+	<field name="adresseInstitution" class="java.lang.String"/>
+	<field name="dateDeblocage" class="java.lang.String"/>
+	<field name="tauxGarantie" class="java.lang.String"/>
+	<field name="modeCalcul" class="java.lang.String"/>
+	<field name="montantInteret" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="60" splitType="Stretch">
+			<subreport>
+				<reportElement x="1" y="0" width="553" height="60" uuid="6c9ca6ca-8319-4f61-ab19-b1275407f1c9"/>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{ENTETE}]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<detail>
+		<band height="701" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="554" height="20" uuid="9411a1ad-9dbe-42de-a7d9-449b88822931"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CONTRAT DE PRET N°"+$F{numContrat}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-1" y="23" width="126" height="20" uuid="e39cea21-a252-4f2b-9e0b-3b59ab16b8e8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Entre les soussignés :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="343" y="63" width="210" height="20" uuid="1bb2087f-ab85-47b1-81af-8621d83bd8d7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[dénommé « Prêteur ».          D’UNE PART]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="43" width="137" height="20" uuid="ebb3f2d4-448e-4162-8980-c957e8c3fe86"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[SOGEMEF SA., Agence ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="342" y="37" width="101" height="20" uuid="4a0441e6-ae21-4d23-ac5d-48c5af06ffc1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ayant son siège à ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="127" y="57" width="215" height="1" uuid="d3b1df0b-5327-4e2b-a30c-6c75a52e09f3"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="443" y="56" width="110" height="1" uuid="e69cd2ff-aa4b-4a45-8c35-0b1be2aeeb95"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="42" y="77" width="301" height="1" uuid="e8b7e777-3853-4eb7-ab6d-586de3cdfa4d"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="56" y="119" width="497" height="1" uuid="3be703e5-0375-4edf-b8b8-809d0dafdbac"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="356" y="104" width="197" height="1" uuid="0d3a6001-04a2-4464-9f73-2cb5084ce2ba"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="5" y="105" width="302" height="1" uuid="fc289af9-a96b-4022-bc91-94196bea37cd"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="-1" y="63" width="45" height="20" uuid="ceffb1d4-384b-4b74-b31a-5a7a1ea2396e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[adresse]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="82" width="45" height="14" uuid="285b08ec-bef5-4743-a89a-0abffc60b34f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Et]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="92" width="49" height="15" uuid="71c83ea3-37a6-4de6-8699-a17894776ae9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Compte n° ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="109" width="57" height="15" uuid="fcaa4886-16a1-4148-b9d2-3b960182185d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Profession]]></text>
+			</staticText>
+			<line>
+				<reportElement x="224" y="135" width="100" height="1" uuid="e2d76cc4-3295-4ea0-a5c3-b9a46f32c214"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="31" y="136" width="169" height="1" uuid="13a61020-ac58-4a01-835f-b6aff810daae"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="200" width="137" height="1" uuid="de02be4b-9e3e-4e62-a98d-f5e6013e315f"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="194" y="124" width="37" height="15" uuid="4c7eef93-e05b-4bba-9083-6e3dc9d71b3e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Tél:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="124" width="31" height="15" uuid="2fbbeb83-b45e-4c73-8117-d33397a12e5c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Qtier]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="124" width="230" height="15" uuid="cfda952f-26ff-4b74-8031-cee5fd4c25b1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[dénommé« Emprunteur »      D’AUTRE PART]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="186" width="264" height="15" uuid="4b41dbe4-3e44-4999-b2d4-c8522e64f433"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[FCFA en capital et les intérêts / commissions dus sont de ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="264" y="166" width="278" height="15" uuid="d3e1c71e-7273-48f1-b2cf-df5a1091384e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[de la SOGEMEF SA., finance un crédit d’un montant de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="139" width="373" height="15" uuid="3ee97877-7fda-40c4-af94-a12595408510"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Il a été convenu ce qui suit :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="185" y="234" width="108" height="15" uuid="a4ffb4eb-5cf7-449d-a1e8-e929b355a5a7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[mois remboursable en ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="234" width="127" height="15" uuid="2df19125-e074-4dc9-849e-c30e228dfb84"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[La durée du prêt est fixée à ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="142" y="231" width="412" height="1" uuid="b2d81d2d-9d4b-46ce-8532-b65b270321b5"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="121" y="244" width="69" height="1" uuid="5be451a3-4496-49b4-acdb-c631b7a204b7"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="299" y="244" width="62" height="1" uuid="135d14c4-202d-4a29-aefd-957c986edc0c"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="7" y="260" width="100" height="1" uuid="7d2930d6-885f-4921-8579-002b81656c1e"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="4" y="154" width="49" height="14" uuid="7812d775-7b7c-450a-ba41-cd9c6842a72b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Article 1 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="319" width="49" height="14" uuid="a3f461db-b7ca-41f9-a990-f914058e0a3b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Article 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="154" width="205" height="13" uuid="ac8671f7-423e-448c-b61c-bbeedc458107"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Financement ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="319" width="245" height="13" uuid="2334d70b-9096-494f-9eca-65a2b22d723c"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Pénalités]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="502" y="184" width="49" height="15" uuid="017507c1-fe0a-4154-a9b9-ae155daa079c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[FCFA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="114" y="249" width="150" height="15" uuid="f9c2e5c7-404a-4b16-937e-f60187288987"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[FCFA. Avec / sans un différé de ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="402" y="196" width="100" height="1" uuid="0f57b305-4229-41ce-957b-58975ec29b9f"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="2" y="92" width="305" height="13" uuid="6030fc6c-7e53-499b-aba1-2155e2c967a5"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomMembre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="224" y="123" width="90" height="14" uuid="4ffd6d68-27dc-40cb-b74c-3b42b347c548"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contact}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="31" y="124" width="163" height="13" uuid="9cbcc00e-77b7-4b78-9e72-190b769ace22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quartier}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="64" y="107" width="478" height="14" uuid="6bc253b6-7cfd-404e-bdc1-fdf73e79b992"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{profession}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="186" width="136" height="14" uuid="ea0290e3-ded6-4386-8478-f0d8ce6ee31f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantPret}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="234" width="55" height="13" uuid="11d0ce41-f0a7-4377-9a53-cd1a9cf4fc5f"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dureeCredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="90" width="197" height="14" uuid="55979da4-7563-4dd3-8575-62e612881dcd"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{compte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="43" width="206" height="14" uuid="a91bd685-153a-4265-948c-56604fa851e4"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomAgence}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="443" y="42" width="111" height="14" uuid="32a66a4d-27c3-428c-9a53-756f745f6a76"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{villeInstitution}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="43" y="63" width="299" height="14" uuid="4516cbcf-6b05-4093-936e-9873f90a3e50"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adresseInstitution}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="142" y="218" width="412" height="14" uuid="187b8f48-0dfc-4785-9748-8865bca1b2a2"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{objetCredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="186" width="100" height="13" uuid="aea4fe30-1348-4260-9dd0-c7954705ab2f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantInteret}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="171" width="53" height="16" uuid="e34e9898-79c8-4a38-bab0-44ca8bacf04e"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[L'Agence ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="56" y="169" width="206" height="14" uuid="e4cf6444-4e54-4def-87ed-2c46d757d5e2"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomAgence}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="47" y="182" width="215" height="1" uuid="5d5b4bf7-a640-4db8-a2b6-3a56dae36ab9"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="1" y="203" width="369" height="15" uuid="656cb17b-391a-4302-9f90-f7aa1f12f72d"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[en faveur de l’emprunteur qui l’accepte.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="218" width="151" height="15" uuid="49d88d0d-99cd-4a26-b8f4-8181d227c90e"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Le prêt est destiné à financer ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="368" y="234" width="183" height="15" uuid="79923bdc-0d57-4008-bb75-fc99375d0032"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[échéances constantes de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="326" y="247" width="221" height="15" uuid="912d9860-2700-4fd9-8d67-080c95d57ac9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[la date de la première échéance est le ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="279" width="553" height="41" uuid="2755f487-fbe3-433e-bc74-97affb1e7807"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Serif" size="9"/>
+				</textElement>
+				<text><![CDATA[Le déboursement du crédit reste conditionné par la constitution en faveur de  la  Société des garanties prévues par les parties contractantes et par le payement des frais de dossier et de suivi le cas échéant.
+
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="264" y="259" width="62" height="1" uuid="257bab9d-21d0-4763-8d94-79486fe65584"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="6" y="273" width="100" height="1" uuid="fef87bc2-2c68-47f2-beeb-69b1d492ee8b"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="1" y="332" width="527" height="45" uuid="96395f62-7c0b-43ab-b802-7a92c8eceea5"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[La SOGEMEF SA., infligera une pénalité fixe de 5% avec un minimum de 1500 FCFA pour frais de débours sur chaque échéance versée en retard de plus de 5 jours. Ces pénalités de retard sont immédiatement exigibles. Le montant des pénalités de retard, devra également être versé avec l’échéance en retard.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="107" y="262" width="172" height="15" uuid="02916fda-1557-4df4-9104-10d1b58d4c93"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[et celle de la dernière échéance est ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="270" y="272" width="100" height="1" uuid="cf36eed3-5053-44ff-8b46-62e90f51ed9e"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="392" width="528" height="131" uuid="40eb5eb6-e425-4fe1-8d35-9bb53d2d4351"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Les sommes prêtées  deviendront immédiatement et intégralement exigibles dans les cas suivants
+
+	Si l’utilisation n’est pas conforme à l’accord de financement ;
+
+	Si l’emprunteur a donné une garantie contestée ou contestable ;
+
+	Faillite personnelle, liquidation des biens règlement judiciaire, déconfiture, cessation d’exploitation ou de payement de l’emprunteur ;
+
+	Perte, vol ou destruction totale ou pénalité du bien donné en gage ;
+
+	Inexécution par l’emprunteur de l’un des engagements par lui contractés et généralement dans tous les cas prévus par la loi.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-2" y="525" width="48" height="13" uuid="f91d4d16-d1f8-4333-821a-f8b7c6bb319a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Article 4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="525" width="197" height="13" uuid="21e2a2ca-f9ec-476f-b503-d4daec3f1c61"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Constitution de garanties]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="378" width="49" height="14" uuid="281de776-b8f7-4ae6-8eb3-8ed858fb8b0d"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Article 3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="53" y="378" width="245" height="13" uuid="d02b4751-b45e-40f8-9902-c692afdcc0de"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Exigibilité immédiate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="538" width="248" height="15" uuid="fc6cba95-751f-48bf-9033-2b8d14c2f27c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[L’emprunteur  porte en garantie ce qui suit :]]></text>
+			</staticText>
+		</band>
+		<band height="770">
+			<staticText>
+				<reportElement x="-1" y="100" width="100" height="15" uuid="fa4b3540-6a86-435d-9f8f-50b73dbd157d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Adresse (bur.)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="314" width="556" height="339" uuid="8e0083eb-f79d-4b8d-9886-e9cf4ee69cac"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Pour tout crédit non solde, le client devra :
+
+	Faciliter à la SOGEMEF SA. la bonne collaboration et le droit de contrôle de la gestion de son entreprise ;
+
+	Informer la SOGEMEF SA. De tout bouleversement susceptible d’entraver la bonne marche de son entreprise ;
+
+	En outre l’emprunteur s’engage à soumettre à l’approbation de la SOGEMEF SA. toute décision tendant à vendre ou, à aliéner tout ou partie de l’actif de l’entreprise ou à grever tout ou partie de cet actif ;
+
+	Contracter des emprunts dans une institution similaire ;
+
+	Cesser l’exploitation ou encore de donner en location-gérance.
+
+
+La SOGEMEF SA. ou toute personne qu’il aura mandatée à cet effet est autorisée à contrôler l’emploi des capitaux versés, et à s’assurer que toutes les dispositions sont prises par l’emprunteur en vue de rembourser les fonds avancés aux échéances prévues.
+
+En cas de défaillance :
+
+	Les frais mis en œuvre pour recouvrer la créance seront à la charge de l’emprunteur ;
+
+	Le rééchelonnement ou modification de l’échéancier n’est pas possible ;
+
+	L’emprunteur ne peut solliciter un autre crédit sans avoir soldé le précédent.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="85" width="63" height="15" uuid="28e9a190-b115-4fed-a67b-980e91de7693"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Mme / Mr ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="11" width="551" height="72" uuid="36f7d1d7-f187-4a04-9a58-0dc4ed8c8fb6"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="Serif" size="9"/>
+				</textElement>
+				<text><![CDATA[Il est en outre convenu que l’effet des garanties ne cessera qu’après remboursement intégral de toutes les  sommes dues par l’emprunteur à la SOGEMEF SA. , par conséquent, l’emprunteur autorise la SOGEMEFSA. à saisir l’épargne de garantie et réaliser les garanties matérielles en cas de non-paiement. Par ailleurs,outre la garantie, l’emprunteur autorise la SOGEMEF SA. à saisir tout bien lui appartenant et dont la ventepourrait accélérer l’apurement de sa créance.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="115" width="113" height="15" uuid="9e73c597-bb0b-46b6-927f-ef06990c8923"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Adresse (dom.)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="130" width="100" height="15" uuid="29366d5d-8f85-4ac7-8604-9994a6812a6a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Tél.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="152" width="547" height="145" uuid="268fa057-dc7e-478b-89b7-51b13ab667e7"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle" markup="none">
+					<font fontName="Serif" size="9"/>
+				</textElement>
+				<text><![CDATA[En qualité d’avaliseur de Mme / Mr ______________________________________s’engage à rembourser à la
+SOGEMEF SA. En cas de non-paiement par l’emprunteur et l’autorise à saisir la garantie, son salaire, tout autre bien lui appartenant et procéder à la vente afin de couvrir ses obligations en tant qu’avaliseur.Les documents annexes d’engagement de garanties font parties intégrantes du présent contrat.
+Par ailleurs l’emprunteur souscrit à un Fonds de solidarité (FDS) de son crédit : il verse, lors du déboursement du crédit, un montant non remboursable de 1% du capital octroyé.
+En cas de décès non provoqué pour des crédits de montants compris entre 500 000 FCFA et 5 000 000 FCFA, le Fonds de solidarité 	(FDS) couvre la moitié de toutes les échéances non encore payées avant le décès après déduction de l’épargne de garantie. En conséquence,
+la famille du défunt sera redevable à la SOGEMEF SA. de l’autre moitié des échéances non encore payées au moment du décès.
+Pour les montants inférieurs ou égaux à 500 000 FCFA, le Fonds de solidarité (FDS) couvre toutes les échéances non échues après déduction de l’épargne de garantie.
+Pour des montants supérieurs à 5 000 000 FCFA l’emprunteur doit contracter une assurance externe.
+Les ascendants, descendants et recommandeurs, munis d’un certificat de décès, seront invités dans ces conditions à faire une déposition auprès de l’institution
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="64" y="97" width="484" height="1" uuid="6271d520-9c12-4595-83e6-18e20d3cf24f"/>
+			</line>
+			<line>
+				<reportElement x="70" y="112" width="477" height="1" uuid="ff9b98e5-5655-4df5-9a8b-29798c278c75"/>
+			</line>
+			<line>
+				<reportElement x="31" y="142" width="516" height="1" uuid="ca7d6102-17e6-4303-bfdf-dfa9e45dea29"/>
+			</line>
+			<line>
+				<reportElement x="77" y="127" width="470" height="1" uuid="0e12094e-0375-4681-ba41-a6462d93611a"/>
+			</line>
+			<staticText>
+				<reportElement x="53" y="301" width="200" height="13" uuid="d10a1847-5f6c-4220-bf54-9e04edba86e4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Contraintes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="301" width="52" height="13" uuid="2109eadd-2892-42c4-9ac7-76203dffe6a8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Article 5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="699" width="52" height="13" uuid="cf870be2-cd49-499c-bd0b-bd644decd9e2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Article 6]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="699" width="491" height="13" uuid="6a43d5da-b8fa-47a6-85d5-0d72bee09e26"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Publication du nom du débiteur sur la centrale d’échange d’information]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="713" width="551" height="28" uuid="71740106-2b22-45ec-a654-8ad0a038c0b5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[L’emprunteur défaillant accepte de voir son nom être publié sur la Centrale d’Echange d’Informations (CEI) c’est-à-dire sur l’Internet comme mauvais client.]]></text>
+			</staticText>
+		</band>
+		<band height="205">
+			<textField>
+				<reportElement x="125" y="116" width="120" height="13" uuid="3002979d-b5b4-4861-b5e0-1e45053edb72"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateImpression}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="116" width="129" height="13" uuid="d0b068e9-69d0-4068-8774-d19290f0e997"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{localite}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-1" y="57" width="555" height="15" uuid="1ae4fa8f-f00a-4240-83fc-f801c8b97e30"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Tous pouvoirs sont donnés au porteur d’un exemplaire de la présente convention pour accomplir toutes les formalités prévues par la loi.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="105" width="546" height="89" uuid="08a4fc7e-d4c7-4f82-8260-93dfe1804259"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[
+Fait à _________________________,  le ______________________ en 2 exemplaires
+
+Le Bénéficiaire                                           L’Avaliseur                                             Le Président CA
+(mention lu et approuvé)
+
+
+
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="13" width="553" height="31" uuid="2a082fc2-ebfb-4c31-b585-2277e0014f73"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Tout litige ne pouvant être résolu entre l’emprunteur et le prêteur sera transféré pour arbitrage de la juridiction compétente. Les frais de litige seront ajoutés au montant restant dû.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="53" y="0" width="491" height="13" uuid="73e25a07-7d9b-4b6c-b0da-05cb6982769b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Election de domicile et attribution de compétence]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="0" width="52" height="13" uuid="b1fd2deb-3e88-4cd1-bfaa-48dcb80d565c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Article 7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="44" width="501" height="13" uuid="3ad298cc-08bb-4976-a2f6-b40c1f3e0b8a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Pouvoir pour formalités]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="44" width="52" height="13" uuid="b6a3515e-7ef7-4162-8a7c-aaee2a93ec48"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Article 8]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="32" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="32" uuid="02b6aeef-daf8-46fa-b927-a3cf5bef7aa1"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{PIED_DE_PAGE}]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

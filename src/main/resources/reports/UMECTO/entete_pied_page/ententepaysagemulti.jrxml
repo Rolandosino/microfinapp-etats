@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ententepaysage" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="835" leftMargin="5" rightMargin="2" topMargin="2" bottomMargin="5" uuid="921f7e9c-8f83-403b-bd52-d36cef2b0c24">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="197"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="INSTITUTION" class="java.lang.String"/>
+	<parameter name="AGREMENT_INSTITUTION" class="java.lang.String"/>
+	<parameter name="RUE_AGENCE" class="java.lang.String"/>
+	<parameter name="QUARTIER_AGENCE" class="java.lang.String"/>
+	<title>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="49" y="38" width="786" height="12" uuid="d9e462c2-557d-4815-be4c-a6b38785b126"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tél/Fax :"+ $P{TEL_AGENCE}+"/BP:"+$P{BP_AGENCE}+"/ Siège social:"+$P{RUE_AGENCE}+" "+$P{QUARTIER_AGENCE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="49" y="3" width="786" height="12" uuid="dd9032c8-2759-46d3-af7d-20896ea0e4ea"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNION DES MUTUELLES D'EPARGNE ET DE CREDIT DU TOGO]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="50" height="50" uuid="24a84dc4-de86-4987-b486-07c936745309"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="49" y="27" width="786" height="12" uuid="b0f638da-ef7b-4e41-8336-01fb6de3ea43"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{AGREMENT_INSTITUTION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="49" y="15" width="786" height="12" forecolor="#3366FF" uuid="a7727f40-4e14-4277-9cdc-3b71f5c80c41"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="none">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{INSTITUTION}+" - "+$P{LIBELLE_AGENCE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>

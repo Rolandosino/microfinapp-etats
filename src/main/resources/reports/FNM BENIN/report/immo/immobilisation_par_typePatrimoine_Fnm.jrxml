@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="immobilisation_par_typePatrimoine_Fnm" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="787aba6e-feb6-4a62-a30d-b58401e57522">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="4"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="para_typePatrimoine" class="java.lang.String"/>
+	<parameter name="para_structure" class="java.lang.String"/>
+	<parameter name="para_date_inventaire" class="java.util.Date"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<field name="description" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="localisation" class="java.lang.String"/>
+	<field name="anneeAc" class="java.lang.String"/>
+	<field name="coutAc" class="java.lang.String"/>
+	<field name="ref_titr_foncier" class="java.lang.String"/>
+	<field name="observation" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="64" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="71" splitType="Stretch">
+			<staticText>
+				<reportElement x="214" y="26" width="190" height="20" uuid="d9f0a580-ae13-4077-9708-2e39f3d3fb47"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relevé d'inventaire au ]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="383" y="26" width="254" height="20" uuid="313099d7-48e3-4252-be41-14caeddd147d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{para_date_inventaire}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="50" width="117" height="18" uuid="8ae12d72-5907-4f65-b2eb-e903a00aebb0"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Type de patrimoine :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="1" width="193" height="20" uuid="d66d8865-0a9f-4ac4-98cc-912ff95b59a2"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[DIRECTION/organisme/Etablissement]]></text>
+			</staticText>
+			<line>
+				<reportElement x="193" y="16" width="609" height="1" uuid="313ad068-6a29-45c8-a665-07f2ebeeda03"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="117" y="50" width="227" height="18" uuid="ac5fb215-63a0-4317-91d6-cba8d0435535"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{para_typePatrimoine}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="41" y="0" width="138" height="28" backcolor="#EFEFEF" uuid="439f1e00-caf6-41c2-900b-5409da5e328e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="179" y="0" width="78" height="28" backcolor="#EFEFEF" uuid="01c29181-2f87-4d9a-935b-abee251b914d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="383" y="0" width="114" height="28" backcolor="#EFEFEF" uuid="4a0f22fd-8dc8-49d1-954b-6690206fbeea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Année de construction / Acquisition]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="497" y="0" width="102" height="28" backcolor="#EFEFEF" uuid="bf28b1e6-929f-41e4-a4fb-a96988370858"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Coût d'acquisition]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="599" y="0" width="89" height="28" backcolor="#EFEFEF" uuid="2030244e-a076-45df-88f6-c04bb9115cb1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Référence du titre foncier]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="688" y="0" width="114" height="28" backcolor="#EFEFEF" uuid="1c84f3ce-45be-4712-a31e-dca9d01eeaf8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Observation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="0" y="0" width="41" height="28" backcolor="#EFEFEF" uuid="9e781966-a684-4cb9-a12e-eb42ff966b2c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[N° Ordre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="257" y="0" width="126" height="28" backcolor="#EFEFEF" uuid="9d24ae4e-2bbb-4025-af79-bff89aabf2f2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Localisation]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="41" y="0" width="138" height="20" uuid="d72ac0d4-1af7-4825-8ef0-743c06b041fa"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="179" y="0" width="78" height="20" uuid="784a5713-d365-474d-8e10-5c5ce4972c6b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="257" y="0" width="126" height="20" uuid="feabb6f9-10b8-4c8c-b48c-98417dee79a9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{localisation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="383" y="0" width="114" height="20" uuid="70785665-595a-4f6d-b987-97a092fc1a56"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{anneeAc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="497" y="0" width="102" height="20" uuid="289c5a11-ae0a-4dc4-af1f-a79487f31c41"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{coutAc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="599" y="0" width="89" height="20" uuid="e06c751d-4c5e-47de-8338-2865a11975de"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ref_titr_foncier}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="688" y="0" width="114" height="20" uuid="fdca47fc-8b72-408a-880e-5c4a7ace5d3a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{observation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="0" y="0" width="41" height="20" uuid="b82cfb35-23a1-47a1-a1c9-85c8a54214ae"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="73">
+			<staticText>
+				<reportElement x="17" y="27" width="197" height="18" uuid="b366c3a4-60ff-4f81-8b4b-2c965448f344"/>
+				<textElement>
+					<font size="9"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Noms et Signatures des inventoristes :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="7" width="100" height="18" uuid="88a58cc1-71a5-4cdb-87a9-c0673a94a00f"/>
+				<textElement>
+					<font size="9"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="47" width="197" height="18" uuid="ad82f3e3-5ea0-470d-9734-123b551d698d"/>
+				<textElement>
+					<font size="9"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Nom, Prenoms et visa du 1er Responsable :]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="35" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

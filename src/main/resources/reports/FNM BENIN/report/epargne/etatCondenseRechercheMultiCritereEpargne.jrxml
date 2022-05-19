@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="864" pageHeight="842" columnWidth="824" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="147dbcd4-de11-4c93-a54e-ec7400868ab7">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <style name="table_TD_Chaine" hAlign="Left" vAlign="Middle" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+        <box>
+            <leftPen lineWidth="0.5"/>
+            <bottomPen lineWidth="0.5"/>
+        </box>
+        <paragraph leftIndent="3"/>
+    </style>
+    <style name="table_TD_Nombre" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+        <box>
+            <leftPen lineWidth="0.5"/>
+            <bottomPen lineWidth="0.5"/>
+        </box>
+        <paragraph rightIndent="3"/>
+    </style>
+    <style name="table_CH" mode="Opaque" backcolor="#E5E5E5" hAlign="Center" vAlign="Middle" fontSize="10" isItalic="false" isUnderline="false" isStrikeThrough="false">
+        <box>
+            <topPen lineWidth="0.5"/>
+            <leftPen lineWidth="0.5"/>
+            <bottomPen lineWidth="0.5"/>
+        </box>
+    </style>
+    <parameter name="LIBELLE_AGENCE" class="java.lang.String"/>
+    <parameter name="TITRE_ETAT" class="java.lang.String"/>
+    <parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+    <parameter name="BP_AGENCE" class="java.lang.String"/>
+    <parameter name="DATE_EDITION" class="java.lang.String"/>
+    <parameter name="TEL_AGENCE" class="java.lang.String"/>
+    <parameter name="DATE_DEBUT" class="java.lang.String"/>
+    <parameter name="DATE_FIN" class="java.lang.String"/>
+    <parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="FICHIER_EXCEL" class="java.lang.Boolean"/>
+    <field name="libelle" class="java.lang.String"/>
+    <field name="nombreHommeFormate" class="java.lang.String"/>
+    <field name="montantHomme" class="java.lang.String"/>
+    <field name="nombreFemmeFormate" class="java.lang.String"/>
+    <field name="montantFemme" class="java.lang.String"/>
+    <field name="nombreEntrepriseFormate" class="java.lang.String"/>
+    <field name="montantEntreprise" class="java.lang.String"/>
+    <field name="nombreGroupeFormate" class="java.lang.String"/>
+    <field name="montantGroupe" class="java.lang.String"/>
+    <field name="nombreTotalFormate" class="java.lang.String"/>
+    <field name="soldeTotal" class="java.lang.String"/>
+    <field name="proportion" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="99" splitType="Stretch">
+            <textField>
+                <reportElement x="716" y="0" width="108" height="20" uuid="a7956c72-7989-49de-9952-7972d5f51ca7"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$P{DATE_EDITION}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="0" width="716" height="20" uuid="d7de04ac-c073-4c0b-af52-5eabbb870bca"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{LIBELLE_AGENCE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="40" width="111" height="20" uuid="60b9257f-28a7-4638-b442-b7bcbfe55072"/>
+                <box leftPadding="3"/>
+                <textElement verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$P{BP_AGENCE}+" /"]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="20" width="824" height="20" uuid="e65181bf-ab80-455b-8d02-1307fc3106b8"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{ADRESSE_AGENCE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="110" y="40" width="714" height="20" uuid="6e8b2d76-dd94-48c2-a5a4-92e2fa992d45"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA["TEL: "+$P{TEL_AGENCE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="64" width="823" height="35" uuid="b6014f72-8351-4456-b59c-c50d79b58609"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="15" isBold="true" isUnderline="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{TITRE_ETAT}+" DU "+$P{DATE_DEBUT}+" AU "+$P{DATE_FIN}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="40" splitType="Stretch">
+            <staticText>
+                <reportElement style="table_CH" x="0" y="0" width="149" height="40" isRemoveLineWhenBlank="true" uuid="2ac1dfca-e316-48bc-9fb1-426a2b3e4d22">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <text><![CDATA[Libellé]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="149" y="20" width="46" height="20" isRemoveLineWhenBlank="true" uuid="359ffd2a-532b-4c2d-b1af-0e2c533fe134">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <text><![CDATA[Nombre]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="195" y="20" width="75" height="20" isRemoveLineWhenBlank="true" uuid="cf085321-2068-49d2-ac01-1205feb49b1d">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <text><![CDATA[Montant]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="270" y="20" width="46" height="20" isRemoveLineWhenBlank="true" uuid="a5747ef2-4a8e-4ecc-ae60-fdff6d2a021f">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <text><![CDATA[Nombre]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="316" y="20" width="75" height="20" isRemoveLineWhenBlank="true" uuid="83474fe0-baa7-498e-8e22-0a3d1e48439e">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <text><![CDATA[Montant]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="391" y="20" width="46" height="20" isRemoveLineWhenBlank="true" uuid="5dd61eaf-83ee-45b1-ba93-99cddac2baf3">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <text><![CDATA[Nombre]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="437" y="20" width="75" height="20" isRemoveLineWhenBlank="true" uuid="fbe72653-78e2-4bb2-8497-5a76f8de882e">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <text><![CDATA[Montant]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="512" y="20" width="46" height="20" isRemoveLineWhenBlank="true" uuid="4218c75f-b568-4e8d-bffc-b78fa4bab19d">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <text><![CDATA[Nombre]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="558" y="20" width="75" height="20" isRemoveLineWhenBlank="true" uuid="f7fe9a72-915f-413e-9d85-a7915a115a1f">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <text><![CDATA[Montant]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="633" y="20" width="46" height="20" isRemoveLineWhenBlank="true" uuid="33a74e62-9d2a-4501-881a-79fd4391f347">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <text><![CDATA[Nombre]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="679" y="20" width="75" height="20" isRemoveLineWhenBlank="true" uuid="449631fe-1f78-4f45-8c9f-9de5fc4ec7ca">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <text><![CDATA[Montant]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="754" y="20" width="69" height="20" isRemoveLineWhenBlank="true" uuid="139eb9b6-e40e-4b78-9f88-9cb5857bed12">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <box>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <text><![CDATA[Proportion (%)]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="149" y="0" width="121" height="20" isRemoveLineWhenBlank="true" uuid="eee9f24d-6d4b-4459-8e6b-1d14526f39f2">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <text><![CDATA[Homme]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="270" y="0" width="121" height="20" isRemoveLineWhenBlank="true" uuid="61cc8fe5-ce32-4c88-ac7d-90e743f4dfd1">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <text><![CDATA[Femme]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="391" y="0" width="121" height="20" isRemoveLineWhenBlank="true" uuid="0a4f89bf-5bad-41a3-ba38-bd409f4ea8cb">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <text><![CDATA[Entreprise]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="512" y="0" width="121" height="20" isRemoveLineWhenBlank="true" uuid="d0f6311e-84eb-4238-88a2-a5c3a742ae1a">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <text><![CDATA[Groupe]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="633" y="0" width="190" height="20" isRemoveLineWhenBlank="true" uuid="c135cd10-b2b8-4b98-8928-8e25c9ecf6e4">
+                    <printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+                </reportElement>
+                <box>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <text><![CDATA[Total]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="20" splitType="Stretch">
+            <textField>
+                <reportElement style="table_TD_Chaine" x="0" y="0" width="149" height="20" uuid="129d1e02-8be1-48ff-bdc8-c04bb85d2f9c"/>
+                <textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="149" y="0" width="46" height="20" uuid="03e2964d-8b85-4a9f-b32d-aad14b51da5e"/>
+                <textFieldExpression><![CDATA[$F{nombreHommeFormate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="195" y="0" width="75" height="20" uuid="d2039b57-ff52-4325-8199-3475a773e63f"/>
+                <textFieldExpression><![CDATA[$F{montantHomme}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="270" y="0" width="46" height="20" uuid="ce859c64-f835-4e87-b1bb-4b4109759b14"/>
+                <textFieldExpression><![CDATA[$F{nombreFemmeFormate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="316" y="0" width="75" height="20" uuid="1627db8a-b15a-4402-9353-a1898d908109"/>
+                <textFieldExpression><![CDATA[$F{montantFemme}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="391" y="0" width="46" height="20" uuid="f97ff50d-c02f-4049-8157-becd87e56c4a"/>
+                <textFieldExpression><![CDATA[$F{nombreEntrepriseFormate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="437" y="0" width="75" height="20" uuid="eade5e49-b297-4502-960b-9f67ae5e8418"/>
+                <textFieldExpression><![CDATA[$F{montantEntreprise}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="512" y="0" width="46" height="20" uuid="e35c40fb-0f2a-48e5-9940-73ac7018df6d"/>
+                <textFieldExpression><![CDATA[$F{nombreGroupeFormate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="558" y="0" width="75" height="20" uuid="d2e1ff57-dfd3-42f5-a112-49ec36a576c2"/>
+                <textFieldExpression><![CDATA[$F{montantGroupe}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="633" y="0" width="46" height="20" uuid="5b3a8938-a57e-406a-a0ab-b06b800bbece"/>
+                <textFieldExpression><![CDATA[$F{nombreTotalFormate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="679" y="0" width="75" height="20" uuid="18a1fc72-72da-4a88-bcfe-1ded9ec6933c"/>
+                <textFieldExpression><![CDATA[$F{soldeTotal}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="754" y="0" width="69" height="20" uuid="bda753e0-92fe-4833-bd37-f01af405e8ed"/>
+                <box>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textFieldExpression><![CDATA[$F{proportion}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="45" splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="54" splitType="Stretch">
+            <subreport>
+                <reportElement x="0" y="0" width="824" height="54" uuid="ec9dd045-1465-47b1-9278-a0a093d0a6fa"/>
+                <subreportParameter name="LIBELLE_APPLICATION"/>
+                <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+    </pageFooter>
+    <summary>
+        <band height="42" splitType="Stretch"/>
+    </summary>
+</jasperReport>

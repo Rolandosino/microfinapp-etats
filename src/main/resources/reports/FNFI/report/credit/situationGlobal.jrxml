@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="situationGlobal" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="0" uuid="10ff9147-b0dc-4692-b840-3e46bc012d7f">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATE_HISTORIQUE" class="java.lang.String"/>
+	<field name="produitCredit" class="java.lang.String"/>
+	<field name="montantDecaisse" class="java.lang.String"/>
+	<field name="capitalAttendu" class="java.lang.String"/>
+	<field name="capitalRembourse" class="java.lang.String"/>
+	<field name="encoursGlobal" class="java.lang.String"/>
+	<field name="encourEnretard" class="java.lang.String"/>
+	<field name="tauxImpaye" class="java.lang.String"/>
+	<field name="tauxRemboursement" class="java.lang.String"/>
+	<field name="observation" class="java.lang.String"/>
+	<field name="payementEnticipe" class="java.lang.String"/>
+	<variable name="TOTAL_DECAISSE" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantDecaisse}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_ATTENDU" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{capitalAttendu}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_REMBOURSE" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{capitalRembourse}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_ENCOURS_GLOBAL" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{encoursGlobal}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_ENCOURS_ENRETARD" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{encourEnretard}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_ENTICIPE" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{payementEnticipe}).toString()))]]></variableExpression>
+		<initialValueExpression><![CDATA[java.math.BigDecimal.ZERO]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<subreport>
+				<reportElement x="19" y="0" width="802" height="93" uuid="bda336ed-1cc5-4835-a37a-7c06a7544b1e"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententepaysage.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="33">
+			<textField>
+				<reportElement x="19" y="0" width="802" height="20" uuid="48d49c74-8bee-4cf9-aa3c-85ef8e199ce2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SITUATION GLOBALE DU PORTEFEUILLE DE CREDIT DU FNFI AU "+$P{DATE_HISTORIQUE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="19" y="0" width="284" height="34" backcolor="#E5E5E5" uuid="be7d74a2-2b38-40ea-8a43-6bae200db087"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Programme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="303" y="0" width="85" height="34" backcolor="#E5E5E5" uuid="8023f123-d44a-40da-9467-f1f318fa7d36"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Montant décaissé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="388" y="0" width="85" height="34" backcolor="#E5E5E5" uuid="30e0ec54-03b6-43b4-bf6a-dfdb37965a14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nominal Attendu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="473" y="0" width="85" height="34" backcolor="#E5E5E5" uuid="b8d8eb1a-6814-4089-8035-214177be2aef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nominal Remboursé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="558" y="0" width="85" height="34" backcolor="#E5E5E5" uuid="da5ef5e6-c010-4832-88e3-b6cc30295b48"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Encours Global]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="643" y="0" width="85" height="34" backcolor="#E5E5E5" uuid="99497078-97db-4abf-a3c3-1d95e2ab825b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Encours retard]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="728" y="0" width="44" height="34" backcolor="#E5E5E5" uuid="a548733d-b342-42f8-ba5c-50a32fa22916"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Taux d'impayé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="772" y="0" width="44" height="34" backcolor="#E5E5E5" uuid="15e7e82d-5994-4992-a576-b09b45a9bf55"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Taux de Remb]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="19" y="0" width="284" height="20" uuid="81364af9-7eb5-450a-a71e-e2362b27ca87"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{produitCredit}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="303" y="0" width="85" height="20" uuid="632b8359-deb0-4e5b-a0b1-81cce32698f7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantDecaisse}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="388" y="0" width="85" height="20" uuid="7da97df9-46ee-4246-8e5d-42a8559e4a4b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capitalAttendu}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="473" y="0" width="85" height="20" uuid="99aece08-859a-493a-852c-cc073466c54d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capitalRembourse}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="558" y="0" width="85" height="20" uuid="7814a840-4322-4d67-ae50-3161e5d3899b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encoursGlobal}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="643" y="0" width="85" height="20" uuid="2d90c8be-82ba-4b69-a5c5-da167a5b74ef"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encourEnretard}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="728" y="0" width="44" height="20" uuid="751aa6d1-364e-4374-8b22-94c93718da06"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tauxImpaye}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="772" y="0" width="44" height="20" uuid="4642a6ad-86f3-4d54-931a-7ea29c9257ea"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="1" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tauxRemboursement}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="842" height="50" uuid="60d26104-e99b-4056-afaa-07d87cda82f8"/>
+				<subreportParameter name="LIBELLE_APPLICATION"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page_en_paysage.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="388" y="0" width="85" height="20" uuid="ae762be6-6503-4d2f-8eeb-e371563d7db4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="1" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_ATTENDU}))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="772" y="0" width="44" height="20" uuid="eec918c2-c810-429c-9695-9b4dea25c03e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="1" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format((($V{TOTAL_REMBOURSE}).doubleValue()/$V{TOTAL_ATTENDU}.doubleValue())*100)]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="303" y="0" width="85" height="20" uuid="aa29e233-a056-49b6-b325-8f4f2317460c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="1" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_DECAISSE}))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="473" y="0" width="85" height="20" uuid="ee789d20-31be-4e10-a8a8-5629e4361c9b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="1" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_REMBOURSE}))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="728" y="0" width="44" height="20" uuid="046d52e3-6b78-4e78-9621-b0f37f27cecf"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="1" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format((($V{TOTAL_ENCOURS_ENRETARD}).doubleValue()/$V{TOTAL_ATTENDU}.doubleValue())*100)]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="643" y="0" width="85" height="20" uuid="e1d753b6-206d-4433-a171-ad6451fda975"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="1" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_ENCOURS_ENRETARD}))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="558" y="0" width="85" height="20" uuid="d341d67f-2f90-4708-abdc-28acdefbe9cf"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="1" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_ENCOURS_GLOBAL}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="19" y="0" width="284" height="20" uuid="478ce2f3-0def-4141-97cb-689d96043992"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="1"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Total"]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

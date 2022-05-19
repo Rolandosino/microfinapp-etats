@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="renouvellementStageFNM" language="groovy" pageWidth="555" pageHeight="842" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="0" uuid="969718c0-0c54-4628-8350-aa424fd64c01">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="211"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="OPTION" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<field name="dateLettre" class="java.lang.String"/>
+	<field name="noms" class="java.lang.String"/>
+	<field name="adesse" class="java.lang.String"/>
+	<field name="reference" class="java.lang.String"/>
+	<field name="civilite" class="java.lang.String"/>
+	<field name="datefinPrevus" class="java.lang.String"/>
+	<field name="dureeStage" class="java.lang.String"/>
+	<field name="dateDebut" class="java.lang.String"/>
+	<field name="dateFin" class="java.lang.String"/>
+	<field name="signataire" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="93">
+			<printWhenExpression><![CDATA[$P{OPTION}.equals("Normal")||$P{OPTION}==null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="93" uuid="0768a655-25c3-480d-bcfa-574c2a401c70"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<detail>
+		<band height="705" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="337" y="106" width="216" height="46" uuid="2270d6ff-e36b-4d3a-a206-771ffe3fdef4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adesse}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="337" y="72" width="216" height="34" uuid="7260157b-184e-44cb-8cff-2bcc194c1452"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{noms}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="17" y="249" width="202" height="20" uuid="79a782bb-a5ca-40f2-85b8-6663ff2e7c17"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{civilite}+","]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="19" y="282" width="515" height="63" uuid="58959043-34ea-4963-bedb-8e34d2e54801"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["J’accuse réception de votre demande de renouvellement de stage professionnel et vous remercie pour l'intérêt que vous portez pour le FNM de même pour votre motivation durant toute la période de votre stage qui prendra fin le "+$F{datefinPrevus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="323" y="685" width="232" height="20" uuid="fd6eea44-6eba-4111-a0e7-6fb49492e78f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{signataire}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="18" y="345" width="516" height="67" uuid="30c959d2-3ef8-4d37-a78d-c98bb9c77d86"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="none">
+					<font fontName="SansSerif" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["En réponse de votre demande, je vous marque mon accord pour un stage professionnel complémentaire d'une durée de "+ $F{dureeStage}+", ceci pour la période du  "+ $F{dateDebut}+" au "+$F{dateFin}+" ,et vous exhorte à plus de dynamisnme et d'aptitude professionnel."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="18" y="412" width="516" height="29" uuid="959c6e79-dbc0-4916-9ad2-4d2713874036"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Recevez "+$F{civilite}+" , mes meilleures salutations."]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="78" y="171" width="259" height="20" uuid="f974769b-73f1-429a-a889-018ec6b0af64"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reference}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="19" y="210" width="45" height="20" uuid="a0bd9a81-2476-412c-b8b1-c7fe9fa70dbf"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Objet :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="64" y="210" width="489" height="20" uuid="5fdc724b-2578-4837-9e34-05ce6799c5d9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[A/S votre demande de renouvellement de stage.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="337" y="5" width="216" height="20" uuid="a3d03d01-b6a6-4bf2-a13e-b9a521a59a81"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateLettre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="19" y="171" width="59" height="20" uuid="c79896ce-00bd-40b7-b838-979eff44e38d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[N° Ref.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="323" y="550" width="200" height="20" uuid="fc500990-d97e-4733-b524-2e701f13a5c9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[La Directrice Générale]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50">
+			<printWhenExpression><![CDATA[$P{OPTION}.equals("Normal")||$P{OPTION}==null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="50" uuid="c026d5a3-459b-4f87-a29d-0c51276dc978">
+					<printWhenExpression><![CDATA[$P{OPTION}.equals("Normal")||$P{OPTION}==null]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

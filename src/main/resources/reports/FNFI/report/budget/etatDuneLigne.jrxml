@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etatDuneLigne" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="66417e43-8cfa-4fee-86d4-59b5bd619141">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="DATE" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<field name="libelleLigne" class="java.lang.String"/>
+	<field name="prevision" class="java.lang.String"/>
+	<field name="realisation" class="java.lang.String"/>
+	<field name="engagement" class="java.lang.String"/>
+	<field name="decaissement" class="java.lang.String"/>
+	<field name="disponibilite" class="java.lang.String"/>
+	<field name="tauxRealisation" class="java.lang.String"/>
+	<field name="tauxEngagement" class="java.lang.String"/>
+	<field name="tauxDecaissement" class="java.lang.String"/>
+	<field name="tauxDisponibilite" class="java.lang.String"/>
+	<field name="codeLigne" class="java.lang.String"/>
+	<field name="periode" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="121" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="101" width="555" height="20" uuid="2b40b0b5-9910-4100-a0e7-7ec6f2acfa39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Etat de la ligne budgetaire : "+$F{libelleLigne}+" au "+$P{DATE}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="93" uuid="b2cfcc0c-46cd-4883-930d-744140bab1e4"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<detail>
+		<band height="156" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="14" width="87" height="20" uuid="66ae7c06-2a6a-4ed5-86c0-5b355f070c24"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="34" width="87" height="20" uuid="8813efca-591f-4379-b9a5-906b6f53fe78"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Période]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="54" width="87" height="20" uuid="821d7fa4-b327-4494-8ee3-fcf4b13ed08f"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Disponibilité]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="74" width="87" height="20" uuid="ed3d951c-349a-484c-8433-e297a4e1b42d"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Réalisation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="94" width="87" height="20" uuid="fd4159aa-3768-4787-a6cf-0f117dda173f"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Engagement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="114" width="87" height="20" uuid="0c4d8809-5f2c-4b62-97de-65ea33a6a4ad"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Décaissement]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="98" y="14" width="152" height="20" uuid="982adbdf-3b72-4903-9b8e-e2ff800f3daa"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{codeLigne}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="98" y="34" width="152" height="20" uuid="ed62edb4-5f71-4dd5-9a8d-809e325fc911"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{periode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="98" y="54" width="152" height="20" forecolor="#00CC33" backcolor="#FFFFFF" uuid="0eb6d57a-9d9d-4ef1-8e21-445dd26de6a9">
+					<printWhenExpression><![CDATA[new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{disponibilite}).toString()).compareTo(java.math.BigDecimal.ZERO) >= 0]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{disponibilite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="98" y="74" width="152" height="20" uuid="c888867d-b58e-481a-a9be-91dfd6a8750f"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{realisation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="98" y="94" width="152" height="20" uuid="9337010b-641b-476a-a2e4-3ae704be8814"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{engagement}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="98" y="114" width="152" height="20" uuid="67a14196-caae-401f-872c-af163c4b7163"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{decaissement}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="385" y="34" width="170" height="20" uuid="255a86d8-b5f9-46f9-9134-b331b27b7c98"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{prevision}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="261" y="114" width="113" height="20" uuid="5cc1c644-869c-4a36-8099-649f18a944d1"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Taux de décaissement]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="385" y="74" width="170" height="20" uuid="edae66cd-a003-4ac9-bd25-16ae336b03e0"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tauxRealisation}+"%"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="385" y="54" width="170" height="20" forecolor="#00CC33" backcolor="#FFFFFF" uuid="909a3012-91fa-4a52-a36a-447d1f638d61">
+					<printWhenExpression><![CDATA[new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{disponibilite}).toString()).compareTo(java.math.BigDecimal.ZERO) >= 0]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tauxDisponibilite}+"%"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="261" y="54" width="113" height="20" uuid="922a4799-8ad7-4b4c-9ac5-d9b2868a502d"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Taux de disponibilité]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="261" y="34" width="113" height="20" uuid="3c6da147-616e-4b39-80ab-c7e173c73862"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Prévision]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="385" y="114" width="170" height="20" uuid="854fbb5f-c655-433d-93cb-c832a4d16f40"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tauxDecaissement}+"%"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="385" y="14" width="170" height="20" uuid="9ea8592b-b6de-45a6-89b2-618435d08c6d"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{libelleLigne}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="261" y="14" width="113" height="20" uuid="f628a580-a344-46c4-9b99-e2a97b7d2bd1"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Libellé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="261" y="74" width="113" height="20" uuid="e65c489d-57d5-47fe-9893-680e66a224e7"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Taux de réalisation]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="385" y="94" width="170" height="20" uuid="cff0c75d-a556-46e8-a66d-dad9a3814479"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{tauxEngagement}+"%"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="261" y="94" width="113" height="20" uuid="67ff0e67-ea5e-4642-b247-f09a3139d460"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Taux d'engagement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="14" width="11" height="20" uuid="c50bd1b2-0e05-4450-9633-0139c3717c04"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="34" width="11" height="20" uuid="02547314-ace2-495c-af24-94a6cfa822fa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="54" width="11" height="20" uuid="220bdd64-c2bf-49e4-91c8-f578887a5e5a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="74" width="11" height="20" uuid="c5fc0467-49ec-4e81-beb2-39805c055161"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="94" width="11" height="20" uuid="3709ae7a-bd1a-4232-afb8-bff7c8957eb0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="114" width="11" height="20" uuid="28546e6e-100b-4e29-9d3d-0cf0e119b2dc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="374" y="14" width="11" height="20" uuid="38322ebf-f570-4904-83bc-dc9126975263"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="374" y="34" width="11" height="20" uuid="37ab312f-f1eb-4edd-a86f-04869ecf20d1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="374" y="54" width="11" height="20" uuid="23bb50b8-3663-4a72-a368-f6d3d434672f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="374" y="74" width="11" height="20" uuid="a5401b37-a5f6-4a0b-b7dc-aad3c71ae2a6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="374" y="94" width="11" height="20" uuid="9c6c7138-867c-42fb-b343-fd7173385080"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="374" y="114" width="11" height="20" uuid="27781eb3-ae7a-4f1e-9409-49d6a170325b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="98" y="54" width="152" height="20" forecolor="#FF3333" backcolor="#FFFFFF" uuid="28f8fa29-3c51-4316-8a3f-007e96b65496">
+					<printWhenExpression><![CDATA[new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{disponibilite}).toString()).compareTo(java.math.BigDecimal.ZERO) < 0]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{disponibilite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="385" y="54" width="170" height="20" forecolor="#FF3333" backcolor="#FFFFFF" uuid="40ff8451-e9dd-4047-bbe2-886a6d508500">
+					<printWhenExpression><![CDATA[new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{disponibilite}).toString()).compareTo(java.math.BigDecimal.ZERO) < 0]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tauxDisponibilite}+"%"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="72" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="196" height="15" uuid="972e02db-75fb-449e-97ce-0c6d2147b3d2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Imprimer le "+(new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="0" width="100" height="15" uuid="1bfa94a2-5449-4541-ae47-5cd1e7781365"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Microfina++"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="482" y="0" width="47" height="15" uuid="88c21be2-2853-4e34-88af-9a4527d4fd7c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="529" y="0" width="26" height="15" uuid="9363df9d-7937-4db7-9aa3-890012f25394"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="22" width="555" height="50" uuid="687c21fc-f303-43cc-ade5-f989f42e1efb"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pageportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

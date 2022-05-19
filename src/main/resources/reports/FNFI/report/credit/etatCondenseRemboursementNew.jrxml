@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="2aeafb43-36b8-47cf-8282-1105ac7363a9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_TD_Chaine" hAlign="Left" vAlign="Middle" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+		</box>
+		<paragraph leftIndent="3"/>
+	</style>
+	<style name="table_TD_Nombre" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+		</box>
+		<paragraph rightIndent="3"/>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E5E5E5" hAlign="Center" vAlign="Middle" fontSize="10" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<topPen lineWidth="0.5"/>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+		</box>
+	</style>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String"/>
+	<parameter name="TITRE_ETAT" class="java.lang.String"/>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_DEBUT" class="java.lang.String"/>
+	<parameter name="DATE_FIN" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FICHIER_EXCEL" class="java.lang.Boolean"/>
+	<parameter name="TYPE_PRODUIT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PRODUIT_CREDIT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="MONTANT_DEBUT" class="java.lang.String">
+		<defaultValueExpression><![CDATA[null]]></defaultValueExpression>
+	</parameter>
+	<parameter name="MONTANT_FIN" class="java.lang.String">
+		<defaultValueExpression><![CDATA[null]]></defaultValueExpression>
+	</parameter>
+	<parameter name="AGENT_CREDIT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TERME" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OBJET_CREDIT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIGNE_FINANCEMENT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NOM" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PRENOMS" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TYPE_CLIENT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CATEGORIE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ZONE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NATIONALITE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="GESTIONNAIRE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="COMMERCIAL" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SECTEUR_ACTIVITE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="GENRE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PROFESSION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TYPE_ACTIVITE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FORME_JURIDIQUE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TYPE_GROUPEMENT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tous"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="BAILLEUR" class="java.lang.String"/>
+	<parameter name="PSF" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<field name="libelle" class="java.lang.String"/>
+	<field name="totalCapital" class="java.lang.String"/>
+	<field name="totalInteret" class="java.lang.String"/>
+	<field name="totalReglement" class="java.lang.String"/>
+	<variable name="TOTAL_CAPITAL" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{totalCapital}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_INTERET" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{totalInteret}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_REGLEMENT" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{totalReglement}).toString()))]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="231" splitType="Stretch">
+			<textField>
+				<reportElement x="1" y="207" width="554" height="24" uuid="0610e31d-91ce-4fa0-a266-422a16c64cd1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITRE_ETAT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="33" y="143" width="213" height="20" uuid="f9c1e508-8183-4d28-ab74-f6f9a2d3891f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" PSF : "+$P{PSF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="313" y="123" width="213" height="20" uuid="9975fbbb-dbfe-47f6-aa06-2eafea799417">
+					<printWhenExpression><![CDATA[($P{MONTANT_FIN} != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" à "+$P{MONTANT_FIN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="33" y="183" width="213" height="20" uuid="d32201e9-9cfc-4cb9-be35-d99c12ee2ff7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" Type de client : "+$P{TYPE_CLIENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="33" y="103" width="213" height="20" uuid="e648d7d7-aa57-4276-8500-8632256a660a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Type de produit crédit : "+$P{TYPE_PRODUIT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="33" y="123" width="213" height="20" isRemoveLineWhenBlank="true" uuid="7e259480-9895-472d-a09f-963de5d1b40a">
+					<printWhenExpression><![CDATA[($P{MONTANT_DEBUT} != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Montant de : "+$P{MONTANT_DEBUT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="33" y="163" width="213" height="20" uuid="50da5c62-c0fa-4346-8414-25a6a1841ea1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" Bailleur : "+$P{BAILLEUR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="313" y="103" width="213" height="20" uuid="8f97e4bb-f39f-47d5-b393-66e15db709cb"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Produit crédit : "+$P{PRODUIT_CREDIT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="313" y="163" width="213" height="20" uuid="79459ae0-c7a3-4f6c-a978-5938f3bc6839"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Objet de crédit : "+$P{OBJET_CREDIT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="313" y="143" width="213" height="20" uuid="8630da36-da05-4f51-a8dc-f5f346b5017a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Ligne de financement : "+$P{LIGNE_FINANCEMENT}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="93" uuid="59e2d014-f85c-49dd-b707-1c9ad1a5858e"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="317" y="0" width="119" height="20" isRemoveLineWhenBlank="true" uuid="f4107360-1707-4d5b-905c-8d116ea4a79c">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Intérêt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="198" y="0" width="119" height="20" isRemoveLineWhenBlank="true" uuid="370742ce-f643-4716-b3ab-825c6c21a65c">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Capital]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="0" y="0" width="198" height="20" isRemoveLineWhenBlank="true" uuid="5622fa77-9785-498a-b18d-a929cc4a0905">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Libellé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="436" y="0" width="119" height="20" isRemoveLineWhenBlank="true" uuid="3f1a66cf-1549-4884-bcaf-6d2119f45010">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD_Chaine" x="0" y="0" width="198" height="20" uuid="8a0b42fb-4c98-4a70-8049-6d9af4aed43c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="317" y="0" width="119" height="20" uuid="d87da9fa-2c41-41e6-b59f-dd63d7e5d13b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalInteret}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="198" y="0" width="119" height="20" uuid="1b4c13fb-a00c-4c08-93c9-ed67f043e9fd"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalCapital}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="436" y="0" width="119" height="20" uuid="a43ae042-e3e5-47d6-bd23-43109bbe754c"/>
+				<box>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalReglement}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="67" splitType="Stretch">
+			<subreport>
+				<reportElement x="-20" y="21" width="595" height="46" uuid="bf06e516-e388-48fb-8bbc-7769f48b12ff"/>
+				<subreportParameter name="LIBELLE_APPLICATION"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="1" y="0" width="245" height="15" uuid="3556149c-db77-453b-a004-101885fe9e49"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Imprimer le "+(new java.text.SimpleDateFormat("dd/MM/yyyy à HH:mm:ss")).format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="268" y="0" width="57" height="15" uuid="53c73219-1fcc-4ea9-8ee1-103e8cae6247"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Microfina++"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="478" y="1" width="48" height="15" uuid="00b836c8-e806-4be0-8715-9ab2ba5aff60"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="526" y="1" width="30" height="15" uuid="3ddde193-c908-487a-bbfc-28e376882570"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20">
+			<textField>
+				<reportElement style="table_TD_Nombre" mode="Opaque" x="317" y="0" width="119" height="20" backcolor="#E5E5E5" uuid="6536ef42-c170-4d70-90ac-8844cf80018c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_INTERET}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Chaine" mode="Opaque" x="0" y="0" width="198" height="20" backcolor="#E5E5E5" uuid="e1934b88-bd84-4429-b60e-62fe1dbfea3d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Total"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" mode="Opaque" x="436" y="0" width="119" height="20" backcolor="#E5E5E5" uuid="fb42d01a-7647-4a57-a5c9-fb58d921ef92"/>
+				<box>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_REGLEMENT}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" mode="Opaque" x="198" y="0" width="119" height="20" backcolor="#E5E5E5" uuid="7c4981e0-2409-486e-8683-ffe1be2cb698"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_CAPITAL}))]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="05dc8320-e4f0-4e32-935f-6f53da2b79fb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="NUMERO_RECU" class="java.lang.String"/>
+	<parameter name="PSF_CANDIDAT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["MILLENIUM MICROFINANCE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="MONTANT_ACHAT_LETTRE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Cent mille"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="MONTANT_ACHAT_CHIFFRE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["100 000"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="MODE_REGLEMENT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Espèce"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NUMERO_DOSSIER_AO" class="java.lang.String">
+		<defaultValueExpression><![CDATA[" 003/14/NDBAJEJ/FNFI"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATE_ACHAT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["24/11/2014"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NOM_ACHETEUR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["LISSANON ROMARIC"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CONTACT_ACHETEUR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["90094012"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NOM_VENDEUR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["IDDRISU Salifu"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="COMPTE_DEBIT" class="java.lang.String"/>
+	<parameter name="COMPTE_CREDIT" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<noData>
+		<band height="802">
+			<textField>
+				<reportElement x="0" y="241" width="218" height="20" uuid="cfa30be1-45fa-4ba2-974c-7babebecaf05"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Lomé le, "]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="4" y="367" width="551" height="1" uuid="92277a26-163b-4697-89f2-8a7b13417831"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="110" width="555" height="23" uuid="f3f27456-fda4-42e9-b7b6-6a2808cd1626"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="15" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["REÇU N° "+$P{NUMERO_RECU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="330" width="204" height="37" uuid="6fbc2f01-0d2b-4cc8-b8f3-94cce8b59a38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{NOM_ACHETEUR}+"\n"+"Tél : "+$P{CONTACT_ACHETEUR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="133" width="555" height="68" uuid="55724d86-5bb4-419f-a7c7-db6c6d885696"/>
+				<textFieldExpression><![CDATA["Je soussigné(e) "+(($P{NOM_VENDEUR} == null || $P{NOM_VENDEUR}.isEmpty()) ? "....................................................................................................................  " : $P{NOM_VENDEUR})
++" certifie avoir reçu auprès de "+$P{PSF_CANDIDAT}
++" la somme de "+$P{MONTANT_ACHAT_LETTRE}
++" ("+$P{MONTANT_ACHAT_CHIFFRE}+") francs CFA  "+" \n\n"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="261" width="204" height="16" uuid="83e3014a-a47f-47fb-a579-19b4c6d0c055"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Pour l'acheteur "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="363" y="261" width="192" height="27" uuid="92e6b1ba-3b44-47b3-811a-947c08ee1964"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Pour FNFI,"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="363" y="330" width="192" height="37" uuid="9a5bd3ca-e3f2-48b1-965a-e4f8d4e36e57"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{NOM_VENDEUR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="277" width="204" height="20" uuid="8e8d16ef-bc6c-4647-9791-a20b85e3a8ae"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[(Signature, Contacts officiels, Nom et prénoms)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="218" y="241" width="337" height="20" uuid="ba36db60-904a-4e33-890c-0bfcd93fd81e"/>
+				<textElement verticalAlignment="Middle">
+					<font isUnderline="false"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATE_ACHAT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="363" y="765" width="192" height="37" uuid="e44d4f7d-bf6f-488f-9835-539ae513e2cb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{NOM_VENDEUR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="765" width="204" height="37" uuid="e49b2c62-abc6-49ec-8bd4-0480a5117bb2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{NOM_ACHETEUR}+"\n"+"Tél : "+$P{CONTACT_ACHETEUR}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="712" width="204" height="20" uuid="140fea7a-4380-4f72-871c-dae50567d4ad"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[(Signature, Contacts officiels, Nom et prénoms)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="459" width="555" height="35" uuid="a0e0f3f3-8b33-48a0-93cf-833dd5406d63"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="15" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["REÇU N° "+$P{NUMERO_RECU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="218" y="676" width="337" height="20" uuid="5745ad0f-0f0a-443b-8b68-c87260d40181"/>
+				<textElement verticalAlignment="Middle">
+					<font isUnderline="false"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATE_ACHAT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="696" width="204" height="16" uuid="836c7619-75db-4f4e-88b4-61254471359d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Pour l'acheteur "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="676" width="218" height="20" uuid="efe6b3aa-08b0-4a56-8e05-d0b8ff07f895"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Lomé le, "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="515" width="555" height="75" uuid="1caca17d-21a9-4898-a36d-b80fd45e9ac4"/>
+				<textFieldExpression><![CDATA["Je soussigné(e) "+(($P{NOM_VENDEUR} == null || $P{NOM_VENDEUR}.isEmpty()) ? "....................................................................................................................  " : $P{NOM_VENDEUR})
++" certifie avoir reçu auprès de "+$P{PSF_CANDIDAT}
++" la somme de "+$P{MONTANT_ACHAT_LETTRE}
++" ("+$P{MONTANT_ACHAT_CHIFFRE}+") francs CFA  "+" \n\n"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="363" y="696" width="192" height="27" uuid="517dcbc3-f8fb-490e-a64b-6ad46995a194"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Pour FNFI,"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="235" height="56" uuid="ad906217-58a8-4c24-8a66-eb1f91c35501"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["ministère du développement à la base.\nde l'artisanat, de la jeunesse\n et de l'emploi des jeunes\n ------------ ".toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="56" width="235" height="33" uuid="736ee405-603a-45ac-8971-3b1d9bff6810"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["FONDS NATIONAL\n DE LA FINANCE INCLUSIVE"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="0" width="250" height="20" uuid="af910f1b-a65e-4918-9c17-1e68a6f0ed13"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["REPUBLIQUE TOGOLAISE"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="20" width="250" height="36" uuid="f3db0321-a301-4794-a123-b9ff63c43ed2"/>
+				<textElement textAlignment="Center">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Travail - Liberté - Patrie\n-------------"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="426" width="235" height="33" uuid="ea903884-8817-4fb7-84cf-e23b0b9d8016"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["FONDS NATIONAL\n DE LA FINANCE INCLUSIVE"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="370" width="250" height="20" uuid="69f0b935-cccb-4ddf-9e5d-0569aa34110f"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["REPUBLIQUE TOGOLAISE"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="390" width="250" height="36" uuid="477a8d17-4933-43cf-81e4-097829601513"/>
+				<textElement textAlignment="Center">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Travail - Liberté - Patrie\n-------------"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="370" width="235" height="56" uuid="ccb55fe2-e7a6-484f-b2f6-21fd12d39d4f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["ministère du développement à la base.\nde l'artisanat, de la jeunesse\n et de l'emploi des jeunes\n ------------ ".toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="630" width="555" height="46" forecolor="#E5E5E5" backcolor="#FFFFFF" uuid="d5c0def4-5326-412e-8ffe-d853c288e227"/>
+				<textElement textAlignment="Center">
+					<font size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Copie client]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="590" width="119" height="20" uuid="ae7e526a-5da3-4c04-b1c2-8b53930164f0"/>
+				<textElement markup="none">
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Mode de règlement :"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="610" width="51" height="20" uuid="aacdedee-3280-44ee-b06e-ef5abc256f87"/>
+				<textElement markup="none">
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Objet :"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="119" y="590" width="436" height="20" uuid="39128d5a-1d8a-4180-924b-2d4d8549f811"/>
+				<textElement>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MODE_REGLEMENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="51" y="610" width="504" height="20" uuid="e13c171d-d633-46de-a9ca-20230c88102b"/>
+				<textFieldExpression><![CDATA["Achat de DAOO N° "+$P{NUMERO_DOSSIER_AO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="221" width="51" height="20" uuid="777da581-3cb8-4715-a6fb-f5e10960bb3d"/>
+				<textElement markup="none">
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Objet :"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="119" y="201" width="436" height="20" uuid="a13a22bc-eb4d-4668-8be3-e460365bd521"/>
+				<textElement>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MODE_REGLEMENT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="51" y="221" width="504" height="20" uuid="00a4e418-b2f0-48ae-8b74-ceadd013e292"/>
+				<textFieldExpression><![CDATA["Achat de DAOO N° "+$P{NUMERO_DOSSIER_AO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="201" width="119" height="20" uuid="7f2a5062-95b5-442b-b70d-90d14c216245"/>
+				<textElement markup="none">
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Mode de règlement :"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="56" width="250" height="54" uuid="ddbffd87-2ca9-4933-b344-27d25a3ffa5a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA["Comptes emputés \n Débit : "+$P{COMPTE_DEBIT}+" \n Crédit : "+$P{COMPTE_CREDIT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</noData>
+</jasperReport>

@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ContratDAT" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8121b186-8fac-4375-848d-a06557dd9f40">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="288"/>
+	<parameter name="numDAT" class="java.lang.String"/>
+	<parameter name="nomInstitution" class="java.lang.String"/>
+	<parameter name="nomClient" class="java.lang.String"/>
+	<parameter name="sigleInstitution" class="java.lang.String"/>
+	<parameter name="adresseInstitution" class="java.lang.String"/>
+	<parameter name="titreDirecteur" class="java.lang.String"/>
+	<parameter name="nomDirecteur" class="java.lang.String"/>
+	<parameter name="compteClient" class="java.lang.String"/>
+	<parameter name="montantDAT" class="java.lang.String"/>
+	<parameter name="montantEnLettre" class="java.lang.String"/>
+	<parameter name="dureeDAT" class="java.lang.String"/>
+	<parameter name="dureeEnLettre" class="java.lang.String"/>
+	<parameter name="dateContrat" class="java.lang.String"/>
+	<parameter name="tauxDAT" class="java.lang.String"/>
+	<parameter name="tauxRupture" class="java.lang.String"/>
+	<parameter name="numeroParam" class="java.lang.String"/>
+	<parameter name="INSTITUTION" class="java.lang.String"/>
+	<parameter name="lieuParam" class="java.lang.String"/>
+	<parameter name="nomParam" class="java.lang.String"/>
+	<parameter name="paramAdresse" class="java.lang.String"/>
+	<parameter name="telephone" class="java.lang.String"/>
+	<parameter name="numeroCompte" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String"/>
+	<parameter name="montantDepotParam" class="java.lang.String"/>
+	<parameter name="dureeParam" class="java.lang.String"/>
+	<parameter name="dateDepotParam" class="java.lang.String"/>
+	<parameter name="dateEcheanceParam" class="java.lang.String"/>
+	<parameter name="dateParam" class="java.lang.String"/>
+	<parameter name="tauxParam" class="java.lang.String"/>
+	<parameter name="dateExpiration" class="java.lang.String"/>
+	<parameter name="lieuEtablissement" class="java.lang.String"/>
+	<parameter name="numCarte" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     lignecommandes.`code` AS lignecommandes_code,
+     lignecommandes.`nombre` AS lignecommandes_nombre,
+     lignecommandes.`montant` AS lignecommandes_montant,
+     lignecommandes.`commande` AS lignecommandes_commande,
+     lignecommandes.`habit` AS lignecommandes_habit,
+     lignecommandes.`Blanc` AS lignecommandes_Blanc,
+     lignecommandes.`Rouge` AS lignecommandes_Rouge,
+     lignecommandes.`Bleu` AS lignecommandes_Bleu,
+     lignecommandes.`Noir` AS lignecommandes_Noir,
+     lignecommandes.`Autre` AS lignecommandes_Autre
+FROM
+     `lignecommandes` lignecommandes]]>
+	</queryString>
+	<field name="numeroParam" class="java.lang.String"/>
+	<field name="nomParam" class="java.lang.String"/>
+	<field name="telephone" class="java.lang.String"/>
+	<field name="paramAdresse" class="java.lang.String"/>
+	<field name="montantEnLettre" class="java.lang.String"/>
+	<field name="montantDAT" class="java.lang.String"/>
+	<field name="dureeEnLettre" class="java.lang.String"/>
+	<field name="dureeParam" class="java.lang.String"/>
+	<field name="tauxParam" class="java.lang.String"/>
+	<field name="dateContrat" class="java.lang.String"/>
+	<field name="INSTITUTION" class="java.lang.String"/>
+	<field name="singleInstitution" class="java.lang.String"/>
+	<field name="adresseInstitution" class="java.lang.String"/>
+	<field name="titreDirecteur" class="java.lang.String"/>
+	<field name="nomDirecteur" class="java.lang.String"/>
+	<field name="numeroCompte" class="java.lang.String"/>
+	<field name="dateDepotParam" class="java.lang.String"/>
+	<field name="tauxRupture" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="24" width="554" height="23" uuid="db801dae-9112-4ae1-a6a0-ddded6d7fb12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="18" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[CONTRAT DE DEPOT A TERME]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="160" y="47" width="239" height="20" uuid="4f016d56-8b78-4e64-96d0-497014f53450"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numeroParam}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="663" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="108" height="20" uuid="6436ec03-d800-4e37-9b97-368db4f91b8e"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Vu les statuts de]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="107" y="0" width="447" height="20" uuid="58d2abf1-08b8-44dd-a732-219a5251ef61"/>
+				<textElement>
+					<font size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{INSTITUTION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="20" width="555" height="16" uuid="9eaf08d5-580f-45ff-8a97-e6875ba655ab"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Considérant les entretiens entre la coopérative d’épargne et de crédit.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="5" y="36" width="550" height="20" uuid="aa2fea24-aa66-4fe7-a3a2-ac0e46a996c3"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomParam}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="56" width="179" height="15" uuid="663378ed-5e4e-4f26-8ae9-e0e99c889676"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Demeurant et domiciliée à]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="6" y="71" width="106" height="20" uuid="e949b41f-f650-4743-b0e1-9df8750f8dc2"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{singleInstitution}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="71" width="430" height="20" uuid="57590ce1-675c-4979-80da-d5b6b5680fe7"/>
+				<textElement>
+					<font size="10" isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{INSTITUTION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="106" y="71" width="19" height="20" uuid="efd05516-b696-431e-a31f-aa048c48191e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="91" width="119" height="15" uuid="f0a286bb-f2a7-4484-83f3-7228145b1011"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[de Conseils sis au ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="120" y="91" width="431" height="15" uuid="e69504c3-5e4a-47aa-a748-0f20cc670206"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adresseInstitution}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="106" width="103" height="15" uuid="555ae721-5b94-4dbb-8fe2-5d7f53669844"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Représenté par son ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="105" y="106" width="318" height="15" uuid="781ada73-ce6e-404c-8cba-333abc76f449"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{titreDirecteur}+","]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="6" y="121" width="381" height="15" uuid="96abef00-2165-4070-8486-794774269303"/>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomDirecteur}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="136" width="73" height="15" uuid="00b6e3e9-1cd2-44f7-ac88-d669783793dc"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Signe avec ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="116" y="191" width="438" height="15" uuid="4d258b69-290c-4701-8b7c-b5ee23683e42"/>
+				<textFieldExpression><![CDATA[$F{nomParam}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="151" width="280" height="15" uuid="ef19db05-b4ca-475e-a35d-1f46b119a717"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[un contrat de D.A.T régi par les conditions ci-après:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="174" width="214" height="15" uuid="b4234e9c-ec27-4c92-9047-225a174e46a9"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Article 1 : IDENTITE DU DEPOSANT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="192" width="122" height="15" uuid="8718348e-6856-402d-bc73-f8b62deed4bd"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Nom et Prenoms :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="214" width="68" height="15" uuid="f22384ca-ba69-4a48-8fb6-fa3d7dd35c8e"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Adresse :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="230" width="13" height="15" uuid="4d13fe22-e427-499b-8075-c00718c875e2"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[o]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-2" y="235" width="17" height="15" uuid="d447ecd1-c332-4e7b-830c-37abfbd05c67"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="235" width="68" height="15" uuid="87e20d71-2d2f-4904-b056-75dc8db88922"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Compte :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="92" y="235" width="459" height="15" uuid="17e7a4d3-3081-4925-b0e2-c0348ec6a812"/>
+				<textFieldExpression><![CDATA[$F{numeroCompte}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="264" width="214" height="15" uuid="4ebd0648-e248-400a-939b-1278852cb7c2"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Article 2 : MONTANT DU DEPOT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="290" width="214" height="15" uuid="3d6099ec-e424-4197-b79e-683ddaf7ca4b"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Le montant total du dépôt s’élève à]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="198" y="290" width="353" height="15" uuid="7bc4c921-6f58-4a3a-a426-fcecdf949166"/>
+				<textFieldExpression><![CDATA[$F{montantDAT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="6" y="317" width="305" height="16" uuid="79e49953-291a-479e-9d63-378be7e2403a"/>
+				<textFieldExpression><![CDATA[$F{montantEnLettre}+ " F CFA"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="352" width="214" height="15" uuid="e8e625a7-8070-4fad-ae8e-9571a3f51d70"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Article 3 : DUREE DU D.A.T]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="379" width="161" height="15" uuid="2f00e864-e5f5-454f-914e-2c2f58efe834"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[La duree du dépôt est de]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="132" y="379" width="66" height="15" uuid="7dfb1785-6ada-4324-b082-94ee0aa4ac3c"/>
+				<textFieldExpression><![CDATA[$F{dureeEnLettre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="379" width="88" height="15" uuid="e7c68fe5-ee8c-4afa-9837-f30f9666ad42"/>
+				<textFieldExpression><![CDATA["("+$F{dureeParam}+") mois."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="273" y="379" width="227" height="15" uuid="9b435456-382f-45fb-9e0c-eac63764a3d5"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Le contrat entre en ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="394" width="116" height="15" uuid="88948ad2-fd7d-4745-a166-bcf1c5504390"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[vigueur à compter ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="114" y="394" width="317" height="15" uuid="cdf7d190-b11c-4775-8d06-de92af60c188"/>
+				<textFieldExpression><![CDATA[$F{dateDepotParam}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="419" width="214" height="15" uuid="d2122ceb-5950-4c80-bcf7-7f520f502395"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Article 4 :  TAUX D'INTERET ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="442" width="555" height="15" uuid="a8053c9d-f265-4fee-afb0-a59c2144e9a4"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Les intérêts à payer sur le dépôt sont négociés par les deux parties. Dans le cas du présent contrat,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="457" width="93" height="15" uuid="f400d55c-b4bc-4d0b-9496-aba5a6cbbf6a"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ce taux est de ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="457" width="43" height="15" uuid="b45aa1d4-3fdb-4d88-b9c1-8c1887d577fc"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[%l’an ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="94" y="457" width="66" height="15" uuid="ef2e797e-408c-4ef9-bc21-883ee2a9019b"/>
+				<textFieldExpression><![CDATA[$F{tauxParam}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="487" width="219" height="15" uuid="6e02e796-5df3-415a-97ba-2322e8820326"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Article 5 :  PAIEMENT DES INTERETS  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="513" width="341" height="15" uuid="90c2bc70-5859-4417-8ac0-0d4f962409ab"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Les intérêts sont versés à la fin de l’échéance au déposant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="567" width="269" height="15" uuid="1d2cf98d-87c1-4943-9516-42dbf059eabe"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Le présent contrat est signé pour une durée de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="541" width="257" height="15" uuid="748ad7e7-0531-4fbb-87a4-3687b62d551a"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Article 6 :  RENOUVELLEMENT DU CONTRAT]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="258" y="567" width="53" height="15" uuid="24f79d18-fa1c-4c86-9b35-9061386bc201"/>
+				<textFieldExpression><![CDATA[$F{dureeEnLettre}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="311" y="567" width="44" height="15" uuid="2373bc82-18f3-40b5-a37c-f8aa1510b9a5"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[mois]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="632" width="455" height="15" uuid="8674c92d-6040-4601-883b-a57380aae94f"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[En cas de résiliation du contrat avant l’échéance, les intérêts seront calculés au taux   ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="606" width="257" height="15" uuid="49df3216-2cde-4cc5-9f5a-6ecbe63ce121"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Article 7 : RESILIATION DU CONTRAT  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="632" width="96" height="15" uuid="1cb0d085-7079-4986-a6ec-b55204dab5d9"/>
+				<textFieldExpression><![CDATA[$F{tauxRupture}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="648" width="483" height="15" uuid="91060a0f-8d0b-4f7a-a7d2-76798e6e4b73"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[%, soit le taux initial diminue de l’unité durant la période couverte par le DAT.]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="54" y="214" width="497" height="15" uuid="6a11b2b2-07bf-4152-8adc-813dd16c01ab"/>
+				<textFieldExpression><![CDATA[$F{paramAdresse}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="324">
+			<textField>
+				<reportElement x="331" y="211" width="220" height="21" uuid="ebfea085-cd24-4892-be45-c4fb34b5aee9"/>
+				<textFieldExpression><![CDATA[$F{singleInstitution}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="257" height="15" uuid="dbbb9c86-78c7-44e1-9b08-ad8ca6b760cc"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Article 8 : DATE D'ENTREE EN VIGUEUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="26" width="385" height="15" uuid="d884cc48-d3b4-4faf-a26c-1bfc019eee0d"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Le présent contrat prend effet à compter de sa date de signature ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="77" width="553" height="28" uuid="e6624f85-bf38-43ac-b5ca-fddacc2bafb4"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Les cas non prévus par ce contrat sont réglés à l’amiable par les deux parties. En cas de non compréhension, ils seront soumis à l’appréciation des juridictions compétentes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="135" width="47" height="15" uuid="cf30d81c-ffb6-491f-b2e8-41b60121735b"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="false" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="211" width="109" height="21" uuid="0a7e90e4-1b1d-478e-b6ed-edf291eb7d80"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="12" isBold="true" isUnderline="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Le déposant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="175" width="109" height="24" uuid="6862a6cd-b635-42dd-9cbd-a2572a55f231"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="14" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[SIGNATURES]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="331" y="135" width="100" height="15" uuid="4fc31d17-9908-49ae-aab7-08a10f18a860"/>
+				<textFieldExpression><![CDATA[$F{dateContrat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="304" width="272" height="20" uuid="c8eb707f-86c0-4a3a-acb8-d34b72a663d4"/>
+				<textFieldExpression><![CDATA[$F{nomParam}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="55" width="196" height="15" uuid="ffd1c22d-8733-458d-b459-4d67692cb198"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="10" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Article 9 : LES CAS NON PREVUS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="331" y="232" width="220" height="16" uuid="1fdc8f64-0fd9-49c4-b152-38ed83f24b9d"/>
+				<textFieldExpression><![CDATA[$F{titreDirecteur}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="331" y="304" width="220" height="20" uuid="b198362a-57a3-4705-b678-1dce2ba3cb86"/>
+				<textFieldExpression><![CDATA[$F{nomDirecteur}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="journalBanque" pageWidth="595" pageHeight="842" columnWidth="585" leftMargin="5" rightMargin="5" topMargin="20" bottomMargin="0" uuid="2ef3e97d-6498-40df-83e8-e06fccb2746e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="AGENCE_PARAM" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="USER_PARAM" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Administrateur"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATE_DEBUT_PARAM" class="java.lang.String">
+		<defaultValueExpression><![CDATA["31/12/2013"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATE_FIN_PARAM" class="java.lang.String">
+		<defaultValueExpression><![CDATA["01/01/2010"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NOM_BANQUE_PARAM" class="java.lang.String">
+		<defaultValueExpression><![CDATA["ORABANQUE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="REPORT_PARAM" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[BigDecimal.ZERO]]></defaultValueExpression>
+	</parameter>
+	<parameter name="COMPTE_COMPTABLE_PARAM" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="EDITEUR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["ADMINISTRATEUR"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="INSTITUTION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["COCEC"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="credit" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[credit]]></fieldDescription>
+	</field>
+	<field name="creditFormate" class="java.lang.String">
+		<fieldDescription><![CDATA[creditFormate]]></fieldDescription>
+	</field>
+	<field name="date" class="java.lang.String">
+		<fieldDescription><![CDATA[date]]></fieldDescription>
+	</field>
+	<field name="debit" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[debit]]></fieldDescription>
+	</field>
+	<field name="debitFormate" class="java.lang.String">
+		<fieldDescription><![CDATA[debitFormate]]></fieldDescription>
+	</field>
+	<field name="libelle" class="java.lang.String">
+		<fieldDescription><![CDATA[libelle]]></fieldDescription>
+	</field>
+	<field name="numeroCompte" class="java.lang.String">
+		<fieldDescription><![CDATA[numeroCompte]]></fieldDescription>
+	</field>
+	<field name="numeroMembre" class="java.lang.String">
+		<fieldDescription><![CDATA[numeroMembre]]></fieldDescription>
+	</field>
+	<field name="numeroPiece" class="java.lang.String">
+		<fieldDescription><![CDATA[numeroPiece]]></fieldDescription>
+	</field>
+	<field name="report" class="java.lang.String"/>
+	<field name="banque" class="java.lang.String"/>
+	<field name="contrepartie" class="java.lang.String"/>
+	<field name="intituleCompte" class="java.lang.String"/>
+	<variable name="TotalCredit" class="java.math.BigDecimal" resetType="Group" resetGroup="groupeCompte" calculation="Sum">
+		<variableExpression><![CDATA[$F{credit}]]></variableExpression>
+	</variable>
+	<variable name="TotalDebit" class="java.math.BigDecimal" resetType="Group" resetGroup="groupeCompte" calculation="Sum">
+		<variableExpression><![CDATA[$F{debit}]]></variableExpression>
+	</variable>
+	<variable name="solde" class="java.math.BigDecimal" resetType="Group" resetGroup="groupeCompte">
+		<variableExpression><![CDATA[$V{TotalDebit}.add($V{TotalCredit}.negate()).add(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{report}).toString()))]]></variableExpression>
+	</variable>
+	<group name="banquegroupe" isStartNewPage="true" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{banque}]]></groupExpression>
+		<groupHeader>
+			<band height="28">
+				<textField pattern="#,##0">
+					<reportElement x="0" y="0" width="305" height="20" uuid="c560f3d4-3841-416f-91e7-4cd13d61c67a"/>
+					<box rightPadding="5"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Banque : "+$F{banque}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="groupeCompte" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{numeroCompte}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<textField pattern="#,##0">
+					<reportElement x="0" y="0" width="382" height="20" uuid="954698a8-2da9-447b-85ac-46c085da3efb"/>
+					<box rightPadding="5"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Numéro de compte : "+$F{numeroCompte}+" | "+$F{intituleCompte}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="398" y="30" width="66" height="20" backcolor="#EFEFEF" uuid="a8d2a8c8-f5b2-434c-a033-31cfd7a8490f"/>
+					<box leftPadding="5" rightPadding="0">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[Débit]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="47" y="30" width="68" height="20" backcolor="#EFEFEF" uuid="3e635083-66e5-4a43-89ea-ebc664ce3286"/>
+					<box leftPadding="5">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[N° Pièce]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="464" y="30" width="66" height="20" backcolor="#EFEFEF" uuid="08bc3883-9989-4b5f-9fa3-9f227b88399b"/>
+					<box leftPadding="5" rightPadding="0">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[Crédit]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="30" width="47" height="20" backcolor="#EFEFEF" uuid="b58e610d-2487-42c2-89c7-b4ac0fd6bff9"/>
+					<box leftPadding="5">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[Date]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="115" y="30" width="283" height="20" backcolor="#EFEFEF" uuid="4d4ac134-1ed7-47ca-a8ca-3009f7cd5919"/>
+					<box leftPadding="5">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[Libelle]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="410" y="0" width="74" height="20" uuid="667c77f7-08a7-41cf-ae0e-adfff84ecc4c"/>
+					<textElement verticalAlignment="Middle">
+						<font size="6" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SOLDE REPORT : ]]></text>
+				</staticText>
+				<textField pattern="#,##0">
+					<reportElement x="484" y="0" width="101" height="20" uuid="026ab2e1-7873-40f6-bf83-fc3c0e0e587b"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{report}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="530" y="30" width="55" height="20" backcolor="#EFEFEF" uuid="7a6a58de-bb01-4635-9f38-e3da2fb8256b"/>
+					<box leftPadding="5">
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[Contrepartie]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="46">
+				<staticText>
+					<reportElement x="398" y="31" width="66" height="15" uuid="99ddc4bd-dcc2-4514-9888-665031c710a9"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SOLDE : ]]></text>
+				</staticText>
+				<textField pattern="#,##0">
+					<reportElement x="464" y="31" width="122" height="15" uuid="0a637d49-ee10-48cc-a6eb-40553498946f"/>
+					<box rightPadding="5"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{solde}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="398" y="0" width="66" height="15" uuid="8975321b-8581-4e2e-88fd-3d98937e7c64"/>
+					<box rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{TotalDebit})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="464" y="0" width="66" height="15" uuid="53f2631c-954f-4208-82d3-14110a948dc0"/>
+					<box rightPadding="5">
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{TotalCredit})]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="121" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="586" height="80" uuid="54711e55-6857-4780-98c0-f0355d7c658b"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+			<textField pattern="#,##0">
+				<reportElement x="0" y="101" width="584" height="20" uuid="3c999dc6-7b3e-4a24-bc9e-2fd498c15ba6"/>
+				<box rightPadding="5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Journal Banque "+($P{DATE_DEBUT_PARAM}.equals($P{DATE_FIN_PARAM}) ? " à la date du "+$P{DATE_FIN_PARAM} : " du "+$P{DATE_DEBUT_PARAM}+" au "+$P{DATE_FIN_PARAM})]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="47" height="15" uuid="e97f6fe4-ca46-4147-8a2f-17e9d11c381e"/>
+				<box leftPadding="5">
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="47" y="0" width="68" height="15" uuid="7b268a47-6c56-4b2d-9f9c-a5cfec5e88a9"/>
+				<box leftPadding="5">
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numeroPiece}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="398" y="0" width="66" height="15" uuid="a9f8f1c1-6ce6-4d28-8f00-2f9acc8e9b12"/>
+				<box rightPadding="5">
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($F{debit})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="464" y="0" width="66" height="15" uuid="dc8653b6-563a-4bc7-b2b0-33176ca7535b"/>
+				<box rightPadding="5">
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($F{credit})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="115" y="0" width="283" height="15" uuid="0047df98-923b-4dde-8cc7-d687c7974a98"/>
+				<box leftPadding="5">
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="0" width="55" height="15" uuid="6283a218-b98c-4013-8ffa-fd337f0406c9"/>
+				<box leftPadding="5">
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contrepartie}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="69" splitType="Stretch">
+			<textField>
+				<reportElement x="543" y="0" width="28" height="15" uuid="43a7bf3a-8185-46f5-bbad-f6db3272165b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+"/"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="571" y="0" width="15" height="15" uuid="03074671-764b-4834-8c65-0f38a1d7a58d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="218" height="15" uuid="15a30e9e-d9b1-4288-9eb9-8993cf69ec4c"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Imprimer le "+((new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss")).format(new Date()))]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="231" y="0" width="118" height="15" uuid="95e5e43e-958f-4d41-bd82-34ad15e420fe"/>
+				<box rightPadding="5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="14" y="19" width="555" height="50" uuid="2de42e86-a3e8-4fe0-a3a8-005f8d193683"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pageportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bonReception" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="0" uuid="1f1e1eb0-1880-401a-96ad-478097e8675e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="paraReference" class="java.lang.String"/>
+	<parameter name="paraCommande" class="java.lang.String"/>
+	<parameter name="paraNumbon" class="java.lang.String"/>
+	<parameter name="paraLieuReception" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<field name="zone" class="java.lang.String"/>
+	<field name="reference" class="java.lang.String"/>
+	<field name="designation" class="java.lang.String"/>
+	<field name="qtecommander" class="java.lang.String"/>
+	<field name="qterecu" class="java.lang.String"/>
+	<field name="reliquat" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<subreport>
+				<reportElement x="21" y="-1" width="555" height="93" uuid="4e5ab892-726d-4050-8874-1cf25f089e1a"/>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "entente_stock_portrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="98" splitType="Stretch">
+			<rectangle>
+				<reportElement x="21" y="1" width="555" height="42" backcolor="#EFEFEF" uuid="5c4a239b-3c25-4ef5-9af4-d43fa99c28df"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="21" y="47" width="261" height="51" uuid="ec57512b-71ea-4847-971a-17264130526d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="282" y="47" width="294" height="51" uuid="f360bfdb-da04-4288-bceb-a847b5e6dd89"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="215" y="12" width="116" height="20" uuid="25fba8b4-a533-4fa9-97a0-c206132f70d1"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BON D'ENTREE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="343" y="12" width="126" height="20" uuid="b8026576-33ed-4d67-9a6a-7a77d4f6d7c0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paraNumbon}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="343" y="36" width="100" height="1" uuid="46bbb8de-a7fa-4a93-b49f-4b67e4fb0b1e"/>
+			</line>
+			<staticText>
+				<reportElement x="28" y="52" width="100" height="15" uuid="b772a3f7-85b1-458d-8dce-d1a6d95bb887"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Réf : commande :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="72" width="100" height="15" uuid="662e5396-1058-4e15-bdb9-d5d22ef4aa57"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Réf . BL :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="60" width="97" height="15" uuid="737db001-7a2f-4caf-8624-0dc0284a05ee"/>
+				<text><![CDATA[Lieu de reception :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="128" y="52" width="100" height="15" uuid="62304e15-a439-4aa2-9b7a-00fee0add3ea"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paraCommande}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="128" y="72" width="100" height="15" uuid="7f6c26d6-dd18-4244-9e85-cf269074a5f1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paraReference}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="385" y="60" width="180" height="15" uuid="b774daab-dc9a-4ae3-a1f5-0f1d583ed7e5"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paraLieuReception}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="21" y="0" width="94" height="31" uuid="01a21d53-a00a-4d08-864d-cab325dd1344"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Référence]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="115" y="0" width="245" height="31" uuid="933174d0-0726-46aa-a9f7-2fe1abc18359"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Désignation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="360" y="0" width="74" height="31" uuid="b2731a2d-60fa-4a12-9746-0a66d73269b2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Quantité Commandée]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="433" y="0" width="81" height="31" uuid="15a16797-63c5-4425-8604-7a29dfaec933"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Quantité  Reçue]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="514" y="0" width="62" height="31" uuid="8e83969e-d2d5-4833-ae16-cd3d6f4a840a"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Reste]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="21" y="0" width="94" height="15" uuid="0d2e2e09-7bbc-41a1-8de9-f98d27742403"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reference}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="115" y="0" width="245" height="15" uuid="aa13a843-386c-48b6-86fb-1aec6af2998f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{designation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="360" y="0" width="74" height="15" uuid="89511b10-71fb-4b48-a2c6-d497a3e2afa4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qtecommander}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="433" y="0" width="81" height="15" uuid="c09a0dee-650c-4457-9213-13aa1775cc9e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qterecu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="514" y="0" width="62" height="15" uuid="31321932-9d89-4be2-bbd2-335f3dbf49aa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reliquat}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="595" height="50" uuid="feb00cd7-6281-442d-beab-4e36b9a3d7b1"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page_stock.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="28" y="21" width="100" height="20" uuid="d7ec1d6d-f91b-4898-8d1b-eef0de5a8763"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Visa chef Magasin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="415" y="21" width="100" height="20" uuid="736736ce-7ac6-4514-bb14-a6d3629fa574"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Visa comptabilité]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

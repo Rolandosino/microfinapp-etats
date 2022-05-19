@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratSurete" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="45c90c4a-5446-424f-be74-d25ddb56e4b5">
+	<property name="ireport.zoom" value="1.9487171000000019"/>
+	<property name="ireport.x" value="1"/>
+	<property name="ireport.y" value="1120"/>
+	<subDataset name="dataset1" uuid="55977c25-40aa-44a0-a631-463b105bd8ec"/>
+	<parameter name="dateImpression" class="java.lang.String"/>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NUMERO_CREDIT" class="java.lang.String"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="GARANTIE_NON_FINANCIERE" class="java.lang.String"/>
+	<parameter name="ENTETE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PIED_DE_PAGE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page.jasper"]]></defaultValueExpression>
+	</parameter>
+	<field name="numContrat" class="java.lang.String"/>
+	<field name="nomMembre" class="java.lang.String"/>
+	<field name="contact" class="java.lang.String"/>
+	<field name="adresse_client" class="java.lang.String"/>
+	<field name="bp_client" class="java.lang.String"/>
+	<field name="nationalite" class="java.lang.String"/>
+	<field name="montantPret" class="java.lang.String"/>
+	<field name="enLettres" class="java.lang.String"/>
+	<field name="capitalEtInteret" class="java.lang.String"/>
+	<field name="activite" class="java.lang.String"/>
+	<field name="produitCredit" class="java.lang.String"/>
+	<field name="libelleProfession" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<staticText>
+				<reportElement x="232" y="70" width="81" height="15" uuid="74e81a02-6350-4aa1-ae8e-3e62dc5c6519"/>
+				<text><![CDATA[************************]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="61" width="130" height="20" uuid="ed228826-6ed3-435e-86ba-6c8763016a58"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CONTRAT DE SURETE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="451" y="92" width="99" height="1" uuid="496d47a5-2628-42bb-9ab2-b3635ca296b1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="434" y="79" width="17" height="14" uuid="6d8712b3-3ca9-48ab-b3a3-cd7e5c48d887"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="451" y="78" width="99" height="15" uuid="b1c05679-9f27-4785-bfc3-5c77fb18b720"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numContrat}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="61" uuid="08e8d128-7c41-4faa-adc7-e50c63a3a0a4"/>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{ENTETE}]]></subreportExpression>
+			</subreport>
+			<textField isBlankWhenNull="true">
+				<reportElement x="23" y="78" width="100" height="15" uuid="502aaa59-a8e0-4dcd-beb2-fd0a5fe6a78e"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{produitCredit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="78" width="23" height="15" uuid="2165a020-f10e-4568-80e4-a10824f3f7d6"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prêt :]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="669" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="100" height="15" uuid="c091ccf4-2f5e-4580-a572-865b5e5d08e6"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Entre les soussignés,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="16" width="63" height="15" uuid="39bbe08c-f88e-41b8-9f5d-badd92c1fc45"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[M/Mme/Mle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="31" width="63" height="15" uuid="b07e3085-be94-4bad-8ca1-500faf9e15cc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nom et Prénom :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="31" width="51" height="15" uuid="068668ab-a369-47cc-a157-cb068ca75408"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nationalité]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="46" width="42" height="15" uuid="1e0fec33-edd1-4c17-bfd1-3c428f8d757e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Adresse :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="63" width="32" height="15" uuid="1b6b35d8-7630-4239-af1b-03e5d885e36a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tél. : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="288" y="63" width="20" height="15" uuid="362417b4-c038-45e1-8b17-0b6a2c384c1b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[BP :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="78" width="181" height="15" uuid="adabb7c3-ec4c-47df-a5d6-85def0a7d808"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Ci-après dénommé « Le constituant » d'une part :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="63" y="40" width="276" height="1" uuid="16f7e5bd-8305-47ba-8b3b-137e2a6b5642"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="397" y="40" width="153" height="1" uuid="b8d3a11b-4000-46ec-9a00-469995e2ad98"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="42" y="55" width="443" height="1" uuid="8fac868e-f8ab-440d-a14e-ae23ffaf8911"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="-344" y="5" width="276" height="1" uuid="56231c51-a823-40e8-a54f-c73c3bfeb59e"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="32" y="71" width="246" height="1" uuid="4a6426a4-abf2-47d8-826b-6ac5ddb2295b"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="313" y="70" width="100" height="1" uuid="d19b9653-74c7-4945-8552-f83455cb3de3"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="93" width="13" height="15" uuid="95095087-a575-4ae9-92a6-8f7e4bb51f18"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Et]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="105" width="555" height="13" uuid="c181c980-6515-4de2-8397-bc79c66db7a7"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CAMUFE-SFD située à GNEGAMEY, 02 BP 2114 Cotonou, Télephone : 61 24 19 19, représenté par Mme AHOUANSOU Geneviève sa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="118" width="310" height="15" uuid="c922c025-3abd-4a28-973a-b803665f2f8e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ présidente, demeurant es-qualité au siège dudit SFD ; ci-après dénommée : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="308" y="118" width="48" height="15" uuid="f7d62604-dd93-44af-9169-3ac186a3dcb5"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[« Prêteur»]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="118" width="52" height="15" uuid="49bbe795-5898-4c3c-bb0f-1a31b834a592"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[d'une part ;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="136" width="52" height="15" uuid="5d310d47-c7ba-4af0-8189-cf6bb23f38b1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Article 1 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="136" width="100" height="15" uuid="de4ec823-d718-4e9b-85bc-c7d6bed6c35d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Objet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="151" width="253" height="15" uuid="f9004ee9-6655-40c1-af81-049d99962efd"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Le constituant met en garantie du remboursement d'un prêt de FCFA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="253" y="160" width="297" height="1" uuid="4fda9476-c804-404a-9bc4-60bdd2cdbbe7"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="166" width="79" height="15" uuid="af6b352d-31eb-4855-b441-705367ad8421"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[(Capital et intérêts)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="79" y="166" width="138" height="15" uuid="c776b142-2702-4317-ae41-2b7095e4201f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ octroyé par CAMUFE-SFD à Mr/Mme]]></text>
+			</staticText>
+			<line>
+				<reportElement x="217" y="174" width="333" height="1" uuid="33f3c843-2931-41ff-843d-2990dac2e39b"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="3" y="179" width="295" height="15" uuid="7d573cfe-1f8e-4b44-a876-e70eefaa8ecc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[destiné à financer le développemen, de son activité professionelle de vente de :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="298" y="189" width="252" height="1" uuid="cbaf15f2-1400-4a43-9646-94f3a04400bf"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="217" width="192" height="15" uuid="fd89e177-d474-419f-807c-9650a0f73fee"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Les (s) bien(s) immeubles et meubles ci-après :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="232" width="13" height="15" uuid="10865891-6ba3-4720-9614-0e7725732e35"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1. ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="13" y="242" width="537" height="1" uuid="d59f8cc9-1ab3-439b-9df8-93574f6ffe67"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="247" width="13" height="15" uuid="09068643-c4d8-4f82-bd8a-233612ddb228"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="13" y="257" width="537" height="1" uuid="292e725f-ae70-476f-9714-cf20da860258"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="262" width="13" height="15" uuid="064b0f8f-119e-4366-b087-cf622402bea2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[3.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="13" y="270" width="537" height="1" uuid="8beeebbe-c17f-46ed-a553-24532757d65c"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="282" width="42" height="15" uuid="3a901f92-b094-4b0c-8418-e52cde065ef5"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Article 2 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="282" width="58" height="15" uuid="bcff204b-9a77-49ff-ad2f-552d60285b2d"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[La propriété]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="297" width="555" height="40" uuid="cd505959-4463-4f5b-a818-007befb2cfd0"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Le constituant affirme par le présent que son droit de propriété sur le(s) bien(s) objet(s) de garantie est exclusif et ne souffre d'aucune contestation. Il déclare par ailleurs que ce(s) bien(s) est (sont) libre(s) et ne fait (font) objet d'aucune gage ou hypothèque antérieur.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="342" width="52" height="15" uuid="c52a5d00-b8db-475d-93a4-0bae28b50e93"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Article 3 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="342" width="100" height="15" uuid="ab79378e-ae8b-4e71-8305-b0caa26b2e8d"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[La dépossession]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="357" width="555" height="31" uuid="35b5f520-5961-4e08-af7c-877f91a16fe5"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Le(s) bien(s) ci-après énuméré(s) objet du présent contrat est (sont) mis en gage sans qu'il ne soit obligé d'en dépossédé le constituant.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="393" width="52" height="15" uuid="f963aa80-407e-41fd-b9ad-0776721e9228"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Article 4 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="393" width="100" height="15" uuid="c275fed3-3aa0-4c0a-b763-88c09472401e"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[La Réalisation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="408" width="555" height="24" uuid="033c0317-910c-4f21-b042-195421e16995"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Les parties conviennent qu'en cas de défaillance de l'emprunteur (se) : les(s) bien(s) mis en gage deviennent la propriété de CAMUFE-SFD sans qu'il ne soit nécessaire de recourir à la justice, conformément à l'article 104 alinéa 3 de l'acvte uniforme portant organisation des sûretés.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="432" width="451" height="15" uuid="a110b4b1-65dc-4491-b40f-1835db2f8255"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ En ce cas, le(s) bien(s) gagé(s) doit (doivent) être estimé(s) au jour du transfert par un expert désigné à l'avance. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="447" width="202" height="15" uuid="6ae2da77-9887-4097-a152-d40b3221f54b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Les parties retiennent d'ors et déjà comme expert :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="462" width="19" height="15" uuid="5dd2d182-9d56-456e-b9fb-96b577427083"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Mr :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="477" width="42" height="15" uuid="1624627e-8f7f-40a2-b2c7-22ad3f5eb253"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Adresse :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="462" width="61" height="15" uuid="0c5b7cf6-e2fb-4cc3-99a9-e1874d2ae4e4"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Profession :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="332" y="477" width="34" height="15" uuid="a2d31b31-d3d8-413b-87c3-6300e0436359"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tél :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="492" width="566" height="25" uuid="119bfe7c-d2d6-4d7f-8572-1dc23c875d59"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[La défaillance de l'emprunteur (se) entraînant le transfert de propriété est constaté après un retard cumulé de trois (03) échéances ou un retard de trois (03) moois cumulés.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="19" y="469" width="255" height="1" uuid="c1dd802c-9e01-4b36-ab13-9f0fd2dde8b7"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="346" y="468" width="204" height="1" uuid="22757bb6-f2cf-474e-84a5-8b37e6694f2c"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="42" y="488" width="290" height="1" uuid="15edbf7b-2011-488f-82fc-525f824d8c01"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="366" y="487" width="184" height="1" uuid="6dab71ec-909e-4b0e-88de-f92f019657f1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="522" width="52" height="15" uuid="f69fd222-f821-41c3-85db-edd021d76583"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Article 5 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="522" width="100" height="15" uuid="7ee9e95b-033e-4d66-8d63-59fb36b6d38f"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Règlement des litiges]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="537" width="555" height="22" uuid="81177bd1-a17b-4374-b42b-73e47a535778"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tout litige né de l'exécution du présent contrat sera porté devant le juge arbitre du TPI de Cotonou et les frais sont répartis équitablement entre                       les parties.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="577" width="168" height="15" uuid="e782206e-0a0a-4dd5-ad46-1130fbdd4d75"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fait en deux (02) exemplaire à Cotonou le ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="178" y="587" width="130" height="1" uuid="badb2ec5-1af3-4482-bc48-a7c5705c777f"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="32" y="611" width="68" height="15" uuid="e8d59652-e5bd-424a-b7f4-f6932e32e914"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Le constituant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="385" y="611" width="129" height="15" uuid="4f31cf4a-a665-4709-9693-b0448a6f5197"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Pour CAMUFE-SFD]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="63" y="31" width="276" height="15" uuid="3ff90c6a-208c-4000-a65d-773d7b35f6b1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomMembre}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="42" y="40" width="443" height="15" uuid="0afd8d79-49dd-4034-915b-e60b474c4ad7"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adresse_client}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="32" y="61" width="242" height="15" uuid="24303a85-1dc8-42dc-8d3c-f19e031b6eb6"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contact}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="308" y="61" width="105" height="15" uuid="6c4d96b6-3e8c-481c-ab73-99e54f6cb461"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bp_client}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="397" y="31" width="153" height="15" uuid="0386d529-54f2-42b1-b263-570f488b94b3"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nationalite}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="253" y="151" width="297" height="15" uuid="d4dc059d-3e7a-49df-9312-3e9bd8234f2a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capitalEtInteret}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="217" y="166" width="333" height="15" uuid="48f7b5e9-ffa5-45ef-8124-4bc07801b590"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomMembre}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="298" y="179" width="252" height="15" uuid="bf7bb87d-b890-480c-917d-2cf8d33949c1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{activite}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="178" y="577" width="130" height="15" uuid="a5a0b241-0c28-4b3b-9f39-7e9071bc808f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateImpression}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="13" y="232" width="537" height="10" uuid="6f235ae8-c252-4392-ab72-b76243f57874"/>
+				<textFieldExpression><![CDATA[$P{GARANTIE_NON_FINANCIERE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="32">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="31" uuid="ea59c308-165f-45d8-ab28-c21c64beca0f"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="numero_page"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{PIED_DE_PAGE}]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EtatRecuPiece" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="00486ff0-9fcb-40a5-84fd-7a341409741c">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="nomInstitution" class="java.lang.String"/>
+	<parameter name="descriptionInstitution" class="java.lang.String"/>
+	<parameter name="libelleOrigine" class="java.lang.String"/>
+	<parameter name="origine" class="java.lang.String"/>
+	<parameter name="libelleNumeroJournal" class="java.lang.String"/>
+	<parameter name="numeroJournal" class="java.lang.String"/>
+	<parameter name="Piece" class="java.lang.String"/>
+	<parameter name="operation" class="java.lang.String"/>
+	<parameter name="saisiPar" class="java.lang.String"/>
+	<parameter name="duplicata" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="nomUtilisateur" class="java.lang.String"/>
+	<parameter name="libelleNumeroPiece" class="java.lang.String"/>
+	<parameter name="libelleCompte" class="java.lang.String"/>
+	<parameter name="libelle" class="java.lang.String"/>
+	<parameter name="libelleDebit" class="java.lang.String"/>
+	<parameter name="libelleCredit" class="java.lang.String"/>
+	<parameter name="libelleApprouvePar" class="java.lang.String"/>
+	<parameter name="nomApprouver" class="java.lang.String"/>
+	<parameter name="tatalDebit" class="java.lang.String"/>
+	<parameter name="totalCredit" class="java.lang.String"/>
+	<field name="numeroPiece" class="java.lang.String"/>
+	<field name="compte" class="java.lang.String"/>
+	<field name="valeur" class="java.lang.String"/>
+	<field name="debit" class="java.math.BigDecimal"/>
+	<field name="credit" class="java.math.BigDecimal"/>
+	<variable name="totalDebit" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{debit}]]></variableExpression>
+	</variable>
+	<variable name="totalCredit" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{credit}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="111" splitType="Stretch">
+			<rectangle>
+				<reportElement x="2" y="4" width="553" height="105" uuid="60bc43a0-02e4-4fa2-ade0-930191879070"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle radius="4">
+				<reportElement x="192" y="16" width="213" height="58" uuid="4da1742b-de36-4d2a-a76c-44a91a0190cd"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="9" width="163" height="12" uuid="d687c68e-31e3-44cb-8693-e3a9d286fa2f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nomInstitution}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="32" width="163" height="12" uuid="8d01161e-d68d-40cd-9aaf-9087e96db742"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{descriptionInstitution}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="50" width="61" height="12" uuid="d905b1e1-ddef-4d4e-b9b4-c72db97c702e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{libelleOrigine}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="84" y="50" width="90" height="12" uuid="70c0b52c-0ceb-44db-9ab7-4f64ea0d8e5f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{origine}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="12" y="69" width="61" height="12" uuid="563e1dd4-68b3-49e1-b633-2d1aa1d1b5b8"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{libelleNumeroJournal}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="84" y="69" width="90" height="12" uuid="515abdcc-256b-4577-a2e3-1bd504d2112a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numeroJournal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="195" y="31" width="207" height="13" uuid="2d277ec9-3dbd-4b5f-a169-07f1e3ef6e88"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Piece}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="195" y="50" width="207" height="13" uuid="9dd39d62-3849-4f9d-82e8-6521888758a5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{operation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="37" width="125" height="13" forecolor="#FF0000" uuid="c3fc2e86-0082-4330-85b9-084df28e9b9b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{duplicata}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="419" y="56" width="47" height="13" forecolor="#000000" uuid="a0428144-fd88-4dca-91c7-2adda4dd4aad"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{saisiPar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="19" width="125" height="13" uuid="87db7ea0-6a07-4116-b025-6a86004e0679"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="470" y="56" width="73" height="13" uuid="2adcd996-d799-4677-8d8a-f25562749ca2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nomUtilisateur}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="548" y="-103" width="1" height="14" uuid="6ceb38f4-0e0b-4bd2-bd7c-c926d8e7ce17"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="1" width="553" height="14" backcolor="#F0F0F0" uuid="b34fbce5-edd8-4883-ae3f-1fdcc7e47eb0"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement x="4" y="3" width="76" height="11" uuid="5c6950c5-2695-47af-87ff-0023a2c2ff83"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{libelleNumeroPiece}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="113" y="3" width="62" height="11" uuid="ecc6d36a-d68b-4711-8212-975e723cc0be"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{libelleCompte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="3" width="228" height="11" uuid="7afa24e3-ae4b-4d8e-98b5-e39bdf64e54e"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{libelle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="3" width="61" height="11" uuid="f693a294-fc32-45cf-ac19-3573b160f8f5"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{libelleDebit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="487" y="3" width="62" height="11" uuid="53c94022-f616-4ab9-871a-811cff8486fb"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{libelleCredit}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="109" y="1" width="1" height="14" uuid="2b3ebb61-e9a6-4dda-a96b-322465105c6a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="412" y="1" width="1" height="14" uuid="539b4ee3-ca19-4279-a114-3af22c34adf8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="175" y="1" width="1" height="14" uuid="586e6160-4993-4593-ae28-f916729620af"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="483" y="1" width="1" height="14" uuid="e6c42270-5805-44d1-a3e2-1314569c5f86"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="12" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="554" height="12" uuid="ef007f51-4ee1-41a4-b025-bd42e3b6b800"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement x="3" y="1" width="101" height="11" uuid="a4823500-0a2f-4515-983f-5be189427a09"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numeroPiece}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="113" y="1" width="58" height="11" uuid="5881b9e5-521a-4076-85cd-3ac07ab9a0c6"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{compte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="181" y="1" width="227" height="11" uuid="de137a69-777a-44f5-8d26-5e9ad96bde6e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valeur}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="436" y="1" width="43" height="11" uuid="3c63b73e-2000-405f-bb66-5cb6710de7f9"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{debit}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="487" y="0" width="62" height="11" uuid="029f530d-f817-4c01-b5ab-cbdf2250104b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{credit}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="412" y="0" width="1" height="12" uuid="981139bd-a0ee-4cf8-b425-228c3cc9ce67"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="483" y="0" width="1" height="12" uuid="6e52a447-4f80-4889-b3f9-89f5f2ade556"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="109" y="0" width="1" height="12" uuid="ff9cf886-3e0a-4439-b4d2-c393f975cc47"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="175" y="0" width="1" height="12" uuid="a722be43-ac7d-4dd5-ae7b-08a485253e43"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="17" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="554" height="16" backcolor="#F0F0F0" uuid="89a37bcb-9330-4a1c-a0d8-50634a18a015"/>
+				<graphicElement>
+					<pen lineWidth="0.25"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement x="181" y="3" width="90" height="11" uuid="2c06f98c-b2a0-4d68-b3ac-f0f04101dbca"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{libelleApprouvePar}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="272" y="3" width="133" height="11" uuid="c893deed-f3c8-418f-94cb-33d710a8959c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nomApprouver}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="487" y="2" width="62" height="14" uuid="6ca11236-538d-4675-972a-954ac0ebb94a"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalCredit}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="418" y="3" width="61" height="13" uuid="34c6568a-cc7c-423c-81cc-bb4f21927428"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalDebit}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="412" y="0" width="1" height="16" uuid="54fbe209-4811-4e37-8217-f59317e174e5"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="483" y="0" width="1" height="16" uuid="47b8c7d6-ad1e-4925-8430-7c3439cec203"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="175" y="0" width="1" height="16" uuid="9901dd67-a7ce-4ca6-b3b1-b16550a43829"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

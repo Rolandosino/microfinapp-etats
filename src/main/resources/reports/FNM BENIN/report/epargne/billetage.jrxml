@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="400" pageHeight="842" columnWidth="360" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="5e16886f-c811-4d43-853b-21a6a2baee5d">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <style name="table_CH" mode="Opaque" forecolor="#000000" backcolor="#CCCCCC" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="table_TD" mode="Opaque" forecolor="#000000" backcolor="#FFFFFF" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <queryString>
+		<![CDATA[SELECT libsouss as LIBELLE_BILLET FROM sous]]>
+    </queryString>
+    <field name="LIBELLE_BILLET" class="java.lang.String"/>
+    <field name="NBRE" class="java.lang.String"/>
+    <variable name="TOTAL" class="java.lang.String"/>
+    <variable name="TOTAUX" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band splitType="Stretch"/>
+    </title>
+    <pageHeader>
+        <band splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="58" splitType="Stretch">
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="0" y="38" width="182" height="20" backcolor="#F0F0F0" uuid="64fe1ef3-b2d1-419a-a8e3-72716432e560"/>
+                <box>
+                    <topPen lineWidth="0.5"/>
+                    <leftPen lineWidth="0.5"/>
+                    <bottomPen lineWidth="0.5"/>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Libellé]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="182" y="38" width="83" height="20" backcolor="#F0F0F0" uuid="a4d7afdb-5e68-4bca-9fdd-e819c31a2b68"/>
+                <box>
+                    <topPen lineWidth="0.5"/>
+                    <leftPen lineWidth="0.5"/>
+                    <bottomPen lineWidth="0.5"/>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Nombre]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="264" y="38" width="93" height="20" backcolor="#F0F0F0" uuid="996859af-1667-4e0e-b92b-3ba42142a74c"/>
+                <box>
+                    <topPen lineWidth="0.5"/>
+                    <leftPen lineWidth="0.5"/>
+                    <bottomPen lineWidth="0.5"/>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Total]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="0" y="0" width="182" height="20" uuid="d29c9cbe-d6eb-43c4-a6ea-c515b61fda60"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Solde de caisse: "]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="19" width="182" height="20" uuid="6d00fd2b-c98e-4d95-a3e7-1c0cbd351cdf"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Bon de caisse: "]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="186" y="0" width="172" height="20" uuid="91ac145d-e1da-42a3-bf0c-7d7a74f81b6d"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Journée: "]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="186" y="19" width="172" height="20" uuid="dacf2b4c-635c-47ca-8799-26290141cfbe"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Total caisse: "]]></textFieldExpression>
+            </textField>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="15" splitType="Stretch">
+            <textField>
+                <reportElement style="table_TD" x="0" y="0" width="182" height="15" uuid="b80c7ba0-6b58-454c-b73f-8181f474386d"/>
+                <box>
+                    <topPen lineWidth="0.5"/>
+                    <leftPen lineWidth="0.5"/>
+                    <bottomPen lineWidth="0.5"/>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font size="7"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{LIBELLE_BILLET}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="182" y="0" width="82" height="15" uuid="bd16b354-9231-445f-8146-00ad85d9f266"/>
+                <box>
+                    <topPen lineWidth="0.5"/>
+                    <leftPen lineWidth="0.5"/>
+                    <bottomPen lineWidth="0.5"/>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="7"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{NBRE}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="264" y="0" width="93" height="15" uuid="afca2000-10fb-495d-ae99-7d71e2d64f25"/>
+                <box>
+                    <topPen lineWidth="0.5"/>
+                    <leftPen lineWidth="0.5"/>
+                    <bottomPen lineWidth="0.5"/>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="7"/>
+                    <paragraph rightIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{TOTAL}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="20" splitType="Stretch">
+            <textField>
+                <reportElement style="table_CH" mode="Opaque" x="264" y="0" width="93" height="20" backcolor="#F0F0F0" uuid="5ea0ed98-1be8-49c1-baa2-dcc7fbc08e01"/>
+                <box>
+                    <topPen lineWidth="0.5"/>
+                    <leftPen lineWidth="0.5"/>
+                    <bottomPen lineWidth="0.5"/>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8" isBold="true"/>
+                    <paragraph rightIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{TOTAUX}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="0" y="0" width="264" height="20" backcolor="#F0F0F0" uuid="bb19da50-b183-4fac-9ced-063e3b4c645f"/>
+                <box>
+                    <topPen lineWidth="0.5"/>
+                    <leftPen lineWidth="0.5"/>
+                    <bottomPen lineWidth="0.5"/>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <text><![CDATA[Total:]]></text>
+            </staticText>
+        </band>
+    </columnFooter>
+    <pageFooter>
+        <band splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band splitType="Stretch"/>
+    </summary>
+</jasperReport>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6a23d41f-0e2a-4bc6-bc06-dc510f4f9fd1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="LIBELLE_COLONNE_GAUCHE_STOCKS" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Variation des stocks : N - (N-1)"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CAFG" class="java.lang.String"/>
+	<parameter name="DISTRIBUTION_DE_DIVIDENDES_DANS_EXERCICE" class="java.lang.String"/>
+	<parameter name="AF" class="java.lang.String"/>
+	<parameter name="CAFGN1" class="java.lang.String"/>
+	<parameter name="AFN1" class="java.lang.String"/>
+	<parameter name="DATASOURCE_CAFG" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="DATASOURCE_BFE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="DATASOURCE_CREANCE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="DATASOURCE_DETTES_CIRCULANTES" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="DATASOURCE_ETE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="LIBELLE_COLONNE_GAUCHE_CREANCES" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Variation des créances : N - (N - 1)"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_COLONNE_GAUCHE_DETTES_CIRCULANTES" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Variation des dettes circulantes : N - (N - 1)"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="VARIATION_BFE_EMPLOIS" class="java.lang.String"/>
+	<parameter name="VARIATION_BFE_RESSOURCES" class="java.lang.String"/>
+	<parameter name="INSTITUTION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Fonds National de la Finance Inclusive"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SIGLE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["FNFI"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["08, Rue Akéï face CFBT"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IDENTIFICATION_FISCALE" class="java.lang.String"/>
+	<parameter name="EXERCICE" class="java.lang.String"/>
+	<parameter name="DUREE_EXERCICE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["12"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateParam" class="java.lang.String"/>
+	<parameter name="MICROFINA" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Microfina++"]]></defaultValueExpression>
+	</parameter>
+	<field name="test" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="145" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="125" width="555" height="20" uuid="95ea3250-7ca3-42d5-ae1e-b09ab9b48a64"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[1ère PARTIE : DETERMINATION DES SOLDES FINANCIERS DE L'EXERCICE N]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="60" width="555" height="20" uuid="c80b8892-0f21-4920-a2f7-6f511e8955ea"/>
+				<textFieldExpression><![CDATA["N° d'identification fiscale : "+$P{IDENTIFICATION_FISCALE}+"  Exercice clos le 31-12 : "+$P{EXERCICE}+" Durée (en mois) : "+$P{DUREE_EXERCICE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="41" width="555" height="20" uuid="553f2a27-098b-4d79-a885-cb378956ec06"/>
+				<textFieldExpression><![CDATA["Adresse : "+$P{ADRESSE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="21" width="555" height="20" uuid="7ddcf4a3-a6e7-4ae3-a12e-a1c1b1fb635a"/>
+				<textFieldExpression><![CDATA["Sigle usuel : "+$P{SIGLE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="1" width="555" height="20" uuid="a81a6450-5cb8-4467-b729-ff3aa60bac9d"/>
+				<textFieldExpression><![CDATA["Dénomination sociale de l'entreprise : "+$P{INSTITUTION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="90" width="555" height="35" uuid="c31595aa-f82a-47cf-9dd1-26a33a4bec9a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA["TABLEAU FINANCIER DES RESSOURCES ET DES EMPLOIS (TAFIRE)\nSYSTEME NORMAL"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="461" splitType="Stretch">
+			<subreport>
+				<reportElement positionType="Float" x="0" y="0" width="555" height="100" uuid="efe309ec-6f0a-4341-b9e3-43bbe620020d"/>
+				<subreportParameter name="CAFG">
+					<subreportParameterExpression><![CDATA[$P{CAFG}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DISTRIBUTION_DE_DIVIDENDES_DANS_EXERCICE">
+					<subreportParameterExpression><![CDATA[$P{DISTRIBUTION_DE_DIVIDENDES_DANS_EXERCICE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="AF">
+					<subreportParameterExpression><![CDATA[$P{AF}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="CAFGN1">
+					<subreportParameterExpression><![CDATA[$P{CAFGN1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="AFN1">
+					<subreportParameterExpression><![CDATA[$P{AFN1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{DATASOURCE_CAFG}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "etatCAFG.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="0" y="237" width="555" height="100" uuid="df9d61a6-2420-4bf6-9326-64e22dcd70c1"/>
+				<subreportParameter name="LIBELLE_COLONNE_GAUCHE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_COLONNE_GAUCHE_CREANCES}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="AFFICHER_TITRE">
+					<subreportParameterExpression><![CDATA[false]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="AFFICHER_RESUME">
+					<subreportParameterExpression><![CDATA[false]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{DATASOURCE_CREANCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "etatBFE.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="0" y="117" width="555" height="100" uuid="3db5c7f7-25ba-4d22-acff-07861cb178ba"/>
+				<subreportParameter name="LIBELLE_COLONNE_GAUCHE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_COLONNE_GAUCHE_STOCKS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="AFFICHER_TITRE">
+					<subreportParameterExpression><![CDATA[true]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="AFFICHER_RESUME">
+					<subreportParameterExpression><![CDATA[false]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{DATASOURCE_BFE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "etatBFE.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="0" y="360" width="555" height="100" uuid="472a4359-3c6c-4715-8d41-9b0dae871a14"/>
+				<subreportParameter name="LIBELLE_COLONNE_GAUCHE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_COLONNE_GAUCHE_DETTES_CIRCULANTES}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="AFFICHER_TITRE">
+					<subreportParameterExpression><![CDATA[false]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="VARIATION_BFE_RESSOURCES">
+					<subreportParameterExpression><![CDATA[$P{VARIATION_BFE_RESSOURCES}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="AFFICHER_RESUME">
+					<subreportParameterExpression><![CDATA[true]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="VARIATION_BFE_EMPLOIS">
+					<subreportParameterExpression><![CDATA[$P{VARIATION_BFE_EMPLOIS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{DATASOURCE_DETTES_CIRCULANTES}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "etatBFE.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="81">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="74" uuid="dc2fb08b-0ed0-49f4-905f-3944572fe28e"/>
+				<dataSourceExpression><![CDATA[$P{DATASOURCE_ETE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "etatETE.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="25">
+			<textField>
+				<reportElement x="0" y="11" width="196" height="14" uuid="901e1e63-6b1f-4e1f-95b4-3e0629503dc9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Imprimé le "+$P{dateParam}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="432" y="11" width="80" height="14" uuid="c9b21312-a8a8-4ded-be64-69fda23a082c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="11" width="117" height="14" uuid="ad32d4d8-16db-492a-9f38-97ea39707379"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MICROFINA}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="512" y="11" width="40" height="14" uuid="6c5f179b-8d5d-4b08-9825-1260ac2756b4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

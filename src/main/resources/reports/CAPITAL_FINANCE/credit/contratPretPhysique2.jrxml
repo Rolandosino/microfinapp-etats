@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratPretPhysique" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="10" bottomMargin="4" uuid="30ea0dab-4504-47c7-b5c0-16f5e73402f3">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="18"/>
+	<property name="ireport.y" value="96"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="paratitre" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="NUMERO_CREDIT" class="java.lang.String"/>
+	<parameter name="GARANTIE_NON_FINANCIERE" class="java.lang.String"/>
+	<parameter name="dateImpression" class="java.lang.String"/>
+	<parameter name="adresse_client" class="java.lang.String"/>
+	<parameter name="ENTETE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PIED_DE_PAGE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pageportrait.jasper"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateJour" class="java.util.Date">
+		<defaultValueExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format(new Date())]]></defaultValueExpression>
+	</parameter>
+	<field name="nomMembre" class="java.lang.String"/>
+	<field name="objetCredit" class="java.lang.String"/>
+	<field name="montantPret" class="java.lang.String"/>
+	<field name="dureeCredit" class="java.lang.String"/>
+	<field name="montantGarantie" class="java.lang.String"/>
+	<field name="localite" class="java.lang.String"/>
+	<field name="interetMois" class="java.lang.String"/>
+	<field name="numContrat" class="java.lang.String"/>
+	<field name="adresse_client" class="java.lang.String"/>
+	<field name="NUMPIECE" class="java.lang.String"/>
+	<field name="dateExpirationPiece" class="java.lang.String"/>
+	<field name="montantInteret" class="java.lang.String"/>
+	<field name="DUREEDIFFEREE" class="java.lang.String"/>
+	<field name="typeGarantie" class="java.lang.String"/>
+	<field name="tauxGarantie" class="java.lang.String"/>
+	<field name="tranche" class="java.lang.String"/>
+	<field name="dateJour" class="java.lang.String"/>
+	<field name="mtEcheance" class="java.lang.String"/>
+	<field name="compte_epargne" class="java.lang.String"/>
+	<field name="raisonSociale" class="java.lang.String"/>
+	<field name="sexe" class="java.lang.String"/>
+	<field name="datenaissance" class="java.lang.String"/>
+	<field name="lieunaissance" class="java.lang.String"/>
+	<field name="libelleProfession" class="java.lang.String"/>
+	<field name="idTypePiece" class="java.lang.String"/>
+	<field name="dateEtablissementPiece" class="java.lang.String"/>
+	<field name="montantEnLettre" class="java.lang.String"/>
+	<field name="dateDeblocage" class="java.lang.String"/>
+	<field name="dateEcheance1" class="java.lang.String"/>
+	<field name="DATEDERNIERECHEANCE" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="77" splitType="Stretch">
+			<subreport>
+				<reportElement x="1" y="0" width="553" height="56" uuid="647811a6-f693-4794-84cc-26beb8d752ad"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{ENTETE}]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="1" y="56" width="554" height="20" uuid="0088e646-d4a0-44ed-9b35-7c2946a14807"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["FIN DE CONTRAT DE PRET "]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="280" splitType="Stretch">
+			<textField>
+				<reportElement x="101" y="98" width="444" height="14" uuid="5c170131-a402-4fb4-8349-83cb867c8e6a"/>
+				<textElement markup="none">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Date et lieu de naissance : "+$F{datenaissance}+" à "+$F{lieunaissance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="24" width="349" height="12" uuid="d6df59c1-2c9c-4b27-b5df-7536e88a0c37"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Entre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="53" width="100" height="12" uuid="e409e29f-4852-4d11-838b-e564bd2cca7c"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[« PRETEUR »]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="124" width="43" height="15" uuid="98e7266a-9362-4fff-b3fb-79e7e76f7eb7"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Numéro  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="65" width="69" height="15" uuid="a2efaaa9-50a0-4a66-95be-4856afe59875"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Et]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="81" width="70" height="15" uuid="2e219e8f-db0c-4d18-b4f8-fef11e2410dd"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Nom du membre :]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="1" y="141" width="550" height="13" uuid="f6d070f3-7caf-45d6-be13-5a82f6259d5f"/>
+				<textElement markup="none">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Date d’émission : "+$F{dateEtablissementPiece}+". Date d’expiration : "+$F{dateExpirationPiece}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="2" y="155" width="335" height="13" uuid="66a08406-104f-4e0e-96e6-37cd84331c32"/>
+				<textElement markup="none">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["A l’adresse ci-après dénommé  "+$F{adresse_client}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="1" y="170" width="554" height="14" uuid="66a57db0-5a74-4fb5-8555-2811eafcc289"/>
+				<textElement markup="none">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Atteste que l'emprunteur a soldé le crédit numéro :  "+$F{numContrat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="185" width="546" height="12" uuid="900e8231-b26e-4900-9f1d-9e15ff5664c8"/>
+				<textElement markup="none">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Montant en chiffres  : "+$F{montantPret}+" en lettre "+$F{montantEnLettre}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="1" y="198" width="553" height="16" uuid="b877ad68-454c-438d-b64d-98fb998848e5"/>
+				<textElement markup="none">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Durée : "+$F{dureeCredit}+" Date de déblocage : "+$F{dateDeblocage}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="214" width="553" height="18" uuid="cf8e0284-5911-4a43-93a4-5f6d8c670872"/>
+				<textElement markup="none">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Date début de remboursement : "+$F{dateEcheance1}+" Date de fin de remboursement : "+$F{DATEDERNIERECHEANCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="0" width="553" height="12" uuid="32d00e7b-763c-4171-9608-50576d1e4f31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["N° du contrat crédit reçu : "+$F{numContrat}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="32" y="98" width="69" height="15" uuid="aee95e02-98f7-4363-b0a1-2ecf16927a83"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sexe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="43" y="125" width="292" height="14" uuid="c450e94e-1d6b-4b95-83f0-f0cfef89ad0c"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NUMPIECE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="254" width="346" height="15" uuid="57494c16-0022-40ea-a75c-fa0c094c7fda"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fait à Lomé le,  "+(new SimpleDateFormat("dd/MM/yyyy:HH").format(new Date()))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="97" width="31" height="15" uuid="d559bc45-fd24-4565-8d82-502f17ebc0e8"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Sexe :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="337" y="156" width="215" height="12" uuid="8143ce20-ffc7-4841-8e10-c79c47597c65"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[<< EMPRUNTEUR>> ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="234" width="194" height="13" uuid="cac9a4b3-ecce-40a3-ad78-d581df7a0081"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ Signature du Conseil d’Administration/Directeur ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="12" width="553" height="12" uuid="dafdeb6f-b6d9-4711-9729-73f02fd95426"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["N° compte du membre : "+$F{compte_epargne}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-1" y="36" width="555" height="17" uuid="e284bced-6302-4a0d-b0cf-b041446ab81d"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[La MUTUELLE A.S.J.D Face marché de Totsi  B.P : 80896 / Tel: (228) 22 25 33 46 et 90 25 39 65  Lomé représenté par son Directeur BASSINA Komi Ci-après désigné le ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="62" y="82" width="487" height="14" uuid="adbb12a1-56eb-47da-8b65-5ec0bbd56775"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{raisonSociale}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="112" width="61" height="12" uuid="3824a960-ba07-4878-b3b5-15022a21653c"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Profession :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="44" y="112" width="141" height="12" uuid="bbb88ed3-f72b-4d08-84be-e88d662d2229"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelleProfession}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="185" y="113" width="105" height="11" uuid="91927e56-7a1f-485f-ab8b-2a8b783ebdf9"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Nature de la pièce d’identité :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="290" y="113" width="255" height="11" uuid="a4224d42-448a-498f-bfb5-8cac01c0159a"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idTypePiece}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="423" y="233" width="122" height="13" uuid="43cc8b45-c4b3-4627-aef3-a34d8a762c39"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Signature Client  ]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30">
+			<subreport>
+				<reportElement x="0" y="0" width="552" height="30" uuid="9c48db17-5d14-48cc-a8f7-9404ebb5c247"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{PIED_DE_PAGE}]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

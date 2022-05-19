@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rapprochementBancaireFNM" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7d0ddb2d-3751-40d9-a6f9-3ac419123605">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="para_totalBanque" class="java.lang.String"/>
+	<parameter name="para_totalCredit" class="java.lang.String"/>
+	<parameter name="para_raprochesNous" class="java.lang.String"/>
+	<parameter name="para_totalDebit" class="java.lang.String"/>
+	<parameter name="nombanque" class="java.lang.String"/>
+	<parameter name="compteBanque" class="java.lang.String"/>
+	<parameter name="para_datedebut" class="java.lang.String"/>
+	<parameter name="para_datefin" class="java.lang.String"/>
+	<parameter name="dataSource1" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="dataSource2" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="25" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="33" uuid="d26932ec-f59a-41a2-96b9-1fb01c4498bf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Etat de rapprochement bancaire]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement x="308" y="15" width="72" height="15" uuid="99c0513c-624b-4370-88fb-26dfe7312e8b"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Compte :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="526" y="49" width="195" height="15" uuid="9f843556-487f-47b3-97b6-ef4abbb27899"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Notre compte à la banque (Relevé )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="308" y="30" width="72" height="15" uuid="973e57e3-be0c-4980-bba8-08f4d23386b3"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Période :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="64" width="180" height="15" uuid="7f4580af-cb3e-4454-9d74-50931b31d14f"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Solde à rapprocher]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="43" width="116" height="15" uuid="01f09d18-b26b-4503-bd7b-5fd3239e7f39"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Banque chez nous:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="308" y="0" width="72" height="15" uuid="680e2e6b-5313-413f-a009-11cbfa44b844"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Banque :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="180" y="64" width="116" height="15" uuid="6ecfaf60-e7cd-4110-929f-3062c5eb7ea7"/>
+				<textElement textAlignment="Right">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{para_raprochesNous}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="526" y="64" width="100" height="15" uuid="5fdd3efa-81d7-4cbd-aa40-8d3382a42f33"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Solde à rapprocher :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="626" y="64" width="116" height="15" uuid="1f490fdb-277a-4291-8cfe-1ebf32b09c30"/>
+				<textElement textAlignment="Right">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{para_totalBanque}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="0" width="246" height="15" uuid="2f6da908-2d98-4c07-bb39-75f90bcf6929"/>
+				<textElement textAlignment="Justified">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombanque}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="15" width="246" height="15" uuid="b808a0ec-dea3-44b8-b630-fcf12680469a"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{compteBanque}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="28" width="121" height="15" uuid="eb7a9592-ac84-4f6a-ac21-8ee6a87cdff2"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{para_datedebut}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="568" y="28" width="121" height="15" uuid="0863bf7e-8755-4005-998b-f61119f0f369"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{para_datedebut}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="537" y="28" width="31" height="15" uuid="d6691a70-4df4-4039-8d7d-5be5afbacdef"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Au]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="385" y="30" width="31" height="15" uuid="48b090a2-20a6-492a-88ba-708b107f1966"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Du]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<summary>
+		<band height="66">
+			<subreport>
+				<reportElement x="0" y="0" width="394" height="62" uuid="bfe75190-d0f0-404d-94df-e0dbeb5f64a8"/>
+				<subreportParameter name="para_totalCredit">
+					<subreportParameterExpression><![CDATA[$P{para_totalCredit}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="para_totalDebit">
+					<subreportParameterExpression><![CDATA[$P{para_totalDebit}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="para_raprochesNous">
+					<subreportParameterExpression><![CDATA[$P{para_raprochesNous}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{dataSource1}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "subReportRapprochement_Nous.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="394" y="0" width="374" height="62" uuid="6247f1e9-632b-4633-833c-6dceddf22d7c"/>
+				<subreportParameter name="para_totalBanque">
+					<subreportParameterExpression><![CDATA[$P{para_totalBanque}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{dataSource2}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "subReportBanque.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

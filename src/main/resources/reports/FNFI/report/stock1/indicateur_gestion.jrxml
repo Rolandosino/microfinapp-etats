@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="indicateur_gestion" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="BlankPage" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="0" uuid="57f9863e-c3d6-49d4-aa43-8461c320de09">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fin" class="java.util.Date"/>
+	<parameter name="deb" class="java.util.Date"/>
+	<parameter name="parameter1" class="java.lang.String"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<field name="ordre" class="java.lang.String"/>
+	<field name="nomProduit" class="java.lang.String"/>
+	<field name="entree" class="java.lang.Integer"/>
+	<field name="sortie" class="java.lang.Integer"/>
+	<field name="pa" class="java.math.BigDecimal"/>
+	<field name="pu" class="java.math.BigDecimal"/>
+	<field name="marge" class="java.math.BigDecimal"/>
+	<field name="mtEntree" class="java.math.BigDecimal"/>
+	<field name="mtSortie" class="java.math.BigDecimal"/>
+	<field name="pourcentEntree" class="java.lang.Double"/>
+	<field name="pourcentSortie" class="java.lang.Double"/>
+	<field name="pourcentMarge" class="java.lang.Double"/>
+	<variable name="totEntree" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{mtEntree}]]></variableExpression>
+		<initialValueExpression><![CDATA[]]></initialValueExpression>
+	</variable>
+	<variable name="totSortie" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{mtSortie}]]></variableExpression>
+	</variable>
+	<variable name="totalMarge" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{marge}]]></variableExpression>
+	</variable>
+	<variable name="totPerceEntree" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{pourcentEntree}]]></variableExpression>
+	</variable>
+	<variable name="totPerceSortie" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{pourcentSortie}]]></variableExpression>
+	</variable>
+	<variable name="totPerceMarge" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{pourcentMarge}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="91" splitType="Stretch">
+			<subreport>
+				<reportElement x="16" y="0" width="802" height="91" uuid="1d7dc0f9-bfbf-408f-8cfe-e547f97c8287">
+					<printWhenExpression><![CDATA[$P{OPTION}.equals("Normal")||$P{OPTION}==null]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "entente_stock_paysage.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="16" y="41" width="51" height="20" backcolor="#EFEFEF" uuid="dc81cada-72e7-48c1-b033-2f9e1d7f32e6"/>
+				<textElement textAlignment="Right">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[N° Ordre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="67" y="41" width="128" height="20" backcolor="#EFEFEF" uuid="014fa6f0-b789-40e0-91d2-a256a896f53c"/>
+				<textElement textAlignment="Right">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Produit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="195" y="41" width="53" height="20" backcolor="#EFEFEF" uuid="dd07fc75-88b9-4f68-8132-0517ea0eee5a"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Entrée]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="248" y="41" width="54" height="20" backcolor="#EFEFEF" uuid="7be42571-c931-468b-a783-e43584497fec"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Pa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="302" y="41" width="58" height="20" backcolor="#EFEFEF" uuid="e19b6880-f7db-4eef-8d01-b1a6dab92a31"/>
+				<textElement textAlignment="Right">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Montant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="360" y="41" width="69" height="20" backcolor="#EFEFEF" uuid="136fc59a-f1a6-40be-a58e-7ab18fab6916"/>
+				<textElement textAlignment="Right">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Percentage]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="444" y="41" width="53" height="20" backcolor="#EFEFEF" uuid="bbf201be-431b-4e10-9670-911e2b7b86c2"/>
+				<textElement textAlignment="Right">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Sortie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="497" y="41" width="48" height="20" backcolor="#EFEFEF" uuid="d984df57-9d6c-483a-bd9f-a15399783f5b"/>
+				<textElement textAlignment="Right">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Pu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="604" y="41" width="68" height="20" backcolor="#EFEFEF" uuid="9303db53-cf3e-4dd4-b662-35b30f1ec355"/>
+				<textElement textAlignment="Right">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Percentage]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="685" y="41" width="66" height="20" backcolor="#EFEFEF" uuid="4bf5b15d-90e3-4888-a941-d51b841622f6"/>
+				<textElement textAlignment="Right">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Marge]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="751" y="41" width="67" height="20" backcolor="#EFEFEF" uuid="4f847295-b06b-4f95-8daf-44007e3727d3"/>
+				<textElement textAlignment="Right">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Percentage]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="545" y="41" width="59" height="20" backcolor="#EFEFEF" uuid="c55be8de-968d-4f84-81d6-7f25829ad212"/>
+				<textElement textAlignment="Right">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Montant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="258" y="0" width="324" height="20" uuid="d088d91c-2cde-4fd9-a6da-ad4fa1222375"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[INDICATEUR DE GESTION DES PRODUITS]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="149" y="11" width="114" height="20" uuid="278dccd8-6984-4328-90b8-7016d59a398f"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fin}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="39" y="11" width="91" height="20" uuid="877b94b8-ee11-487e-a0ce-39f755b012e9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{deb}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="16" y="11" width="23" height="20" uuid="82bdcc7d-a0dd-4ae3-8915-6cb324e4ae15"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[DU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="11" width="19" height="20" uuid="dd048633-b9f5-48d9-88f6-a59c33b24bce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[AU]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="16" y="1" width="51" height="20" uuid="ac97b72d-0561-4d50-b545-7f014a25afd5"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ordre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="67" y="1" width="128" height="20" uuid="341d9c12-dd4d-4b20-a1bd-c45de71d7c4a"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomProduit}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="248" y="1" width="54" height="20" uuid="40d0e87c-8f8f-4c5f-92a2-6b2b960aa3b4"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pa}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="table_TD" x="195" y="1" width="53" height="20" uuid="ec69c5ae-76fa-4f31-ad37-0450d4fb4424"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entree}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="302" y="1" width="58" height="20" uuid="307b1246-72b3-455d-b8bf-5e335cec07f1"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mtEntree}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="360" y="1" width="69" height="20" uuid="5e27649c-94f5-4a45-8806-844d13ce2888"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pourcentEntree}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="table_TD" x="444" y="1" width="53" height="20" uuid="8ac6896d-f8bd-4a67-a986-1e90971ed64e"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sortie}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="497" y="1" width="48" height="20" uuid="347c3bdb-0875-406d-97e7-1762a4eb30c8"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pu}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="604" y="0" width="68" height="20" uuid="4b472faa-e54e-454b-8f29-7c686cdeae48"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pourcentSortie}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="685" y="1" width="66" height="20" uuid="60b9a8e3-e060-40d6-95e4-eed820a84f80"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{marge}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="751" y="1" width="67" height="20" uuid="0cedf101-59bf-4976-9be8-34975acaa281"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pourcentMarge}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="545" y="0" width="59" height="20" uuid="e46ae29d-6d59-4c8b-81f8-5d26e8b12e74"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mtSortie}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="842" height="50" uuid="533b17bd-c05f-4d28-afa2-c2a07aa04b6a">
+					<printWhenExpression><![CDATA[$P{OPTION}.equals("Normal")||$P{OPTION}==null]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page_stock_paysage.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="21" splitType="Stretch">
+			<textField evaluationTime="Report" pattern="#,##0.00">
+				<reportElement style="table_TD" x="305" y="1" width="55" height="20" uuid="92b0e365-40ce-4dae-a735-889f0342df54"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totEntree}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="360" y="1" width="69" height="20" uuid="f442ed38-3d14-4fd8-a331-f10cf10eaedd"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totPerceEntree}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="545" y="1" width="61" height="20" uuid="febecad9-85fd-4016-8ba4-8768e5fec66a"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totSortie}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="606" y="1" width="66" height="20" uuid="ac39c310-00fb-46d3-b77d-fb033881bc93"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totPerceSortie}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="685" y="1" width="66" height="20" uuid="cdd320d9-7e8a-488a-9f9a-0a979b82fd16"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalMarge}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement style="table_TD" x="751" y="1" width="67" height="20" uuid="45cc6992-8481-4149-9777-ac54b31d999c"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totPerceMarge}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

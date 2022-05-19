@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etatImmobilisation" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="0" uuid="c35104a0-44a2-4e9c-a86f-08a419aa95db">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SOCIETE" class="java.lang.String"/>
+	<parameter name="BP" class="java.lang.String"/>
+	<parameter name="EMAIL" class="java.lang.String"/>
+	<parameter name="ADRESSE" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String"/>
+	<parameter name="TITRE_ETAT" class="java.lang.String"/>
+	<parameter name="codeBien" class="java.lang.String"/>
+	<parameter name="designation" class="java.lang.String"/>
+	<parameter name="dateAcquisition" class="java.lang.String"/>
+	<parameter name="categorie" class="java.lang.String"/>
+	<parameter name="dureeVie" class="java.lang.String"/>
+	<parameter name="mtnAcquisition" class="java.lang.String"/>
+	<parameter name="totalAmort" class="java.lang.String"/>
+	<parameter name="isCession" class="java.lang.Boolean"/>
+	<parameter name="prixCession" class="java.lang.String"/>
+	<parameter name="vcn" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="typeSortie" class="java.lang.String"/>
+	<parameter name="subReportDataSource" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<subreport>
+				<reportElement x="20" y="0" width="809" height="93" uuid="f790b7bd-e3c8-436e-9bc7-17b0358c6734"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententepaysage.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<subreport runToBottom="true">
+				<reportElement x="0" y="0" width="842" height="50" uuid="1ced77b5-d981-47c8-ab93-ddb707e493e3"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page_en_paysage.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="259">
+			<textField>
+				<reportElement x="200" y="0" width="440" height="20" uuid="9da701ff-c8bb-4f0a-a5a8-ee7ac38d22e0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITRE_ETAT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="62" width="100" height="20" uuid="d9563431-3a33-4754-9359-3d8afd289e08"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Code bien :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="108" y="62" width="218" height="20" uuid="7961256c-bde6-498c-95f1-0902ea55a413"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{codeBien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="82" width="218" height="20" uuid="a4c1876e-548f-49ab-ad80-4166d0969b40"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{designation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="82" width="100" height="20" uuid="f1df89b7-d6e1-478d-b72a-6cca777c1135"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Designation :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="102" width="100" height="20" uuid="fd805a78-5440-4453-96a7-fd8ba57035ef"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Date acquisition :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="108" y="102" width="218" height="20" uuid="28edfb34-ab81-4de8-b1dd-f6ada6254b41"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateAcquisition}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="122" width="218" height="20" uuid="5b476cb4-6aed-44c2-bf58-061fe13aa5c1"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{categorie}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="122" width="100" height="20" uuid="170bf8c8-5c1b-4182-9f58-3ff180e671e0"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Catégorie :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="612" y="42" width="218" height="20" uuid="6cc329e9-ae2b-4cce-b036-05f9d70e95db"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dureeVie}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="492" y="42" width="120" height="20" uuid="b197cb69-72cb-4342-a5d5-3f56d98a9753"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Durée de vie :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="612" y="62" width="218" height="20" uuid="26b94682-f47e-4f4a-b804-776859b36942"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mtnAcquisition}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="492" y="62" width="120" height="20" uuid="201b6099-a147-4ad7-abc8-0f1585d34861"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Montant aquisition  :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="612" y="82" width="218" height="20" uuid="a9b950ca-b632-4105-ae2f-aed0b75d95f1"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalAmort}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="492" y="82" width="120" height="20" uuid="eec6303b-457f-43a3-b06a-40d1a952d2ef"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Total amorti  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="142" width="822" height="22" uuid="8c130ebe-e3a6-4e2a-be3d-610317256fd8"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="611" y="102" width="218" height="20" uuid="897ca713-292c-4b2c-82ad-ebebdefc79a2"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vcn}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="141" y="187" width="571" height="65" uuid="183c26d0-8bdc-45ca-b083-c1995cee19a9"/>
+				<dataSourceExpression><![CDATA[$P{subReportDataSource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} +"etatRecuCessionBienSubreport.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="612" y="122" width="217" height="20" uuid="5fba96b3-9ca2-4182-a8b6-966ca3bb14f2">
+					<printWhenExpression><![CDATA[$P{isCession}==true]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prixCession}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="492" y="122" width="120" height="20" uuid="c319e0fd-8969-4bd7-ba59-392f1b17e0e7">
+					<printWhenExpression><![CDATA[$P{isCession}==true]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Prix cession :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="108" y="42" width="218" height="20" uuid="4586dae9-b83e-430e-9f22-e1ee2fa5dbc4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{typeSortie}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="42" width="99" height="20" uuid="d100acd6-68a4-4af8-b4c9-34c8a35ee8bf"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Type de sortie :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="492" y="102" width="120" height="20" uuid="55cc4320-5512-4d0d-9dd2-75dc74341e1f"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Reste à amortir (VCN) :]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

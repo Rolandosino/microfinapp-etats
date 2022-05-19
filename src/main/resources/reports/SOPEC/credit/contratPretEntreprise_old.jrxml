@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratPretPhysique" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="10" bottomMargin="4" uuid="30ea0dab-4504-47c7-b5c0-16f5e73402f3">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="744"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="paratitre" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="NUMERO_CREDIT" class="java.lang.String"/>
+	<parameter name="GARANTIE_NON_FINANCIERE" class="java.lang.String"/>
+	<parameter name="dateImpression" class="java.lang.String"/>
+	<parameter name="adresse_client" class="java.lang.String"/>
+	<parameter name="ENTETE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PIED_DE_PAGE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pageportrait.jasper"]]></defaultValueExpression>
+	</parameter>
+	<field name="nomMembre" class="java.lang.String"/>
+	<field name="profession" class="java.lang.String"/>
+	<field name="nationalite" class="java.lang.String"/>
+	<field name="docmicile" class="java.lang.String"/>
+	<field name="quartier" class="java.lang.String"/>
+	<field name="contact" class="java.lang.String"/>
+	<field name="typeCredit" class="java.lang.String"/>
+	<field name="montDebut" class="java.lang.String"/>
+	<field name="montFin" class="java.lang.String"/>
+	<field name="dureeDebut" class="java.lang.String"/>
+	<field name="dureeFin" class="java.lang.String"/>
+	<field name="objetCredit" class="java.lang.String"/>
+	<field name="montantPret" class="java.lang.String"/>
+	<field name="enLettres" class="java.lang.String"/>
+	<field name="dureeCredit" class="java.lang.String"/>
+	<field name="echeancier" class="java.lang.String"/>
+	<field name="localite" class="java.lang.String"/>
+	<field name="interetMois" class="java.lang.String"/>
+	<field name="numContrat" class="java.lang.String"/>
+	<field name="adresse_client" class="java.lang.String"/>
+	<field name="nom" class="java.lang.String"/>
+	<field name="prenom" class="java.lang.String"/>
+	<field name="NUMPIECE" class="java.lang.String"/>
+	<field name="compte" class="java.lang.String"/>
+	<field name="agenceUser" class="java.lang.String"/>
+	<field name="tauxAnnuel" class="java.lang.String"/>
+	<field name="fraisdossier" class="java.lang.String"/>
+	<field name="fraisetude" class="java.lang.String"/>
+	<field name="totalFraisEtAssurance" class="java.lang.String"/>
+	<field name="dateDeblocage" class="java.lang.String"/>
+	<field name="mtEcheance" class="java.lang.String"/>
+	<field name="TOTAL_REMBOURSEMENT" class="java.lang.String"/>
+	<field name="dateEcheance1" class="java.lang.String"/>
+	<field name="DATEDERNIERECHEANCE" class="java.lang.String"/>
+	<field name="mtPenalite" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80">
+			<subreport>
+				<reportElement x="1" y="0" width="553" height="61" uuid="647811a6-f693-4794-84cc-26beb8d752ad"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{ENTETE}]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="0" y="60" width="554" height="20" uuid="0088e646-d4a0-44ed-9b35-7c2946a14807"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CONTRAT DE PRET N°"+$F{numContrat}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="726" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="12" width="555" height="24" uuid="a02304f6-f3d5-420e-8bcb-e3d4802625d2"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Solidarité pour la Promotion d`Epargne et de Crédit « SOPEC » Microfinance, sis à Bujumbura-Rohero II, représentée par Monsieur KWIZERA Jean d’Amour et  KINYUKU Abed Gibson; respectivement Président du Comité de Gestion et Directeur Gérant, ci-après désignée « PRETEUR » d’une part ;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="36" height="12" uuid="d6df59c1-2c9c-4b27-b5df-7536e88a0c37"/>
+				<textElement>
+					<font size="7" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Entre :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="36" width="26" height="15" uuid="e409e29f-4852-4d11-838b-e564bd2cca7c"/>
+				<textElement>
+					<font size="7" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Et]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="83" width="57" height="14" uuid="98e7266a-9362-4fff-b3fb-79e7e76f7eb7"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Compte N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="67" width="47" height="13" uuid="f7e168b2-ebe9-4d41-973c-1dce82ef1688"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[C.N.I/RC ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="97" width="177" height="15" uuid="63561c3d-2499-435b-82e7-b1f49e914aaf"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[désigné « EMPRUNTEUR » d’autre part ;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="264" y="83" width="75" height="14" uuid="2e219e8f-db0c-4d18-b4f8-fef11e2410dd"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ouvert à l’agence]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="63" width="553" height="1" uuid="4824bc2b-f668-42ce-a402-8b9a5c726771"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="219" y="80" width="155" height="1" uuid="dbb31e57-e3af-4cfb-8b7e-bf4623fd1353"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="433" y="79" width="119" height="1" uuid="0a4651bc-d84e-4531-bf1a-bb43db7d8741"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="105" y="79" width="85" height="1" uuid="5c94e427-117a-408a-9318-a708169fefb4"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="59" y="95" width="205" height="1" uuid="cffb2514-4125-432f-8dc7-d28ae4af89ed"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="374" y="65" width="61" height="15" uuid="1408b4c1-b01c-4489-9ea5-30c636eb7b07"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Téléphone :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="116" width="264" height="12" uuid="dcf9363b-bf40-4b5a-91b2-b7994842ed15"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true" isUnderline="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[IL EST CONVENU CE QUI SUIT :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="221" width="90" height="13" uuid="7c9804f5-ff92-4aac-a224-8eeba06e10b5"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[• Montant du prêt      :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="141" width="205" height="15" uuid="3d238ce2-f9b0-4a3a-b346-0e30f096350c"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ La présente convention porte sur un prêt d’un montant de]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="129" width="145" height="12" uuid="76cbcbd7-e6a7-4a46-8484-7c34501e5806"/>
+				<textElement>
+					<font size="7" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[: Objet de la convention ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="129" width="40" height="12" uuid="ea455975-4a90-47ea-be8f-b90bc16eb492"/>
+				<textElement>
+					<font size="7" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Article 1 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="194" width="196" height="12" uuid="191918e7-55f1-43be-ab94-d384c4b912e6"/>
+				<textElement>
+					<font size="7" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Les conditions du crédit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="194" width="40" height="12" uuid="ad4c408c-3940-4437-b881-eaf781b4cfc2"/>
+				<textElement>
+					<font size="7" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Article 2 :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="72" y="181" width="267" height="1" uuid="b8f18e67-7b0d-4160-9485-2552783243fe"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="206" y="154" width="259" height="1" uuid="a4b2c783-85d7-4e7f-8c7a-e674e5570d98"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="167" width="338" height="1" uuid="e0c96e1e-f1a1-4f8d-8e7b-a1bfb123611a"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="2" y="206" width="372" height="13" uuid="ee877d09-da2f-430c-baff-12ac57cb7c58"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Ce crédit est consenti à l’emprunteur aux conditions ci-après :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="323" width="241" height="12" uuid="36eff8ef-2188-4345-b537-06f49b9f2067"/>
+				<textElement>
+					<font size="7" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Article 3 Engagement de la SOPEC-MF ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="335" width="553" height="13" uuid="ab62fb0d-ac5e-496d-bf41-032e781ec6af"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="2" rightIndent="2"/>
+				</textElement>
+				<text><![CDATA[Le préteur s’engage à débourser le montant ci-dessus en faveur de l’emprunteur aux conditions ci-hauts détaillées. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="348" width="263" height="12" uuid="9020516c-bdab-4b9a-81dc-5e03950156cc"/>
+				<textElement>
+					<font size="7" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Article 4 : Engagements de l’Emprunteur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="359" width="553" height="14" uuid="a8f33c3d-dfaa-475e-881a-d80b1553c4b3"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[L’emprunteur s’engage également à rembourser une pénalité  pour toute échéance en retard selon le montant du crédit. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="373" width="552" height="12" uuid="76e637a0-710d-4aad-a37b-68e4b9181767"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[L’Emprunteur s’engage (i) à n’utiliser ledit crédit qu’à l’objet prévu et (ii) à le rembourser conformément aux conditions précisées à l’article 2.  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="443" width="554" height="49" uuid="6cea4253-d7d5-448a-918a-759f9385c3f0"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Il s’interdit en outre à toute mutation ou cession des biens mis en garantie avant l’apurement intégral dudit crédit.
+
+En cas de non-respect des échéances de remboursement convenues, l’Emprunteur, de commun accord avec son avaliseur/conjoint et/ou les héritiers, autorise au Préteur de réaliser les garanties cédées aux enchères et à saisir tout autre bien,  y compris la retenue à la source de son salaire aussitôt que son employeur en est explicitement saisi et cela   jusqu’à l’apurement intégral du crédit.
+]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="47" y="66" width="143" height="13" uuid="aee95e02-98f7-4363-b0a1-2ecf16927a83"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NUMPIECE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="59" y="83" width="205" height="14" uuid="c450e94e-1d6b-4b95-83f0-f0cfef89ad0c"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{compte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="433" y="66" width="119" height="16" uuid="e6c0c400-0d8e-43d5-b208-894d7b154aad"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contact}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="207" y="141" width="258" height="15" uuid="0459fe0f-f7dc-4b38-a919-5f4cba55be8f"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantPret}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="156" width="549" height="13" uuid="799d1871-1853-439e-b478-2723b4051367"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["("+$F{enLettres}+" FBU)"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="221" width="145" height="13" uuid="331ff52d-7874-4bfa-8a8a-0ff94faab783"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantPret}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="497" width="549" height="12" uuid="73e42ed9-a4d9-41f2-824c-4a0b5c5588fc"/>
+				<textElement>
+					<font size="7" isBold="true" isUnderline="true" pdfFontName="Times-Roman"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Article 5. Règlement des litiges]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="535" width="51" height="15" uuid="82dd9934-1a3b-4cb2-9817-e01e4dcb050e"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Fait à  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="449" y="537" width="23" height="15" uuid="a632c1a9-d60f-44be-ad2c-787de8afef0a"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[le]]></text>
+			</staticText>
+			<line>
+				<reportElement x="270" y="550" width="179" height="1" uuid="fa03bb91-21c3-461b-a27c-0216d6a67fb4"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="445" y="550" width="104" height="1" uuid="818ad3dc-4747-4b0e-904d-0e11fec2e4f8"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="400" y="570" width="152" height="15" uuid="28ac1cb0-d5f9-4034-9b0e-1d580e09f65f"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Le Directeur Gérant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="636" width="200" height="15" uuid="b99dd296-8237-462f-853f-583d4baaeb7a"/>
+				<textElement>
+					<font size="7" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Caution du conjoint(e)/Avaliseur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="570" width="62" height="15" uuid="3802915e-99e3-4509-8fc3-411965d1be5e"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Nom et Prénom :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="510" width="555" height="27" uuid="5e4fdece-0449-4654-9132-5c383f95ddda"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Toute contestation/litige résultant de l’interprétation ou de l’exécution du présent contrat, sera réglé à l’amiable ou en cas d’échec portée devant les tribunaux compétents du Burundi du siège de la Microfinance/domicile de l’emprunteur.
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="555" width="130" height="12" uuid="2386a799-b6d5-4467-b587-ff9af01b093e"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[L’EMPRUNTEUR ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="273" y="536" width="160" height="15" uuid="07f52a46-1d49-4f10-aa05-1f46d018b4fe"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{localite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="465" y="538" width="84" height="15" uuid="0eda9610-3a02-4b86-99f8-b05a283e7461"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateImpression}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="50" width="556" height="15" uuid="32d00e7b-763c-4171-9608-50576d1e4f31"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomMembre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="339" y="83" width="213" height="14" uuid="11f05672-9fb2-4762-b635-146dd5b9c8a9"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{agenceUser}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="346" y="94" width="203" height="1" uuid="369d9441-2f6c-4e42-bd99-68ceccd4394a"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="1" y="169" width="68" height="13" uuid="2c5217ab-7663-4fa5-b92d-a4ce93848177"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[destiné à financer ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="69" y="169" width="270" height="13" uuid="bb8f5d09-17b2-4579-b79c-a8ea25079817"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{objetCredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="234" width="145" height="13" uuid="375fd6c8-4fa0-47f6-9752-b833acd3c360"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dureeCredit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="234" width="90" height="13" uuid="853aaede-4637-48e5-ac95-df30f4433fcf"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[• Durée du prêt      :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="91" y="248" width="145" height="13" uuid="2265a9e9-db91-4cc5-9cc0-92c276acaf99"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{echeancier}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="248" width="90" height="13" uuid="0006c407-0e27-46a7-ae2b-b69cda53df81"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[• Périodicité         :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="262" width="145" height="13" uuid="ec3c8c87-2801-45dc-8740-9f5d91cbdd8b"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tauxAnnuel}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="262" width="91" height="13" uuid="34db4beb-875f-474a-9424-9422a0573177"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[• Taux d’intérêt normal       :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="397" y="221" width="145" height="13" uuid="da38f225-8450-4b8b-a737-2d2bffcefbd7"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalFraisEtAssurance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="296" y="221" width="101" height="13" uuid="1684aecb-2c4d-49b1-8700-bbe5cb2f1b35"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[• Assurance-crédit       :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="275" width="145" height="13" uuid="9095de2a-4b09-4bae-a4d8-a3e3a1f62097"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fraisdossier}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="275" width="90" height="13" uuid="8d132fc0-467a-4d1c-ae10-2c45dc227e4e"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[• Frais de dossier      :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="288" width="145" height="13" uuid="b64ad604-73d0-4356-868b-c3e5f108a0bc"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fraisetude}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="288" width="90" height="13" uuid="50e9d642-6cef-4b09-b894-63e78fd504f2"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[• Frais de suivi      :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="296" y="235" width="101" height="13" uuid="483941f7-5628-474e-a300-d1fe7694b627"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[• Date de déblocage       :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="397" y="235" width="145" height="13" uuid="44cf8eda-c738-4332-b24c-33235f455a85"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateDeblocage}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="296" y="249" width="105" height="13" uuid="3f29fecd-c39a-4f16-89f6-f6a4261fbea4"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[• Montant de l’échéance       :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="397" y="249" width="145" height="13" uuid="f89abd29-e17b-4804-91ef-2ef159fb7ece"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mtEcheance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="296" y="262" width="101" height="13" uuid="277f3cd8-ca82-468b-bfe8-ed0b5eb9a7a3"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[• Total à payer (C+I)      :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="397" y="262" width="145" height="13" uuid="b863a35c-60f9-4e46-9f1e-a39619dc429e"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TOTAL_REMBOURSEMENT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="296" y="275" width="101" height="13" uuid="76d27311-cf32-4812-852f-6aee49f60b02"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[• Date 1ère échéance    :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="397" y="275" width="145" height="13" uuid="ea345cd6-7407-4c4a-b9be-1f56dcaa07e1"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateEcheance1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="296" y="288" width="105" height="13" uuid="4bd96415-e3f4-474f-bc73-0c943a50d876"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[•Date dernière échéance     :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="397" y="288" width="145" height="13" uuid="978d0b29-0b6f-400d-9307-e6fca15bc9df"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DATEDERNIERECHEANCE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="296" y="301" width="101" height="13" uuid="bd6048ec-0308-419b-9be6-1662e223142d"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[• Pénalité de retard      :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="397" y="301" width="145" height="13" uuid="505764cf-6abd-420a-b02a-756abb8e73af"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mtPenalite}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="385" width="552" height="12" uuid="5732b191-a178-4465-b2ca-aa69e6d421c2"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[L’Emprunteur s’engage également à donner les garanties suivantes :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="399" width="539" height="13" uuid="faa0cab1-818c-4aba-9d43-73d1f736c342"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[•  ________________________________________________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="411" width="539" height="13" uuid="4c3488bc-9fd5-4270-811f-9fb8d437940d"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[•  ________________________________________________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="424" width="539" height="13" uuid="d33eef15-0ead-45e4-a710-b6c98b8f8296"/>
+				<textElement>
+					<font size="7" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[•  ________________________________________________________________________________________________________________]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="427" y="552" width="123" height="12" uuid="60d094b4-c92e-4fdf-bf74-53d3777e3bfd"/>
+				<textElement textAlignment="Left">
+					<font size="7" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[POUR LE PRETEUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="585" width="62" height="15" uuid="70bda684-98a4-4f7b-bba8-0724d65724c1"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[C.N. I :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="600" width="62" height="15" uuid="bd2c6f56-0e44-456c-9abb-b08a8fb60ed2"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Signature]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="686" width="62" height="15" uuid="12110d90-0222-4345-9fee-fd961f0a583b"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Signature]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="669" width="62" height="15" uuid="6059a287-0cf6-45fb-9b6c-7917526b4ce7"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[C.N. I :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="653" width="62" height="15" uuid="57ecd9da-24a3-4a8c-9efd-cbf91a9e8b8c"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Nom et Prénom :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="636" width="152" height="15" uuid="01dd1c24-13f0-43be-bddf-9e8ee10650d7"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Président du comité de Gestion ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="68" y="570" width="251" height="15" uuid="7f758fea-0893-4b59-913d-45a77fa0e457"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomMembre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="68" y="585" width="251" height="15" uuid="eab593a3-9ed3-48ea-97c8-410fd7755e7b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NUMPIECE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="190" y="66" width="29" height="15" uuid="6f4e909a-6748-405d-99e3-b7734d2da861"/>
+				<textElement>
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[NIF  :]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30">
+			<subreport>
+				<reportElement x="0" y="0" width="552" height="30" uuid="9c48db17-5d14-48cc-a8f7-9404ebb5c247"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{PIED_DE_PAGE}]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

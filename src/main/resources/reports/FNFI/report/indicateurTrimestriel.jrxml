@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7238f8d0-6a42-4b17-8d79-22e435a8ecc9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String"/>
+	<parameter name="DATE_INDICATEUR" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String"/>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<field name="indicateur" class="java.lang.String"/>
+	<field name="trimestreTAnneeN1" class="java.lang.String"/>
+	<field name="trimestreT1AnneeN" class="java.lang.String"/>
+	<field name="trimestreTAnneeN" class="java.lang.String"/>
+	<field name="variationTrimestrielle" class="java.lang.String"/>
+	<field name="variationAnnuelle" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="112" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="92" width="555" height="20" uuid="fcecf9cf-7e6a-4a3c-9291-9f9467ce70dd"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tableau N°1 : Données]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="19" width="554" height="20" uuid="3ae2c7b5-addd-4688-ad63-cb2f6cce1a07"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ADRESSE_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="554" height="20" uuid="ced6fabd-d19d-4400-b55a-4d0a43f0210f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="58" width="554" height="34" uuid="9efa0ed4-0846-4af0-acf7-26c5119496aa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Indicateurs au "+$P{DATE_INDICATEUR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="38" width="116" height="20" uuid="a45c7445-3c3b-44f1-9be0-57cde8a0e338"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{BP_AGENCE}+" /"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="116" y="38" width="116" height="20" uuid="ec42eec9-707f-4a6b-b810-00cf83725c3a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["TEL: "+$P{TEL_AGENCE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="200" height="40" backcolor="#E5E5E5" uuid="92fc1e48-a531-448a-8e67-6175aef6d2c7"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Indicateurs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="200" y="20" width="71" height="20" backcolor="#E5E5E5" uuid="0350e002-73fd-4efb-8584-51dea7d85dfe"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trimestre T]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="271" y="20" width="71" height="20" backcolor="#E5E5E5" uuid="a6b05441-7857-464c-a92f-a20073d74d03"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trimestre (T - 1)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="342" y="20" width="71" height="20" backcolor="#E5E5E5" uuid="7e71987c-c52c-46a7-bfc1-9b999ba25ed1"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trimestre T]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="413" y="20" width="71" height="20" backcolor="#E5E5E5" uuid="81407f26-47e4-46cc-8c5e-da7ab25f879f"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trimestrielle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="484" y="20" width="71" height="20" backcolor="#E5E5E5" uuid="434faa4b-2dd0-4157-a0fd-5b47d2a97eba"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Annuelle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="200" y="0" width="71" height="20" backcolor="#E5E5E5" uuid="2ba9ffaa-000f-4d24-ad33-ddd0eb47b90c"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Année n - 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="271" y="0" width="142" height="20" backcolor="#E5E5E5" uuid="a2187392-384d-4a49-bdc5-17c65589ab49"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Année n]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="413" y="0" width="142" height="20" backcolor="#E5E5E5" uuid="1a36842f-9f58-4bb8-85b0-21ca9b17fb06"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Variation (%)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="200" height="15" uuid="4a93f921-6f6b-47c3-b885-503eb903dd83"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{indicateur}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="71" height="15" uuid="de839589-f506-4419-b5e8-98bf6ef6f6db"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{trimestreTAnneeN1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="0" width="71" height="15" uuid="bc56840b-2a95-4b5a-ac59-e943644445d4"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{trimestreT1AnneeN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="342" y="0" width="71" height="15" uuid="38f38f79-0ea5-4996-8515-5e64425f54f4"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{trimestreTAnneeN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="413" y="0" width="71" height="15" uuid="7f08b1e0-81f6-4ba9-8f7d-c402bb90a0a2"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{variationTrimestrielle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="484" y="0" width="71" height="15" uuid="e0c6a7d1-b3fd-4085-91ba-87674d13b705"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{variationAnnuelle}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="528" y="0" width="27" height="15" uuid="236bf5fb-6e01-4091-b5e8-4769d61c4e24"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="519" y="0" width="5" height="15" uuid="286be604-2486-4d0c-913f-0669f9289c2d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="184" y="0" width="154" height="15" uuid="ed1fbc25-5a43-46e9-83dc-e20f1b147134"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="0" width="44" height="15" uuid="cc081654-69cf-445d-91aa-752e40a8f4f2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Imprimé le ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="507" y="0" width="10" height="15" uuid="9a65838f-fc62-4932-9df1-7924149491ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="0" width="100" height="15" uuid="98127abc-4dd5-4f1d-9610-f04e7b18fb81"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATE_EDITION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="472" y="0" width="35" height="15" uuid="c952268e-1bc0-4b3a-a4b4-057d91ef3902"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Page : ]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

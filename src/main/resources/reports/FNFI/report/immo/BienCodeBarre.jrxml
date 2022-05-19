@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BienCodeBarre" language="groovy" pageWidth="297" pageHeight="250" whenNoDataType="AllSectionsNoDetail" columnWidth="257" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9c3718f1-066f-4aea-996d-ed74871f4734">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="VALEUR_CODE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["XX456TYVGFGFG"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="designation" class="java.lang.String"/>
+	<parameter name="dateAchat" class="java.lang.String"/>
+	<parameter name="dureeVie" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="196" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="35" width="88" height="20" uuid="362fe9e2-c8b7-411e-9b3a-efcdf23cf812"/>
+				<textElement markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESIGNATION :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="0" width="100" height="20" uuid="47dda7cd-f1a2-417b-9f9f-87b229a16405"/>
+				<textElement textAlignment="Center" markup="none">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[INFOS BIEN]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="88" y="35" width="169" height="20" uuid="26e530d8-23b4-4144-bf2b-165ced5fed1e"/>
+				<textFieldExpression><![CDATA[$P{designation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="55" width="88" height="20" uuid="a551551e-a7e9-4161-a79b-a8d43890660f"/>
+				<textElement markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATE ACHAT :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="88" y="55" width="169" height="20" uuid="24427d4a-6568-410f-8566-6223e7a784ad"/>
+				<textFieldExpression><![CDATA[$P{dateAchat}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="75" width="88" height="20" uuid="c1e280b8-7097-4e62-9b03-7ddaea68c90d"/>
+				<textElement markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DUREE DE VIE :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="88" y="75" width="169" height="20" uuid="2cd5424f-2a24-498a-9bb0-2f48ed07398b"/>
+				<textFieldExpression><![CDATA[$P{dureeVie}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="12" y="126" width="235" height="50" uuid="ecc5d823-5934-4006-a719-9a65c024f7f6"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code39" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$P{VALEUR_CODE}.toUpperCase()]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<textField>
+				<reportElement x="12" y="176" width="235" height="20" uuid="304ad298-fe78-4c15-80e7-6b087a4bfeda"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{VALEUR_CODE}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="112" width="1" height="83" uuid="dd8953a3-a471-4b08-ace6-346ac00c8130"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="257" y="112" width="1" height="83" uuid="2d998f9f-b0ab-4a03-8bfa-36aa7fd83780"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="2" y="111" width="255" height="1" uuid="beb69244-d6b1-4287-a96e-8fa9672f07c0"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+</jasperReport>

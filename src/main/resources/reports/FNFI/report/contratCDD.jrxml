@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratCDD" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="68b84a65-e149-4941-a544-a46d1c01b4c1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="525"/>
+	<parameter name="logo" class="java.lang.String">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<field name="dateFinContrat" class="java.lang.String"/>
+	<field name="dureeContrat" class="java.lang.String"/>
+	<field name="referenceContrat" class="java.lang.String"/>
+	<field name="directeur" class="java.lang.String"/>
+	<field name="civilite" class="java.lang.String"/>
+	<field name="adresseComplete" class="java.lang.String"/>
+	<field name="poste" class="java.lang.String"/>
+	<field name="descriptionPoste" class="java.lang.String"/>
+	<field name="posteResponsableHierarchique" class="java.lang.String"/>
+	<field name="responsabilitePoste" class="java.lang.String"/>
+	<field name="dateDebutContrat" class="java.lang.String"/>
+	<field name="primeTransport" class="java.lang.String"/>
+	<field name="echelon" class="java.lang.String"/>
+	<field name="classe" class="java.lang.String"/>
+	<field name="categoriePaie" class="java.lang.String"/>
+	<field name="salaireBase" class="java.lang.String"/>
+	<field name="conditionRenvoiPoste" class="java.lang.String"/>
+	<field name="lieuTravail" class="java.lang.String"/>
+	<field name="nomPrenoms" class="java.lang.String"/>
+	<field name="dateSignature" class="java.lang.String"/>
+	<group name="groupReference" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{referenceContrat}]]></groupExpression>
+		<groupHeader>
+			<band height="90">
+				<textField isBlankWhenNull="true">
+					<reportElement x="0" y="70" width="555" height="20" uuid="4add021f-b749-4111-953c-318afd6a4ae0"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Century Gothic" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{referenceContrat}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="47" width="555" height="23" uuid="d5be9b80-f86c-49a8-a5d8-b3ad0aec3295"/>
+					<textElement textAlignment="Center">
+						<font fontName="Century Gothic" size="18" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CONTRAT DE TRAVAIL]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<title>
+		<band height="60">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="60" uuid="85f9abb2-8353-46a4-943f-a3a4fce172bb">
+					<printWhenExpression><![CDATA[$P{OPTION}.equals("Normal")||$P{OPTION}==null]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<detail>
+		<band height="569">
+			<staticText>
+				<reportElement x="0" y="241" width="543" height="98" uuid="f81e1741-73ee-4dff-8898-ea25570cf7b3"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Est établi en trois (3) exemplaires le présent contrat de travail régi par les dispositions de la loi n° 98-004 du 27 janvier 1998 portant Code du travail de la République du Bénin ainsi que par les textes pris pour son application, la Convention Collective Générale du Travail du 30 décembre 2005 et les différents textes en vigueur en matière de législation sociale en République du Bénin puis le règlement intérieur de ALIDé.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="426" width="555" height="20" uuid="adf690e6-3d66-4c11-a2dc-2c82c7e051ec"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ARTICLE 2 : DUREE ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="52" width="164" height="20" uuid="638a47c0-9a9e-4133-86d7-e00ddf1659db"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ENTRE LES SOUSSIGNES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="495" width="555" height="20" uuid="10d72310-fa68-4bb7-9b27-bd83cff9e416"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ARTICLE 3 : ATTRIBUTIONS ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="83" width="555" height="65" uuid="81d8bb7b-f637-4d6d-9b6b-d263151b9b6f"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["1 - L'Association de Lutte pour la promotion des Initiatives de Développement (ALIDé) agréée par l’arrêté N°3050/MEF/DC/CSSFD/CA/SRSSFDD sous le Numéro L.13.0043.A du 18 novembre 2013 prise en la personne de son Directeur Exécutif " +$F{directeur}+ " domicilié ès-qualité au siège social sis à Cotonou, VEDOKO."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="212" width="555" height="20" uuid="f76cc7f9-8d35-48e6-80a3-b15d7e563d8e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="50"/>
+				</textElement>
+				<text><![CDATA[Ci-après désignée sous le vocable "L'EMPLOYE", d’autre part,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="446" width="555" height="49" uuid="175f1760-1762-4803-807b-84959b4d5548"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Le présent contrat est conclu pour une durée déterminée de " +$F{dureeContrat}+ " mois qui commence à courir le " +$F{dateDebutContrat}+" pour prendre fin le " +$F{dateFinContrat}+ "."]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="178" width="555" height="34" uuid="d5b7ef7e-9224-4a86-b131-36dca30a8661"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["2 - "+$F{civilite}+ " " +$F{nomPrenoms}+ ", domicilié au " +$F{adresseComplete}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="148" width="555" height="20" uuid="9131d29b-35ec-46fb-b524-ba261ea62e0e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="50"/>
+				</textElement>
+				<text><![CDATA[Ci-après désignée sous le vocable "L’EMPLOYEUR", d’une part,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="515" width="555" height="54" uuid="0d6b360b-c9a3-494f-aba4-c1486f6f7297"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["L’Employé sera chargé, sous l'autorité du " +$F{posteResponsableHierarchique}+ " des fonctions " +$F{poste}+ " telles que décrites dans la définition de poste jointe à ce contrat et signée par les deux parties."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="339" width="555" height="20" uuid="5d6cda62-67bc-4ff0-9e8e-ed9510b2908c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ARTICLE 1 : NATURE DU CONTRAT ET QUALITE ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="359" width="555" height="67" uuid="64d59918-70cf-4e67-bfd5-95e8c29a647b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["L’Employé est engagé dans les liens d'un contrat de travail à durée déterminée par l’Employeur en qualité de (d')" +$F{poste}+ ", chargé de " +$F{responsabilitePoste}+ "."+
+" L’Employé soussigné affirme qu'il est libre de tout engagement antérieur."]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="731">
+			<textField>
+				<reportElement x="0" y="291" width="555" height="85" uuid="af184365-d852-465f-b458-bb9ed2d43b6e"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["L’Employé est en poste à l’agence  de  " +$F{lieuTravail}+ " et exerce ses fonctions dans le cadre des activités d’ALIDé. A cet effet, il pourrait être:\n"+
+"-	amené à faire des déplacements en dehors de " +$F{lieuTravail}+ " pour des missions spécifiques ;\n"+
+"-	affecté à toute autre agence de l’institution selon les besoins de service."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="a3bad987-8826-4daa-9eba-2c6963d3e619"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ARTICLE 4 : REMUNERATION ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="376" width="555" height="20" uuid="8a337d51-3fde-4189-b910-f6d613a50cd8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ARTICLE 7 : HORAIRE DE TRAVAIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="526" width="555" height="205" uuid="e069e71c-ccfa-4c4d-a018-23cdd8c5ec2e"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[L’Employé s'interdit de révéler à des tiers toute information de quelque nature que ce soit dont elle aurait eu connaissance dans l'exercice de ses fonctions ou à l'occasion de son travail et qui concerne les tiers en relation avec l’Employeur ou les relations entre l’Employeur et l'un quelconque de ses bénéficiaires, fournisseurs, clients ou autres tiers en relation avec l’Employeur.
+
+Tout travail réalisé pour le compte d’ALIDé reste la propriété de l'Association et ne doit pas être communiqué à des tiers sans accord préalable et écrit du Directeur.
+
+Toutefois, l’employé est encouragé à dénoncer et sans délai à la Direction d’ALIDé toute opération suspecte de blanchiment d’argent ou de financement du terrorisme. A cet effet, il est protégé par la Direction d’ALIDé contre toute responsabilité, pénale ou civile pour violation des règles de confidentialité s’il déclare de bonne foi ses soupçons.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="506" width="555" height="20" uuid="e6a4af4d-d192-4337-9b7d-ca655f4c63bc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ARTICLE 8 : SECRET PROFESSIONNEL – CONFIDENTIALITE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="228" width="555" height="43" uuid="13a90ae1-ae83-4262-a69f-780a6a6a3588"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["L’employé étant chargé de(d') "+$F{responsabilitePoste}+", il s’oblige à respecter en permanence " +$F{conditionRenvoiPoste}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="271" width="555" height="20" uuid="596647b9-d927-4ecc-9bbe-d60d04963690"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ARTICLE 6 : LIEU DE TRAVAIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="159" width="555" height="49" uuid="80a2924e-0413-4232-af1d-6da528afa77e"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Cette rémunération mensuelle sera diminuée des cotisations incombant au travailleur au titre de la CNSS et de l’IPTS. Elle est perçue à terme échu et au plus tard le dernier jour du  mois en cours.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="208" width="555" height="20" uuid="53576617-e82e-4ef9-9664-f16782de602c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ARTICLE 5 : OBLIGATIONS DE RESULTATS ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="20" width="522" height="139" uuid="74c3b930-7ad5-4c1d-b607-9861e967d5dc"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["La rémunération mensuelle est composée de deux (02) parties fixe et  variable.\n"+
+"	La partie fixe est de " +$F{salaireBase}+ " francs CFA  par mois conformément à la catégorie " +$F{categoriePaie}+ ", classe " +$F{classe}+ ", échelon " +$F{echelon}+ " de la grille de salaire en vigueur dans l’institution. A cela s’ajoutent les indemnités mensuelles de transport qui s’élèvent à " +$F{primeTransport}+ " francs CFA.\n"+
+"	La partie variable est une prime qui est attribuée suivant la grille de primes\n sur objectifs énoncés au début de chaque année."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="396" width="555" height="110" uuid="c69fc196-f9c3-46a0-8896-4550ecd0d0be"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[L’Employé assurera ses services en principe selon l'horaire de travail suivant : du lundi au vendredi, matinée de 8 heures à 12 heures 30 ; après-midi de 15 heures à 18 heures 30. Il s’engage cependant à veiller avant tout au respect des objectifs qui seront fixés dans le cadre de son travail.
+Tout retard dans le début du travail devra être justifié auprès du supérieur hiérarchique.  Toute absence même temporaire doit faire l'objet d'autorisation préalable du supérieur hiérarchique.
+]]></text>
+			</staticText>
+		</band>
+		<band height="752">
+			<staticText>
+				<reportElement x="0" y="543" width="555" height="20" uuid="c2ae5647-ac76-4d02-b06a-8e65fe1f7c38"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ARTICLE 13 : RESILIATION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="555" height="210" uuid="294baa79-6089-46ce-a815-b60f70f80241"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[L’Employé s'oblige à exercer les fonctions qui lui sont confiées en observant une stricte impartialité à l'endroit de toute personne désireuse de recourir ou recourant aux services de l’Employeur, ainsi qu'à l'endroit de toute personne désireuse de fournir des services ou fournissant des services à l’Employeur.
+
+Il s'interdit de percevoir toute rémunération, commission, honoraire, avantage en espèces ou en nature de la part des bénéficiaires et/ou personnes désireuses de recourir ou recourant aux services de l’Employeur, ou de la part des personnes désirant fournir des services ou fournissant des services à l’Employeur.
+
+Il s'oblige à révéler à son supérieur hiérarchique tout intérêt, toute participation qu'elle détiendrait ou toute responsabilité qu'elle exercerait à quelque titre que ce soit auprès de personnes physiques ou morales désirant bénéficier ou bénéficiant des services de l’Employeur, ou désirant fournir ou fournissant des services à l’Employeur.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="458" width="555" height="20" uuid="3f61b151-6f8b-40d3-acb0-af184d9bbd7b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ARTICLE 12 : SOINS MEDICAUX]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="345" width="555" height="20" uuid="a607df20-12ed-4ebf-8cb6-4b5789a3be3d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ARTICLE 11 : LEGISLATION SOCIALE ET FISCALE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="563" width="532" height="189" uuid="ff7fba6b-0308-4a56-b5d5-6e0739a4dc77"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Il est convenu que le contrat pourra être résilié conformément aux clauses et conditions prévues aux articles 44 et suivants du Code du Travail. Sous réserve de l'appréciation de la juridiction compétente, seront notamment considérées comme fautes lourdes pour l’Employée : le vol au préjudice de l’Employeur, de ses salariés ou des tiers en relation avec l’Employeur, l'entente avec des bénéficiaires, clients ou fournisseurs de l’Employeur au détriment des intérêts de l’Employeur ou de ses clients, le non-respect du secret professionnel tel que défini à l'article 8 du présent contrat, le non-respect des obligations prévues à l'article 9 du présent contrat, l'insubordination caractérisée, l'absence non motivée excédant 48 heures; le refus d'exécuter un travail rentrant dans ses attributions, les rixes et brutalités dans le service, et, en général, toute faute de nature à porter un préjudice grave à la bonne marche de  ALIDé.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="abcad68c-7ae8-4bb3-95d8-421ea0ac343d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ARTICLE 9 : IMPARTIALITE ET INTERDICTIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="478" width="555" height="65" uuid="a6b688f5-4f6b-4dd8-902e-32337eaeff5c"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[L’Employeur s’engage à assurer l’Employé au niveau d’une compagnie d’assurance maladie. Cette assurance prévoit un remboursement à hauteur de 80% des frais médicaux (consultation, opération chirurgicale, hospitalisation, maternité, médicaments, etc.).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="230" width="555" height="20" uuid="90d6e5ed-1633-46f7-b17b-8dc88d95c057"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ARTICLE 10 : CONGES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="365" width="555" height="93" uuid="1eb1be64-d662-4ddb-b209-72ac5d30c482"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[L’Employeur s’engage à déclarer l’Employé à la CNSS et à l’IPTS, à régler les cotisations dues conformément aux taux en vigueur après avoir effectué les retenues comme précisé dans l’article quatre du présent contrat.
+En cas d’accident survenu dans le travail, sur le trajet domicile-travail, ou de maladies professionnelles, les droits et obligations de chacune des parties seront réglés conformément aux textes en vigueur en la matière.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="250" width="555" height="95" uuid="044200f8-7019-4bc0-a2fd-a6bee08bfb4f"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[L’Employé aura droit à un congé de deux (2) jours par mois, soit vingt quatre (24) jours ouvrables par année de service effectif.
+Il prendra ce congé pendant une période déterminée d'accord parties en tenant compte des besoins du service.
+Le congé devra être effectivement pris et ne pourra faire l’objet d’aucune compensation financière.
+]]></text>
+			</staticText>
+		</band>
+		<band height="573">
+			<staticText>
+				<reportElement x="0" y="20" width="555" height="67" uuid="84e2a349-07b5-42a5-8846-8afb088dad36"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Verdana" size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Les différends qui pourraient s'élever à l'occasion de l'exécution du présent contrat seront réglés conformément aux dispositions des textes législatifs ou réglementaires en vigueur et, à défaut, aux usages locaux réglant les rapports des employeurs et salariés auxquels les Parties déclarent formellement se soumettre.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="a6024c86-22e8-4c10-8a68-54a9bf0e94d4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ARTICLE 14 : REGLEMENT DES LITIGES]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="317" width="168" height="20" uuid="f9aacdef-a600-497d-9617-b15517941a47"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomPrenoms}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="387" y="205" width="168" height="20" uuid="c6868d8c-07bc-41c6-998f-fcd6b8de3055"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[L’EMPLOYEUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="402" width="555" height="53" uuid="150bb691-39eb-4179-bdba-6f768c5830b8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="12"/>
+				</textElement>
+				<text><![CDATA[Visé sous le N°…………………...MTFPRAI/DGT/DRP/SRI du………………………………
+
+La Directrice Générale du Travail
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="553" width="555" height="20" uuid="e93a5df1-1f4e-4e49-b748-7a81f9f00aa7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Verdana" size="12" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Moussilimatou DEMBA DIALLO HOUNYET
+]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="387" y="317" width="168" height="20" uuid="8130462d-912d-410a-b4c8-0d891f3347b8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{directeur}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="287" y="160" width="120" height="20" uuid="67072b9a-112f-4d1a-8c19-630c739c4d9d"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Verdana" size="12"/>
+				</textElement>
+				<text><![CDATA[Fait à Cotonou, le]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="407" y="160" width="148" height="20" uuid="c4513447-6c26-4254-8537-695aa116d7fd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateSignature}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="205" width="100" height="20" uuid="7e3e6dd9-f4d6-4b86-bf95-1573cbfac9dc"/>
+				<textElement>
+					<font fontName="Verdana" size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[L’EMPLOYE ]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50">
+			<subreport runToBottom="true">
+				<reportElement x="0" y="0" width="555" height="50" uuid="c34a834c-f5bc-4e5d-b1ac-6e134c15ad0f">
+					<printWhenExpression><![CDATA[$P{OPTION}.equals("Normal")||$P{OPTION}==null]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pageportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="recapitulatifMobilisationRessources" language="groovy" pageWidth="500" pageHeight="120" columnWidth="496" leftMargin="2" rightMargin="2" topMargin="0" bottomMargin="0" uuid="fcfdfd6e-24e5-48f5-9a5c-8f52ffac7043">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="paraProgramme" class="java.lang.String"/>
+	<field name="composante" class="java.lang.String"/>
+	<field name="montantPrevisonUS" class="java.lang.String"/>
+	<field name="montantRealisation" class="java.lang.String"/>
+	<field name="montantPrevison" class="java.lang.String"/>
+	<field name="montantRealisationUS" class="java.lang.String"/>
+	<field name="taux" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="20">
+			<textField>
+				<reportElement x="11" y="2" width="439" height="15" uuid="d2cbd955-f07c-414d-83f0-67c458215343"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tableau récapitulatif des ressources "+$P{paraProgramme}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="0" y="0" width="201" height="44" backcolor="#EFEFEF" uuid="2fa70fed-42e7-44f4-9aa7-e94acaeacfd0"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Composantes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="201" y="29" width="67" height="15" backcolor="#EFEFEF" uuid="0f220907-bcc1-477d-9a03-f0a497e87ce3"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[dollars US]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="268" y="29" width="66" height="15" backcolor="#EFEFEF" uuid="535ce199-4388-4829-a104-8316d8590f32"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[FCFA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="334" y="29" width="66" height="15" backcolor="#EFEFEF" uuid="8208756c-9f5f-4754-a1e6-820a2fb264e0"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[dollars US]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="400" y="29" width="60" height="15" backcolor="#EFEFEF" uuid="b01a5463-3273-4da4-aa3d-7eecaecba129"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[FCFA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="334" y="15" width="126" height="14" backcolor="#EFEFEF" uuid="fd67f7a4-8f59-487e-9af3-ec0a59ee6044"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Réalisation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="201" y="15" width="133" height="14" backcolor="#EFEFEF" uuid="fb10b6e8-94f1-41cd-80e7-b83ab93d994b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Prévision]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table_CH" x="201" y="0" width="259" height="15" backcolor="#EFEFEF" uuid="5ae680c9-5378-4ee2-b49a-1436f4b95727"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paraProgramme}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table_CH" x="460" y="0" width="36" height="44" backcolor="#EFEFEF" uuid="4d76b00d-db80-45c5-ac6a-6dda34b1e3f0"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Taux]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="0" y="0" width="201" height="15" uuid="42341d99-b830-42cb-8f18-3fbeeced5119"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{composante}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="201" y="0" width="67" height="15" uuid="b3681c5b-db22-40bb-b00f-57615dcb4e4b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantPrevisonUS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="400" y="0" width="60" height="15" uuid="545594cc-e607-46c7-a2e7-eaf2f24a3c72"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantRealisation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="268" y="0" width="66" height="15" uuid="41b7daf1-0063-48b1-8f72-f2b4988fbc32"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantPrevison}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="334" y="0" width="66" height="15" uuid="9e46ad8f-bb63-4eac-a151-1bbfa06fc7ff"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantRealisationUS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="460" y="0" width="36" height="15" uuid="7a777cde-cac5-4b75-ba15-8afad344e106"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{taux}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="29" splitType="Stretch"/>
+	</summary>
+</jasperReport>

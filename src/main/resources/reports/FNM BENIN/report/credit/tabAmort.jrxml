@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="22"/>
+    <property name="ireport.y" value="0"/>
+    <style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="table_TD" mode="Opaque" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <parameter name="nummembre" class="java.lang.String"/>
+    <parameter name="montant" class="java.lang.String"/>
+    <parameter name="taux" class="java.lang.Double"/>
+    <parameter name="nomprenoms" class="java.lang.String"/>
+    <parameter name="datedeblocage" class="java.lang.String"/>
+    <parameter name="tauxdiffere" class="java.lang.Double"/>
+    <parameter name="mensualite" class="java.lang.String"/>
+    <parameter name="duree" class="java.lang.Integer"/>
+    <parameter name="differe" class="java.math.BigDecimal"/>
+    <parameter name="echeance" class="java.lang.String"/>
+    <parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["D:\\java\\dev\\microfina\\src\\main\\webapp\\resources\\report\\"]]></defaultValueExpression>
+    </parameter>
+    <field name="numero" class="java.lang.String"/>
+    <field name="dateEcheance" class="java.lang.String"/>
+    <field name="montantEcheance" class="java.lang.String"/>
+    <field name="capitalAmorti" class="java.lang.String"/>
+    <field name="capitalRestant" class="java.lang.String"/>
+    <field name="interetPaye" class="java.lang.String"/>
+    <field name="interetCumule" class="java.lang.String"/>
+    <field name="montantTVA" class="java.lang.String"/>
+    <field name="commission" class="java.lang.String"/>
+    <field name="epargne" class="java.lang.String"/>
+    <field name="fondSolidarite" class="java.lang.String"/>
+    <variable name="sommeMensualite" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantEcheance}).toString())]]></variableExpression>
+    </variable>
+    <variable name="sommeInteret" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{interetPaye}).toString())]]></variableExpression>
+    </variable>
+    <variable name="sommeTVA" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantTVA}).toString())]]></variableExpression>
+    </variable>
+    <variable name="sommeCapital" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{capitalAmorti}).toString())]]></variableExpression>
+    </variable>
+    <variable name="sommeEpargne" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{epargne}).toString())]]></variableExpression>
+    </variable>
+    <variable name="sommeFondSolidarite" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{fondSolidarite}).toString())]]></variableExpression>
+    </variable>
+    <variable name="sommeCapitalRestant" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{capitalRestant}).toString())]]></variableExpression>
+    </variable>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="144" splitType="Stretch">
+            <textField>
+                <reportElement x="26" y="57" width="196" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA["N° Membre "+$P{nummembre}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="26" y="77" width="196" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA["Montant "+$P{montant}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="26" y="97" width="196" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA["Taux/Mensuel "+$P{taux}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="290" y="57" width="224" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA["Nom et prenoms  "+$P{nomprenoms}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="290" y="77" width="224" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA["Date deblocage "+$P{datedeblocage}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="290" y="97" width="224" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA["Taux Differe "+($P{tauxdiffere}!=null?$P{tauxdiffere}:0d)]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="536" y="57" width="206" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA["Mensualité  "+$P{mensualite}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="574" y="77" width="168" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$P{duree}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="536" y="97" width="206" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA["Differe  "+($P{differe}!=null?$P{differe}:BigDecimal.ZERO)]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="12" width="802" height="29"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["TABLEAU D' AMORTISSEMENT PREVISIONNEL "]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="536" y="117" width="206" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA["Echéance  "+($P{echeance}!=null?$P{echeance}:"")]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="536" y="77" width="38" height="20"/>
+                <textElement markup="none"/>
+                <text><![CDATA[Durée]]></text>
+            </staticText>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="31" splitType="Stretch">
+            <staticText>
+                <reportElement style="table_CH" x="0" y="0" width="47" height="31" backcolor="#EFEFEF"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <text><![CDATA[N°Traite]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="47" y="0" width="68" height="31" backcolor="#EFEFEF"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <text><![CDATA[DATE]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="371" y="0" width="101" height="31" backcolor="#EFEFEF"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <text><![CDATA[CAPITAL]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="290" y="0" width="81" height="31" backcolor="#EFEFEF"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <text><![CDATA[TVA]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="574" y="0" width="116" height="31" backcolor="#EFEFEF"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <text><![CDATA[FOND SOLID.]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="472" y="0" width="102" height="31" backcolor="#EFEFEF"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <text><![CDATA[EPARGNE]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="690" y="0" width="112" height="31" backcolor="#EFEFEF"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <text><![CDATA[C. RESTANT]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="115" y="0" width="73" height="31" backcolor="#EFEFEF"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="10"/>
+                    <paragraph leftIndent="4"/>
+                </textElement>
+                <text><![CDATA[MENSUALITE]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="188" y="0" width="102" height="31" backcolor="#EFEFEF"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <text><![CDATA[INTERET]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="21" splitType="Stretch">
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="0" y="0" width="47" height="21"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+            </textField>
+            <textField pattern="dd/MM/yyyy">
+                <reportElement style="table_TD" x="47" y="0" width="68" height="21" isRemoveLineWhenBlank="true"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{dateEcheance}]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0">
+                <reportElement style="table_TD" x="690" y="0" width="112" height="21"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{capitalRestant}!= null ? $F{capitalRestant} : ""+ BigDecimal.ZERO]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0">
+                <reportElement style="table_TD" x="574" y="0" width="116" height="21"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{fondSolidarite}!=null?$F{fondSolidarite}:""+BigDecimal.ZERO]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0">
+                <reportElement style="table_TD" x="188" y="0" width="102" height="21"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{interetPaye}!=null?$F{interetPaye}:""+BigDecimal.ZERO]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0">
+                <reportElement style="table_TD" x="472" y="0" width="102" height="21"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{epargne}!=null?$F{epargne}: ""+BigDecimal.ZERO]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0">
+                <reportElement style="table_TD" x="290" y="0" width="81" height="21"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{montantTVA}!=null?$F{montantTVA}:BigDecimal.ZERO]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0">
+                <reportElement style="table_TD" x="371" y="0" width="101" height="21"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font size="8"/>
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{capitalAmorti}!=null?$F{capitalAmorti}: ""+BigDecimal.ZERO]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0">
+                <reportElement style="table_TD" x="115" y="0" width="73" height="21"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{montantEcheance}!=null?$F{montantEcheance}:BigDecimal.ZERO]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <summary>
+        <band height="30" splitType="Stretch">
+            <textField pattern="#,##0">
+                <reportElement style="table_TD" x="115" y="0" width="73" height="20"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{sommeMensualite}]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0">
+                <reportElement style="table_TD" x="188" y="0" width="102" height="20"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{sommeInteret}]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0">
+                <reportElement style="table_TD" x="290" y="0" width="81" height="20"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{sommeTVA}]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0">
+                <reportElement style="table_TD" x="371" y="0" width="101" height="20"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{sommeCapital}]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0" isBlankWhenNull="false">
+                <reportElement style="table_TD" mode="Opaque" x="472" y="0" width="102" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+                    <font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+                    <paragraph lineSpacing="Single" rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{sommeEpargne}]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0" isBlankWhenNull="false">
+                <reportElement style="table_TD" mode="Opaque" x="574" y="0" width="116" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+                    <font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+                    <paragraph lineSpacing="Single" rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{sommeFondSolidarite}]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0" isBlankWhenNull="false">
+                <reportElement style="table_TD" mode="Opaque" x="690" y="0" width="112" height="20" forecolor="#000000" backcolor="#FFFFFF"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+                    <font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+                    <paragraph lineSpacing="Single" rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{sommeCapitalRestant}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="47" y="0" width="68" height="20"/>
+                <textElement/>
+            </textField>
+            <staticText>
+                <reportElement style="table_TD" x="0" y="0" width="47" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="4"/>
+                </textElement>
+                <text><![CDATA[TOTAL]]></text>
+            </staticText>
+        </band>
+    </summary>
+</jasperReport>

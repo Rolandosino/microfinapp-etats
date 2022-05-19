@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="listPretsDirigeantParType" language="groovy" pageWidth="850" pageHeight="842" columnWidth="810" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="42edc5b8-e335-406a-844a-34ffe8286750">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="table_TD" mode="Opaque" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <queryString>
+		<![CDATA[]]>
+    </queryString>
+    <field name="nummembre" class="java.lang.String"/>
+    <field name="numcredit" class="java.lang.String"/>
+    <field name="numdemande" class="java.lang.String"/>
+    <field name="numdetail" class="java.lang.String"/>
+    <field name="dureepret" class="java.lang.String"/>
+    <field name="differe" class="java.lang.String"/>
+    <field name="mensualite" class="java.lang.String"/>
+    <field name="datedeblocage" class="java.lang.String"/>
+    <field name="nantissement" class="java.lang.String"/>
+    <field name="an" class="java.lang.String"/>
+    <field name="declassement" class="java.lang.String"/>
+    <field name="testprorogation" class="java.lang.String"/>
+    <field name="codeZone" class="java.lang.String"/>
+    <field name="tauxan" class="java.lang.String"/>
+    <field name="datedemande" class="java.lang.String"/>
+    <field name="tauxdif" class="java.lang.String"/>
+    <field name="cloture" class="java.lang.String"/>
+    <field name="nature" class="java.lang.String"/>
+    <field name="suivi" class="java.lang.String"/>
+    <field name="totalinterets" class="java.lang.String"/>
+    <field name="degre" class="java.lang.String"/>
+    <field name="terme" class="java.lang.String"/>
+    <field name="interetbloque" class="java.lang.String"/>
+    <field name="datebloque" class="java.lang.String"/>
+    <field name="tauxinteretmois" class="java.lang.String"/>
+    <field name="tauxdifferemois" class="java.lang.String"/>
+    <field name="ancnumcred" class="java.lang.String"/>
+    <field name="modeDeCalculInteret" class="java.lang.String"/>
+    <field name="provision" class="java.lang.String"/>
+    <field name="montantcapital" class="java.math.BigDecimal"/>
+    <field name="montantinteret" class="java.math.BigDecimal"/>
+    <field name="dateoperation" class="java.lang.String"/>
+    <field name="montantpret" class="java.lang.String"/>
+    <field name="capitalRestant" class="java.lang.String"/>
+    <field name="nomprenom" class="java.lang.String"/>
+    <variable name="sommePret" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantpret}))]]></variableExpression>
+    </variable>
+    <variable name="sommeEncours" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{capitalRestant}))]]></variableExpression>
+    </variable>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="79" splitType="Stretch"/>
+    </title>
+    <pageHeader>
+        <band height="35" splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="40" splitType="Stretch">
+            <staticText>
+                <reportElement style="table_CH" mode="Transparent" x="361" y="1" width="112" height="39" forecolor="#000000" backcolor="#EFEFEF" uuid="ec70c303-dcce-4531-a5c7-91a84df6c1dd"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+                    <font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+                    <paragraph lineSpacing="Single"/>
+                </textElement>
+                <text><![CDATA[  Montant prêt]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Transparent" x="85" y="1" width="95" height="39" forecolor="#000000" backcolor="#EFEFEF" uuid="9c05c50d-1df5-4ff9-b9f4-64c5f659612d"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+                    <font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+                    <paragraph lineSpacing="Single"/>
+                </textElement>
+                <text><![CDATA[  N° Membre]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Transparent" x="1" y="1" width="84" height="39" forecolor="#000000" backcolor="#EFEFEF" uuid="0df47b83-5e6a-45d9-9fb4-9f34d6871c74"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+                    <font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+                    <paragraph lineSpacing="Single"/>
+                </textElement>
+                <text><![CDATA[  N° Crédit]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Transparent" x="473" y="1" width="75" height="39" forecolor="#000000" backcolor="#EFEFEF" uuid="406e2f2a-b2e5-4bd6-aaec-febf713cc6bb"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+                    <font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+                    <paragraph lineSpacing="Single"/>
+                </textElement>
+                <text><![CDATA[  Date déblocage]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Transparent" x="548" y="1" width="43" height="39" forecolor="#000000" backcolor="#EFEFEF" uuid="f0c0ea0a-fbbc-4874-81b9-38dbd7a22679"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+                    <font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+                    <paragraph lineSpacing="Single"/>
+                </textElement>
+                <text><![CDATA[  Durée prêt]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Transparent" x="591" y="1" width="49" height="39" forecolor="#000000" backcolor="#EFEFEF" uuid="56a37b64-7376-4d4b-9366-f3dca91f2264"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+                    <font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+                    <paragraph lineSpacing="Single"/>
+                </textElement>
+                <text><![CDATA[ Mensua lité]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Transparent" x="640" y="1" width="84" height="39" backcolor="#EFEFEF" uuid="f87c8f55-c7ef-44c2-aceb-b48960043799"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[  Capital Restant]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Transparent" x="724" y="1" width="86" height="39" forecolor="#000000" backcolor="#EFEFEF" uuid="f0f704aa-fe17-4564-9680-3f6d06821535"/>
+                <textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+                    <font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+                    <paragraph lineSpacing="Single"/>
+                </textElement>
+                <text><![CDATA[  Type]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Transparent" x="180" y="1" width="181" height="39" forecolor="#000000" backcolor="#EFEFEF" uuid="252d08e6-c62e-41a0-8fd3-3d9986e42f06"/>
+                <textElement verticalAlignment="Middle" rotation="None" markup="none">
+                    <font fontName="SansSerif" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+                    <paragraph lineSpacing="Single"/>
+                </textElement>
+                <text><![CDATA[  Nom et Prénoms]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="21" splitType="Stretch">
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="180" y="1" width="180" height="20" uuid="d48740ea-32f1-4ec8-a7e4-19728e0bc006"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{nomprenom}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="85" y="1" width="95" height="20" uuid="38b2b1f9-4025-4fd8-ae0b-e963c961e5cc"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{nummembre}]]></textFieldExpression>
+            </textField>
+            <textField pattern="dd/MM/yyyy">
+                <reportElement style="table_TD" x="473" y="1" width="75" height="20" uuid="6ad5e927-daa1-4c6e-856f-98de12c0b0ba"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{datedeblocage}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="548" y="1" width="43" height="20" uuid="564acdec-40a3-4193-81fc-c85822673037"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{dureepret}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="591" y="1" width="49" height="20" uuid="8c29bb23-208f-4175-9fbb-82e20cf4d711"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{mensualite}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="0" y="1" width="85" height="20" uuid="f9ad7247-4a9e-4093-be93-bbd2cb62606a"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{numcredit}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="361" y="1" width="112" height="20" uuid="7afd27ee-26f7-4c65-93bd-a58350c346c2"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{montantpret}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="640" y="1" width="84" height="20" uuid="45353e03-0504-47bb-aaf2-6a4f4e42f4e9"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{capitalRestant}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <pageFooter>
+        <band splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band height="29">
+            <textField>
+                <reportElement style="table_TD" x="1" y="0" width="84" height="20" uuid="37e5c396-45da-40d3-97d5-a9deb7ce0253"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00">
+                <reportElement style="table_TD" x="360" y="0" width="113" height="20" uuid="2b5416b5-9b81-4b97-83dd-0e59c32c95f0"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{sommePret}]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00">
+                <reportElement style="table_TD" x="640" y="0" width="84" height="20" uuid="649868e2-f258-4280-98cf-f5860a1f74fb"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{sommeEncours}]]></textFieldExpression>
+            </textField>
+        </band>
+    </summary>
+</jasperReport>

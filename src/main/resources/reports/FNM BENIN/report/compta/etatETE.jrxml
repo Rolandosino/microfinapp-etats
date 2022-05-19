@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="0" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c91b8e3b-8c9f-42a9-8794-b1cd0afd985e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="libelleActif" class="java.lang.String"/>
+	<field name="montantActif" class="java.lang.String"/>
+	<field name="montantPassif" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="6005f88b-0469-43d0-99b4-cf6911382f57"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[. EXCEDENT DE TRESORERIE D'EXPLOITATION (E.T.E)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="555" height="20" uuid="23726a81-4386-4069-8817-a9b0f6655edd"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="8"/>
+				</textElement>
+				<text><![CDATA[ETE = EBE - Variation BFE - Production immobilisée]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="325" height="20" uuid="79236ba7-c3b9-48a2-a315-9878c0cd5bc4"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="325" y="0" width="115" height="20" uuid="c90e6976-4489-443f-9103-63dad4f86b58"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="0" width="115" height="20" uuid="d2962d0f-421d-415a-9113-05fd5803023e"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[N - 1]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="325" height="20" uuid="f071eb99-74fb-4516-ab68-b58372074c26">
+					<printWhenExpression><![CDATA[(!($F{libelleActif}.equalsIgnoreCase("EXCEDENT DE TRESORERIE D'EXPLOITATION")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelleActif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="325" y="0" width="115" height="20" uuid="2dea0cdc-8346-43a1-a481-4826ac3d65f6">
+					<printWhenExpression><![CDATA[(!($F{libelleActif}.equalsIgnoreCase("EXCEDENT DE TRESORERIE D'EXPLOITATION")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantActif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="0" width="115" height="20" uuid="22fda57d-497d-49dd-9e0d-c63dc71e4ac4">
+					<printWhenExpression><![CDATA[(!($F{libelleActif}.equalsIgnoreCase("EXCEDENT DE TRESORERIE D'EXPLOITATION")))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantPassif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="0" width="115" height="20" uuid="38e251dd-1ff4-42bb-98a2-2560da27bbe3">
+					<printWhenExpression><![CDATA[($F{libelleActif}.equalsIgnoreCase("EXCEDENT DE TRESORERIE D'EXPLOITATION"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantPassif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="325" height="20" uuid="a7c2c992-9da6-4b34-bf90-e8c0188318e1">
+					<printWhenExpression><![CDATA[($F{libelleActif}.equalsIgnoreCase("EXCEDENT DE TRESORERIE D'EXPLOITATION"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelleActif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="325" y="0" width="115" height="20" uuid="f29aae9d-e28c-4b9b-9e39-6aff781ffee9">
+					<printWhenExpression><![CDATA[($F{libelleActif}.equalsIgnoreCase("EXCEDENT DE TRESORERIE D'EXPLOITATION"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantActif}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

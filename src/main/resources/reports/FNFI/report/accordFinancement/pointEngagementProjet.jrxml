@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="pointEngagementProjet" language="groovy" pageWidth="500" pageHeight="842" columnWidth="496" leftMargin="2" rightMargin="2" topMargin="1" bottomMargin="1" uuid="f0088106-63b2-4128-b240-d0ce675208e3">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="paraProgramme" class="java.lang.String"/>
+	<field name="composante" class="java.lang.String"/>
+	<field name="montantMobilise" class="java.lang.String"/>
+	<field name="montantEngage" class="java.lang.String"/>
+	<field name="taux" class="java.lang.String"/>
+	<field name="soldeRestant" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="17" splitType="Stretch">
+			<textField>
+				<reportElement x="29" y="1" width="439" height="15" uuid="6f56f6d6-9f61-46f3-a077-b2770652b4b0"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["POINT D'ENGAGEMENT  SUR LE PROJET "+$P{paraProgramme}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="0" y="0" width="201" height="42" backcolor="#EFEFEF" uuid="7b92040c-f4ee-4048-becd-f6892d80926b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Composante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="201" y="15" width="82" height="15" backcolor="#EFEFEF" uuid="21b18eb9-c242-445f-b2c0-7ccf1405123c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Montant Mobilise]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="283" y="15" width="82" height="15" backcolor="#EFEFEF" uuid="b5440dc0-8f4f-4355-871f-31acb9414cc3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Montant engage]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="365" y="15" width="53" height="27" backcolor="#EFEFEF" uuid="c358449d-dbdf-4f87-b763-f8d9b779de8a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Taux]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="418" y="0" width="78" height="42" backcolor="#EFEFEF" uuid="99f43198-2d7c-4d78-848e-be2de93db8ef"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Solde restant]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table_CH" x="201" y="0" width="217" height="15" backcolor="#EFEFEF" uuid="27cd3727-8136-410a-88b9-cd849523e0eb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{paraProgramme}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table_CH" x="201" y="30" width="82" height="12" backcolor="#EFEFEF" uuid="754ee858-c503-4c3a-a2f6-b16f8ddacc98"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[FCFA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="283" y="30" width="82" height="12" backcolor="#EFEFEF" uuid="8944eeb2-5f5a-4a76-840b-93ab5c3c88f5"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[FCFA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="0" y="0" width="201" height="15" uuid="9b4ff877-cbf2-4389-a725-bcb3971574be"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{composante}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="201" y="0" width="82" height="15" uuid="568bd74a-b5b1-4848-9b2f-597cda08f879"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantMobilise}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="283" y="0" width="82" height="15" uuid="9bda4ff1-7f87-4e3e-bcc5-6b1b6304d73a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantEngage}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="365" y="0" width="53" height="15" uuid="b449aebe-73b9-4bdf-a9a6-00880b2210b0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{taux}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="418" y="0" width="78" height="15" uuid="10a34758-06d3-4632-9490-3a5d2239b05a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{soldeRestant}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="18" splitType="Stretch"/>
+	</summary>
+</jasperReport>

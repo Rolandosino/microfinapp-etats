@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="formationDetails" language="groovy" pageWidth="1190" pageHeight="842" orientation="Landscape" columnWidth="1190" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="0" uuid="07480b6e-7f62-4ccb-908a-f3c103b9399c">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="67"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="totalEstimation" class="java.lang.String"/>
+	<parameter name="totalRealisation" class="java.lang.String"/>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="DATE_EDITION" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String"/>
+	<parameter name="TITRE_ETAT" class="java.lang.String"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<field name="direction" class="java.lang.String"/>
+	<field name="poste" class="java.lang.String"/>
+	<field name="themeFormation" class="java.lang.String"/>
+	<field name="lieuformation" class="java.lang.String"/>
+	<field name="periodePrevu" class="java.lang.String"/>
+	<field name="devise" class="java.lang.String"/>
+	<field name="cfa" class="java.lang.String"/>
+	<field name="transport" class="java.lang.String"/>
+	<field name="autre" class="java.lang.String"/>
+	<field name="total" class="java.lang.String"/>
+	<field name="devise_1" class="java.lang.String"/>
+	<field name="cfa_1" class="java.lang.String"/>
+	<field name="transport_1" class="java.lang.String"/>
+	<field name="autre_1" class="java.lang.String"/>
+	<field name="total_1" class="java.lang.String"/>
+	<group name="groupDirection">
+		<groupExpression><![CDATA[$F{direction}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="20" y="0" width="1150" height="20" uuid="42a8cce1-86c7-46d5-a4b8-68aa93e0492d"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph leftIndent="5" rightIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{direction}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="153" splitType="Stretch">
+			<subreport>
+				<reportElement x="20" y="0" width="1170" height="93" uuid="893d3f7d-b2aa-424e-a66b-1717b5f7d0b1"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententepaysage.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="422" y="125" width="535" height="28" uuid="2d506557-a306-4033-a735-8fdbac786e71"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[SUIVI DE MISE EN OEUVRE DE FORMATION]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="20" y="0" width="105" height="45" uuid="f79ff849-b652-4882-9795-7e6e646b8e33"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Poste occupé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="125" y="0" width="102" height="45" uuid="8910ebac-ad21-4646-bf36-b64992ebb3bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Thème de formation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="227" y="0" width="90" height="45" uuid="31aa76f0-bfd9-4fd6-874f-453227347f60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Lieu de formation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="317" y="0" width="105" height="45" uuid="c6194fe9-ac8b-488f-8c5e-b42f2c763698"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Periode Prévue]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="422" y="30" width="48" height="15" uuid="b902a275-3d9a-4313-b0a6-137e1781b370"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Devise]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="470" y="30" width="48" height="15" uuid="9950906c-c2d4-4d8c-bd30-a18f37c64680"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CFA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="518" y="15" width="98" height="30" uuid="fa1c39f4-b69f-4348-93b3-0556c5b97415"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Moyen de Transport]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="616" y="15" width="94" height="30" uuid="ba7c0f69-8151-473b-ad2b-ef9152794678"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Autres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="710" y="15" width="86" height="30" uuid="c5f56c0b-18a7-4272-a3c1-01528bde2684"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="422" y="15" width="96" height="15" uuid="223be161-025f-4508-a7f2-295f8428aeae"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Frais  de formation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="422" y="0" width="374" height="15" uuid="ce859c89-30a4-41e9-b149-c3d76a47853c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Cout estimatif en FCFA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="990" y="15" width="94" height="30" uuid="aed84159-783a-4b38-aa2c-0ee3c4e40c1f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Autres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="844" y="30" width="48" height="15" uuid="323fee2f-e9f2-4b02-aa32-b514cf79e121"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CFA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="796" y="0" width="374" height="15" uuid="1cf2185e-a242-42a6-b88e-3f3e7321c964"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Cout de réalisation en FCFA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="796" y="15" width="96" height="15" uuid="075358d4-5f99-4893-9294-f7ab67e06b57"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Frais  de réalisation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="892" y="15" width="98" height="30" uuid="ff8ecf42-2307-467b-8d30-69f0cece43a2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Moyen de Transport]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="1084" y="15" width="86" height="30" uuid="fdc4a29d-626a-4ed4-87a4-b2426a71d78c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="796" y="30" width="48" height="15" uuid="dd3faac4-da19-449d-9d23-aedb1944ca79"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Devise]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="20" y="0" width="105" height="15" uuid="d4787b6a-a6f2-4762-9372-43a26a3cbe75"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{poste}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="125" y="0" width="102" height="15" uuid="a046365f-115e-452e-8692-f10b7fd60048"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{themeFormation}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="227" y="0" width="90" height="15" uuid="614996f0-e99c-442f-b87c-7c9c42d44f7a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lieuformation}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="317" y="0" width="105" height="15" uuid="a4825f6c-a61b-4595-8421-484c0559967b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{periodePrevu}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="422" y="0" width="48" height="15" uuid="4ed8919d-7c35-424e-b59c-6da7cae55d5d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{devise}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="470" y="0" width="48" height="15" uuid="72ada096-4a83-4b0e-81d3-567d945d07a7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cfa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="518" y="0" width="98" height="15" uuid="c581e919-16c6-4aa2-8d85-bd4e3bc41c44"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transport}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="616" y="0" width="94" height="15" uuid="ee4b1a5b-9a10-4de9-96ef-f98595d7091b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{autre}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="710" y="0" width="86" height="15" uuid="5aa24d0e-4b74-4dd8-a740-a77a9acb13b4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="1084" y="0" width="86" height="15" uuid="a06430e3-da8f-4c80-8a5b-de871c98a754"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="990" y="0" width="94" height="15" uuid="2bcb15a9-9016-4eb5-80a5-4f168406b82f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{autre_1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="892" y="0" width="98" height="15" uuid="c11dc91a-1487-42b8-be74-bda08b94869e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transport_1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="844" y="0" width="48" height="15" uuid="a78d7392-4c02-4028-9962-77b48d00ee74"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cfa_1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="796" y="0" width="48" height="15" uuid="f75d6d64-930b-4e64-9e2f-c9e0c90ab795"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{devise_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="66" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="1190" height="66" uuid="9cfed255-219a-4433-b44a-d31d3b243b38"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page_en_paysage.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="710" y="0" width="86" height="20" uuid="7589932d-b9f0-446a-bcf8-04690e08638a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalEstimation}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1084" y="0" width="86" height="20" uuid="dd68598c-2b2a-425e-b97d-0db80aa8e7a9"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalRealisation}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="796" y="0" width="288" height="20" uuid="ac329d11-8059-4319-86ab-41e6bebf17e1"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="0" width="690" height="20" uuid="23e736ba-8d00-419b-8f84-3b6d2c1156ab"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

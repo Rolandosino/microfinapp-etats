@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratPretPhysique" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="10" bottomMargin="4" uuid="5a951e0a-027e-4aaa-8490-28fa69307a39">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="633"/>
+	<parameter name="dateImpression" class="java.lang.String"/>
+	<parameter name="paratitre" class="java.lang.String"/>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NUMERO_CREDIT" class="java.lang.String"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="ENTETE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PIED_DE_PAGE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page.jasper"]]></defaultValueExpression>
+	</parameter>
+	<field name="nomMembre" class="java.lang.String"/>
+	<field name="adresse_client" class="java.lang.String"/>
+	<field name="contact" class="java.lang.String"/>
+	<field name="pieceDidentite" class="java.lang.String"/>
+	<field name="dateEtablissementPiece" class="java.lang.String"/>
+	<field name="dateExpirationPiece" class="java.lang.String"/>
+	<field name="montantPret" class="java.lang.String"/>
+	<field name="enLettres" class="java.lang.String"/>
+	<field name="objetCredit" class="java.lang.String"/>
+	<field name="dureeCredit" class="java.lang.String"/>
+	<field name="dureeCreditSemaine" class="java.lang.String"/>
+	<field name="totalFraisAssuranceCapital" class="java.lang.String"/>
+	<field name="echeancier" class="java.lang.String"/>
+	<field name="derniereEcheance" class="java.lang.String"/>
+	<field name="montantGarantie" class="java.lang.String"/>
+	<field name="numContrat" class="java.lang.String"/>
+	<field name="montantEcheance" class="java.lang.String"/>
+	<field name="produitCredit" class="java.lang.String"/>
+	<field name="activite" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<staticText>
+				<reportElement x="208" y="65" width="130" height="20" uuid="0b205c24-57f5-4f07-8236-18d64c03b4ed"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CONTRAT DE CREDIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="78" width="81" height="15" uuid="fcc121c5-93b6-4bf1-9aac-d8e66f7b27d7"/>
+				<text><![CDATA[************************]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="458" y="79" width="12" height="14" uuid="6f4e7675-6754-4b62-8179-b6e2db256df8"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<line>
+				<reportElement x="470" y="92" width="85" height="1" uuid="236aefe6-0c99-4f28-8f8c-6da873c4ff17"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="470" y="79" width="85" height="13" uuid="3db77230-706a-4213-acbe-ebb94ea9850f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numContrat}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="61" uuid="57d0c424-a9cf-4094-b589-708b42179d22"/>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{ENTETE}]]></subreportExpression>
+			</subreport>
+			<textField isBlankWhenNull="true">
+				<reportElement x="25" y="79" width="120" height="12" uuid="22a9a036-712b-44d1-9d6f-3fd4905304a8"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{produitCredit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="79" width="23" height="14" uuid="ca4332bf-019a-46ad-b200-10ef84587665"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prêt :]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="646" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="12" width="555" height="3" uuid="f4635ac1-1e61-4b4c-938f-0d25f6d79162"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CAMUFE-SFD située à GBEGAMEY , 02 BP 2114 Cotonou, Téléphone : 612419, représenté par Mme AHOUANSOU Geneviève sa présidente,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="32" width="57" height="15" uuid="0d527e28-53f7-4f24-9ac3-25ba0ca2ae9a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Mr/Mme/Mlle :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="57" y="42" width="483" height="1" uuid="73ca2cd3-2b08-4e45-91cd-1a34e89a9db4"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="47" width="57" height="15" uuid="f431620c-0f8b-4170-a052-6b72a3bc2366"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Demeurant à]]></text>
+			</staticText>
+			<line>
+				<reportElement x="57" y="56" width="206" height="1" uuid="58a0c890-cd0a-44ad-908a-3e9585b30680"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="267" y="47" width="44" height="15" uuid="d4eb968e-d941-4256-b6bd-94296e79f703"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Téléphone]]></text>
+			</staticText>
+			<line>
+				<reportElement x="314" y="58" width="226" height="1" uuid="0653d295-b531-4772-989b-452aa07649ad"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="62" width="57" height="15" uuid="fe7890f1-91fa-4bdf-a67f-a6a05b13a38a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Pièce d'identité N°]]></text>
+			</staticText>
+			<line>
+				<reportElement x="57" y="70" width="108" height="1" uuid="45d7dd5f-0ccd-472a-85d9-7a67fbf419ee"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="169" y="62" width="34" height="15" uuid="f3062b32-65b3-4f3a-9100-719c2812cede"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[établit à ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="208" y="70" width="140" height="1" uuid="1971822b-beab-4b08-a729-f79fe4d72503"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="351" y="62" width="39" height="15" uuid="9f4c9b6c-3f34-46a1-83ff-09dbe1e8f052"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[expirant le]]></text>
+			</staticText>
+			<line>
+				<reportElement x="400" y="70" width="140" height="1" uuid="ebc1be14-c5eb-4b1a-8d14-6dc45e0fe3ff"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="77" width="87" height="15" uuid="e322eb55-fcd2-4400-9095-6c06b231f710"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Ci-après dénommé(e) :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="77" width="93" height="15" uuid="fc001aa2-5f22-49c7-bfc7-0d9248427428"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[«  Emprunteur (se) »]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="77" width="100" height="15" uuid="a47977c1-2aba-4e6c-b47b-22428f65f2ff"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[d'autre part.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="95" width="314" height="15" uuid="8792e0f4-c76e-4673-b0ed-d47f17848b46"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Préalablement aux conditions faisant l'objet des présentes, il a été exposé ce qui suit :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="110" width="555" height="15" uuid="8002450a-e7f8-4782-8de0-c68c53afc96a"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CAMUFE-SFD met en place à l'emprunteur (se) un crédit et un service de prestation de collecte d'épargne et de remboursement de crédit à domivcile.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="125" width="540" height="15" uuid="f4cd202a-fa54-4488-8e23-104d16f14d6a"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Ce crédit et cette prestation de service sont consentis et accepté aux charges et conditions particulières et générales ci-après :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="143" width="45" height="15" uuid="d0b69365-67eb-4ddc-b2c8-3dcdf0620e07"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Article 1 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="143" width="100" height="15" uuid="7369a44e-cfb4-4587-8f9d-22edd0146f05"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant du prêt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="158" width="263" height="15" uuid="11872675-8205-4341-bedb-f047758624c7"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CAMUFE-SFD octroie à l'emprunteur (se) un crédit de FCFA (en chiffres):]]></text>
+			</staticText>
+			<line>
+				<reportElement x="267" y="165" width="237" height="1" uuid="a9c79846-e5bc-47e9-b4e9-9962717d49af"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="173" width="45" height="15" uuid="e897e0c5-c50e-460f-b1ce-ca2a38b25914"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[(en lettres)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="45" y="183" width="332" height="1" uuid="44aee163-1474-4ff8-b309-94d35dc025f6"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="387" y="173" width="168" height="15" uuid="ecbd4b10-ec25-42d1-acce-73d8e5aac4e8"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Destiné à financer le développement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="188" width="165" height="15" uuid="b0a662e9-80dc-4b9e-af33-190ef44e878b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[de son activité professionnelle de vente de :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="169" y="197" width="371" height="1" uuid="bc26f680-a68f-41e7-b53e-739163ce5af2"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="206" width="45" height="15" uuid="8bc43ebf-93bd-4b57-8aea-dfa45208bd3b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Article 2 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="206" width="220" height="15" uuid="868d572f-0c7f-4d24-947b-45e716b50376"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Taux, durée et modalités de remboursement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="221" width="300" height="15" uuid="123ce468-e97f-47be-9b99-3badff8fdd8d"/>
+				<textElement textAlignment="Justified">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Le taux du présent crédit est de 12 % l'an.I Ilm est consenti pour une durée totale de ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="300" y="228" width="75" height="1" uuid="0ef79c35-a194-4b12-bcf3-e4d42630be37"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="377" y="221" width="37" height="15" uuid="b45da153-76af-4313-9e11-c193d1a05932"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[mois soit]]></text>
+			</staticText>
+			<line>
+				<reportElement x="414" y="228" width="66" height="1" uuid="1ddb1fe3-f180-4e62-a2bf-def74d1badf4"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="480" y="221" width="47" height="15" uuid="472d7a7d-ade9-4a3b-b8ba-f49e0d20c1ab"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[semaines.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="236" width="555" height="22" uuid="32d128dc-4750-4325-9984-48d938807fa7"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[L'emprunteur (se) s'engage à rembourser par semaine (ou par mois) ledit crédit en capital et intérêts. Toutefois, l'emprunteur (se) a la faculté                                                           de se libérer à tout moment, par anticipation, soit en totalité, soit partiellment.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="261" width="45" height="15" uuid="f825f7e0-e81a-4c1b-ac03-a5ef6a711559"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Article 3 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="261" width="220" height="15" uuid="67c53cd9-8670-4365-b21f-2c34cad52891"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Service de collecte à domicile]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="276" width="555" height="15" uuid="4531a17d-73c1-4b33-b6b7-6bc0a4781a75"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[L'emprunteur (se) bénéficie d'un service de collecte à domicile de CAMUFE-SFD pour un taux de 3 à 5 % l'an (facultatif).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="291" width="555" height="36" uuid="9f2a3536-029a-4cdb-9c30-6e456f89d548"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[il (elle) s'engage à remettre personellment la somme objet d'épargne et de remboursement à l'agent de CAMUFE-SFD dûement mis à sa                    disposition. Au cas  où il (elle) le ferait par l'intermédiaire d'une autre personne, il (elle) serait tenue seul (e) responsable des éventuels problèmes qui pourront en, résulter.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="330" width="45" height="15" uuid="68b0c4e1-601f-4a88-9aef-4de15b79f88b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Article 4 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="330" width="220" height="15" uuid="08249dec-58f5-47cb-b4d0-6a2f2e893a4c"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Somme totale due et remboursement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="345" width="253" height="15" uuid="3c8cd95a-3d15-451d-bb5d-80404fa200c4"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[L'emprunteur (se) devra verser au total (Capital + Intérêts + Prestation)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="253" y="353" width="241" height="1" uuid="c7cb6d57-f003-4b7e-8ddf-063ecd37c1a9"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="494" y="345" width="61" height="12" uuid="91d793bd-4945-4cf0-ad83-3456fec420c8"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ francs CFA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="360" width="87" height="15" uuid="4e958f47-27f9-46aa-932a-73f919c2524d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Montant par échéance]]></text>
+			</staticText>
+			<line>
+				<reportElement x="87" y="371" width="193" height="1" uuid="2a9e487e-e844-48b3-9c8a-b3e765b59836"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="280" y="363" width="83" height="15" uuid="5fcdec53-dc02-4f85-ac96-49283a9ab71c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[/ dernière échéance :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="363" y="372" width="177" height="1" uuid="91b827c7-a123-41dd-8b02-2bd238552f60"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="378" width="45" height="15" uuid="b19e2355-e420-4439-9830-57ca5f7f9f01"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Article 5 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="378" width="220" height="15" uuid="2abf5f90-a5ea-41cc-bb07-8b7d24d18677"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pénalité]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="393" width="431" height="15" uuid="4dec76ba-55a9-4637-857b-60815b096fc3"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[En cas de retard de remboursement l'emprunteur (se) accepte de payer pour toute échéance en retard une pénalité de ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="431" y="393" width="124" height="15" uuid="89250d32-59b9-411f-96ff-c9df2d2d2652"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[trois mille cinq cent ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="408" width="76" height="15" uuid="cc73666f-9989-4f8b-bcbe-4b69f052abb7"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(3500) francs CFA,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="76" y="408" width="224" height="15" uuid="6d08e541-6cd5-488b-85c1-495ab70fd034"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[à verser en espèces en fin de remboursement.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="426" width="45" height="15" uuid="79ac4cd7-1a25-469a-b698-579dc34756cf"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Article 6 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="426" width="220" height="15" uuid="a0e12a39-c572-43d5-9f56-b1f6f8c70d11"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Garantie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="441" width="555" height="15" uuid="502d8209-db32-4599-8600-98d32affd147"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[L'emprunteur (se) s'engage à ouvrir un compte épargne à vue dans les livres de CAMUFE-SFD et à y verser au même rythme que les]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="456" width="180" height="15" uuid="5dde8cf8-bd41-440e-b4cf-a755628ed45d"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[remboursements du crédit une somme de FCFA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="180" y="468" width="360" height="1" uuid="4afa8997-88cc-4e79-81ab-5684aa3d6e04"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="2" y="471" width="553" height="36" uuid="7512b26b-6a27-4426-adf1-04e9f8665c11"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[pour garantir le remboursement du crédit, l'emprunteur (se) autorise irrévocablement CAMUFE-SFD à prélever automatiquement toutes sommes nécessaires au règlement des échéances en retard et cela jusqu'au remboursement intégrale des sommes dues au titre des présentes,augmentés des éventuels intérêt moratoire et pénalités.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="516" width="211" height="15" uuid="71f7bf18-84d3-4993-aa8a-4bc18efd5a59"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fait en deux (02) Exemplaires originaux à Cotonou, le ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="531" width="134" height="15" uuid="7730205e-564e-42c1-a054-b2a372be3d98"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[(1 pour chacune des parties)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="390" y="526" width="150" height="1" uuid="c1093895-fd47-4bfa-bda3-22afe2352132"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="2" y="559" width="109" height="15" uuid="9e7ea069-ddd7-4b90-b5c8-77163b20490d"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[L'EMPRUNTEUR (SE)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="431" y="559" width="109" height="15" uuid="ccf87a04-dd81-4651-8d2b-495b699738cc"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pour CAMUFE-SFD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="574" width="173" height="15" uuid="68905dd9-c9e9-4a6d-8836-1c0da80e93f7"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[(Mettre la mention « lu et approuvé »]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="57" y="32" width="483" height="12" uuid="1acdd11f-9c8a-4cbf-84d6-e0fa68a6159a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomMembre}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="57" y="47" width="206" height="12" uuid="0805d63a-7e40-4cda-b9f4-b5b7d601e887"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adresse_client}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="314" y="45" width="226" height="12" uuid="b0c5b978-7eb1-4bb5-82ff-f875f34d1368"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contact}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="57" y="59" width="108" height="12" uuid="c3343456-7f28-43c2-a6a0-360649f08fb1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pieceDidentite}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="208" y="59" width="138" height="12" uuid="76afc13a-d344-49b6-be2f-148ab3780af3"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateEtablissementPiece}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="400" y="59" width="140" height="12" uuid="c021495b-f80c-4401-9ab1-5bdb608861ec"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateExpirationPiece}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="267" y="153" width="237" height="12" uuid="e37b2112-954f-452b-9a70-ce80f91224db"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantPret}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="43" y="172" width="332" height="12" uuid="5ccebd75-1b48-4977-9f49-05ff75c02885"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{enLettres}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="300" y="217" width="75" height="12" uuid="1ccce830-e364-4542-af98-c5143db123ab"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dureeCredit}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="414" y="217" width="66" height="12" uuid="a118953a-fade-4a00-80f8-38e98fe170f1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dureeCreditSemaine}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="253" y="341" width="241" height="12" uuid="dfbaef2e-a5f8-4c39-9909-5a089d9c07c3"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalFraisAssuranceCapital}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="363" y="360" width="177" height="12" uuid="1ae720e0-a648-4387-a5db-417b6c59e18e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{derniereEcheance}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="180" y="456" width="360" height="12" uuid="b33e6032-adfe-447e-a235-f883107cb19f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantGarantie}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="390" y="517" width="150" height="12" uuid="e2181e03-fcd0-443e-8661-96deb537148e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateImpression}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="22" width="100" height="17" uuid="b9deef15-bf5b-45d0-b2a5-3a80012ed8ae"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Et]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="12" width="253" height="15" uuid="c3db38fa-8225-43f7-bc57-2eb20104e28c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ demeurant es-qualité au siège dudit SFD ; ci-après dénommée: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="12" width="47" height="15" uuid="88d8b749-b903-42c3-b9dc-ea84153eda4c"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[« Prêteur »]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="12" width="100" height="15" uuid="9232348f-b485-4b14-85bd-81cd326406d7"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[, d'une part]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="357" width="190" height="15" uuid="4318db5b-1291-47f1-93eb-05931b9ef40b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantEcheance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="15" uuid="66545b62-921f-40a3-9e31-28f344287323"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CAMUFE-SFD situé à GBEGAMEY, 02 BP 2114 Cotonopu, Téléphone : 61 24 19 19 , représenté par Mme AHOUANSOU Geneviève sa présidente,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="169" y="184" width="371" height="13" uuid="ccc72b29-3941-4e07-8450-aa7b163a6116"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{activite}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="31" splitType="Stretch">
+			<subreport>
+				<reportElement x="2" y="0" width="553" height="31" uuid="0f2889fd-9753-49eb-9b96-17736be96de2"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="numero_page"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{PIED_DE_PAGE}]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

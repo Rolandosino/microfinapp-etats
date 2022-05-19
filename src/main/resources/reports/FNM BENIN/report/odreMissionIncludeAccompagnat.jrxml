@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="odreMissionIncludeAccompagnat" language="groovy" pageWidth="555" pageHeight="160" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="6e8bc52f-c753-43d7-ae2e-93473dba9474">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="moyentransport" class="java.lang.String"/>
+	<field name="nomprenoms" class="java.lang.String"/>
+	<field name="poste" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="14">
+			<staticText>
+				<reportElement style="table_CH" x="0" y="-1" width="555" height="15" backcolor="#EFEFEF" uuid="bf5d48a2-3f61-4b90-baf4-194700475fbc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMS ET PRENOMS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" mode="Transparent" x="0" y="0" width="555" height="14" uuid="422a063b-5c6e-4596-a7e0-c30fddb749b5"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomprenoms}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="70">
+			<staticText>
+				<reportElement x="241" y="28" width="301" height="15" uuid="a0fcb7ab-1049-47a4-8c21-be8b889b1f63"/>
+				<text><![CDATA[Fait à, ............................................ le ..............................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="4" width="217" height="15" uuid="bd5b01f2-87b4-42ae-9957-83073a3baf84"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Il(s) utilisera (utiliseront) comme moyen de transports :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="217" y="19" width="325" height="1" uuid="0316b868-971f-4740-812a-f584e751fa77"/>
+			</line>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="377" y="50" width="155" height="15" uuid="c1773a61-18b3-4c0c-81fe-8027182acba5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Signature  du Responsable]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="228" y="5" width="311" height="15" uuid="ccd895b8-a508-4e38-a0e7-9edd9fa7f2aa"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{moyentransport}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

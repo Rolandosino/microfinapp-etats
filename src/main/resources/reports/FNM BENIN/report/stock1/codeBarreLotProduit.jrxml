@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="codeBarreLotBien" language="groovy" columnCount="2" printOrder="Horizontal" pageWidth="595" pageHeight="842" whenNoDataType="BlankPage" columnWidth="277" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="516f3317-6a94-416b-b4d8-89251638b34e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="nomProduit" class="java.lang.String"/>
+	<field name="numType" class="net.mediasoft.microfina.entities.StkTypeproduit"/>
+	<field name="refProduit" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="20" uuid="a8a09caa-7a84-42d4-ab57-827025b06427"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[LISTE DS PRODUITS AVEC LEUR CODE BARRE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="208" splitType="Stretch">
+			<staticText>
+				<reportElement x="85" y="4" width="100" height="20" uuid="7af7c51c-6f64-4284-b469-a31bef320a8c"/>
+				<textElement textAlignment="Center" markup="none">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[INFOS PRODUIT]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="104" width="255" height="1" uuid="c588c077-db35-44dd-81e8-55050247e33b"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="265" y="105" width="1" height="83" uuid="a920b936-eae0-4b77-9ba3-9d2c43ed69f8"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="9" y="63" width="88" height="20" uuid="23cc4ead-3055-49b4-9277-f40139ada869"/>
+				<textElement markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TYPE PRODUIT :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="43" width="88" height="20" uuid="33540836-a8d1-4e62-af08-70f4eb9497b2"/>
+				<textElement markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DESIGNATION :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="97" y="43" width="169" height="20" uuid="49ccf4d3-2064-4f43-ae2b-eb85acf9abff"/>
+				<textFieldExpression><![CDATA[$F{nomProduit}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="20" y="119" width="235" height="50" uuid="953e7b85-06bc-44b1-b1dd-c9e6e27a9aeb"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code39" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{refProduit}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<rectangle radius="15">
+				<reportElement mode="Transparent" x="0" y="0" width="276" height="204" uuid="a0273112-862e-4cee-90c7-dff8f5297e90"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="9" y="105" width="1" height="83" uuid="dd59d164-db62-4aa2-9562-e5a36fdc8632"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="20" y="169" width="235" height="20" uuid="268bd387-e4b4-4f93-b050-6541e19f26d6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{refProduit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="97" y="63" width="168" height="20" uuid="47705954-15cd-48bb-ac38-c6c99460e03b"/>
+				<textFieldExpression><![CDATA[$F{numType}.getLibType()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

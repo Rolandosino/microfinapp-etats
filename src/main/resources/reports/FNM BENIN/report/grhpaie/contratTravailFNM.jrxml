@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratTravailFNM" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="104e0a51-591d-4d75-974d-4ed2501af0ee">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="528"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<field name="nomCivilite" class="java.lang.String"/>
+	<field name="nom" class="java.lang.String"/>
+	<field name="prenoms" class="java.lang.String"/>
+	<field name="dateLieuNaiss" class="java.lang.String"/>
+	<field name="nationalite" class="java.lang.String"/>
+	<field name="residence" class="java.lang.String"/>
+	<field name="situationM" class="java.lang.String"/>
+	<field name="titre_recrutement" class="java.lang.String"/>
+	<field name="typeContrat" class="java.lang.String"/>
+	<field name="dateDebut" class="java.lang.String"/>
+	<field name="salaireBase" class="java.lang.String"/>
+	<field name="indemnite" class="java.lang.String"/>
+	<field name="logement" class="java.lang.String"/>
+	<field name="transport" class="java.lang.String"/>
+	<field name="primeSujetion" class="java.lang.String"/>
+	<field name="dateSignature" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="147" splitType="Stretch">
+			<staticText>
+				<reportElement x="-1" y="107" width="555" height="20" uuid="c3b3ea83-06d6-4fe8-85b0-6392907fa357"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[CONTRAT  DE  TRAVAIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="127" width="555" height="20" uuid="c0e98e39-b1db-4fe3-9cf9-2d6fc3e077d8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ENTRE LES SOUSSIGNES]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="-4" y="0" width="558" height="93" uuid="4f09fa00-3c39-4833-a00a-9ae9a33bd640">
+					<printWhenExpression><![CDATA[$P{OPTION}.equals("Normal")||$P{OPTION}==null]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<detail>
+		<band height="654" splitType="Stretch">
+			<staticText>
+				<reportElement x="-1" y="0" width="205" height="20" uuid="af3a8ca7-6974-47e5-919f-350a511010cc"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Fonds National de Microfinance (FNM) /]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="146" width="208" height="20" uuid="b61b98cc-c70c-4a5d-a7e4-03698fe81d69"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Date et lieu de naissance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="290" width="521" height="35" uuid="65af7810-9321-4a41-9bcb-886d470d0d94"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Qui déclare être libre de tout engagement, a été établi le présent contrat. Il a été convenu ce qui suit :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="204" y="0" width="352" height="20" uuid="b74895bf-f732-4da6-a384-df80a35a6bb9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Ministère du Travail, de la Fonction Publique et des Affaires]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="342" width="93" height="20" uuid="84fdb462-7227-43d3-b983-767f32597112"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true" pdfFontName="Courier-Bold"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ARTICLE  1er ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="208" y="186" width="12" height="20" uuid="375163ee-9642-402b-8cd4-4d719bb7deaf"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="20" width="555" height="51" uuid="39aacefa-588a-49b4-b7aa-1135c3bae0c0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="none">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["sociales, dont le siège social sis à Houénoussou, 04 BP : 249, Tél : 21 30 05 11/ 21 30 05 18, représenté par "+$F{nomCivilite}+" domicilié et demeurant ès qualité audit siège ; ci-après désigné   « Employeur »,"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="106" width="205" height="20" uuid="eafbb5c4-8ab7-40e2-9a4a-6edee4ec1c2a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Noms]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="71" width="555" height="32" uuid="eec8b4c7-b5e7-4a49-8fa2-2e8131fabaab"/>
+				<textElement verticalAlignment="Top">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[D’une part,
+Et
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="126" width="205" height="20" uuid="32781617-ab00-4060-9a31-afb74fa5d5dc"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Prenoms]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="186" width="206" height="20" uuid="85ba63cb-30c8-4365-852a-587129bf056e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Résidant habituellement à]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="270" width="206" height="20" uuid="63238100-3bd7-482f-92b1-5eb9da5c9a6a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[D’autre part,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="166" width="208" height="20" uuid="9fb8c651-8817-43b4-bb0d-48cea97835ae"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Nationalité ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="342" width="460" height="20" uuid="fe4c4314-180d-4f4c-a7f7-1afb3cf8109b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[NATURE ET DUREE  DU CONTRAT ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="206" width="206" height="20" uuid="68f29136-77f6-4b07-8ff5-8e9eb36c6c3d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Situation de famille ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="247" width="206" height="20" uuid="efc8a29f-da12-4456-b50d-f26e9540edf3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Dénommé « travailleur »,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="226" width="206" height="20" uuid="dd09e963-c352-4b09-b6fb-2697f647a993"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Titres et Diplômes de recrutement ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="208" y="206" width="12" height="20" uuid="751ceae1-3d2f-4639-9906-04ed29632796"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="208" y="226" width="12" height="20" uuid="b9e81511-74a0-4798-a7a1-472bbb8cbc88"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="208" y="126" width="12" height="20" uuid="d31c114f-8489-4fa3-954d-ecc7028cfaf1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="208" y="166" width="12" height="20" uuid="9be48e4e-b1b7-4142-a781-aa222afcc1f4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="208" y="106" width="12" height="20" uuid="7d733947-7d17-4153-ae04-35d6edffe194"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="208" y="146" width="12" height="20" uuid="0efff903-eb3f-4270-b754-b8f76f8d9b50"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="220" y="166" width="336" height="20" uuid="e8c975c2-fc5f-4a74-91fc-435642d17986"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nationalite}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="220" y="146" width="336" height="20" uuid="2d3fc6b1-3a8e-48b4-a990-98c4cf3c0b4b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateLieuNaiss}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="220" y="106" width="336" height="20" uuid="f90edc6f-f93e-4083-9cb9-e6cdae574569"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="220" y="126" width="336" height="20" uuid="61eb9a6a-6153-441f-ab42-dfa21ee553d3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prenoms}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="220" y="186" width="336" height="20" uuid="1eaa25e2-8808-4139-80ff-10a1d8b54597"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{residence}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="220" y="206" width="336" height="20" uuid="d583cadf-f75c-4095-a945-74b88512b46f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{situationM}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="220" y="226" width="336" height="20" uuid="9fe1b615-093a-4ee3-b320-0ea3d3b83e19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{titre_recrutement}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="482" width="92" height="20" uuid="3f7298f6-1f63-4c35-903a-83f8d9dc71a6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true" pdfFontName="Courier-Bold"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ARTICLE  2 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="482" width="459" height="20" uuid="591c68c0-4d5e-42d3-a6a6-bd7d357300e3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[FONCTIONS  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="362" width="553" height="48" uuid="a2c7bfe2-38fe-49d6-a79a-cc90883cd2c2"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Le présent contrat conclu pour "+$F{typeContrat}+", prend effet pour compter du "+$F{dateDebut}+" , date de prise de service de "+$F{nom}+ " "+$F{prenoms}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="410" width="553" height="72" uuid="481238a1-9413-4173-a01a-7f58f9a10e2b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Ce contrat est régi par le Code du Travail, la Convention Collective Générale du Travail et les textes subséquents.
+Ce contrat ne confère en aucun cas à l’intéressé ni la qualité d’Agent Permanent de l’Etat, ni le droit d’être nommé dans les cadres réguliers et permanents de l’Administration béninoise.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="504" width="555" height="54" uuid="a0160989-0c3d-4240-96da-8901b3aa25a8"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Le travailleur exercera sous le contrôle du Directeur Général du Fonds National de la Micro finance. Ses fonctions sont détaillées dans un cahier de charges à lui transmis dès sa prise de fonction.
+Il s’engage à s’acquitter avec zèle et fidélité des travaux ou missions qui lui seront confiés.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="561" width="460" height="20" uuid="159c9eeb-926b-4832-b0d6-ce33d6fa0db7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[PERIODE D’ESSAI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="561" width="94" height="20" uuid="f8caf753-7a1c-48df-a038-cc396a81c445"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true" pdfFontName="Courier-Bold"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ARTICLE  3 : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="581" width="540" height="73" uuid="e425f647-ab42-43e2-8dc7-a55810b570af"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Les trois (03) premiers mois du contrat seront considérés comme période d’essai pendant laquelle le présent contrat de travail peut être résilié par l’une des parties. Le cas échéant, seule une indemnité compensatrice de congé au prorata du temps de présence sera à la charge de l’employeur.]]></text>
+			</staticText>
+		</band>
+		<band height="649">
+			<staticText>
+				<reportElement x="1" y="222" width="94" height="20" uuid="12a66d1f-fec7-47b3-a365-156a0ef41481"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true" pdfFontName="Courier-Bold"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ARTICLE  5 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="222" width="459" height="20" uuid="9781e58e-9aa6-425d-8784-a5b8709be79d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[REMUNERATION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="260" width="204" height="20" uuid="b083656e-4275-4fd4-ac2f-ddb618b625b8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[1.	Salaire de base ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="280" width="204" height="20" uuid="fc58e6b1-004f-429a-9450-cd1f17ab7b7a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[2.	Indemnité de résidence ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="300" width="204" height="20" uuid="6213ed35-3e3d-42f2-abb3-7c9c6825beab"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[3.	Indemnité de logement : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="320" width="204" height="20" uuid="c17048bb-b692-4060-9047-47ff7ec2a9e5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[4.	Indemnité de transport :  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="340" width="204" height="20" uuid="b9a1619f-ee7b-4d25-a1c5-a01d69b5c3af"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[5.	Prime de sujétion : ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="206" y="299" width="156" height="1" uuid="00491a91-271e-4c82-827e-0622818e9f05"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="205" y="319" width="156" height="1" uuid="19bb7188-f6f9-499f-a11a-f9a99d94da24"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="204" y="339" width="156" height="1" uuid="a0c5dd20-7105-4e47-a004-e2682570b554"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="204" y="360" width="156" height="1" uuid="c89513b6-4c3f-4ffc-9b10-155cbcaa7f66"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="206" y="279" width="156" height="1" uuid="c49e8fcd-43a1-442b-8eba-dee8ac91fc21"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="362" y="260" width="192" height="20" uuid="da23b61b-27b7-4874-b718-dc01039e2928"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salaireBase}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="362" y="279" width="192" height="20" uuid="9344bd5f-e078-4889-aa8b-225ff8805ee5"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{indemnite}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="362" y="300" width="192" height="20" uuid="6d38dd36-c522-4b0d-85a9-5366c81bc8f0"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{logement}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="362" y="319" width="192" height="20" uuid="a585a39f-07b7-4220-9b6a-83a2f49223d9"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{transport}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="362" y="341" width="192" height="20" uuid="c11138e6-2384-4c4c-8a52-07091435f369"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{primeSujetion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="0" width="94" height="20" uuid="66f93054-17c4-49e3-b18b-ce11d2f3f076"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true" pdfFontName="Courier-Bold"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ARTICLE  4 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="98" y="0" width="458" height="20" uuid="a4ca58a5-fb0b-42ff-87d7-bcf916f314bf"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[TRANSPORT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="20" width="543" height="202" uuid="9823606c-bf48-4fc8-b6b6-0e694615ace9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Dans les conditions prévues à l’article 174 du Code du travail, le travailleur a droit au transport gratuit pour lui, son conjoint et ses enfants mineurs vivant habituellement avec lui, pour rejoindre son poste d’affectation. En outre, il bénéficie des mêmes avantages pour retourner à sa résidence habituelle :
+-	en cas de résiliation, lorsque l’agent a acquis droit au congé ;
+-	en cas de résiliation du contrat due à un cas de force majeure ;
+
+Si le contrat est résilié pour faute lourde de l’Agent ou de son fait, le montant des frais de transport aller et retour incombant à l’employeur est proportionnel au temps de service du travailleur.
+
+Les frais de transport de l’agent et de sa famille, en cas de changement d’affectation sont à la charge de l’employeur.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="449" width="550" height="103" uuid="9fada10e-2708-45cd-86ce-ed99db9c61f4"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[L’employeur souscrira auprès d’une compagnie d’assurance, une police d’assurance maladie pour le remboursement des frais médicaux, pharmaceutiques, chirurgicaux et d’hospitalisation engagés par l’employé pour lui-même et ses ayants droits (conjoint  et un maximum de six (06) enfants mineurs).
+Au cas où une maladie entraînerait une interruption de travail, le salaire continuerait à être versé dans les conditions prévues par le code du Travail.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="428" width="459" height="20" uuid="a0fea13d-36dc-4bb2-add6-0e55dc78e554"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ASSURANCE MALADIE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="429" width="93" height="20" uuid="180400d5-fb4f-49c2-be20-1f91bf2847f4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true" pdfFontName="Courier-Bold"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ARTICLE  7 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="390" width="551" height="22" uuid="78eac5fd-7bc3-4b31-97cd-29eb8f9c8c3f"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[L’employeur s’engage à affilier l’Agent à la Caisse Nationale de Sécurité Sociale (C.N.S.S.)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="368" width="459" height="20" uuid="7e53e192-722a-44cf-96df-aa722b10d087"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[SECURITE SOCIALE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="368" width="95" height="20" uuid="0733abcc-a18a-4668-a9ce-ca6fe9abaf1b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true" pdfFontName="Courier-Bold"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ARTICLE  6 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="107" y="551" width="447" height="20" uuid="03aa0085-5c32-4c0d-974a-e30b1f5a2a16"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[CONGE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="551" width="105" height="20" uuid="8d297598-b0ad-409a-9f79-a8653bd06804"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true" pdfFontName="Courier-Bold"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ARTICLE  8 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="614" width="520" height="35" uuid="af68e087-ca90-4f03-9f90-95ac41ee4f7e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Le présent contrat pourra être rompu par chacune des parties conformément aux textes en vigueur.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="597" width="94" height="20" uuid="e325710d-6dd8-4bb7-8810-f8206724b7fc"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true" pdfFontName="Courier-Bold"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ARTICLE  9 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="98" y="597" width="453" height="20" uuid="02a5220c-3c4a-4469-a194-488248f08828"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[RESILIATION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="571" width="551" height="24" uuid="149524be-596f-47c0-8b9d-a2509a1c6b2c"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Le travailleur a droit à deux (02) jours ouvrables de congé par mois, soit 24 jours ouvrables.]]></text>
+			</staticText>
+		</band>
+		<band height="431">
+			<textField>
+				<reportElement x="308" y="225" width="243" height="20" uuid="ce997238-4c24-415f-98e6-4d0d1c10430e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateSignature}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="225" width="310" height="20" uuid="43dee321-fe04-40cf-aad1-9549b1ae13d1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Fait en cinq  (05) exemplaires originaux  à Cotonou, le ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="266" width="82" height="20" uuid="7f5400a1-b0bc-499c-b627-83846bcf5912"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[L’Employeur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="356" width="554" height="20" uuid="0e5310d9-0140-498a-9f99-db8788ce7211"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Visé et Enregistré sous le N°___/MTFPRAI/DGT/DRP/SRI  du………………….]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="266" width="94" height="20" uuid="9df65f46-c33e-4e59-9400-8043122941ec"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Le Contractant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="99" width="555" height="41" uuid="59856630-fa60-4cc2-b711-018efa7df0a3"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Le tribunal compétent pour connaître de tout différend lié à l’exécution du présent contrat est le tribunal du lieu de travail ou de la résidence habituelle du travailleur.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="163" width="554" height="62" uuid="25f593cf-6374-41dc-a153-49ecb365c126"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Pour tout ce qui n’est pas prévu au présent contrat, les parties s’en remettent aux dispositions légales, réglementaires ou conventionnelles en vigueur au Bénin.
+Le présent contrat, est dispensé de tout droit de timbre et d’enregistrement.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="79" width="97" height="20" uuid="47b94597-abd3-4ef5-a036-574c460c5452"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true" pdfFontName="Courier-Bold"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ARTICLE  11 :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="79" width="459" height="20" uuid="5753b7b6-be5d-4ce9-8ad3-6cc8f4c0f8e0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[REGLEMENT DES DIFFERENDS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="142" width="94" height="20" uuid="b69e8310-4cb6-456f-86c3-75d785cf4540"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true" pdfFontName="Courier-Bold"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ARTICLE  12 :       ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="142" width="460" height="20" uuid="725e7267-530e-4a84-940f-bd7dd86224af"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[DISPOSITION DIVERSES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="382" width="553" height="20" uuid="3e6c03c0-fbef-42cd-ac22-9260a960b71c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[La Directrice Générale du Travail]]></text>
+			</staticText>
+			<line>
+				<reportElement x="94" y="333" width="70" height="1" uuid="145dc98a-6a9d-4426-8e0f-04b59f3b18d2"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="386" y="332" width="70" height="1" uuid="7ccdc6ad-df2f-4ae7-b8cb-23f536182bb9"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="241" y="430" width="70" height="1" uuid="579925e9-937b-4256-9689-812cff684988"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="83" y="0" width="461" height="20" uuid="b521dacd-2ded-410f-b4d3-04f84baa670d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[OBLIGATION DE RESERVE ET DE NON CONCURRENCE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="555" height="58" uuid="144d8b27-a40d-4d60-a349-f11235bb21e7"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Le travailleur s’interdit de divulguer, pendant ou après son emploi, tout renseignement de nature confidentielle qu’il aura pu recueillir. Il s’engage à consacrer tout son temps dans les limites des règlements en vigueur au service de l’employeur.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="0" width="94" height="20" uuid="74be03ee-4efd-4ac3-9fb9-ac3a56bfd4bf"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isUnderline="true" pdfFontName="Courier-Bold"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[ARTICLE  10 :]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

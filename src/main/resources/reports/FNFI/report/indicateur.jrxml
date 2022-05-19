@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="caution" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="85e8c8ee-639c-48c8-85f4-9d34d5698692">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="date" class="java.util.Date">
+		<defaultValueExpression><![CDATA[new java.util.Date()]]></defaultValueExpression>
+	</parameter>
+	<field name="produit" class="java.lang.String"/>
+	<field name="pret" class="java.lang.String"/>
+	<field name="encours" class="java.lang.String"/>
+	<field name="nbre" class="java.lang.String"/>
+	<field name="pretHomme" class="java.lang.String"/>
+	<field name="encoursHomme" class="java.lang.String"/>
+	<field name="nbreHomme" class="java.lang.String"/>
+	<field name="pretFemme" class="java.lang.String"/>
+	<field name="encoursFemme" class="java.lang.String"/>
+	<field name="nbreFemme" class="java.lang.String"/>
+	<field name="pretMorale" class="java.lang.String"/>
+	<field name="encoursMorale" class="java.lang.String"/>
+	<field name="nbreMorale" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="49" width="555" height="30" uuid="17fe11ac-eab8-4902-89ca-44ca1e8cf339"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ENCOURS DES CREDITS PAR PRODUIT ET SEXE AU " + $P{date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="0" y="0" width="68" height="60" uuid="ef626644-a8d1-4a89-8d52-59ae8f5233c3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Produit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="68" y="0" width="57" height="60" uuid="30336677-f3d5-4cb5-927c-470499fb675b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Prêts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="125" y="0" width="60" height="60" uuid="945960ad-3618-4bca-a486-7ef85ca7cf59"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Encours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="185" y="0" width="30" height="60" uuid="7fe6fca3-e719-4f5d-86db-ab9e8ac9fc09"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Nbre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="215" y="0" width="340" height="20" uuid="1cfe698a-ec58-4480-a56f-006e68d5d680"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[SEXE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="215" y="40" width="40" height="20" uuid="3510cb38-5f6d-4877-9913-3662ed413fb4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Prêts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="255" y="40" width="40" height="20" uuid="c60b6cad-e8dd-4bbd-a7fd-71aca0b63d53"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Encours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="328" y="40" width="40" height="20" uuid="bfcf3def-f5fa-4dad-8be7-d07e3aa77b86"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Prêts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="368" y="40" width="40" height="20" uuid="87c5d3ed-89d2-4d44-8f0f-35df7d5d4118"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Encours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="408" y="40" width="33" height="20" uuid="8ed931bc-656f-4b32-94d2-5ec97ef7f667"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Nbre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="441" y="20" width="114" height="20" uuid="feded89d-c63f-4549-ac58-9b2e415e67dd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Morale]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="295" y="40" width="33" height="20" uuid="16237dde-b8f8-4855-a32e-b05e666d8106"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Nbre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="328" y="20" width="113" height="20" uuid="fe03713f-ab14-4d62-af24-c8c638b26b7a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Féminin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="215" y="20" width="113" height="20" uuid="ef26a93f-fa23-4033-99e0-e794f9e35217"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Masculin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="441" y="40" width="40" height="20" uuid="df1da4bb-111f-4c00-bfd4-936d10ece9f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Prêts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="521" y="40" width="34" height="20" uuid="1f3b507b-ab36-43ec-b69c-15f21fc02808"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Nbre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="481" y="40" width="40" height="20" uuid="4c87e3d9-3d45-4e69-8792-8449a5b50e3f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<text><![CDATA[Encours]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" mode="Opaque" x="0" y="0" width="68" height="17" uuid="67fefd47-10a2-40df-ab6f-8195a19d7f0f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{produit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Opaque" x="68" y="0" width="57" height="17" uuid="9dfc4a15-301c-476c-b474-59e77d725e8d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pret}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Opaque" x="215" y="0" width="40" height="17" uuid="9d29451a-a98b-4633-b80c-9703cf5d525b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pretHomme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Opaque" x="255" y="0" width="40" height="17" uuid="1e5eb195-c910-4cff-b043-3865e8e97f04"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encoursHomme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Opaque" x="368" y="0" width="40" height="17" uuid="a8ca78a8-e397-4388-b360-99c02e12d0de"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encoursFemme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Opaque" x="408" y="0" width="33" height="17" uuid="1be985d1-fbca-49b9-86e4-42874e8ab68d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nbreFemme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Opaque" x="441" y="0" width="40" height="17" uuid="2685e057-651b-4d1f-bd18-023885c37df9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pretMorale}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Opaque" x="481" y="0" width="40" height="17" uuid="d290be9f-3b01-4dfb-997e-84bf56308efc"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encoursMorale}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Opaque" x="521" y="0" width="34" height="17" uuid="2d631534-bfa3-4c38-acae-10614d8a6f8d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nbreMorale}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Opaque" x="328" y="0" width="40" height="17" uuid="649b7a77-2d4f-4196-9366-179a18faca82"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pretFemme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Opaque" x="295" y="0" width="33" height="17" uuid="28a4141a-7d46-457a-9ccb-fe6f4fe7def2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nbreHomme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Opaque" x="125" y="0" width="60" height="17" uuid="8406efcf-0500-40ad-94be-39779532e982"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encours}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Opaque" x="185" y="0" width="30" height="17" uuid="0545e592-58c7-45c2-9f82-2c078de08168"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nbre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="17">
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="0" y="0" width="68" height="17" isRemoveLineWhenBlank="true" uuid="e6448ad9-87c5-46d6-94db-2a842a1b1cdb">
+					<printWhenExpression><![CDATA[($F{produit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="125" y="0" width="60" height="17" isRemoveLineWhenBlank="true" uuid="80bc0d72-60d6-4bd9-bd1f-2fe52ddaf64f">
+					<printWhenExpression><![CDATA[($F{produit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encours}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="481" y="0" width="40" height="17" isRemoveLineWhenBlank="true" uuid="6186b027-50cd-4c0c-ad91-a2f0416c96c1">
+					<printWhenExpression><![CDATA[($F{produit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encoursMorale}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="441" y="0" width="40" height="17" isRemoveLineWhenBlank="true" uuid="0dc9af16-0e45-4610-bf1a-6c67ed649b5f">
+					<printWhenExpression><![CDATA[($F{produit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pretMorale}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="295" y="0" width="33" height="17" isRemoveLineWhenBlank="true" uuid="48da654e-7eea-4610-a7f3-7aafeab0e82d">
+					<printWhenExpression><![CDATA[($F{produit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nbreHomme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="408" y="0" width="33" height="17" isRemoveLineWhenBlank="true" uuid="8859b262-d87a-4f14-a82b-ae575bdc4b3e">
+					<printWhenExpression><![CDATA[($F{produit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nbreFemme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="68" y="0" width="57" height="17" isRemoveLineWhenBlank="true" uuid="823da120-cc94-455e-9fa7-4ce05a20e10d">
+					<printWhenExpression><![CDATA[($F{produit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pret}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="328" y="0" width="40" height="17" isRemoveLineWhenBlank="true" uuid="2f52ae2c-0adb-4d8f-8848-75969b0f4d2b">
+					<printWhenExpression><![CDATA[($F{produit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pretFemme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="255" y="0" width="40" height="17" isRemoveLineWhenBlank="true" uuid="33e8d239-1d06-4926-8ded-0c7b23eac6b3">
+					<printWhenExpression><![CDATA[($F{produit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encoursHomme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="368" y="0" width="40" height="17" isRemoveLineWhenBlank="true" uuid="fa83fc41-3f90-4603-a08d-a88da6a305b2">
+					<printWhenExpression><![CDATA[($F{produit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{encoursFemme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="185" y="0" width="30" height="17" isRemoveLineWhenBlank="true" uuid="a2d3beda-6ca4-4093-93c5-928c562e8489">
+					<printWhenExpression><![CDATA[($F{produit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nbre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="521" y="0" width="34" height="17" isRemoveLineWhenBlank="true" uuid="94a72f25-c119-456e-a7f9-56d294dcdd88">
+					<printWhenExpression><![CDATA[($F{produit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nbreMorale}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_CH" mode="Opaque" x="215" y="0" width="40" height="17" isRemoveLineWhenBlank="true" uuid="bcb4370d-d06f-429c-a6b4-eb8f82d0190f">
+					<printWhenExpression><![CDATA[($F{produit}.equalsIgnoreCase("TOTAL"))]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif" size="8" isBold="false"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pretHomme}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

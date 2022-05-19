@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ordreVirementPourMiseADisposition" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="5" bottomMargin="5" uuid="4f074df1-9159-4747-8831-8352570832dc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="NUMERO_COMPTE_BANQUE" class="java.lang.String"/>
+	<parameter name="INTITULE_COMPTE_BANQUE" class="java.lang.String"/>
+	<parameter name="NOM_BANQUE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION_LETTRE" class="java.lang.String"/>
+	<parameter name="MONTANT_EN_LETTRE" class="java.lang.String"/>
+	<field name="intitule" class="java.lang.String"/>
+	<field name="compte" class="java.lang.String"/>
+	<field name="banque" class="java.lang.String"/>
+	<field name="montant" class="java.lang.String"/>
+	<variable name="TOTAL_GROUPE" class="java.math.BigDecimal" resetType="Group" resetGroup="banqueGroupe" calculation="Sum">
+		<variableExpression><![CDATA[new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{montant}).toString())]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_GENERAL" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{montant}).toString())]]></variableExpression>
+	</variable>
+	<variable name="NUMERO_LIGNE" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{intitule}]]></variableExpression>
+	</variable>
+	<group name="banqueGroupe">
+		<groupExpression><![CDATA[$F{banque}]]></groupExpression>
+		<groupFooter>
+			<band height="15">
+				<textField>
+					<reportElement mode="Opaque" x="467" y="0" width="88" height="15" backcolor="#E5E5E5" uuid="4bd2d591-a0ce-4e6b-b35a-76a66ebe1b77"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<paragraph rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_GROUPE}))]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="467" height="15" backcolor="#E5E5E5" uuid="956928ed-0ab9-4081-8af7-7a8d9f22ea89"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<paragraph leftIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA["SOUS-TOTAL "+$F{banque}.toUpperCase()]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="294" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="71" uuid="d01ebe39-e950-4026-b4c4-d7673d216243"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="0" y="71" width="268" height="20" uuid="f59742a0-6bf4-4cd2-8b61-c803e4baa8d3">
+					<printWhenExpression><![CDATA[false]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["N°_________/18/PR/SEIFSI/FNFI"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="348" y="71" width="207" height="20" uuid="123fe1b3-077d-4d75-9b57-d64a9460d3a4"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Lomé, le "+$P{DATE_EDITION_LETTRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="348" y="109" width="207" height="18" uuid="1e1cbb13-4c1e-4563-b5dc-f42ffdd61e6b"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Monsieur le Directeur Général "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="348" y="127" width="207" height="20" uuid="f5727fef-b7c9-438f-8190-a32633019acf"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["de "+$P{NOM_BANQUE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="171" width="47" height="15" uuid="81c1288e-c8a8-439e-a760-32204542c348"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Objet : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="210" width="268" height="19" uuid="834c81fa-bcae-4cc3-843f-8c131aab9b39"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Monsieur le Directeur Général,"]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="0" y="229" width="555" height="65" uuid="6ce0a891-5466-4887-b46a-4bb8376fc97e"/>
+				<hc:html xmlns:hc="http://jasperreports.sourceforge.net/htmlcomponent" xsi:schemaLocation="http://jasperreports.sourceforge.net/htmlcomponent http://jasperreports.sourceforge.net/xsd/htmlcomponent.xsd" scaleType="Clip" horizontalAlign="Left" verticalAlign="Top">
+					<hc:htmlContentExpression><![CDATA["<div style='height:500px;font-size:10px;width:420px'>Par le débit de notre compte N° <b>"+$P{NUMERO_COMPTE_BANQUE}+"</b> intitulé <span style='font-size:9px;font-weight:bold;'>"+$P{INTITULE_COMPTE_BANQUE}+" </span>                   , veuillez procéder aux virements suivants vers les comptes des Prestataires de Services Financiers (PSF), partenaires du FNFI, au motif : <span style='font-size:9px;font-weight:bold;'>mises à disposition de fonds de crédit</span>. La présente lettre tient lieu de confirmation.</div>"]]></hc:htmlContentExpression>
+				</hc:html>
+			</componentElement>
+			<textField>
+				<reportElement x="349" y="91" width="207" height="18" uuid="8ba479fd-621e-4b12-b8b0-38240ce408d2"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["A"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="348" y="151" width="207" height="20" uuid="d821b8b5-1b19-422d-a58f-0f3510fc9207"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["LOME"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="47" y="171" width="130" height="28" uuid="2ce2ba1f-d456-4b74-b70b-aa900641f048"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Ordre de virements pour mises à disposition"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="14" y="15" width="257" height="15" backcolor="#E5E5E5" uuid="de8058b1-70f4-437b-8eeb-88ccfbcee767"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Intitulé du Compte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="271" y="15" width="102" height="15" backcolor="#E5E5E5" uuid="d676420a-bb9b-4378-89b0-8ac9e5b53367"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N° du Compte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="373" y="15" width="94" height="15" backcolor="#E5E5E5" uuid="36df3022-b526-4e51-b152-ca38a12f2892"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Banque de domiciliation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="467" y="0" width="88" height="30" backcolor="#E5E5E5" uuid="4c2a879b-520c-47d9-952e-134e9ae0889a"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Montant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="14" y="0" width="453" height="15" backcolor="#E5E5E5" uuid="5440348a-78cc-41b7-862b-6a080956b10f"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Bénéficiaire]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="14" height="30" backcolor="#E5E5E5" uuid="db4c48eb-2110-4c84-b092-00dcf81dc13b"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement x="14" y="0" width="257" height="15" uuid="f4ab5968-88f9-4eca-bb14-5fdf7944f405"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{intitule}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="0" width="102" height="15" uuid="cf71608c-923d-40be-9900-088379096d4a"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{compte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="373" y="0" width="94" height="15" uuid="5b639aae-8084-48aa-8f26-71c5bd48b03a"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{banque}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="467" y="0" width="88" height="15" uuid="49cd6124-19fa-44ad-b476-8eff2ab33931"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="14" height="15" uuid="8898f753-7aa4-4674-97e4-23d3b7cd3f70"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{NUMERO_LIGNE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="177" height="15" uuid="82bd2377-880d-4a1c-beb0-567e50dca6b4"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Imprimer le "+$P{DATE_EDITION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="246" y="0" width="102" height="15" uuid="801a3f48-674d-4d44-9fb5-68a19ebf1b5f"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Microfina++"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="448" y="0" width="80" height="15" uuid="0a93d226-32d8-4882-84f4-2ffd3addd834"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="528" y="0" width="28" height="15" uuid="7d80b416-75b0-4a59-bcab-8939a360aa7c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="188" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="467" height="15" backcolor="#E5E5E5" uuid="b5f647ca-41d2-4551-9950-e7df7e752e09"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAL GENERAL"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="467" y="0" width="88" height="15" backcolor="#E5E5E5" uuid="341bac3e-43f7-45d6-a1df-89e7a25b5ffd"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_GENERAL}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="225" y="15" width="100" height="15" uuid="5f904e28-18f7-4b93-8b09-aaad84a381bb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["En lettres : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="30" width="556" height="41" uuid="a7dc7571-69ce-4926-8190-0cffca1f23b1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MONTANT_EN_LETTRE}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="71" width="556" height="15" uuid="6569d87c-4eb6-4527-9b49-8453b23a9f3c"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Recevez, Monsieur le Directeur Général, nos cordiales salutations."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="101" width="131" height="46" uuid="d442936e-3394-47b5-8c42-f274e9a84bb0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Le Directeur Adminstratif et Comptable"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="168" width="146" height="20" uuid="ba9fc4a4-b60b-43de-ac0e-671058729f75"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Akossiwa Novignon VIHO"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="436" y="101" width="120" height="20" uuid="2124b54f-f95f-409a-a1c4-e228e871a1e4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Le Directeur Général"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="456" y="168" width="100" height="20" uuid="70c8d32c-98c6-4e11-bcad-c20a699ca7e1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Manawe GNABA"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="408" y="86" width="120" height="15" uuid="f1b0d142-6441-4418-b43f-16f43a5863cd">
+					<printWhenExpression><![CDATA[false]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Lomé, le "]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etats_global_salaires" language="groovy" pageWidth="1150" pageHeight="595" orientation="Landscape" columnWidth="1110" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="85e8c8ee-639c-48c8-85f4-9d34d5698692">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5"/>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+			<rightPen lineWidth="0.5"/>
+		</box>
+	</style>
+	<style name="table_NEW" mode="Opaque" backcolor="#FFFFFF" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.0"/>
+		</box>
+	</style>
+	<style name="table_NEW_1" mode="Opaque" backcolor="#FFFFFF" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.0"/>
+		</box>
+	</style>
+	<style name="table_NEW_1_1" mode="Opaque" backcolor="#FFFFFF" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.0"/>
+			<rightPen lineWidth="0.0"/>
+		</box>
+	</style>
+	<parameter name="nbre_employe" class="java.lang.Integer"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="salaire_base_p" class="java.lang.String"/>
+	<parameter name="sursalaire_p" class="java.lang.String"/>
+	<parameter name="anciennete_p" class="java.lang.String"/>
+	<parameter name="ind_fonction_p" class="java.lang.String"/>
+	<parameter name="ind_transport_p" class="java.lang.String"/>
+	<parameter name="ind_logement_p" class="java.lang.String"/>
+	<parameter name="autres_gains_p" class="java.lang.String"/>
+	<parameter name="salaire_brut_p" class="java.lang.String"/>
+	<parameter name="cnss_ouv_p" class="java.lang.String"/>
+	<parameter name="irpp_p" class="java.lang.String"/>
+	<parameter name="tcs_p" class="java.lang.String"/>
+	<parameter name="autres_retenues_p" class="java.lang.String"/>
+	<parameter name="cnss_patr_p" class="java.lang.String"/>
+	<parameter name="net_a_payer_p" class="java.lang.String"/>
+	<parameter name="sessionP" class="java.lang.String"/>
+	<parameter name="paradatedebut" class="java.lang.String"/>
+	<parameter name="paradatefin" class="java.lang.String"/>
+	<parameter name="NOM_SIGNATAIRE_1" class="java.lang.String"/>
+	<parameter name="NOM_SIGNATAIRE_2" class="java.lang.String"/>
+	<parameter name="NOM_SIGNATAIRE_3" class="java.lang.String"/>
+	<parameter name="NOM_SIGNATAIRE_4" class="java.lang.String"/>
+	<parameter name="POSTE_SIGNATAIRE_1" class="java.lang.String"/>
+	<parameter name="POSTE_SIGNATAIRE_2" class="java.lang.String"/>
+	<parameter name="POSTE_SIGNATAIRE_3" class="java.lang.String"/>
+	<parameter name="POSTE_SIGNATAIRE_4" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Microfina++"]]></defaultValueExpression>
+	</parameter>
+	<field name="matricule" class="java.lang.String"/>
+	<field name="nom_prenoms" class="java.lang.String"/>
+	<field name="salaire_base" class="java.lang.String"/>
+	<field name="sursalaire" class="java.lang.String"/>
+	<field name="anciennete" class="java.lang.String"/>
+	<field name="ind_fonction" class="java.lang.String"/>
+	<field name="ind_transport" class="java.lang.String"/>
+	<field name="ind_logement" class="java.lang.String"/>
+	<field name="autres_gains" class="java.lang.String"/>
+	<field name="salaire_brut" class="java.lang.String"/>
+	<field name="cnss_ouv" class="java.lang.String"/>
+	<field name="irpp" class="java.lang.String"/>
+	<field name="tcs" class="java.lang.String"/>
+	<field name="autres_retenues" class="java.lang.String"/>
+	<field name="cnss_patr" class="java.lang.String"/>
+	<field name="net_a_payer" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="144" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="118" width="1110" height="13" uuid="269842c5-33c2-4a56-a7dd-3d6645ea851f"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sessionP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="131" width="1110" height="13" uuid="a5632dc3-1987-462a-b2c3-c542ba21fa17"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Période: "+$P{paradatedebut}+" AU "+$P{paradatefin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="98" width="1110" height="20" uuid="b7eb374f-16b3-449b-941a-3f6154dc1642"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ETAT GLOBAL DES SALAIRES"]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="153" y="0" width="802" height="87" uuid="6c445979-2553-4353-8ab0-e6d90a37b446"/>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententepaysage.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="50">
+			<subreport>
+				<reportElement x="274" y="0" width="555" height="50" uuid="73402088-cf63-410e-8db5-e226c49fd99a"/>
+				<subreportParameter name="LIBELLE_APPLICATION"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pagePaysage.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="153">
+			<subreport>
+				<reportElement x="153" y="0" width="802" height="127" uuid="b8bdf74f-fd28-4194-876a-ad12c67ab645"/>
+				<subreportParameter name="NOM_SIGNATAIRE_1">
+					<subreportParameterExpression><![CDATA[$P{NOM_SIGNATAIRE_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NOM_SIGNATAIRE_2">
+					<subreportParameterExpression><![CDATA[$P{NOM_SIGNATAIRE_2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NOM_SIGNATAIRE_3">
+					<subreportParameterExpression><![CDATA[$P{NOM_SIGNATAIRE_3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NOM_SIGNATAIRE_4">
+					<subreportParameterExpression><![CDATA[$P{NOM_SIGNATAIRE_4}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="POSTE_SIGNATAIRE_1">
+					<subreportParameterExpression><![CDATA[$P{POSTE_SIGNATAIRE_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="POSTE_SIGNATAIRE_2">
+					<subreportParameterExpression><![CDATA[$P{POSTE_SIGNATAIRE_2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="POSTE_SIGNATAIRE_3">
+					<subreportParameterExpression><![CDATA[$P{POSTE_SIGNATAIRE_3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="POSTE_SIGNATAIRE_4">
+					<subreportParameterExpression><![CDATA[$P{POSTE_SIGNATAIRE_4}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "signatairesPaysage.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="990" y="133" width="80" height="20" uuid="d78e8e83-8474-4a80-bf86-01da3c5f13df"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="1070" y="133" width="40" height="20" uuid="c56aae6b-5e2b-494d-8772-076c46c58fa3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="133" width="422" height="20" uuid="7379e1b2-92b9-48d5-a80b-a09f57248f84"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+</jasperReport>

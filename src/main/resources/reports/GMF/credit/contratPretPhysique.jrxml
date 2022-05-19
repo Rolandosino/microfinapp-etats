@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contratPretPhysique" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="10" bottomMargin="4" uuid="30ea0dab-4504-47c7-b5c0-16f5e73402f3">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="247"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="paratitre" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="NUMERO_CREDIT" class="java.lang.String"/>
+	<parameter name="GARANTIE_NON_FINANCIERE" class="java.lang.String"/>
+	<parameter name="dateImpression" class="java.lang.String"/>
+	<parameter name="adresse_client" class="java.lang.String"/>
+	<parameter name="ENTETE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PIED_DE_PAGE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pageportrait.jasper"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dateJour" class="java.util.Date">
+		<defaultValueExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format(new Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATEDERNIERECHEANCE" class="java.lang.String"/>
+	<parameter name="INSTITUTION" class="java.lang.String"/>
+	<parameter name="montantCaution" class="java.lang.String"/>
+	<parameter name="tauxCaution" class="java.lang.String"/>
+	<parameter name="mtnEtudeETDossier" class="java.lang.String"/>
+	<parameter name="tauxEtudeETDossier" class="java.lang.String"/>
+	<field name="nomMembre" class="java.lang.String"/>
+	<field name="objetCredit" class="java.lang.String"/>
+	<field name="montantPret" class="java.lang.String"/>
+	<field name="dureeCredit" class="java.lang.String"/>
+	<field name="montantGarantie" class="java.lang.String"/>
+	<field name="localite" class="java.lang.String"/>
+	<field name="interetMois" class="java.lang.String"/>
+	<field name="numContrat" class="java.lang.String"/>
+	<field name="adresse_client" class="java.lang.String"/>
+	<field name="NUMPIECE" class="java.lang.String"/>
+	<field name="dateExpirationPiece" class="java.lang.String"/>
+	<field name="montantInteret" class="java.lang.String"/>
+	<field name="DUREEDIFFEREE" class="java.lang.String"/>
+	<field name="typeGarantie" class="java.lang.String"/>
+	<field name="tauxGarantie" class="java.lang.String"/>
+	<field name="tranche" class="java.lang.String"/>
+	<field name="TOTAL_REMBOURSEMENT" class="java.lang.String"/>
+	<field name="dateJour" class="java.lang.String"/>
+	<field name="numMembre" class="java.lang.String"/>
+	<field name="sexe" class="java.lang.String"/>
+	<field name="datenaissance" class="java.lang.String"/>
+	<field name="lieunaissance" class="java.lang.String"/>
+	<field name="libelleProfession" class="java.lang.String"/>
+	<field name="idTypePiece" class="java.lang.String"/>
+	<field name="montantEnLettre" class="java.lang.String"/>
+	<field name="field1" class="java.lang.String"/>
+	<field name="tauxFraisDossierSuivi" class="java.lang.String"/>
+	<field name="fraisDossier" class="java.lang.String"/>
+	<field name="mtEcheance" class="java.lang.String"/>
+	<field name="dateEcheance1" class="java.lang.String"/>
+	<field name="modeCalcul" class="java.lang.String"/>
+	<field name="tauxPenalite" class="java.lang.String"/>
+	<field name="field2" class="java.lang.String"/>
+	<field name="INSTITUTION" class="java.lang.String"/>
+	<field name="dateDeblocage" class="java.lang.String"/>
+	<field name="compte" class="java.lang.String"/>
+	<field name="garantieEnlettre" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="74" splitType="Stretch">
+			<subreport>
+				<reportElement x="1" y="0" width="553" height="48" uuid="647811a6-f693-4794-84cc-26beb8d752ad"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{ENTETE}]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="174" y="53" width="214" height="20" uuid="0088e646-d4a0-44ed-9b35-7c2946a14807"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CONTRAT DE PRET "]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="693" splitType="Stretch">
+			<staticText>
+				<reportElement x="8" y="20" width="537" height="15" uuid="a02304f6-f3d5-420e-8bcb-e3d4802625d2"/>
+				<textElement>
+					<font size="10"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[...........................................................................................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="4" width="539" height="15" uuid="d6df59c1-2c9c-4b27-b5df-7536e88a0c37"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Entre la Mutuelle d’épargne et de crédit des femmes (MECREF) ici représentée par]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="9" y="183" width="97" height="15" uuid="66a08406-104f-4e0e-96e6-37cd84331c32"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["La durée du prêt :"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="7" y="306" width="535" height="15" uuid="66a57db0-5a74-4fb5-8555-2811eafcc289"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["En garantie de ce prêt, je donne en nantissement le montant de : "+$F{montantGarantie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="9" y="379" width="544" height="15" uuid="290ef792-247d-476b-99e9-c4404aaef5e6"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["................................................................................................................................................................................... "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="423" width="539" height="15" uuid="799eabb2-7fb4-468b-988e-a44710b49dfb"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[CONDITIONS GENERALES DU PRËT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="351" width="551" height="28" uuid="50d24fc3-fb88-4fb9-bb49-f6352b6f0bcd"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[En plus de l’épargne nantie, nous accordons à la MECREF les pleins droits sur les biens suivants  jusqu’au remboursement total du prêt rééchelonné qui m’est consenti (description détaillée dans les  documents de garantie annexés) :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="35" width="535" height="15" uuid="32d00e7b-763c-4171-9608-50576d1e4f31"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Et "+$F{nomMembre}+" (Emprunteur)"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="9" y="50" width="54" height="15" uuid="aee95e02-98f7-4363-b0a1-2ecf16927a83"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Adresse : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="64" width="96" height="15" uuid="c450e94e-1d6b-4b95-83f0-f0cfef89ad0c"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Numéro de pièce : "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="228" width="536" height="15" uuid="8143ce20-ffc7-4841-8e10-c79c47597c65"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Modalités de paiement en vertu du rééchelonnement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="291" width="235" height="15" uuid="31e2d71a-c118-4737-869f-15fbf6fef85e"/>
+				<textElement>
+					<font size="10" isBold="true" isUnderline="false" pdfFontName="Times-Roman"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Garanties :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="79" width="96" height="15" uuid="188baf34-4a83-4836-8148-deb98c312bdb"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nous soussignée, "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="109" width="398" height="15" uuid="e4d96b2c-c04b-4606-b08a-ae4bd43cbff3"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Reconnais avoir emprunté et reçu de la MECREF de Niamey un prêt d’un montant de :"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="12" y="243" width="136" height="15" uuid="b2f7ceb2-e1c2-412a-b71c-cb5be53b2d80"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Les paiements seront frais :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="106" y="79" width="439" height="15" uuid="77a95ea1-a9aa-4e25-8f15-d42d0b19eb52"/>
+				<textElement markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["..............................................................................................................................................."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="64" width="439" height="15" uuid="3a7eb52d-85e3-4eab-b0ed-b7521df007b6"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NUMPIECE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="63" y="50" width="482" height="15" uuid="a6aa277a-b6ab-4b3c-935a-0a2a63a8bbea"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{adresse_client}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="406" y="110" width="139" height="15" uuid="b6968e61-4675-4516-8fda-25ab21df021c"/>
+				<textElement markup="none">
+					<font size="10" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantPret}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="11" y="125" width="539" height="15" uuid="c09575c8-8d59-4239-a59b-e852ff81b6fe"/>
+				<textElement markup="none">
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["("+$F{montantEnLettre}+") F CFA."]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="106" y="184" width="152" height="15" uuid="2bfd019f-e6ff-4652-94e0-6f561aabc544"/>
+				<textElement markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dureeCredit}+" mois."]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="9" y="321" width="492" height="15" uuid="6c7015df-39b9-4f3d-b812-59085742641e"/>
+				<textElement markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["("+$F{garantieEnlettre}+")"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="9" y="168" width="214" height="15" uuid="9bf75b64-7957-451b-a774-d1dc8aee3047"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Montant à rembourser à chaque échéances : "]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="223" y="168" width="322" height="15" uuid="6266e0e5-a633-4589-a9c1-66e87210efbe"/>
+				<textElement markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mtEcheance}+" FCFA + intérêt."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="10" y="140" width="535" height="28" uuid="94f0ba4d-82b5-4c23-a4a8-7ea19a81653b"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Nous nous engageons à rembourser à la MECREF cette somme plus les intérêts calculés sur le solde dû au taux de 20℅ annuel selon les modalités suivantes :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="440" width="547" height="15" uuid="50fca251-244f-4e9c-b6d2-3880e91d4adb"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[1 Les remboursements doivent être effectues le 5 de chaque mois. Aucun retard n’est accepté.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="94" width="28" height="15" uuid="27aac9d8-045b-42a3-b780-a977f46333bf"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pour "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="38" y="94" width="507" height="15" uuid="0e6ffde8-87ab-4b5f-91e4-ba8cee545701"/>
+				<textElement markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["..........................................................................................................................................................................."]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="381" y="183" width="164" height="17" uuid="61ea42e9-161f-4b38-a4b6-c479eb700650"/>
+				<textElement markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tranche}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="258" y="184" width="123" height="15" uuid="70f091a2-71fd-4f31-83f9-e0126c80c353"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nombre d'échéances : "]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="105" y="199" width="118" height="15" uuid="af011e02-f805-4a09-8208-c6e138bd80bc"/>
+				<textElement markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateDeblocage}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="8" y="198" width="97" height="15" uuid="410c7030-00bf-413c-8325-0efb676f610d"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Date de déblocage :"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="223" y="199" width="127" height="15" uuid="0f2d7c58-fd12-4a56-a088-07950cdc6d8e"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Date de 1ére échéance :"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="350" y="199" width="192" height="15" uuid="163bf40a-e27c-4b9a-b865-e61638ee8160"/>
+				<textElement markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateEcheance1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="106" y="213" width="320" height="15" uuid="a8a61c53-2124-43c7-99d0-d3ff870efb55"/>
+				<textElement markup="none">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATEDERNIERECHEANCE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="9" y="213" width="97" height="15" uuid="37b1d83f-f0cd-48b8-80ce-e80ff15ccc00"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["échéance finale :"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="21" y="258" width="121" height="15" uuid="e7a15134-c075-46fe-adb3-1b485d539803"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[ Par versement]]></text>
+			</staticText>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="183" y="258" width="357" height="15" uuid="53fc6c9f-1e81-4fa4-a156-44fafbb1ef0a"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["par prélèvement automatique du compte n° "+$F{compte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="22" y="275" width="517" height="15" uuid="96950762-4bb1-47d0-b2ee-6a248be481c8"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" Autres modalités (spécifier) ....................................................................................................................... "]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToTallestObject" x="10" y="336" width="529" height="15" uuid="abc174da-5718-40d8-be24-3322def72e8d"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["A geler de mon compte dépôts n° "+$F{compte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="9" y="394" width="544" height="15" uuid="ef872d19-3b67-4fe6-ada1-8a49117e0335"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["................................................................................................................................................................................... "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="9" y="408" width="544" height="15" uuid="a28490c4-9373-4a2d-b2b0-4e103dcf0b57"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["................................................................................................................................................................................... "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="454" width="547" height="29" uuid="e64e4a3b-dda5-4a10-959b-5106045fe1f4"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[2 Les intérêts sont calcules selon le taux d’intérêt indiqué au recto de ce contrat. Il est appliqué sur le solde dégressif du montant reste dû.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="483" width="547" height="15" uuid="43ebf4af-10b0-45f0-9682-16cf56caba37"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[3 Le montant d’épargne nantie est bloqué pour toute la durée du prêt.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="498" width="547" height="43" uuid="39dd186a-67f3-42ec-a65b-403e5980a4fe"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[4 Tout défaut d’effectuer un remboursement à la date prévue à l’échéancier est considéré comme une faute grave et soumis à des sanctions de sévérité progressive, pouvant aller jusqu’à l’affichage du nom de l’emprunteur en défaut de remboursement dans la caisse et, éventuellement, à des poursuites judiciaires]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="541" width="547" height="15" uuid="721d0ee0-3cf0-4516-b37f-46e6bb79037e"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[5 La pénalité pour les retards de remboursement est de 5℅ par mois  sur le montant en souffrance.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="555" width="547" height="52" uuid="8f6ebb5a-da96-4063-bba3-0d66a630a15b"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[6 Si, après 45 jours de retard dans l’échéancier de remboursements et après avoir reçu les avis et les visites de la MECREF, l’emprunteuse refuse toujours de payer, le montant total du prêt est exigible. La MECREF est alors autorisée d’office à réaliser toutes les garanties prises afin d’entrer dans ses fonds jusqu’à l’épuisement de la dette, y compris les intérêts et les pénalités.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="607" width="547" height="26" uuid="d0980ff3-2ac3-4cb1-a613-b30502fcced2"/>
+				<textElement markup="none">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[7 Le prêt n’est considère remboursé que lorsque les créances ont été remboursées au complet avec les intérêts dus et les pénalités, s’il y a lieu.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="248" y="651" width="293" height="15" uuid="57494c16-0022-40ea-a75c-fa0c094c7fda"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" Fait à Niamey, le "+(new SimpleDateFormat("dd/MM/yyyy").format(new Date()))]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="170" y="258" width="9" height="15" uuid="fc0d61cb-43df-4adf-a673-b5aabf90fe8b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="12" y="258" width="9" height="15" uuid="817a3a88-5f17-4802-a1a0-26eaaa419c64"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="12" y="274" width="9" height="15" uuid="4685ba41-65f6-4d79-a1f2-61d99c366980"/>
+			</rectangle>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30">
+			<subreport>
+				<reportElement x="0" y="0" width="552" height="30" uuid="9c48db17-5d14-48cc-a8f7-9404ebb5c247"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{PIED_DE_PAGE}]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

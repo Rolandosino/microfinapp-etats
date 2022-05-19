@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="demandeConges" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f344339e-0481-42fb-9e6b-c6868d480cb0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="311"/>
+	<style name="table_CH" mode="Opaque" forecolor="#000000" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" forecolor="#000000" backcolor="#FFFFFF" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="nomPrenoms" class="java.lang.String"/>
+	<parameter name="posteEmploye" class="java.lang.String"/>
+	<parameter name="dateDebut" class="java.lang.String"/>
+	<parameter name="dateFin" class="java.lang.String"/>
+	<parameter name="nbreJours" class="java.lang.String"/>
+	<parameter name="dateReprise" class="java.lang.String"/>
+	<parameter name="commentaires" class="java.lang.String"/>
+	<parameter name="congesRestants" class="java.lang.String"/>
+	<parameter name="soldeDisponible" class="java.lang.String"/>
+	<parameter name="congesConsommes" class="java.lang.String"/>
+	<parameter name="dateEmission" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="typeConges" class="java.lang.String"/>
+	<parameter name="joursAccordes" class="java.lang.String"/>
+	<parameter name="dateFinAccorde" class="java.lang.String"/>
+	<parameter name="accordAbsence" class="java.lang.String"/>
+	<parameter name="congesDus" class="java.lang.String"/>
+	<title>
+		<band height="748" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="79" uuid="589220cb-0f1f-48ab-ab8b-d287349ccda0">
+					<printWhenExpression><![CDATA[$P{OPTION}.equals("Normal")||$P{OPTION}==null]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement style="table_CH" x="0" y="90" width="555" height="35" backcolor="#CCCCCC" uuid="d9232289-ebc2-4beb-b432-e7f0474917d8"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Demande de congés]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="134" width="114" height="20" uuid="3c33c975-8c66-45c9-aa60-0746e4b24ae7"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Nom de l'employé :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="154" width="114" height="20" uuid="6953acf2-97bd-4ace-872d-c857d4ecaacf"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Titre :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="174" width="114" height="20" uuid="644ca1e2-44ff-43f3-9dd6-21740ddbda7e"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Type de congé :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="194" width="144" height="20" uuid="db596750-c5be-4640-bed7-1465f9b2b8e3"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Congés demandés du :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="214" width="114" height="20" uuid="7dc98393-2e1a-4bcb-82c4-772cffff759d"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Nombre de jours :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="234" width="166" height="20" uuid="83198135-7781-48d2-b652-9c9ebcaf9817"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Date de reprise de service :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="115" y="154" width="414" height="1" uuid="e1cc467c-de2c-4ed3-82d0-a6e05d391e90"/>
+			</line>
+			<line>
+				<reportElement x="115" y="174" width="414" height="1" uuid="adc4c677-1ecd-4b0a-b1c7-41ea031c55c2"/>
+			</line>
+			<line>
+				<reportElement x="136" y="214" width="84" height="1" uuid="748cbf1d-e55c-434e-a84b-b4fb88e4e4f0"/>
+			</line>
+			<staticText>
+				<reportElement x="145" y="175" width="101" height="20" uuid="27cf79ce-8e8c-43c6-a4a7-033be48f5109"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Congés maladie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="295" y="174" width="107" height="20" uuid="2544fc35-2e7c-40bf-a535-6be95cf0f472"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Congés annuels]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="447" y="174" width="82" height="20" uuid="af9a266b-b9cf-4325-b666-48c621e70e3a"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Autres]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="121" y="180" width="15" height="15" uuid="486e8780-2025-40c4-9bf6-77cb1a316fc4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="271" y="179" width="15" height="15" uuid="defac6f2-e23f-409f-98b5-8a58014fbaf5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="426" y="179" width="15" height="15" uuid="6e8bef03-fcae-44ee-94fd-fe907b959ed4"/>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement x="115" y="135" width="414" height="20" uuid="b9ae8c43-3e20-4bce-a7f8-1f55611e4943"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nomPrenoms}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="115" y="155" width="414" height="20" uuid="503b8377-ca38-431c-8f36-bb844079b83c"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{posteEmploye}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="145" y="195" width="75" height="20" uuid="fcd7470a-64c1-4378-8722-d8ebaad6bf9d"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateDebut}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="246" y="215" width="75" height="1" uuid="4832a69c-16ea-4390-9e65-37b68c878cd0"/>
+			</line>
+			<staticText>
+				<reportElement x="221" y="193" width="25" height="23" uuid="e708376c-9910-4976-90ec-3424a534572a"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[au]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="246" y="195" width="75" height="20" uuid="33ff7d75-a856-4c28-824d-64dfd9863417"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateFin}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="167" y="234" width="100" height="20" uuid="582b8f01-6b83-415b-b673-0e747310bf61"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateReprise}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="115" y="215" width="152" height="20" uuid="ecce5dd6-68e0-4a88-8530-12c436ba6046"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nbreJours}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="365" y="254" width="191" height="20" uuid="d4464466-82b8-49b6-aa79-c82b8db1c4db"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Date et Signature de l'employé]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="274" width="156" height="20" uuid="ad164747-4e0f-4ff0-baaa-10d676381d07"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12" isUnderline="true"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[AVIS DU SUPERVISEUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="306" width="82" height="20" uuid="65a75cf8-70f9-4228-b903-1bf4cf0a0e8e"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Non objection]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="219" y="306" width="82" height="20" uuid="14f98790-0d84-4306-86ca-5336449aa7fc"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Objection]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="334" width="100" height="20" uuid="733f25d5-bc2a-4acc-bc1b-98ba5a56ecfb"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Commentaires :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="101" y="351" width="428" height="1" uuid="3cd7e745-2b2b-4b23-a79a-fb126137bf4f"/>
+			</line>
+			<line>
+				<reportElement x="101" y="367" width="428" height="1" uuid="0ad53b5f-54ac-48c2-9279-3af08ea5f2e2"/>
+			</line>
+			<rectangle>
+				<reportElement x="204" y="311" width="15" height="15" uuid="4f29a45c-244f-4918-8e76-06620b492b62"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="32" y="311" width="15" height="15" uuid="6e7278c9-c235-4409-8680-3244ceafe2a7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="365" y="377" width="191" height="20" uuid="bb9922d8-2506-466e-81dd-efe65346a0f1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Date et Signature du superviseur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="406" width="203" height="20" uuid="999ed3e8-cf52-4b37-b2e6-d459abaed8c9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isUnderline="true"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[A REMPLIR PAR LE DAF DU FNFI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="429" width="166" height="20" uuid="9bc9af8c-ed4c-4551-9bfb-d95c8b017421"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Droit de congés jusqu'au :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="449" width="166" height="20" uuid="6b14ae8c-0480-4620-a602-7632cf415a05"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Nombre de jours déjà pris : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="469" width="245" height="20" uuid="0e64aa0c-1686-4099-b492-10997e1ee40e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Solde disponible à la date de la demande : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="489" width="135" height="20" uuid="f288db6f-1e24-4d53-860d-1cb58a7f3a1f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Congés restant dû :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="468" y="429" width="42" height="20" uuid="c0dde4b9-a361-498d-ac9e-be9eb1534380"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Jours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="468" y="449" width="42" height="20" uuid="b1751f75-c958-479a-a8cd-b799c3bc24df"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Jours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="468" y="469" width="42" height="20" uuid="86a2539c-99ea-40be-b8cf-c42de23160eb"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Jours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="468" y="489" width="42" height="20" uuid="da7f8234-047a-4c88-8dc6-d447cc6da0d1"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Jours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="365" y="523" width="145" height="20" uuid="3ab741f8-4f70-4794-8ae6-aeb773352f97"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Signature du DAF :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="562" width="54" height="20" uuid="123ecf4d-34ce-458b-bc5e-185f7dae8768"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="605" width="555" height="47" uuid="2c514d48-37d5-42bc-93c9-9db0f4630d77"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA["L'employé(e) a droit à 2.5 jours de congés par mois de service à prendre après un (an) de \ntravail. Selon les circonstances les congés peuvent être pris en plusieurs tranches. "]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="661" width="74" height="20" uuid="3ba06790-7919-464a-9528-9203c605b389"/>
+				<textElement>
+					<font size="12" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Ampliation]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="47" y="681" width="157" height="67" uuid="8de4d198-8861-41a1-9e77-6b9acee602a0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" -  L'intéressé \n -  Le superviseur \n -  Dossier de l'intéressé"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="167" y="446" width="70" height="1" uuid="7f288325-d9ce-465b-86db-c93b7e1ac6fc"/>
+			</line>
+			<line>
+				<reportElement x="63" y="541" width="70" height="1" uuid="af1ac95c-4d8c-42ab-90a6-9609908c986d"/>
+			</line>
+			<line>
+				<reportElement x="441" y="449" width="27" height="1" uuid="de495047-8f43-4463-b81e-0d0d9aa17551"/>
+			</line>
+			<line>
+				<reportElement x="441" y="469" width="27" height="1" uuid="645b8957-2bf3-42fe-9372-5b980acb90d2"/>
+			</line>
+			<line>
+				<reportElement x="441" y="488" width="27" height="1" uuid="cffa762d-8847-454b-9a5f-1d2f9cffa48a"/>
+			</line>
+			<line>
+				<reportElement x="441" y="508" width="27" height="1" uuid="a7378ee2-2234-447d-8486-550b49279f3e"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="101" y="337" width="428" height="34" uuid="245e1afc-a921-4940-955b-3cd4a23f7f00"/>
+				<textElement verticalAlignment="Top">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{commentaires}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="441" y="489" width="27" height="20" uuid="d4b86219-2faf-4c41-826a-7b5674dab175"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{congesRestants}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="441" y="470" width="27" height="20" uuid="142843e7-ccd2-4789-922c-2aeef6394ea2"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{soldeDisponible}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="441" y="450" width="27" height="20" uuid="be2d98ec-7bac-4f56-b9dc-0b6c1d682f3a"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{congesConsommes}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="63" y="523" width="70" height="20" uuid="00e359a4-d99e-44b4-9711-f7d9ecf2b6b9"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateEmission}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="271" y="180" width="15" height="15" uuid="858e6cbb-819e-4df1-b756-9a362e3a14e3">
+					<printWhenExpression><![CDATA[($P{typeConges}.equalsIgnoreCase("A"))]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="426" y="180" width="15" height="15" uuid="342a8e38-2e16-437d-b903-145febad488f">
+					<printWhenExpression><![CDATA[($P{typeConges}.equalsIgnoreCase("OTHER"))]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="121" y="180" width="15" height="15" uuid="d3c78f33-5db6-4dd5-9090-a09c01341801">
+					<printWhenExpression><![CDATA[($P{typeConges}.equalsIgnoreCase("M"))]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="441" y="216" width="27" height="20" uuid="f2e6706b-51e9-48b2-bee7-c7a51e640c81"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{joursAccordes}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="167" y="429" width="79" height="20" uuid="dc7148b2-c9d5-42fd-a382-bde374f3c4e6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateFinAccorde}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="523" width="62" height="20" uuid="3e22ebd6-dc91-4d5b-9a68-548ba2dc9ad0"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<text><![CDATA[Lomé, le :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="32" y="311" width="15" height="15" uuid="d3780074-b1a2-4593-9258-99bc4a20df76">
+					<printWhenExpression><![CDATA[($P{accordAbsence}.equalsIgnoreCase("ACC"))]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="204" y="311" width="15" height="15" uuid="05067a07-01d5-4909-b41d-bda5c25c8b64">
+					<printWhenExpression><![CDATA[($P{accordAbsence}.equalsIgnoreCase("REJ"))]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement x="295" y="216" width="146" height="20" uuid="f7ac0c3d-6725-4d2c-b655-ef5e66eae052"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[Durée accordée (jours) :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="441" y="430" width="27" height="20" uuid="c4f8c207-61bd-4831-ba0c-181d3f33751c"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+					<paragraph leftIndent="3" rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{congesDus}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<subreport runToBottom="true">
+				<reportElement x="0" y="0" width="555" height="50" uuid="358d87a8-fa07-438f-9008-1cc60d48428c">
+					<printWhenExpression><![CDATA[$P{OPTION}.equals("Normal")||$P{OPTION}==null]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pageportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+</jasperReport>

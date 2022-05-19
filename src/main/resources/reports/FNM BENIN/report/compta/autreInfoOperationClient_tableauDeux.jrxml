@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="autreInfoOperationClient_tableauDeux" language="groovy" pageWidth="555" pageHeight="842" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="44c6efed-17ec-4943-be81-da959f8f598e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="TITRE_TABLEAU" class="java.lang.String"/>
+	<parameter name="LIBELLE_PREMIERE_COLONNE" class="java.lang.String"/>
+	<parameter name="TEXTE_SUMMARY" class="java.lang.String"/>
+	<field name="libelle" class="java.lang.String"/>
+	<field name="valeurPrecedente" class="java.lang.String"/>
+	<field name="valeurActuelle" class="java.lang.String"/>
+	<field name="variation" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="555" height="40" uuid="8361c40d-1ae4-4273-93c8-ca709cf802eb"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITRE_TABLEAU}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="308" height="20" uuid="eef887ec-f175-411a-a927-3c424024c7dc"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_PREMIERE_COLONNE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="308" y="0" width="90" height="20" uuid="ce87f8e8-ca23-4ea7-9ea3-2d178fbbe965"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Année (n - 1)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="0" width="90" height="20" uuid="ae66773f-c059-4959-ace3-583eb1f4f295"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Année (n)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="488" y="0" width="66" height="20" uuid="94ab4c5a-c6cb-4be4-a8c8-e46e79945eb4"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Variation (%)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="308" height="15" uuid="150c7262-0ac9-40b7-862f-c51fe6a7681b"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="308" y="0" width="90" height="15" uuid="b4b30f9d-f4c5-4877-bd49-cc6a52ad4b14"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valeurPrecedente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="398" y="0" width="90" height="15" uuid="41997040-24fe-43b3-92c1-d5026e52a349"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valeurActuelle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="488" y="0" width="66" height="15" uuid="2970954e-546d-41a7-b309-fdb926d51824"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{variation}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="50">
+			<textField>
+				<reportElement x="0" y="10" width="554" height="40" uuid="f0090cce-8e9c-4c49-ad96-4c382de44910"/>
+				<textElement>
+					<font isItalic="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TEXTE_SUMMARY}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

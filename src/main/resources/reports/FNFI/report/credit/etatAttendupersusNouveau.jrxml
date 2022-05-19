@@ -1,0 +1,980 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="832" leftMargin="5" rightMargin="5" topMargin="20" bottomMargin="5" uuid="1b12b088-bea6-4e24-ab0a-433d633d7490">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="sommemontantpret" class="java.lang.String"/>
+	<parameter name="sommecapitalrestant" class="java.lang.String"/>
+	<parameter name="sommeintattendu" class="java.lang.String"/>
+	<parameter name="somminteretpersu" class="java.lang.String"/>
+	<parameter name="sommcapitalpersu" class="java.lang.String"/>
+	<parameter name="sommeintetetrestant" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DATA_SOURCE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="TEL" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String"/>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="TITRE_ETAT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["BALANCE AGEE ANALYTIQUE DU PORTEFEUILLE DE CREDITS"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR_PIED" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="BP" class="java.lang.String"/>
+	<parameter name="TITRE_COMPLET" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Etat des attendus et perçus"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SOMME_CAPITAL_ATTENDU" class="java.lang.String"/>
+	<parameter name="FICHIER_EXCEL" class="java.lang.Boolean"/>
+	<field name="numcredit" class="java.lang.String"/>
+	<field name="nummembre" class="java.lang.String"/>
+	<field name="nomprenom" class="java.lang.String"/>
+	<field name="montantpret" class="java.lang.String"/>
+	<field name="datedeblocage" class="java.lang.String"/>
+	<field name="durepret" class="java.lang.String"/>
+	<field name="capitalrestant" class="java.lang.String"/>
+	<field name="interetattendu" class="java.lang.String"/>
+	<field name="interetrestant" class="java.lang.String"/>
+	<field name="capitalpersu" class="java.lang.String"/>
+	<field name="interetpersus" class="java.lang.String"/>
+	<field name="capitalattendu" class="java.lang.String"/>
+	<field name="nomProduit" class="java.lang.String"/>
+	<variable name="NOMBRE_LIGNE" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{numcredit}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_MONTANT_PRET_PRODUIT" class="java.math.BigDecimal" resetType="Group" resetGroup="produit" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantpret}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_CAPITAL_RESTANT_PRODUIT" class="java.math.BigDecimal" resetType="Group" resetGroup="produit" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{capitalrestant}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_INTERET_RESTANT_PRODUIT" class="java.math.BigDecimal" resetType="Group" resetGroup="produit" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{interetrestant}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_CAPITAL_ATTENDU_PRODUIT" class="java.math.BigDecimal" resetType="Group" resetGroup="produit" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{capitalattendu}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_INTERET_ATTENDU_PRODUIT" class="java.math.BigDecimal" resetType="Group" resetGroup="produit" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{interetattendu}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_CAPITAL_PERCU_PRODUIT" class="java.math.BigDecimal" resetType="Group" resetGroup="produit" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{capitalpersu}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_INTERET_PERCU_PRODUIT" class="java.math.BigDecimal" resetType="Group" resetGroup="produit" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{interetpersus}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_MONTANT_PRET_PSF" class="java.math.BigDecimal" resetType="Group" resetGroup="psf" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantpret}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_CAPITAL_RESTANT_PSF" class="java.math.BigDecimal" resetType="Group" resetGroup="psf" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{capitalrestant}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_INTERET_RESTANT_PSF" class="java.math.BigDecimal" resetType="Group" resetGroup="psf" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{interetrestant}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_CAPITAL_ATTENDU_PSF" class="java.math.BigDecimal" resetType="Group" resetGroup="psf" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{capitalattendu}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_INTERET_ATTENDU_PSF" class="java.math.BigDecimal" resetType="Group" resetGroup="psf" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{interetattendu}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_CAPITAL_PERCU_PSF" class="java.math.BigDecimal" resetType="Group" resetGroup="psf" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{capitalpersu}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_INTERET_PERCU_PSF" class="java.math.BigDecimal" resetType="Group" resetGroup="psf" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{interetpersus}).toString()))]]></variableExpression>
+	</variable>
+	<group name="psf" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{nomprenom}]]></groupExpression>
+		<groupHeader>
+			<band height="28">
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" mode="Transparent" x="1" y="8" width="110" height="20" uuid="3b5e814c-ba7e-47f0-a78b-049cfad4e443"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nomprenom}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="599" y="0" width="77" height="20" uuid="30c36b16-6afa-49cf-9bbf-947082c3a706">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_INTERET_ATTENDU_PSF}))]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="515" y="0" width="84" height="20" uuid="5545fe1b-fa73-443b-b86f-54cf8ab2652b">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_CAPITAL_ATTENDU_PSF}))]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="276" y="0" width="57" height="20" uuid="747e175f-0376-4d28-997c-a39c322c34c0"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="0" y="0" width="111" height="20" uuid="5b8d2839-2f3d-4160-8fc9-c33f49cf3818"/>
+					<textElement verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Total "+$F{nomprenom}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="759" y="0" width="72" height="20" uuid="0353e99b-09bc-4d4a-9ec3-d4db99a6f963">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_INTERET_PERCU_PSF}))]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="333" y="0" width="90" height="20" uuid="b2cd4504-1b71-4a8a-8a38-a6052a22a630">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_CAPITAL_RESTANT_PSF}))]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="111" y="0" width="93" height="20" uuid="21f46f50-c571-4267-b64d-6d5342a0cbe6">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_MONTANT_PRET_PSF}))]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="423" y="0" width="92" height="20" uuid="0105ca4e-80de-4a09-a082-c49eec569428">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_INTERET_RESTANT_PSF}))]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="676" y="0" width="83" height="20" uuid="84400d83-9135-4407-89bc-eb83cf1e8723">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_CAPITAL_PERCU_PSF}))]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="204" y="0" width="72" height="20" uuid="4c9d78f4-947b-4526-b82d-fab623de9825"/>
+					<textElement verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" mode="Transparent" x="111" y="0" width="93" height="20" uuid="9f3259d9-c1cb-46eb-ba03-80677bb033a9">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_MONTANT_PRET_PSF}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" mode="Transparent" x="333" y="0" width="90" height="20" uuid="26739c1e-71d5-4328-a80a-afef74985947">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_CAPITAL_RESTANT_PSF}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" mode="Transparent" x="423" y="0" width="92" height="20" uuid="8d8cd6b5-3489-41b8-a41b-bac089fcc858">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_INTERET_RESTANT_PSF}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" mode="Transparent" x="515" y="0" width="84" height="20" uuid="692648cf-db1c-4f02-9072-dd060ac515f9">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_CAPITAL_ATTENDU_PSF}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" mode="Transparent" x="599" y="0" width="77" height="20" uuid="a9c5198c-88b0-4eda-8c0b-35f49afde27b">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_INTERET_ATTENDU_PSF}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" mode="Transparent" x="676" y="0" width="83" height="20" uuid="ceaae199-c790-4ad0-80bf-562e8040e394">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_CAPITAL_PERCU_PSF}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" mode="Transparent" x="759" y="0" width="72" height="20" uuid="29c49518-5de1-4092-9e6a-4f41dd3317b6">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_INTERET_PERCU_PSF}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="produit">
+		<groupExpression><![CDATA[$F{nomProduit}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<staticText>
+					<reportElement style="table_CH" x="0" y="30" width="111" height="20" backcolor="#EFEFEF" uuid="d28279b1-2606-4e73-a69c-82ad20f6625f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<text><![CDATA[PSF]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="table_CH" x="111" y="30" width="93" height="20" backcolor="#EFEFEF" uuid="c3c1e006-b27e-42aa-8b46-bf6d058714f4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<text><![CDATA[Produit]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="table_CH" x="204" y="30" width="72" height="20" backcolor="#EFEFEF" uuid="90787f36-82d3-4751-a4e2-a8a33f876e4b"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<text><![CDATA[ARRIERES AU (A)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="table_CH" x="276" y="30" width="57" height="20" backcolor="#EFEFEF" uuid="f3162be7-0b96-42c8-a456-ae1cfa4ef886"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<text><![CDATA[ECHEANCE DE (B)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="table_CH" x="333" y="30" width="90" height="20" backcolor="#EFEFEF" uuid="c6b68948-eaff-44e3-baf3-5432800706e3"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<text><![CDATA[TOTAL DÜ (C) = (A)+(B)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="table_CH" x="599" y="30" width="77" height="20" backcolor="#EFEFEF" uuid="9026d39a-6d8d-420b-8bf3-6598a2374ede"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<text><![CDATA[Intérêt attendu]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="table_CH" x="676" y="30" width="83" height="20" backcolor="#EFEFEF" uuid="ca81ab8f-0f6c-4b5e-8a09-66186a1c512b"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<text><![CDATA[Capital perçu]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="table_CH" x="759" y="30" width="72" height="20" backcolor="#EFEFEF" uuid="e8afa814-7749-4632-9976-35c53990f304"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<text><![CDATA[Intérêt perçu]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="table_CH" x="423" y="30" width="92" height="20" backcolor="#EFEFEF" uuid="7ef42b0f-89de-4bac-809a-9f89278791f6"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<text><![CDATA[TOTAL REMBOURSEMENT (D)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="table_CH" x="515" y="30" width="84" height="20" backcolor="#EFEFEF" uuid="23b5a4e1-5802-44a9-8e67-9c6a662b4d1e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<text><![CDATA[RESTANT DÛ APRES REMB (E) = (C) - (D)]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" mode="Transparent" x="-1" y="10" width="112" height="20" uuid="db37221e-8b5b-4edb-a4f5-1340a2f3a063"/>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nomProduit}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="599" y="0" width="77" height="20" uuid="f2a627cf-b7bd-4f3a-a2a2-9271730016af">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_INTERET_ATTENDU_PRODUIT}))]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="515" y="0" width="84" height="20" uuid="f809670e-c80e-479e-ac6f-fcfbcf9e26d9">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_CAPITAL_ATTENDU_PRODUIT}))]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="276" y="0" width="57" height="20" uuid="0b83528f-e5a8-4480-8dde-b179fc36d936"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="0" y="0" width="111" height="20" uuid="43b67d49-2cca-4d03-bd49-588ffd3de0b9"/>
+					<textElement verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Total "+$F{nomProduit}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="759" y="0" width="72" height="20" uuid="489cda8e-b6d1-4f76-b47b-f924322b219f">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_INTERET_PERCU_PRODUIT}))]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="333" y="0" width="90" height="20" uuid="094f0207-af39-4d62-8417-3c1fca995e5b">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_CAPITAL_RESTANT_PRODUIT}))]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="111" y="0" width="93" height="20" uuid="616dab1a-9d87-4e67-8951-8a43ac1422a1">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_MONTANT_PRET_PRODUIT}))]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="423" y="0" width="92" height="20" uuid="75641500-9dc3-4165-baab-ff1e553c74b4">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_INTERET_RESTANT_PRODUIT}))]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="676" y="0" width="83" height="20" uuid="494f9121-0e53-42a9-bc4a-f334b13acce7">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_CAPITAL_PERCU_PRODUIT}))]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" x="204" y="0" width="72" height="20" uuid="c70d788b-661b-4af7-9a53-c307ee99bc31"/>
+					<textElement verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" mode="Transparent" x="111" y="0" width="93" height="20" uuid="ccca7b6f-6d47-4b83-a04b-6500a05a9822">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_MONTANT_PRET_PRODUIT}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" mode="Transparent" x="333" y="0" width="90" height="20" uuid="8d841e74-6464-4b3d-baf0-0b1365bfa243">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_CAPITAL_RESTANT_PRODUIT}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" mode="Transparent" x="423" y="0" width="92" height="20" uuid="19ac1c5b-22c7-41d9-93a8-ca5a9205bb89">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_INTERET_RESTANT_PRODUIT}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" mode="Transparent" x="515" y="0" width="84" height="20" uuid="b4712929-a098-4d67-9697-f3170e98c5f1">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_CAPITAL_ATTENDU_PRODUIT}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" mode="Transparent" x="599" y="0" width="77" height="20" uuid="c58b8daa-2a4b-4aae-b05d-a87340e2116b">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_INTERET_ATTENDU_PRODUIT}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" mode="Transparent" x="676" y="0" width="83" height="20" uuid="452c0e54-d2da-422f-b6e6-c854fbfad8e9">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_CAPITAL_PERCU_PRODUIT}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement style="table_TD" mode="Transparent" x="759" y="0" width="72" height="20" uuid="8e723fad-6581-46af-a051-48f4825b4540">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="7" isBold="true"/>
+						<paragraph leftIndent="4" rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_INTERET_PERCU_PRODUIT}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="118" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="832" height="93" isRemoveLineWhenBlank="true" uuid="15b820ad-8b05-45cc-b907-6591fc26d5c1">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententepaysage.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="0" y="93" width="832" height="25" isRemoveLineWhenBlank="true" uuid="4b82a656-328d-407c-ab67-51c60b192899">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITRE_COMPLET}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="0" y="0" width="111" height="20" uuid="0a04f6ad-12f0-4b48-92ac-b2916a878261"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numcredit}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="111" y="0" width="93" height="20" uuid="df7195b3-2bb6-49cd-8521-0ee7697a52d5">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantpret}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="204" y="0" width="72" height="20" uuid="ba748864-2c86-44e9-a367-36acd767f1f6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{datedeblocage}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="276" y="0" width="57" height="20" uuid="1a8af246-e550-4de0-878a-65aca8c6fbbd"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{durepret}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="333" y="0" width="90" height="20" uuid="080fbd5d-3a56-4990-8181-193fa7b4882e">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capitalrestant}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="599" y="0" width="77" height="20" uuid="e76d1e68-48d6-4959-bc6f-33dd6cffd1ee">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{interetattendu}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="676" y="0" width="83" height="20" uuid="74c46a83-91d0-460c-970d-af9b7c3b29ae">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capitalpersu}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="759" y="0" width="72" height="20" uuid="fc1abf4b-caaa-4814-88ca-6b9273ada4b7">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{interetpersus}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="423" y="0" width="92" height="20" uuid="135040d6-6c57-49a0-b580-0472c1659812">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{interetrestant}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" x="515" y="0" width="84" height="20" uuid="b3c11580-2cb0-4a23-b6ef-d993b33d5259">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capitalattendu}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" mode="Transparent" x="423" y="0" width="92" height="20" uuid="80461c44-350c-48f2-b647-a30480ca1b7d">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{interetrestant}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" mode="Transparent" x="111" y="0" width="93" height="20" uuid="e18caa02-7f1d-4c11-a192-45665ba4a493">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantpret}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" mode="Transparent" x="759" y="0" width="72" height="20" uuid="f4c37fe0-d121-4c8a-ac7e-7c3fe7a379c5">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{interetpersus}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" mode="Transparent" x="515" y="0" width="84" height="20" uuid="420b04d8-45e1-421e-aee7-2c2a39090f42">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{capitalattendu}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" mode="Transparent" x="676" y="0" width="83" height="20" uuid="f97e8d5d-17be-4702-853c-c659482cbdef">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{capitalpersu}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" mode="Transparent" x="599" y="0" width="77" height="20" uuid="88d10741-8689-4122-add4-a1b50430c8de">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{interetattendu}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="table_TD" mode="Transparent" x="333" y="0" width="90" height="20" uuid="e338363f-650c-44b6-8b25-2832c35da5e2">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{capitalrestant}).toString()))]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="71">
+			<textField evaluationTime="Report">
+				<reportElement x="807" y="0" width="26" height="15" uuid="a60dd59b-717c-4921-bc64-ea3342750e04">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="110" height="15" uuid="82c42b0f-5ed2-48e6-8d3d-ab80ff8e8d2f"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Imprimer le "+$P{DATE_EDITION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="727" y="0" width="80" height="15" uuid="d014f066-0264-4b5a-9d52-c1713871c982">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="0" width="90" height="15" uuid="4f29f2ea-de9c-4e24-8594-e2f3d2ec23ff"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Microfina++"]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="-7" y="21" width="844" height="50" uuid="68f4ed38-0e03-4b88-a604-76ad1cafd1af">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR_PIED} + "pied_de_page_en_paysage.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="111" y="0" width="93" height="20" uuid="09980b05-ef88-426f-ae1b-92c9e8437325">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph firstLineIndent="4" leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sommemontantpret}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="333" y="0" width="90" height="20" uuid="25d425da-a760-4cb5-81e4-492ec8ff096a">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph firstLineIndent="4" leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sommecapitalrestant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="599" y="0" width="77" height="20" uuid="9446fcb2-48cb-4d51-a3f8-6d1f5016fd83">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph firstLineIndent="4" leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sommeintattendu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="423" y="0" width="92" height="20" uuid="510d6d8d-11ab-47f4-b924-223559169c44">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph firstLineIndent="4" leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sommeintetetrestant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="759" y="0" width="72" height="20" uuid="4b919791-e61b-4da3-9f32-f4df563a488e">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph firstLineIndent="4" leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{somminteretpersu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="676" y="0" width="83" height="20" uuid="632aac64-a80d-4f2a-92ac-5799c09eeaca">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph firstLineIndent="4" leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sommcapitalpersu}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table_TD" x="204" y="0" width="72" height="20" uuid="60a4f45a-cf03-487b-936e-4c26fd44c38b"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="276" y="0" width="57" height="20" uuid="847cd88f-2a53-4f6d-8339-5d5d2c55145c"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table_TD" x="1" y="0" width="110" height="20" uuid="69f0b809-f2c1-4216-bcff-976d98a7034c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{NOMBRE_LIGNE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="515" y="0" width="84" height="20" uuid="d0699e8f-026b-41f2-8dbf-b09cf64365d9">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph firstLineIndent="4" leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{SOMME_CAPITAL_ATTENDU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Transparent" x="676" y="0" width="83" height="20" uuid="490d66a3-8070-43b5-908d-76f1509bc639">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph firstLineIndent="4" leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($P{sommcapitalpersu}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Transparent" x="515" y="0" width="84" height="20" uuid="66311bb3-5e9f-48bc-a25e-7f714853bc9d">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph firstLineIndent="4" leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($P{SOMME_CAPITAL_ATTENDU}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Transparent" x="333" y="0" width="90" height="20" uuid="615b42e8-cd0d-4c7b-ab9b-616e6acad23d">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph firstLineIndent="4" leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($P{sommecapitalrestant}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Transparent" x="599" y="0" width="77" height="20" uuid="4486edbf-640c-49e0-8ef6-78370b44c3ca">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph firstLineIndent="4" leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($P{sommeintattendu}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Transparent" x="423" y="0" width="92" height="20" uuid="3c3bc37c-c4cf-4239-ac2b-ee6232ecd460">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph firstLineIndent="4" leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($P{sommeintetetrestant}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Transparent" x="759" y="0" width="72" height="20" uuid="6e26320a-bf04-477e-8617-728661ce8a1e">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph firstLineIndent="4" leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($P{somminteretpersu}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" mode="Transparent" x="111" y="0" width="93" height="20" uuid="4c27bc2c-fa99-4ea3-a2f2-fae2908b413b">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph firstLineIndent="4" leftIndent="4" rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($P{sommemontantpret}).toString()))]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

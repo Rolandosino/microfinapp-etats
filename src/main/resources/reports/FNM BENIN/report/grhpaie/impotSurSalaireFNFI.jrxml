@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="impotSurSalaireFNFI" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0e421004-e151-4123-9704-ed281880de50">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="202"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="dateEmission" class="java.lang.String"/>
+	<parameter name="modeReglement" class="java.lang.String"/>
+	<parameter name="banque" class="java.lang.String"/>
+	<parameter name="signataire" class="java.lang.String"/>
+	<parameter name="titre" class="java.lang.String"/>
+	<parameter name="adresse" class="java.lang.String"/>
+	<parameter name="numIFU" class="java.lang.String"/>
+	<parameter name="totalImpot" class="java.lang.String"/>
+	<parameter name="institution" class="java.lang.String"/>
+	<parameter name="totalImpotLettre" class="java.lang.String"/>
+	<field name="tel" class="java.lang.String"/>
+	<field name="tot" class="java.lang.String"/>
+	<field name="irpp" class="java.lang.String"/>
+	<field name="ts" class="java.lang.String"/>
+	<field name="societe" class="java.lang.String"/>
+	<field name="adr" class="java.lang.String"/>
+	<field name="adr1" class="java.lang.String"/>
+	<field name="numEmployeur" class="java.lang.String"/>
+	<field name="salaireBrut" class="java.lang.String"/>
+	<title>
+		<band height="142" splitType="Stretch">
+			<staticText>
+				<reportElement x="197" y="64" width="240" height="29" uuid="e0ac2354-aec7-4bee-a287-9635904bc45e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[IMPOTS SUR LES SALAIRES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="2" width="174" height="25" uuid="18ee2613-437c-4143-8a21-48d5636b0578"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[REPUBLIQUE TOGOLAISE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="3" y="140" width="555" height="2" uuid="612eddb9-5bde-413d-91d8-bcd7a9484962"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="197" y="27" width="240" height="22" uuid="c03303f2-bd7b-4cf9-952a-48a3567a4b30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ET DES DOMAINES]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="437" y="49" width="118" height="55" uuid="f4429ecd-d6fa-404f-8ba8-42635f68ac37"/>
+			</rectangle>
+			<line>
+				<reportElement x="24" y="27" width="100" height="1" uuid="7d282a7d-e991-4230-b755-df078b77d304"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="1" y="31" width="174" height="33" uuid="46b6dbfa-8017-45ea-bab4-68c250358145"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[MINISTERE DES FINANCES ET DE L'ECONOMIE]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="124" y="104" width="313" height="20" uuid="f1c522f7-5e22-40cd-aec8-13e7f4708651"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{titre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="197" y="2" width="240" height="25" uuid="fc6bd8f0-4bb7-46c2-80c0-9b4c82b3989e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[DIRECTION GENERALE DES IMPOTS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="437" y="49" width="119" height="15" uuid="ffea3684-d982-49e7-afcf-9e528d4bf31b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Timbre à date]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="639" splitType="Stretch">
+			<staticText>
+				<reportElement x="-1" y="599" width="135" height="15" uuid="e8900dd7-76ad-4604-a258-dc9af0b3ca17"/>
+				<textElement>
+					<font isItalic="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Signature et cachet]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="164" width="257" height="20" uuid="2f177fad-f9ff-43e8-a661-eeccc18d5b1f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[1. Nombre de salariés]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="283" width="121" height="20" uuid="f237fae0-9952-4537-8fde-aa3b3c09268f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Somme en lettres :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="350" width="320" height="20" uuid="e8d84bc6-8640-4574-83ad-1c4420fc3f50"/>
+				<textElement>
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[6. Montant du versement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="185" width="258" height="20" uuid="4537b6e1-ca74-46ba-8bfb-c278f8010ed0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[2. Montant brut des salaires]]></text>
+			</staticText>
+			<line>
+				<reportElement x="5" y="439" width="554" height="1" uuid="6b52a37c-4889-4890-8679-a8b9e324c5f3"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="3" y="135" width="282" height="20" uuid="18d98b28-9d5a-4405-a4b2-531abf3a09d6"/>
+				<textElement>
+					<font size="12" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[II-LIQUIDATION DES IMPOTS SUR SALAIRES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="205" width="257" height="20" uuid="dc59dd6f-d513-4645-9031-61361c347f7c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[3. Montant de l'IRPP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="226" width="257" height="20" uuid="6e06c855-fd1b-4d13-ad1f-ef973f2f2833"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[4. Montant du TS (ligne 2x4%)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="246" width="256" height="20" uuid="348bcf84-62b5-4619-ac41-7eefbfb3af05"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[5. Total des impots sur salaires (ligne 3+4)]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="1" y="161" width="460" height="112" uuid="8adeea7f-15dd-4526-a188-84bdb50fc013"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="460" y="161" width="97" height="112" uuid="93b9e728-e019-4388-a2c5-4c6f5676d308"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="325" width="110" height="20" uuid="74e1f92d-0fea-407d-b319-7f3d565e41f9"/>
+				<textElement>
+					<font size="12" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[III- PAIEMENT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="375" width="57" height="20" uuid="85835b0f-1ad8-43a0-8c9a-6f5379e8e26b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Mode :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="455" width="123" height="15" uuid="931a16c6-1778-4480-9da1-85756716c8a0"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Le Déclarant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="343" y="450" width="196" height="20" uuid="d623a58d-2105-48b8-b899-ca535848d0af"/>
+				<textElement>
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Cadre réservé à l'administration]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="62" y="375" width="77" height="20" uuid="6292bc31-1ba5-4752-a729-0ff851f60352"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Chèque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="375" width="90" height="20" uuid="c0aeaaab-f5a0-482f-8a8b-ca0eb7093129"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[N° Chèques :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="398" width="91" height="20" uuid="ff41c06b-fb5f-4662-a922-eff9312af1f8"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Banque :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="343" y="470" width="98" height="20" uuid="6d704d5b-583c-45fd-a7f2-7f8ba6de5732"/>
+				<textElement>
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[N° de quittance]]></text>
+			</staticText>
+			<line>
+				<reportElement x="323" y="440" width="1" height="174" uuid="58611340-f025-436a-abc8-3d384e1ce81f"/>
+			</line>
+			<staticText>
+				<reportElement style="table_TD" x="343" y="579" width="203" height="35" uuid="86a68d1b-fd69-408b-baa8-a5cffb95e5ad"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Montant Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table_TD" x="343" y="504" width="89" height="75" uuid="84acddec-05c8-4a2d-8f14-2bc34f0c47e1"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pénalités \n\n - IRPP \n\n -TS"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table_TD" x="432" y="504" width="57" height="25" uuid="d87b7255-48b0-47b2-ae6e-c2f07638bcfd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Motif]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="489" y="504" width="57" height="25" uuid="078b4dec-0368-43aa-8b6e-ae0759486675"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Montant]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="table_TD" x="432" y="529" width="57" height="25" uuid="ef1a1387-db0c-4a60-ae54-bf79619df01a"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="432" y="554" width="57" height="25" uuid="35b595b7-54a3-4531-bc68-413e7c1a254a"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="489" y="554" width="57" height="25" uuid="dbf41fa1-127b-4bdd-80d4-321de46e719a"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="489" y="529" width="57" height="25" uuid="07fb30bf-123c-49dc-bbef-121bf8a5e789"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="469" y="164" width="84" height="20" uuid="7d16edf4-4858-477b-8d3d-8e7bf92da607"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tot}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="469" y="186" width="84" height="20" uuid="218e312a-f55a-4c43-8fbe-b89cfff7109f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salaireBrut}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="469" y="206" width="84" height="20" uuid="18ab6b82-9ace-44b5-921b-fe82056fd0ae"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{irpp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="113" y="569" width="210" height="20" uuid="76b486e6-bcc5-4bcb-a561-ab4fad10add1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{signataire}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="111" y="493" width="149" height="20" uuid="320df254-0131-4d1c-b1b4-d67f5c89c085"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Le Directeur Général]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="-1" y="473" width="319" height="20" uuid="68cb62d8-720e-4f0b-b246-e3e54c1c5582"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateEmission}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="324" y="398" width="234" height="20" uuid="015e3d5c-6480-4b35-bd85-454aa3439516"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{banque}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="469" y="246" width="84" height="20" uuid="a5d0797c-5249-4686-9bd7-7bc4fd1e1c3f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalImpot}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="324" y="350" width="235" height="20" uuid="20c7463d-f8fc-45d8-b896-ddc47e80e854"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalImpot}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="4" width="118" height="20" uuid="d553509a-0f24-4bc9-8560-3d1947fff55b"/>
+				<textElement>
+					<font size="12" isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[I-IDENTIFICATION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="309" y="4" width="56" height="20" uuid="b3d709fe-0b8d-4685-80ed-714eeb0862e3"/>
+				<textElement>
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[N° IFU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="123" y="5" width="70" height="20" uuid="e774544a-1924-41ac-a879-ef1cb95519f2"/>
+				<textElement>
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[N° INSAE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="123" y="61" width="178" height="20" uuid="7038bfe9-d28f-40ed-b50d-c51ba6cda924"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Microfinance]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="123" y="81" width="434" height="20" uuid="f0bdcc16-c9e8-45d4-92eb-8e87124f40c7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{adresse}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="365" y="5" width="191" height="20" uuid="df14d5c0-14ba-4bb9-963e-2a4880eea2e4"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numIFU}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="2" y="132" width="555" height="2" uuid="970995de-2e94-469c-8001-806166bf6d67"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="1" y="81" width="124" height="20" uuid="2bd5a47c-b757-4221-9e78-a4f96be056ac"/>
+				<textElement>
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[- ADRESSE SIEGE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="41" width="121" height="20" uuid="2ac6dc9d-6f10-4c9b-a33c-712b85c6b8fe"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[- RAISON SOCIALE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="61" width="121" height="20" uuid="a5fef98e-ba92-454f-9992-61ec6b437113"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[- ACTIVITE]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="123" y="41" width="433" height="20" uuid="37772f90-afae-440c-85dd-1c8cffbf0c9b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{institution}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="125" y="283" width="431" height="20" uuid="5e073bd1-07c0-4e76-8dcc-07799beeb5a8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalImpotLettre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

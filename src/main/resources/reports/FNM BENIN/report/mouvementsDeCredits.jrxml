@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mouvementsDeCredits" language="groovy" pageWidth="690" pageHeight="842" columnWidth="650" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5ebf4a6c-55ae-4b89-bf75-d093c62072bf">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="table_TD" mode="Opaque" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <field name="numcredit" class="java.lang.String"/>
+    <field name="numclient" class="java.lang.String"/>
+    <field name="intituleclient" class="java.lang.String"/>
+    <field name="datemvt" class="java.lang.String"/>
+    <field name="deboursement" class="java.lang.String"/>
+    <field name="montantcapital" class="java.lang.String"/>
+    <field name="montantinteret" class="java.lang.String"/>
+    <field name="remboursement" class="java.lang.String"/>
+    <variable name="sommeDeboursement" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{deboursement}))]]></variableExpression>
+    </variable>
+    <variable name="sommesRembourse" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{remboursement}))]]></variableExpression>
+    </variable>
+    <variable name="sommeMontCapital" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantcapital}))]]></variableExpression>
+    </variable>
+    <variable name="sommeMontInteret" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantinteret}))]]></variableExpression>
+    </variable>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="79" splitType="Stretch"/>
+    </title>
+    <columnHeader>
+        <band height="25" splitType="Stretch">
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="293" y="0" width="87" height="24" backcolor="#EFEFEF" uuid="928d3080-ab67-4b75-9d60-cc07b7c2c694"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Déboursement]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="0" y="0" width="50" height="24" backcolor="#EFEFEF" uuid="d405c59c-233d-4533-ab2f-6ddae9bbdc1b"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[N°Crédit]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="50" y="0" width="50" height="24" backcolor="#EFEFEF" uuid="da79208d-8c38-4488-b80c-98af951b8478"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[N°Client]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="100" y="0" width="143" height="24" backcolor="#EFEFEF" uuid="b955651e-9730-4cd6-9029-c02d19829e78"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="14" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Intitulé]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="243" y="0" width="50" height="24" backcolor="#EFEFEF" uuid="eac86b79-826e-4b82-8a6b-321debc6079b"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Date]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="380" y="0" width="87" height="24" backcolor="#EFEFEF" uuid="633c948f-a65a-4984-a36e-2b728fdecd97"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Mont Cap]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="467" y="0" width="87" height="24" backcolor="#EFEFEF" uuid="cbb49d9e-c367-461d-b04f-5ac9c9dfe952"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Mont Int]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="554" y="0" width="96" height="24" backcolor="#EFEFEF" uuid="e64dc929-d33b-4656-a455-aed42e63de3c"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Remboursement]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="21" splitType="Stretch">
+            <textField>
+                <reportElement style="table_TD" x="0" y="0" width="50" height="20" uuid="832dbe21-aaea-422b-aaf5-295e19ad76e9"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{numcredit}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="50" y="0" width="50" height="20" uuid="7e993ec0-cb88-4a8f-883a-4039e34c02a3"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{numclient}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="100" y="0" width="143" height="20" uuid="f02fb5bd-cca0-4788-97b2-1da3c8f24326"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{intituleclient}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="243" y="0" width="50" height="20" uuid="f3acd284-aa7e-4a33-969d-95fb318fab45"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{datemvt}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="293" y="0" width="87" height="20" uuid="f8b51933-5686-4bc0-af88-72b2207427b2"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{deboursement}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="380" y="0" width="87" height="20" uuid="e822ed0c-b4a8-40b5-ad46-1cdb50c5d7ee"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{montantcapital}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="467" y="0" width="87" height="20" uuid="08d71f82-0fe8-459e-aa3b-1709856b79ec"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{montantinteret}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="554" y="0" width="96" height="20" uuid="ffb3a370-b7f9-4366-9ae2-75d0d4f2c4f8"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{remboursement}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <summary>
+        <band height="22" splitType="Stretch">
+            <textField>
+                <reportElement style="table_TD" x="293" y="0" width="87" height="20" uuid="36338bc0-4e75-40ee-90e0-bf6600d0833a"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{sommeDeboursement}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="380" y="0" width="87" height="20" uuid="36b9f748-24f4-42eb-b5c3-9c169c82ad5a"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{sommeMontCapital}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="467" y="0" width="87" height="20" uuid="02184632-e611-4514-ac9b-8d35603da310"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{sommeMontInteret}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="554" y="0" width="96" height="20" uuid="f1a22cac-9220-4a76-8220-6b1dbe05625f"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{sommesRembourse}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="0" y="0" width="100" height="20" uuid="faddc84b-b909-418d-8ed3-07e24b668aba"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="100" y="0" width="143" height="20" uuid="a7ba511f-fd9a-47be-9d55-7bbc3eccbe26"/>
+                <textElement verticalAlignment="Middle"/>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="243" y="0" width="50" height="20" uuid="be3aab61-9fff-4298-8f39-686b9209f8fc"/>
+                <textElement verticalAlignment="Middle"/>
+            </textField>
+        </band>
+    </summary>
+</jasperReport>

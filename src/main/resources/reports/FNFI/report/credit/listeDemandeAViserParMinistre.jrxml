@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="listeDemandeAViserParMinistre" language="groovy" pageWidth="595" pageHeight="842" columnWidth="585" leftMargin="5" rightMargin="5" topMargin="20" bottomMargin="20" uuid="5025675b-0513-45e9-bd00-badf4a058c6c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<field name="dateDem" class="java.util.Date"/>
+	<field name="numMembre" class="net.mediasoft.microfina.entities.Entreprise"/>
+	<field name="nbIndMasculin" class="java.lang.Integer"/>
+	<field name="nbIndFeminin" class="java.lang.Integer"/>
+	<field name="nbTotalInd" class="java.lang.Integer"/>
+	<field name="nbGroupeCont" class="java.lang.Integer"/>
+	<field name="montantDem" class="java.math.BigDecimal"/>
+	<field name="montantApprouve" class="java.math.BigDecimal"/>
+	<field name="montantApport" class="java.math.BigDecimal"/>
+	<field name="numProduitCredit" class="net.mediasoft.microfina.entities.Produitcredit"/>
+	<variable name="NUMERO_PSF" class="java.lang.Integer" resetType="Group" resetGroup="psf" calculation="Count">
+		<variableExpression><![CDATA[$F{numMembre}]]></variableExpression>
+	</variable>
+	<variable name="T_HOMME" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{nbIndMasculin}]]></variableExpression>
+	</variable>
+	<variable name="T_FEMME" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{nbIndFeminin}]]></variableExpression>
+	</variable>
+	<variable name="T_TOTAL" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{nbTotalInd}]]></variableExpression>
+	</variable>
+	<variable name="T_GS" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{nbGroupeCont}]]></variableExpression>
+	</variable>
+	<variable name="T_DEMANDE" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{montantDem}]]></variableExpression>
+	</variable>
+	<variable name="T_APPROUVE" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{montantApprouve}]]></variableExpression>
+	</variable>
+	<variable name="T_APPORT" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{montantApport}]]></variableExpression>
+	</variable>
+	<variable name="T_HOMME_1" class="java.lang.Integer" resetType="Group" resetGroup="psf" calculation="Sum">
+		<variableExpression><![CDATA[$F{nbIndMasculin}]]></variableExpression>
+	</variable>
+	<variable name="T_FEMME_1" class="java.lang.Integer" resetType="Group" resetGroup="psf" calculation="Sum">
+		<variableExpression><![CDATA[$F{nbIndFeminin}]]></variableExpression>
+	</variable>
+	<variable name="T_TOTAL_1" class="java.lang.Integer" resetType="Group" resetGroup="psf" calculation="Sum">
+		<variableExpression><![CDATA[$F{nbTotalInd}]]></variableExpression>
+	</variable>
+	<variable name="T_GS_1" class="java.lang.Integer" resetType="Group" resetGroup="psf" calculation="Sum">
+		<variableExpression><![CDATA[$F{nbGroupeCont}]]></variableExpression>
+	</variable>
+	<variable name="T_DEMANDE_1" class="java.math.BigDecimal" resetType="Group" resetGroup="psf" calculation="Sum">
+		<variableExpression><![CDATA[$F{montantDem}]]></variableExpression>
+	</variable>
+	<variable name="T_APPROUVE_1" class="java.math.BigDecimal" resetType="Group" resetGroup="psf" calculation="Sum">
+		<variableExpression><![CDATA[$F{montantApprouve}]]></variableExpression>
+	</variable>
+	<variable name="T_APPORT_1" class="java.math.BigDecimal" resetType="Group" resetGroup="psf" calculation="Sum">
+		<variableExpression><![CDATA[$F{montantApport}]]></variableExpression>
+	</variable>
+	<group name="psf" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{numMembre}.getSigle()]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<textField>
+					<reportElement x="0" y="10" width="235" height="20" uuid="7498500d-7dfb-4b21-9b9b-95e5f40a5d61"/>
+					<box>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" isBold="true"/>
+						<paragraph leftIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numMembre}.getSigle()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="28" y="30" width="61" height="20" backcolor="#E5E5E5" uuid="ff224a96-19a7-41fa-93a8-f7c47c6e2e7c"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Date]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="89" y="30" width="133" height="20" backcolor="#E5E5E5" uuid="a4f1519a-88c6-47b4-b457-fb92809695c1"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[PSF]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="222" y="30" width="30" height="20" backcolor="#E5E5E5" uuid="20fbea59-e100-488c-94d2-b68cfe9afd11"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[H.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="252" y="30" width="30" height="20" backcolor="#E5E5E5" uuid="f55255b7-cd63-4ccd-bc38-be3b20190c41"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[F.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="282" y="30" width="30" height="20" backcolor="#E5E5E5" uuid="c90ac661-2051-4ab0-88b7-b4ed20b28dc2"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Total]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="312" y="30" width="30" height="20" backcolor="#E5E5E5" uuid="1cca58ca-3430-4162-bd0a-d7323ae7920e"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[GS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="342" y="30" width="81" height="20" backcolor="#E5E5E5" uuid="d0a16545-bebe-4416-82d7-cd5c9f7cc9cd"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Mt. demandé]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="423" y="30" width="81" height="20" backcolor="#E5E5E5" uuid="853dbb28-720c-4021-99c1-c6e3a4175b94"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Mt. approuvé]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="504" y="30" width="81" height="20" backcolor="#E5E5E5" uuid="cdf9eb63-a04b-4c9c-9204-66897b970cbf"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Mt. apport]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="30" width="28" height="20" backcolor="#E5E5E5" uuid="9b4d5282-274f-4ae2-a7f0-88be4fa99ffe"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[N°]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<textField>
+					<reportElement x="222" y="0" width="30" height="20" uuid="f84277e0-5439-4ab2-83a4-81a9a0851c6b"/>
+					<box>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+						<paragraph rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{T_HOMME_1})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="0" width="28" height="20" uuid="173dc668-91ec-46f4-8869-c6230363df7e"/>
+					<box>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+						<paragraph leftIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="423" y="0" width="81" height="20" uuid="7d165bf4-138d-425d-ae41-6e4b5af64396"/>
+					<box>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+						<paragraph rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{T_APPROUVE_1})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="504" y="0" width="81" height="20" uuid="db15688e-a995-4371-8bc2-422280cbcfd9"/>
+					<box>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+						<paragraph rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{T_APPORT_1})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="252" y="0" width="30" height="20" uuid="6424e1e9-47db-44a2-af46-d0c2c4f5c793"/>
+					<box>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+						<paragraph rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{T_FEMME_1})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="342" y="0" width="81" height="20" uuid="1823c5b2-afc3-4b32-8f0c-e9ba0030d840"/>
+					<box>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+						<paragraph rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{T_DEMANDE_1})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="89" y="0" width="133" height="20" uuid="19d49fdb-2ef2-4071-ba75-b05eb15f1fe5"/>
+					<box>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+						<paragraph leftIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA["TOTAL "+$F{numMembre}.getSigle()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="312" y="0" width="30" height="20" uuid="dd4adc1f-40dd-48b4-bd65-7068421a2b43"/>
+					<box>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+						<paragraph rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{T_GS_1})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="28" y="0" width="61" height="20" uuid="68e9e7f2-86f9-41ea-9010-ebcccade9466"/>
+					<box>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+						<paragraph leftIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="282" y="0" width="30" height="20" uuid="badbf594-1adb-4ea5-bf9e-2f9d201a6e25"/>
+					<box>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="8" isBold="true"/>
+						<paragraph rightIndent="4"/>
+					</textElement>
+					<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{T_TOTAL_1})]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<subreport>
+				<reportElement x="15" y="0" width="555" height="93" uuid="3f3881b8-bb07-4d57-ba37-972f4fac8aad"/>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="15" y="93" width="555" height="29" uuid="906b859d-ee34-423c-8ed8-1413c6cd7e1b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["LISTE DES DEMANDES AUTORISEES PAR LE MINISTRE"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="28" y="0" width="61" height="20" uuid="bfc58c3f-6cf3-4d42-9679-902483f0bdab"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.text.SimpleDateFormat("dd/MM/yyyy").format($F{dateDem}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="89" y="0" width="133" height="20" uuid="19fdbffd-c757-415c-92e4-98d61c146c86"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numMembre}.getSigle()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="222" y="0" width="30" height="20" uuid="9642b4bc-5543-4225-b940-1d523ce097ae"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($F{nbIndMasculin})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="252" y="0" width="30" height="20" uuid="7bde584f-e0e4-4513-bdf3-6ea310454492"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($F{nbIndFeminin})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="282" y="0" width="30" height="20" uuid="a4e9e530-7715-4f81-8e79-ccd0705e9dfc"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($F{nbTotalInd})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="312" y="0" width="30" height="20" uuid="06f98aea-2465-4945-8917-48cb9fd23f32"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($F{nbGroupeCont})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="342" y="0" width="81" height="20" uuid="dc882bc0-dddd-46ef-a6ac-78b0af8f5c4d"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($F{montantDem})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="423" y="0" width="81" height="20" uuid="4fcd78a6-2f7d-4f00-8b29-ea511c2439bc"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($F{montantApprouve})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="504" y="0" width="81" height="20" uuid="9d312c79-e50b-4f09-855d-fa7a08cd2bff"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($F{montantApport})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="28" height="20" uuid="242e49fb-3566-4e34-8575-8e6c12a27842"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{NUMERO_PSF}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="65" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="176" height="15" uuid="a78735ee-64f5-4cae-bc09-c3694867af8d"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Imprimer le "+$P{DATE_EDITION}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="557" y="0" width="28" height="15" uuid="697e89b7-bf01-448f-8234-a671a2bd26a5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="0" width="80" height="15" uuid="0f335d6e-86bf-4bb2-b257-91f10697c537"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="0" width="102" height="15" uuid="5d2f7dbb-b71a-47c3-a244-da85e08352f9"/>
+				<box>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Microfina++"]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="14" y="15" width="555" height="50" uuid="1bea9117-c576-417d-9c38-94bd80483c0a"/>
+				<subreportParameter name="numero_page">
+					<subreportParameterExpression><![CDATA[$V{PAGE_NUMBER}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pageportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20">
+			<textField>
+				<reportElement mode="Opaque" x="89" y="0" width="133" height="20" backcolor="#E5E5E5" uuid="840f366a-1948-436b-8f72-f9ffcef67a8d"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TOTAUX"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="423" y="0" width="81" height="20" backcolor="#E5E5E5" uuid="196dc798-59d6-4e93-b21e-d01fe07f0789"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{T_APPROUVE})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="28" height="20" backcolor="#E5E5E5" uuid="eabb0f32-884c-485d-a9d6-6c6178a6b76d"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="252" y="0" width="30" height="20" backcolor="#E5E5E5" uuid="b75b239e-818f-41fd-bbf6-0af405fcf13f"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{T_FEMME})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="342" y="0" width="81" height="20" backcolor="#E5E5E5" uuid="7baf7b79-9dc3-45a5-8831-5c025cbf5948"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{T_DEMANDE})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="222" y="0" width="30" height="20" backcolor="#E5E5E5" uuid="9c46189a-96de-4d7f-b677-e406640a47b7"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{T_HOMME})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="312" y="0" width="30" height="20" backcolor="#E5E5E5" uuid="c6d5d473-c27c-402d-8df9-266853d42494"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{T_GS})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="504" y="0" width="81" height="20" backcolor="#E5E5E5" uuid="f17581ec-6b5c-493f-a201-7c3cb64e4403"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{T_APPORT})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="28" y="0" width="61" height="20" backcolor="#E5E5E5" uuid="26b305fb-d289-417b-956a-36468ec57ffe"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="282" y="0" width="30" height="20" backcolor="#E5E5E5" uuid="1b992748-c543-4f89-a636-0f794c5b5274"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($V{T_TOTAL})]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

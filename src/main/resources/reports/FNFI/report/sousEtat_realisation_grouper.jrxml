@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="20" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="df2903e6-fbad-4815-a7bf-f64bff844d88">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <style name="table_TD_Chaine" hAlign="Left" vAlign="Middle" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+        <box>
+            <leftPen lineWidth="0.5"/>
+            <bottomPen lineWidth="0.5"/>
+        </box>
+        <paragraph leftIndent="3"/>
+    </style>
+    <style name="table_TD_Nombre" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+        <box>
+            <leftPen lineWidth="0.5"/>
+            <bottomPen lineWidth="0.5"/>
+        </box>
+        <paragraph rightIndent="3"/>
+    </style>
+    <style name="table_CH" mode="Opaque" backcolor="#E5E5E5" hAlign="Center" vAlign="Middle" fontSize="10" isItalic="false" isUnderline="false" isStrikeThrough="false">
+        <box>
+            <topPen lineWidth="0.5"/>
+            <leftPen lineWidth="0.5"/>
+            <bottomPen lineWidth="0.5"/>
+        </box>
+    </style>
+    <parameter name="NUM_REGION" class="java.lang.Integer">
+        <defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+    </parameter>
+    <queryString>
+		<![CDATA[SELECT r2.NOM_STRUCT_ADMIN, SUM(r1.MONTANT_HOMME) AS MONTANT_HOMME, SUM(r1.MONTANT_FEMME) AS MONTANT_FEMME,
+ SUM(r1.NBRE_HOMME) AS NBRE_HOMME, SUM(r1.NBRE_FEMME) AS NBRE_FEMME, SUM(r1.NBRE_HOMME + r1.NBRE_FEMME) AS NBRE_TOTAL,
+ SUM(r1.MONTANT_HOMME + r1.MONTANT_FEMME) AS MONTANT_TOTAL FROM (
+SELECT ID_STRUCT_ADMIN, ID_REALISATION, MONTANT_HOMME, MONTANT_FEMME, NBRE_HOMME, NBRE_FEMME
+ FROM REALISATION r INNER JOIN OBJECTIF_STRUCT o ON r.ID_OBJECTIF_STRUCT = o.ID_OBJECTIF_STRUCT INNER JOIN 
+DETAILS_OBJECT_STRUCT d ON o.ID_OBJECTIF_STRUCT = d.ID_OBJECTIF_STRUCT) r1
+	 INNER JOIN (SELECT ID_STRUCT_ADMIN, NOM_STRUCT_ADMIN FROM STRUCTURE_ADMIN WHERE ID_STRUCT_ADMIN = $P{NUM_REGION} OR STRUCT_PARENT =  $P{NUM_REGION}
+UNION
+SELECT k.ID_STRUCT_ADMIN, NOM_STRUCT_ADMIN FROM STRUCTURE_ADMIN k INNER JOIN (SELECT s.ID_STRUCT_ADMIN FROM STRUCTURE_ADMIN s WHERE s.STRUCT_PARENT = $P{NUM_REGION})
+ k1 ON k.STRUCT_PARENT = k1.ID_STRUCT_ADMIN) r2 ON r1.ID_STRUCT_ADMIN = r2.ID_STRUCT_ADMIN
+GROUP BY r2.NOM_STRUCT_ADMIN;]]>
+    </queryString>
+    <field name="NOM_STRUCT_ADMIN" class="java.lang.String"/>
+    <field name="MONTANT_HOMME" class="java.math.BigDecimal"/>
+    <field name="MONTANT_FEMME" class="java.math.BigDecimal"/>
+    <field name="NBRE_HOMME" class="java.lang.Integer"/>
+    <field name="NBRE_FEMME" class="java.lang.Integer"/>
+    <field name="NBRE_TOTAL" class="java.lang.Integer"/>
+    <field name="MONTANT_TOTAL" class="java.math.BigDecimal"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <detail>
+        <band height="20" splitType="Stretch">
+            <textField>
+                <reportElement style="table_TD_Chaine" x="0" y="0" width="214" height="20" uuid="754a1dda-1ed8-4529-bfc2-153e11a56f76"/>
+                <textFieldExpression><![CDATA[$F{NOM_STRUCT_ADMIN}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="277" y="0" width="111" height="20" uuid="eaf88cd9-d20a-499d-a16e-af4268567162"/>
+                <textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($F{MONTANT_HOMME})]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="451" y="0" width="111" height="20" uuid="d6c5a2bb-1c0f-4f1d-99f6-a9aa42e86735"/>
+                <textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($F{MONTANT_FEMME})]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="214" y="0" width="63" height="20" uuid="bf869799-4b56-452c-a81f-447e5fb93cce"/>
+                <textFieldExpression><![CDATA[$F{NBRE_HOMME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="388" y="0" width="63" height="20" uuid="3a46b529-ad3c-4f08-8429-5c0759c6cfd6"/>
+                <textFieldExpression><![CDATA[$F{NBRE_FEMME}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="562" y="0" width="63" height="20" uuid="40264eb0-d111-4c31-83bb-217b95c7a051"/>
+                <textFieldExpression><![CDATA[$F{NBRE_TOTAL}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="625" y="0" width="111" height="20" uuid="cca0e795-cf05-4eee-b8aa-4ad0fae7c9a8"/>
+                <box>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <textFieldExpression><![CDATA[java.text.NumberFormat.getInstance().format($F{MONTANT_TOTAL})]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+</jasperReport>

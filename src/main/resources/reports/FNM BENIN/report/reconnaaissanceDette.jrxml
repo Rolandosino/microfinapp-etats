@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AdhesionMembre" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="95c2b8ce-a3f5-419c-a1ac-3adc313b263c">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <parameter name="nomAgence" class="java.lang.String"/>
+    <parameter name="objet" class="java.lang.String"/>
+    <parameter name="membre" class="java.lang.String"/>
+    <parameter name="taux" class="java.lang.String"/>
+    <parameter name="dateremboursement" class="java.lang.String"/>
+    <parameter name="sommecapital" class="java.lang.String"/>
+    <parameter name="lieu" class="java.lang.String"/>
+    <field name="libFrais" class="java.lang.String"/>
+    <field name="montant" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="94" splitType="Stretch">
+            <textField>
+                <reportElement x="144" y="49" width="303" height="13" uuid="f5bdb5a5-aa56-40cd-b84f-2d351e7ff6f4"/>
+                <textElement textAlignment="Center">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{objet}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="144" y="25" width="303" height="13" uuid="29c39ad1-ef01-4e10-ba92-94d5cfc5ad69"/>
+                <textElement textAlignment="Center">
+                    <font isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{nomAgence}]]></textFieldExpression>
+            </textField>
+            <image>
+                <reportElement mode="Opaque" x="12" y="6" width="84" height="80" uuid="63d6260f-a6b2-41ac-bd0f-932e826e8003"/>
+                <box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+                    <pen lineWidth="1.0"/>
+                    <topPen lineWidth="1.0"/>
+                    <leftPen lineWidth="1.0"/>
+                    <bottomPen lineWidth="1.0"/>
+                    <rightPen lineWidth="1.0"/>
+                </box>
+            </image>
+        </band>
+    </title>
+    <pageHeader>
+        <band splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="219" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="0" width="555" height="133" uuid="260d85b9-106f-40e3-a7d3-83642f7362d4"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="12"/>
+                </textElement>
+                <textFieldExpression><![CDATA["                              Je soussigné,     "+ $P{membre} +"   reconnais devoir à    "+$P{nomAgence}+"   une  somme de    "+$P{sommecapital}+
+",   représentant  le crédit que    "+$P{nomAgence}+"    m'a accordé.  A cette somme s'ajouteront les intérêts  à un taux    "+$P{taux}+"    La présente dette sera remboursée entièrement le   "+ $P{dateremboursement} +
+".  Je m'engage à payer le capital, les intérêts ainsi que  à la     "+$P{nomAgence}+"   toutes  pénalités éventuelles."+
+"\n                           En foi de quoi, je signe avec     "+$P{nomAgence}+"   la présente reconnaissance de dette  pour servir et valoir ce que de droit."]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="313" y="146" width="100" height="15" uuid="72dcdf6e-b4d8-4c0b-8809-93f2664b8b45"/>
+                <textFieldExpression><![CDATA["Fait à "+$P{lieu}+"  le "]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="12" y="198" width="100" height="20" uuid="6effc016-81e9-4aba-a111-8f41fbcad094"/>
+                <textElement textAlignment="Center">
+                    <font isBold="true" isUnderline="true"/>
+                </textElement>
+                <text><![CDATA[L'EMPRUNTEUR]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="371" y="198" width="100" height="20" uuid="c7cd1de6-bd2e-4c95-a408-1bf7127169da"/>
+                <textElement textAlignment="Center">
+                    <font isBold="true" isUnderline="true"/>
+                </textElement>
+                <text><![CDATA[LA CAUTION]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="183" y="178" width="100" height="20" uuid="75d12084-19ac-4b7a-a325-0ebe8b1d5d57"/>
+                <textElement textAlignment="Center">
+                    <font isBold="true" isUnderline="true"/>
+                </textElement>
+                <text><![CDATA[SIGNATURES]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <columnFooter>
+        <band splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band height="21" splitType="Stretch"/>
+    </summary>
+</jasperReport>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rapportMission" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="0" uuid="3b177a81-f7e5-4148-969b-3531555c4af5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="53"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="totalLettre" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.String"/>
+	<parameter name="RAC" class="java.lang.String"/>
+	<parameter name="DAF" class="java.lang.String"/>
+	<parameter name="DG" class="java.lang.String"/>
+	<parameter name="titrGene" class="java.lang.String"/>
+	<parameter name="lieu" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="detail1" class="java.lang.String"/>
+	<parameter name="detail2" class="java.lang.String"/>
+	<field name="libelle" class="java.lang.String"/>
+	<field name="quantite1" class="java.lang.String"/>
+	<field name="unite1" class="java.lang.String"/>
+	<field name="prixUni" class="java.lang.String"/>
+	<field name="montant" class="java.lang.String"/>
+	<field name="numero" class="java.lang.String"/>
+	<field name="quantite2" class="java.lang.String"/>
+	<field name="unite2" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="91" splitType="Stretch">
+			<subreport>
+				<reportElement x="21" y="-2" width="555" height="93" uuid="507fe6fb-f4b9-4982-88af-dafc5a3c44b6"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="79" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="0" width="445" height="20" uuid="af9d82ba-9501-4232-9333-57ea18ac91d4"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{titrGene}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="29" width="100" height="20" uuid="47a8c557-e965-4722-a019-80deafcd33bf"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lieu}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="29" width="32" height="20" uuid="6bbe0a9d-dea6-45ef-a5f0-15a4df1dac93"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lieu :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="52" width="32" height="20" uuid="50b868f8-d9a1-4d64-b89a-96efa09875d9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="53" y="52" width="100" height="20" uuid="5f8b5290-6f0a-44fe-b935-3e6f7bb0f972"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="198" splitType="Stretch">
+			<subreport>
+				<reportElement x="21" y="0" width="555" height="72" uuid="f41c7381-7a93-4e8d-9c00-1ca81aa40bd6"/>
+				<subreportParameter name="SUBREPORT_DIR"/>
+				<subreportParameter name="logo"/>
+				<subreportParameter name="LIBELLE_AGENCE"/>
+				<subreportParameter name="ADRESSE_AGENCE"/>
+				<subreportParameter name="BP_AGENCE"/>
+				<subreportParameter name="DATE_EDITION"/>
+				<subreportParameter name="TEL_AGENCE"/>
+				<subreportParameter name="LIBELLE_APPLICATION"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "rapportMissionDetail1.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="21" y="127" width="555" height="71" uuid="cbc35366-8c94-49e6-93d6-4388fe446eb8"/>
+				<subreportParameter name="SUBREPORT_DIR"/>
+				<subreportParameter name="logo"/>
+				<subreportParameter name="LIBELLE_AGENCE"/>
+				<subreportParameter name="ADRESSE_AGENCE"/>
+				<subreportParameter name="BP_AGENCE"/>
+				<subreportParameter name="DATE_EDITION"/>
+				<subreportParameter name="TEL_AGENCE"/>
+				<subreportParameter name="LIBELLE_APPLICATION"/>
+				<subreportParameter name="totalLettre"/>
+				<subreportParameter name="total"/>
+				<subreportParameter name="eltMission1"/>
+				<subreportParameter name="eltMission2"/>
+				<subreportParameter name="eltMission3"/>
+				<subreportParameter name="titre1"/>
+				<subreportParameter name="titre2"/>
+				<subreportParameter name="titre3"/>
+				<subreportParameter name="RAC"/>
+				<subreportParameter name="DAF"/>
+				<subreportParameter name="DG"/>
+				<subreportParameter name="titrGene"/>
+				<subreportParameter name="lieu"/>
+				<subreportParameter name="date"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "rapportMissionDetail2.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="153" y="112" width="247" height="15" uuid="f5d2baac-993e-47ec-9281-28668783ec72"/>
+				<textElement textAlignment="Center">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Note explicative du budget]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="72" width="279" height="20" uuid="f39a3e70-61c2-4f26-8381-6a18dea4d706"/>
+				<text><![CDATA[Arrêté le présent budget à la somme de :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="21" y="92" width="555" height="20" uuid="cfb933a6-72e9-448a-b7f9-ba7a246e8913"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalLettre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="25" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="98">
+			<staticText>
+				<reportElement x="21" y="0" width="200" height="20" uuid="2e9af06c-9693-47a1-9564-b2e75e7607c4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Responsable Administratif et comptable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="235" y="0" width="180" height="20" uuid="b034b1de-849f-4c6d-a553-8bebb628a798"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Directeur Administratif et Financier]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="429" y="0" width="130" height="20" uuid="5bb05f9e-66be-44c1-88a1-20e327831147"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Le Directeur Général]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="36" y="41" width="172" height="20" uuid="ebfac168-2fc4-4dc1-a34b-1520cb701e75"/>
+				<textFieldExpression><![CDATA[$P{RAC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="41" width="119" height="20" uuid="c9cdca11-8e4b-49a1-a929-a74fd17fb068"/>
+				<textFieldExpression><![CDATA[$P{DG}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="241" y="41" width="174" height="20" uuid="4b9b5795-0fe3-40ea-ac9c-a54128e198e8"/>
+				<textFieldExpression><![CDATA[$P{DAF}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

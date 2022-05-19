@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="declarationAnnuelleAgence" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="5" bottomMargin="5" uuid="f8cb614d-ac94-453e-b57b-3ad5029b757e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="PAYS" class="java.lang.String">
+		<defaultValueExpression><![CDATA["République Togolaise"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="MINISTERE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["MINISTERE DE L'ECONOMIE ET DES FINANCES"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SERVICE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Direction Générale des Impôts"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TITRE_ETAT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["DECLARATION ANNUELLE DES REMUNERATIONS VERSEES A DES TIERS"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ANNEE" class="java.lang.String"/>
+	<parameter name="DEBUT_PERIODE" class="java.lang.String"/>
+	<parameter name="FIN_PERIODE" class="java.lang.String"/>
+	<parameter name="INSTITUTION" class="java.lang.String"/>
+	<parameter name="PROFESSION" class="java.lang.String"/>
+	<parameter name="ADRESSE" class="java.lang.String"/>
+	<parameter name="MATRICULE" class="java.lang.String"/>
+	<parameter name="NOMBRE_HOMME" class="java.lang.String"/>
+	<parameter name="NOMBRE_FEMME" class="java.lang.String"/>
+	<parameter name="NOMBRE_TOTAL" class="java.lang.String"/>
+	<parameter name="TOTAL_VERSEMENT" class="java.lang.String"/>
+	<parameter name="TOTAL_IRPP" class="java.lang.String"/>
+	<parameter name="TOTAL_TCS" class="java.lang.String"/>
+	<parameter name="TOTAL_TS" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<field name="agence" class="java.lang.String"/>
+	<field name="liste" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="source" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="100" splitType="Prevent">
+			<subreport>
+				<reportElement x="0" y="0" width="802" height="100" uuid="129d2ee8-8a14-4fbd-8be5-08769773b58f"/>
+				<subreportParameter name="NOMBRE_TOTAL">
+					<subreportParameterExpression><![CDATA[$P{NOMBRE_TOTAL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TOTAL_IRPP">
+					<subreportParameterExpression><![CDATA[$P{TOTAL_IRPP}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NOMBRE_FEMME">
+					<subreportParameterExpression><![CDATA[$P{NOMBRE_FEMME}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TABLEAU_DATA_SOURCE">
+					<subreportParameterExpression><![CDATA[$F{liste}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TOTAL_TS">
+					<subreportParameterExpression><![CDATA[$P{TOTAL_TS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TOTAL_TCS">
+					<subreportParameterExpression><![CDATA[$P{TOTAL_TCS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="NOMBRE_HOMME">
+					<subreportParameterExpression><![CDATA[$P{NOMBRE_HOMME}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="INSTITUTION">
+					<subreportParameterExpression><![CDATA[$P{INSTITUTION}+" agence de "+$F{agence}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SERVICE">
+					<subreportParameterExpression><![CDATA[$P{SERVICE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="PAYS">
+					<subreportParameterExpression><![CDATA[$P{PAYS}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ANNEE">
+					<subreportParameterExpression><![CDATA[$P{ANNEE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA["./"]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="MINISTERE">
+					<subreportParameterExpression><![CDATA[$P{MINISTERE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="FIN_PERIODE">
+					<subreportParameterExpression><![CDATA[$P{FIN_PERIODE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="MATRICULE">
+					<subreportParameterExpression><![CDATA[$P{MATRICULE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TOTAL_VERSEMENT">
+					<subreportParameterExpression><![CDATA[$P{TOTAL_VERSEMENT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="PROFESSION">
+					<subreportParameterExpression><![CDATA[$P{PROFESSION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DEBUT_PERIODE">
+					<subreportParameterExpression><![CDATA[$P{DEBUT_PERIODE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TITRE_ETAT">
+					<subreportParameterExpression><![CDATA[$P{TITRE_ETAT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$F{source}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "declarationAnnuelleAgenceSous.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20">
+			<textField>
+				<reportElement x="349" y="0" width="100" height="15" uuid="00123452-1117-4c62-bba9-dca2c156931d"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="585" leftMargin="5" rightMargin="5" topMargin="20" bottomMargin="3" uuid="a84622ba-00f9-4257-9ee3-d95b38b3d661">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<style name="table_TD_Chaine" hAlign="Left" vAlign="Middle" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+		</box>
+		<paragraph leftIndent="3"/>
+	</style>
+	<style name="table_TD_Nombre" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+		</box>
+		<paragraph rightIndent="3"/>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#E5E5E5" hAlign="Center" vAlign="Middle" fontSize="10" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<topPen lineWidth="0.5"/>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+		</box>
+	</style>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String"/>
+	<parameter name="TITRE_ETAT" class="java.lang.String"/>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_DEBUT" class="java.lang.String"/>
+	<parameter name="DATE_FIN" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="FICHIER_EXCEL" class="java.lang.Boolean"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<field name="numeroClient" class="java.lang.String"/>
+	<field name="numeroCompte" class="java.lang.String"/>
+	<field name="numeroPiece" class="java.lang.String"/>
+	<field name="dateOperation" class="java.lang.String"/>
+	<field name="intituleClient" class="java.lang.String"/>
+	<field name="debit" class="java.lang.String"/>
+	<field name="credit" class="java.lang.String"/>
+	<field name="libelleOperation" class="java.lang.String"/>
+	<field name="utilisateur" class="java.lang.String"/>
+	<variable name="TOTAL_DEBIT_CLIENT" class="java.math.BigDecimal" resetType="Group" resetGroup="groupeClient" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{debit}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_CREDIT_CLIENT" class="java.math.BigDecimal" resetType="Group" resetGroup="groupeClient" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{credit}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_DEBIT_COMPTE" class="java.math.BigDecimal" resetType="Group" resetGroup="groupeCompte" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{debit}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_CREDIT_COMPTE" class="java.math.BigDecimal" resetType="Group" resetGroup="groupeCompte" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{credit}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_CREDIT" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{credit}).toString()))]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_DEBIT" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{debit}).toString()))]]></variableExpression>
+	</variable>
+	<group name="groupeClient">
+		<groupExpression><![CDATA[$F{numeroClient}]]></groupExpression>
+		<groupHeader>
+			<band height="15">
+				<textField>
+					<reportElement style="table_TD_Nombre" x="0" y="0" width="585" height="15" uuid="d463b3ee-f1f8-4b62-a283-cf866bd54e5a"/>
+					<box>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Left">
+						<font size="6"/>
+						<paragraph leftIndent="3"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{intituleClient}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="15">
+				<textField>
+					<reportElement style="table_TD_Chaine" x="118" y="0" width="345" height="15" uuid="1a9f75d1-9f02-49ac-ad00-5b89a2bda091"/>
+					<textElement>
+						<font size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table_TD_Nombre" x="0" y="0" width="83" height="15" uuid="eceb9625-e367-4cc6-a499-fb830fa8f4f5"/>
+					<textElement textAlignment="Left">
+						<font size="5" isBold="true"/>
+						<paragraph leftIndent="3"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Total "+$F{intituleClient}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table_TD_Nombre" x="463" y="0" width="61" height="15" uuid="e52a06ce-a6ed-4956-b0f6-62c3384a6c01">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_DEBIT_CLIENT}))]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table_TD_Chaine" x="83" y="0" width="35" height="15" uuid="14a4d1a8-ec7b-4f8d-aa21-c3d42efc8a1e"/>
+					<textElement>
+						<font size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table_TD_Nombre" x="524" y="0" width="61" height="15" uuid="94ce73a8-2439-4891-9d91-85b1e96ef91d">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement>
+						<font size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_CREDIT_CLIENT}))]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table_TD_Nombre" x="524" y="0" width="61" height="15" uuid="c1ad5df5-a230-4302-97bb-3b83281df20d">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement>
+						<font size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_CREDIT_CLIENT}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table_TD_Nombre" x="463" y="0" width="61" height="15" uuid="3fc400ad-f395-4209-a617-e7eacdbe28c5">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_DEBIT_CLIENT}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="groupeCompte">
+		<groupExpression><![CDATA[$F{numeroCompte}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<staticText>
+					<reportElement style="table_CH" x="0" y="15" width="83" height="15" isRemoveLineWhenBlank="true" uuid="0106153f-d509-4423-af6b-913810571285">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+					<text><![CDATA[N° Pièce]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="table_CH" x="83" y="15" width="35" height="15" isRemoveLineWhenBlank="true" uuid="aa2416c0-35f7-4587-a837-fbbec436351e">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+					<text><![CDATA[Date opération]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="table_CH" x="463" y="15" width="61" height="15" isRemoveLineWhenBlank="true" uuid="a02be521-d7c7-464d-bcbe-b6b0dd06a7b7">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+					<text><![CDATA[Débit]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="table_CH" x="524" y="15" width="61" height="15" isRemoveLineWhenBlank="true" uuid="64ff95e7-be3d-42db-b8e5-a0daabc4c2e7">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+					<text><![CDATA[Crédit]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="table_TD_Nombre" x="0" y="0" width="585" height="15" uuid="844aade4-1067-418e-b3a8-99f8fce3156c"/>
+					<box>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Left">
+						<font size="6"/>
+						<paragraph leftIndent="3"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{numeroCompte}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="table_CH" x="118" y="15" width="345" height="15" isRemoveLineWhenBlank="true" uuid="765d06f5-05f4-49ae-a7e3-c2cf54ed93be">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+					<text><![CDATA[Libelle]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="15">
+				<textField>
+					<reportElement style="table_TD_Chaine" x="118" y="0" width="345" height="15" uuid="92ec4220-8989-411c-9f7e-d1f5b6b325df"/>
+					<textElement>
+						<font size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table_TD_Nombre" x="0" y="0" width="83" height="15" uuid="8455b52b-411a-47fd-891f-2d5dadb7ee85"/>
+					<textElement textAlignment="Left">
+						<font size="5" isBold="true"/>
+						<paragraph leftIndent="3"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Total "+$F{numeroCompte}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table_TD_Nombre" x="463" y="0" width="61" height="15" uuid="00ee6755-ef73-4f1f-9e86-0a10011c9e5e">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_DEBIT_COMPTE}))]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table_TD_Chaine" x="83" y="0" width="35" height="15" uuid="2455c692-4e7f-4369-b94d-bd44b634257b"/>
+					<textElement>
+						<font size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table_TD_Nombre" x="524" y="0" width="61" height="15" uuid="aae1bffa-67f7-46ab-b7e9-1bbbb6d741ad">
+						<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement>
+						<font size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_CREDIT_COMPTE}))]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table_TD_Nombre" x="463" y="0" width="61" height="15" uuid="1d69e673-baae-4a36-9341-7bbdc15bd45c">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_DEBIT_COMPTE}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="table_TD_Nombre" x="524" y="0" width="61" height="15" uuid="00c3acf9-7943-4064-ad02-cf73defcfba9">
+						<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+						<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement>
+						<font size="6" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{TOTAL_CREDIT_COMPTE}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="120" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="524" y="105" width="61" height="15" isRemoveLineWhenBlank="true" uuid="7836b855-b44e-4785-96dd-d881a9ae3e49">
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Crédit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="0" y="105" width="83" height="15" isRemoveLineWhenBlank="true" uuid="77259496-0d1a-43e2-930c-4608f0f7e3d3">
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[N° Pièce]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="463" y="105" width="61" height="15" isRemoveLineWhenBlank="true" uuid="c8144168-39c0-4811-af79-756480eba756">
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Débit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="118" y="105" width="345" height="15" isRemoveLineWhenBlank="true" uuid="86352a32-1618-4c55-ad13-e40e6252a3a0">
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Libelle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="83" y="105" width="35" height="15" isRemoveLineWhenBlank="true" uuid="0b4fc3b8-2f0c-43f6-ba82-59a1b2b93768">
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Date opération]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="0" y="0" width="585" height="71" isRemoveLineWhenBlank="true" uuid="f7bfc800-a3ba-4492-81f5-b32f8ce48e37">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="0" y="79" width="585" height="20" uuid="53bfd5d0-8a40-40e9-97cf-5233085cb10d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITRE_ETAT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD_Nombre" x="0" y="0" width="83" height="15" uuid="fec5bb95-ed6c-4fff-bd60-d2cbc6003f1f"/>
+				<textElement textAlignment="Left">
+					<font size="6"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numeroPiece}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Chaine" x="83" y="0" width="35" height="15" uuid="d644bc5a-98fc-4b90-9a3b-cf9c92a92b76"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateOperation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="463" y="0" width="61" height="15" uuid="cc76abc7-47a9-4a59-8557-faf35b42723c">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{debit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="524" y="0" width="61" height="15" uuid="7b8ed491-7cc1-406f-a558-4971870418ed">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{credit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Chaine" x="118" y="0" width="345" height="15" uuid="a3f9cf28-54f9-4fd7-b52d-05898c4c5f4f"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelleOperation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="524" y="0" width="61" height="15" uuid="52dcf87b-15e3-445f-acb1-3f53b7e635f1">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{credit}).toString()))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="463" y="0" width="61" height="15" uuid="12ee01c2-88e4-42c7-93c2-1ef2f7d6d681">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{debit}).toString()))]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="67" splitType="Stretch">
+			<subreport>
+				<reportElement x="-7" y="21" width="597" height="46" isRemoveLineWhenBlank="true" uuid="a0ffb490-9e0e-4e1c-9939-85c3bc6bc1d6">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="LIBELLE_APPLICATION"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="501" y="1" width="62" height="10" uuid="bbd8abb4-ed30-4872-82dc-377d27c55032">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="563" y="1" width="22" height="10" uuid="ddf88ea7-bfd1-49ff-bbfe-d528946432bd">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="258" y="0" width="57" height="10" uuid="0e63082f-3896-4978-bcb9-812a9fee872d">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Microfina++"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="1" width="118" height="10" uuid="fcf54f1d-4035-40ef-9b27-616123d60166">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Imprimer le "+(new java.text.SimpleDateFormat("dd/MM/yyyy à HH:mm:ss").format(new java.util.Date()))]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD_Chaine" x="118" y="0" width="345" height="15" uuid="8ff73bd0-f4fd-4927-8e39-2fd3733e3e17"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="0" y="0" width="83" height="15" uuid="742fcfa5-d11c-4a37-93ab-adff951606e1"/>
+				<textElement textAlignment="Left">
+					<font size="6" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Total"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="463" y="0" width="61" height="15" uuid="4070b138-a03a-47ed-a95f-f00211beafc2">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_DEBIT}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Chaine" x="83" y="0" width="35" height="15" uuid="43e34482-dc73-4df3-839e-57601210f77a"/>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="524" y="0" width="61" height="15" uuid="f9b87103-8b22-4fe1-a2a1-3aa33e3c5b01">
+					<printWhenExpression><![CDATA[(!$P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{TOTAL_DEBIT}))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="524" y="0" width="61" height="15" uuid="22c9a1a8-c036-4c56-8218-75eb9396021b">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TOTAL_DEBIT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD_Nombre" x="463" y="0" width="61" height="15" uuid="3e087dc0-c00d-4051-bf17-ecdd1db2cd35">
+					<property name="net.sf.jasperreports.export.xls.pattern" value="# ### ### ### ##0"/>
+					<printWhenExpression><![CDATA[($P{FICHIER_EXCEL})]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TOTAL_DEBIT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

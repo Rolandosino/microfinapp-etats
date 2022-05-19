@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="table_TD" mode="Opaque" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <field name="sexe" class="java.lang.String"/>
+    <field name="partsociale" class="java.lang.String"/>
+    <variable name="somme" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($F{partsociale}).toString())]]></variableExpression>
+    </variable>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="50" splitType="Stretch"/>
+    </title>
+    <pageHeader>
+        <band height="35" splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="21" splitType="Stretch">
+            <staticText>
+                <reportElement style="table_CH" x="0" y="0" width="277" height="20" backcolor="#EFEFEF"/>
+                <textElement/>
+                <text><![CDATA[SEXE]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="277" y="0" width="277" height="20" backcolor="#EFEFEF"/>
+                <textElement/>
+                <text><![CDATA[PART SOCIALE]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="20" splitType="Stretch">
+            <textField>
+                <reportElement style="table_TD" x="0" y="0" width="277" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{sexe}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="277" y="0" width="277" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{partsociale}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <summary>
+        <band height="20" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="0" width="277" height="20"/>
+                <textElement/>
+                <text><![CDATA[Total]]></text>
+            </staticText>
+            <textField>
+                <reportElement style="table_TD" mode="Opaque" x="278" y="0" width="277" height="20"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font fontName="SansSerif" isBold="false"/>
+                    <paragraph leftIndent="3" rightIndent="3"/>
+                </textElement>
+                <textFieldExpression><![CDATA[(java.text.NumberFormat.getInstance().format($V{somme}))]]></textFieldExpression>
+            </textField>
+        </band>
+    </summary>
+</jasperReport>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="etat_recu_collecte_primes" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="575" leftMargin="10" rightMargin="10" topMargin="20" bottomMargin="0" uuid="c35104a0-44a2-4e9c-a86f-08a419aa95db">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SOCIETE" class="java.lang.String"/>
+	<parameter name="BP" class="java.lang.String"/>
+	<parameter name="EMAIL" class="java.lang.String"/>
+	<parameter name="ADRESSE" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String"/>
+	<parameter name="TITRE_ETAT" class="java.lang.String"/>
+	<parameter name="assureur" class="java.lang.String"/>
+	<parameter name="produitCredit" class="java.lang.String"/>
+	<parameter name="numCredit" class="java.lang.String"/>
+	<parameter name="dateCollecte" class="java.lang.String"/>
+	<parameter name="cycle" class="java.lang.String"/>
+	<parameter name="produitAssurance" class="java.lang.String"/>
+	<parameter name="mtnAssurance" class="java.lang.String"/>
+	<parameter name="nbreFemme" class="java.lang.String"/>
+	<parameter name="nbreHomme" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="refCollecte" class="java.lang.String"/>
+	<parameter name="subReportDataSource" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="totalCollecte" class="java.lang.String"/>
+	<parameter name="mtnCredit" class="java.lang.String"/>
+	<parameter name="client" class="java.lang.String"/>
+	<parameter name="libelleClient" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<subreport>
+				<reportElement x="1" y="0" width="575" height="82" uuid="700e7201-22f4-406e-9dad-6280650af74e"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION"/>
+				<subreportParameter name="ADRESSE_AGENCE"/>
+				<subreportParameter name="LIBELLE_AGENCE"/>
+				<subreportParameter name="BP_AGENCE"/>
+				<subreportParameter name="TEL_AGENCE"/>
+				<subreportParameter name="DATE_EDITION"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="65" splitType="Stretch">
+			<textField>
+				<reportElement x="484" y="0" width="65" height="15" uuid="d10f7077-4d2b-4253-b935-bb6cd7e95cf2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="550" y="0" width="25" height="15" uuid="711c76c4-cd41-4038-b711-3f7df85bc3b8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="166" height="15" uuid="f324fe21-5a58-4811-acb8-14c43359c20d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Imprimé le "+$P{DATE_EDITION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="216" y="0" width="166" height="15" uuid="3912e5d0-8724-4b01-af77-b97497483282"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="-10" y="15" width="595" height="50" uuid="06c54727-f0ee-4fed-901e-5ffe996f6e76"/>
+				<subreportParameter name="LIBELLE_APPLICATION"/>
+				<subreportParameter name="OPTION"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pageportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="300">
+			<textField>
+				<reportElement x="44" y="0" width="440" height="20" uuid="9da701ff-c8bb-4f0a-a5a8-ee7ac38d22e0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITRE_ETAT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="82" width="100" height="20" uuid="d9563431-3a33-4754-9359-3d8afd289e08"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[N° Crédit :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="82" width="104" height="20" uuid="7961256c-bde6-498c-95f1-0902ea55a413"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{numCredit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="102" width="100" height="20" uuid="fd805a78-5440-4453-96a7-fd8ba57035ef"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Produit Crédit :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="102" width="104" height="20" uuid="28edfb34-ab81-4de8-b1dd-f6ada6254b41"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{produitCredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="142" width="161" height="20" uuid="5b476cb4-6aed-44c2-bf58-061fe13aa5c1"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateCollecte}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="293" y="142" width="117" height="20" uuid="170bf8c8-5c1b-4182-9f58-3ff180e671e0"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Date Collecte :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="410" y="42" width="162" height="20" uuid="6cc329e9-ae2b-4cce-b036-05f9d70e95db"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{assureur}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="293" y="42" width="117" height="20" uuid="b197cb69-72cb-4342-a5d5-3f56d98a9753"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Assureur :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="410" y="62" width="162" height="20" uuid="26b94682-f47e-4f4a-b804-776859b36942"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{produitAssurance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="293" y="62" width="117" height="20" uuid="201b6099-a147-4ad7-abc8-0f1585d34861"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Produit Assurance  :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="410" y="82" width="162" height="20" uuid="a9b950ca-b632-4105-ae2f-aed0b75d95f1"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nbreHomme}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="293" y="82" width="117" height="20" uuid="eec6303b-457f-43a3-b06a-40d1a952d2ef"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Nombre Homme  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="188" width="574" height="22" uuid="8c130ebe-e3a6-4e2a-be3d-610317256fd8"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="410" y="102" width="161" height="20" uuid="897ca713-292c-4b2c-82ad-ebebdefc79a2"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nbreFemme}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="10" y="219" width="555" height="65" uuid="183c26d0-8bdc-45ca-b083-c1995cee19a9"/>
+				<dataSourceExpression><![CDATA[$P{subReportDataSource}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} +"etat_recu_reglement_subreport.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="410" y="122" width="161" height="20" uuid="5fba96b3-9ca2-4182-a8b6-966ca3bb14f2"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font isBold="true"/>
+					<paragraph leftIndent="4" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mtnAssurance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="42" width="104" height="20" uuid="4586dae9-b83e-430e-9f22-e1ee2fa5dbc4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" markup="none">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{refCollecte}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="42" width="99" height="20" uuid="d100acd6-68a4-4af8-b4c9-34c8a35ee8bf"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Reférence Collecte :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="102" width="117" height="20" uuid="55cc4320-5512-4d0d-9dd2-75dc74341e1f"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Nombre Femme :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="142" width="100" height="20" uuid="927a47b4-4670-4598-b70d-b9a23b27b4e8"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Montant Crédit :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="142" width="104" height="20" uuid="e7ab39d1-9360-4ffa-956f-7cbe908e2d08"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mtnCredit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="162" width="104" height="20" uuid="3bc8913e-e8c2-491f-b13d-ae6b9e071028"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalCollecte}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="162" width="100" height="20" uuid="1f64847c-579a-491d-92e5-95dce741de77"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Mt. déjà collecté :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="62" width="100" height="20" uuid="7c6b5481-0798-4924-88d7-109517c0db72"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{libelleClient}+" :"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="62" width="104" height="20" uuid="8d19c5f5-c54d-453c-80a0-3bd8c2ab630d"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{client}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="293" y="122" width="117" height="20" uuid="ef307f50-bed2-493f-8683-4d5c66a71b2f"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Montant Assurance :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="122" width="104" height="20" uuid="e9f1c511-80d5-4486-8bdc-a2114e8b4d0c"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cycle}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="122" width="100" height="20" uuid="8e8d0aba-9dc6-48ca-ba6a-a45f864edc63"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[Cycle :]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

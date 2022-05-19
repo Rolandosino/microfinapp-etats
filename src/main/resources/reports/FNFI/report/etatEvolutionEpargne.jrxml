@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <style name="table_CH" mode="Opaque" forecolor="#000000" backcolor="#CCCCCC" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="table_TD" mode="Opaque" forecolor="#000000" backcolor="#FFFFFF" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["D:\\java\\dev\\microfina\\src\\main\\webapp\\resources\\report\\"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="typecompte" class="java.lang.String"/>
+    <parameter name="soldecompte" class="java.lang.String"/>
+    <parameter name="microfinace" class="java.lang.String"/>
+    <parameter name="adresse" class="java.lang.String"/>
+    <parameter name="adresse1" class="java.lang.String"/>
+    <parameter name="adresse3" class="java.lang.String"/>
+    <field name="numcopte" class="java.lang.String"/>
+    <field name="nummembre" class="java.lang.String"/>
+    <field name="nomsPrenoms" class="java.lang.String"/>
+    <field name="solde" class="java.lang.String"/>
+    <field name="totalcaution" class="java.lang.String"/>
+    <field name="epargnelibre" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="43" splitType="Stretch">
+            <subreport>
+                <reportElement x="0" y="0" width="555" height="43"/>
+                <subreportParameter name="LIBELLE_AGENCE"/>
+                <subreportParameter name="TITRE_ETAT"/>
+                <subreportParameter name="ADRESSE_AGENCE"/>
+                <subreportParameter name="BP_AGENCE"/>
+                <subreportParameter name="DATE_EDITION"/>
+                <subreportParameter name="TEL_AGENCE"/>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "entete_de_page.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+    </title>
+    <pageHeader>
+        <band height="84" splitType="Stretch">
+            <staticText>
+                <reportElement x="328" y="9" width="117" height="20"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Type des comptes:]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="328" y="29" width="117" height="20"/>
+                <textElement>
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Solde des comptes:]]></text>
+            </staticText>
+            <textField>
+                <reportElement x="445" y="9" width="100" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$P{typecompte}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="445" y="29" width="100" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$P{soldecompte}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="0" width="218" height="20"/>
+                <textElement>
+                    <font isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{microfinace}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="20" width="218" height="19"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{adresse}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="39" width="218" height="20"/>
+                <textElement>
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{adresse1}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="0" y="59" width="218" height="14"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$P{adresse3}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageHeader>
+    <columnHeader>
+        <band height="20" splitType="Stretch">
+            <staticText>
+                <reportElement style="table_CH" x="0" y="0" width="92" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[N°Compte]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="92" y="0" width="92" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[N°Membre]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="184" y="0" width="130" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Noms & Prenoms]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="314" y="0" width="70" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[SOLDE]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="384" y="0" width="92" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Total caussion]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="476" y="0" width="79" height="20"/>
+                <textElement>
+                    <font isBold="true"/>
+                </textElement>
+                <text><![CDATA[Epargne Libre]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="20" splitType="Stretch">
+            <textField>
+                <reportElement style="table_TD" x="0" y="0" width="92" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{numcopte}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="92" y="0" width="92" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{nummembre}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="184" y="0" width="130" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{nomsPrenoms}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="314" y="0" width="70" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{solde}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="384" y="0" width="92" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{totalcaution}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="476" y="0" width="79" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{epargnelibre}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="22" splitType="Stretch">
+            <staticText>
+                <reportElement x="0" y="0" width="92" height="22"/>
+                <textElement>
+                    <font isBold="false"/>
+                </textElement>
+                <text><![CDATA[Imprimé le :]]></text>
+            </staticText>
+            <textField pattern="dd/MM/yyyy">
+                <reportElement x="92" y="0" width="92" height="22"/>
+                <textElement>
+                    <font isBold="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+        </band>
+    </columnFooter>
+    <pageFooter>
+        <band height="40" splitType="Stretch">
+            <subreport>
+                <reportElement x="0" y="0" width="555" height="40"/>
+                <subreportParameter name="LIBELLE_APPLICATION"/>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+    </pageFooter>
+</jasperReport>

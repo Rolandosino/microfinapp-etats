@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="0" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9cf91423-85b8-4b62-846b-f780dc5416b0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="COLONNE_GAUCHE" class="java.lang.String"/>
+	<parameter name="COLONNE_DROITE" class="java.lang.String"/>
+	<field name="libelleActif" class="java.lang.String"/>
+	<field name="montantActif" class="java.lang.String"/>
+	<field name="libellePassif" class="java.lang.String"/>
+	<field name="montantPassif" class="java.lang.String"/>
+	<field name="actifGras" class="java.lang.String"/>
+	<field name="passifGras" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="20">
+			<textField>
+				<reportElement x="0" y="0" width="276" height="20" uuid="2a3d64c5-5820-470f-802b-6326415e3b75"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[$P{COLONNE_GAUCHE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="279" height="20" uuid="1f1473d7-72c6-434d-8469-df3f32f12998"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[$P{COLONNE_DROITE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="171" height="20" uuid="e367aec1-2282-4940-b908-80f669e27afd">
+					<printWhenExpression><![CDATA[($F{actifGras}.equalsIgnoreCase("0"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelleActif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="171" y="0" width="105" height="20" uuid="3532b1ec-8ec7-4707-a129-fb7e18f934d2">
+					<printWhenExpression><![CDATA[($F{actifGras}.equalsIgnoreCase("0"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantActif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="171" height="20" uuid="6543e2bb-f07b-4e74-8a47-a92c426b1dd5">
+					<printWhenExpression><![CDATA[($F{passifGras}.equalsIgnoreCase("0"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libellePassif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="447" y="0" width="108" height="20" uuid="77a13e15-5df5-4894-8da5-d80841cfe230">
+					<printWhenExpression><![CDATA[($F{passifGras}.equalsIgnoreCase("0"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantPassif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="447" y="0" width="108" height="20" uuid="53e79f1d-0cc5-43a7-ae90-b683f81097b6">
+					<printWhenExpression><![CDATA[($F{passifGras}.equalsIgnoreCase("1"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantPassif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="171" y="0" width="105" height="20" uuid="3c4307c0-bb0a-49c4-a2b5-2f00a23a3203">
+					<printWhenExpression><![CDATA[($F{actifGras}.equalsIgnoreCase("1"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montantActif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="171" height="20" uuid="a0e93310-12a2-4af8-b088-072f73949f3e">
+					<printWhenExpression><![CDATA[($F{actifGras}.equalsIgnoreCase("1"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libelleActif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="171" height="20" uuid="f4cc6dec-9fe5-45bb-8715-5bb86fddf34a">
+					<printWhenExpression><![CDATA[($F{passifGras}.equalsIgnoreCase("1"))]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{libellePassif}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

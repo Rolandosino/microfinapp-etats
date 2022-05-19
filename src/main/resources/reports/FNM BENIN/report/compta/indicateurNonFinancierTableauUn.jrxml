@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="55417ace-da31-4f88-8d33-aae43fbba023">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="LIBELLE_PRECEDENT" class="java.lang.String"/>
+	<parameter name="LIBELLE_ACTUEL" class="java.lang.String"/>
+	<parameter name="TITRE_TABLEAU" class="java.lang.String"/>
+	<parameter name="DONNEE_COLUMN_FOOTER_UN" class="java.lang.String"/>
+	<parameter name="DONNEE_COLUMN_FOOTER_DEUX" class="java.lang.String"/>
+	<field name="indicateur" class="java.lang.String"/>
+	<field name="precedent" class="java.lang.String"/>
+	<field name="actuel" class="java.lang.String"/>
+	<field name="variation" class="java.lang.String"/>
+	<field name="mettreEnGras" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="21">
+			<textField>
+				<reportElement x="0" y="1" width="572" height="20" uuid="c75538b0-313b-4a36-a1d5-6d92bf3cfb6b"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TITRE_TABLEAU}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="322" height="20" uuid="2fd01e22-ab44-49a3-94df-214100bb643d"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Indicateur]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="413" y="0" width="91" height="20" uuid="235a93b4-85b7-41ca-b1ab-a80ee3e2f783"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[$P{LIBELLE_ACTUEL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="504" y="0" width="68" height="20" uuid="18e10b24-1eee-439b-858f-eeaf0715c4fb"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Variation (%)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="322" y="0" width="91" height="20" uuid="c7488f40-f5f7-4cd4-8340-ed971a3bb1de"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[$P{LIBELLE_PRECEDENT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="322" height="20" uuid="a58da1ca-d545-42c0-b1a8-af8372db7112"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{indicateur}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="322" y="0" width="91" height="20" uuid="2e300e11-0481-41fc-8621-b4fa50886cb6"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precedent}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="413" y="0" width="91" height="20" uuid="b62cb3be-0065-4413-8e57-998d3c4aa31d"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{actuel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="504" y="0" width="68" height="20" uuid="d9c806c5-59d8-4d18-b087-38b418880816"/>
+				<box>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{variation}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="55">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="11" width="572" height="20" isRemoveLineWhenBlank="true" uuid="92f3e242-7e13-4930-b4ed-c5b790065b4a"/>
+				<textElement verticalAlignment="Middle">
+					<font isItalic="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DONNEE_COLUMN_FOOTER_UN}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="31" width="572" height="20" isRemoveLineWhenBlank="true" uuid="22d6270c-8e08-4d35-ad4e-0a09f6afe420"/>
+				<textElement verticalAlignment="Middle">
+					<font isItalic="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DONNEE_COLUMN_FOOTER_DEUX}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

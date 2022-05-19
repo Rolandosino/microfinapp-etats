@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="tabaAmotprevisionnel" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="0" uuid="e568bba9-983a-4757-b4e9-8b5c9f97bfba">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="typeplan" class="java.lang.String"/>
+	<parameter name="periodocite" class="java.lang.String"/>
+	<parameter name="libellebien" class="java.lang.String"/>
+	<parameter name="reference" class="java.lang.String"/>
+	<parameter name="dureeVie" class="java.lang.String"/>
+	<parameter name="dateAchat" class="java.lang.String"/>
+	<parameter name="dateMiseService" class="java.lang.String"/>
+	<parameter name="OPTION" class="java.lang.String"/>
+	<field name="exercice" class="java.lang.String"/>
+	<field name="dateEcheance" class="java.lang.String"/>
+	<field name="montant" class="java.math.BigDecimal"/>
+	<field name="totalAmorti" class="java.math.BigDecimal"/>
+	<field name="resteAmortir" class="java.math.BigDecimal"/>
+	<variable name="sommemontant" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{montant}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<subreport>
+				<reportElement x="16" y="0" width="555" height="93" uuid="409be329-0b09-47b8-a258-eefc8d57267c"/>
+				<subreportParameter name="logo">
+					<subreportParameterExpression><![CDATA[$P{logo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ADRESSE_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BP_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="DATE_EDITION">
+					<subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TEL_AGENCE">
+					<subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="OPTION">
+					<subreportParameterExpression><![CDATA[$P{OPTION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ententeportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="69" splitType="Stretch">
+			<staticText>
+				<reportElement x="404" y="12" width="72" height="15" uuid="af35ea1c-1c6e-477e-9e6f-1e8d963fe01b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Type de Plan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="27" width="69" height="15" uuid="17543187-ec2d-48ca-b87f-f36a364d940e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Bien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="12" width="69" height="15" uuid="78957c0a-2e12-42b6-aafe-4fddd1d0d18a"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Référence Bien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="204" y="27" width="100" height="15" uuid="628d6eba-dc2a-4a37-8af4-aedc6e5eeff0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date Mise en service]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="41" width="69" height="15" uuid="d54ad86e-58e2-4c73-a5e1-65c939f62ea5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date Achat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="404" y="27" width="72" height="15" uuid="7ce235d8-57ec-44fe-8626-5ec4d2afde15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Périodicité]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="204" y="12" width="100" height="15" uuid="1e18e6c1-900f-423d-a663-339cd848c057"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Durée de vie]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="85" y="12" width="119" height="15" uuid="04ca3092-8b25-408b-b876-efc6c54ef1f7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{reference}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="85" y="27" width="119" height="15" uuid="7f7700bb-246b-4584-a323-39c4635c50bc"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{libellebien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="85" y="41" width="119" height="15" uuid="04d23189-8caa-4d50-822b-5bc8f1ed5590"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateAchat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="304" y="27" width="100" height="15" uuid="76add7f4-52b3-4775-890e-095445399723"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateMiseService}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="304" y="12" width="100" height="15" uuid="029f5e39-f294-47b3-8c4c-b405e9c74c85"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dureeVie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="476" y="27" width="95" height="15" uuid="1be97bd4-d857-428e-91f6-3b50fab20d0e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{periodocite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="476" y="12" width="95" height="15" uuid="2132d3cc-5cf0-4143-89e7-a932350f2646"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{typeplan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement style="table_CH" x="16" y="0" width="111" height="15" backcolor="#EFEFEF" uuid="d805cd88-aa26-45b1-a533-20b6d2b45dfa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Exercice]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="127" y="0" width="111" height="15" backcolor="#EFEFEF" uuid="e4c9f775-b0de-4bd4-a262-f1c71c7a113b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date Echéance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="238" y="0" width="111" height="15" backcolor="#EFEFEF" uuid="1ebb9df9-4159-486e-b270-c3b375ad26af"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Montant Amorti]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="349" y="0" width="111" height="15" backcolor="#EFEFEF" uuid="3163931c-3591-4e4f-aae3-ceb34bd966be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[ Total Amorti]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_CH" x="460" y="0" width="111" height="15" backcolor="#EFEFEF" uuid="fe5aafdd-b75c-4532-8a8c-52d168a9f996"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Reste à Amortir (VCN)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement style="table_TD" x="16" y="0" width="111" height="15" uuid="7a8f1d38-3c7a-40c7-bc12-0949223fb6a8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{exercice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="table_TD" x="127" y="0" width="111" height="15" uuid="3dc34335-e4e5-4e09-a943-7d93c60fdfd7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dateEcheance}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="table_TD" x="238" y="0" width="111" height="15" uuid="0cf1a66a-b347-4079-a836-94fdf89481e1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montant}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="table_TD" x="349" y="0" width="111" height="15" uuid="a43402ad-dee8-43b3-82eb-1760d502127b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalAmorti}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="table_TD" x="460" y="0" width="111" height="15" uuid="8b6ba056-06f6-4631-a7a4-b10e30cf27c5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{resteAmortir}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="595" height="50" uuid="2d7c2f67-97c5-4095-95ca-cf93cdb40863"/>
+				<subreportParameter name="LIBELLE_APPLICATION">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_pageportrait.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="15" splitType="Stretch">
+			<textField pattern="#,##0">
+				<reportElement x="238" y="0" width="111" height="15" uuid="8f68ed59-20e0-405f-9a2f-a16b2dbb0eb7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sommemontant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="table_TD" x="16" y="0" width="222" height="15" uuid="ca3773cd-d402-4525-94b0-12fbf65a8fa5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="table_TD" x="349" y="0" width="222" height="15" uuid="60eed751-f56a-48d3-b328-8e21153a0278"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

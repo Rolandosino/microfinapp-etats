@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7395050c-fc93-4b6a-b605-9b4c722a77a1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="189"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String"/>
+	<parameter name="DATE_INDICATEUR" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String"/>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="TEL_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="TABLEAU_UN_DATASOURCE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="TABLEAU_DEUX_DATASOURCE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="TABLEAU_TROIS_DATASOURCE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="TABLEAU_QUATRE_DATASOURCE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="TABLEAU_CINQ_DATASOURCE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="TABLEAU_SIX_DATASOURCE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="LIBELLE_PRECEDENT" class="java.lang.String"/>
+	<parameter name="LIBELLE_ACTUEL" class="java.lang.String"/>
+	<parameter name="TITRE_TABLEAU" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tableau n°1: Nombre de membres, bénéficiaires ou clients"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_PRECEDENT_1" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Trimestre (T-1)"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_ACTUEL_1" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Trimestre T"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TITRE_TABLEAU_1" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tableau n°2: Effectif des dirigeants et du personnel employé"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TITRE_TABLEAU_2" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tableau n°3: Nombre des déposants"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TITRE_TABLEAU_3" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA["Tableau n°4: Nombre de crédits en cours"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="LIBELLE_PRECEDENT_4" class="java.lang.String"/>
+	<parameter name="LIBELLE_ACTUEL_4" class="java.lang.String"/>
+	<parameter name="TITRE_TABLEAU_4" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tableau n°5: Répartition des crédits selon leur objet (en milliers de FCFA)"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TITRE_TABLEAU_5" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Tableau n°6: Indicateurs sur la surveillance"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<textField>
+				<reportElement x="115" y="39" width="116" height="20" uuid="4ac0bc6e-7685-496e-b30a-8b599ccefb6c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["TEL: "+$P{TEL_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="59" width="555" height="34" uuid="3c768ffa-57ce-4bfb-aada-4209c29e096f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Indicateurs non financiers au "+$P{DATE_INDICATEUR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="20" width="555" height="20" uuid="fc0eb556-41fc-4ed8-860a-663772efae0d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ADRESSE_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="1" width="555" height="20" uuid="46077fd8-add6-4a62-a73a-d8d685913f50"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="39" width="116" height="20" uuid="5486a5d3-71db-41be-b049-4c13d9cd4c34"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{BP_AGENCE}+" /"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="100" splitType="Stretch">
+			<subreport>
+				<reportElement isPrintRepeatedValues="false" x="0" y="0" width="555" height="100" uuid="d8e674b7-465e-4825-95b8-44e55683228e"/>
+				<subreportParameter name="LIBELLE_PRECEDENT">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_PRECEDENT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_ACTUEL">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_ACTUEL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TITRE_TABLEAU">
+					<subreportParameterExpression><![CDATA[$P{TITRE_TABLEAU}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{TABLEAU_UN_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "indicateurNonFinancierTableauUn.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="100">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="100" uuid="15517712-4ae3-4a79-87d5-56ba023e0096"/>
+				<subreportParameter name="LIBELLE_ACTUEL">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_ACTUEL_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TITRE_TABLEAU">
+					<subreportParameterExpression><![CDATA[$P{TITRE_TABLEAU_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_PRECEDENT">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_PRECEDENT_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{TABLEAU_DEUX_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "indicateurNonFinancierTableauUn.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="100">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="100" uuid="58930f40-4199-4694-bf2d-3195f12f0277"/>
+				<subreportParameter name="LIBELLE_ACTUEL">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_ACTUEL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TITRE_TABLEAU">
+					<subreportParameterExpression><![CDATA[$P{TITRE_TABLEAU_2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_PRECEDENT">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_PRECEDENT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{TABLEAU_TROIS_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "indicateurNonFinancierTableauUn.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="100">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="100" uuid="6c9ea00a-d9a0-4429-9ebd-d11596eaadc8"/>
+				<subreportParameter name="LIBELLE_ACTUEL">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_ACTUEL_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TITRE_TABLEAU">
+					<subreportParameterExpression><![CDATA[$P{TITRE_TABLEAU_3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_PRECEDENT">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_PRECEDENT_1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{TABLEAU_QUATRE_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "indicateurNonFinancierTableauUn.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="100">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="100" uuid="debbd9a9-892e-4837-8461-6387b2d8f57f"/>
+				<subreportParameter name="LIBELLE_ACTUEL">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_ACTUEL_4}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TITRE_TABLEAU">
+					<subreportParameterExpression><![CDATA[$P{TITRE_TABLEAU_4}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_PRECEDENT">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_PRECEDENT_4}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{TABLEAU_CINQ_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "indicateurNonFinancierTableauUn.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="100">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="100" uuid="bc8996fd-c56a-4f03-a6d4-82f6f7f065ac"/>
+				<subreportParameter name="LIBELLE_ACTUEL">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_ACTUEL}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TITRE_TABLEAU">
+					<subreportParameterExpression><![CDATA[$P{TITRE_TABLEAU_5}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="LIBELLE_PRECEDENT">
+					<subreportParameterExpression><![CDATA[$P{LIBELLE_PRECEDENT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{TABLEAU_SIX_DATASOURCE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "indicateurNonFinancierTableauUn.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="472" y="0" width="35" height="15" uuid="4928beed-ecff-4ed7-a98f-11ae3c525b19"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Page : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="519" y="0" width="5" height="15" uuid="32c499fc-61e5-404c-b17f-0b50b0140ddc"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement x="528" y="0" width="27" height="15" uuid="e107648b-933e-4c62-8830-69676e5d655e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="0" width="100" height="15" uuid="997c2dbb-8814-495f-a5f8-85c9a8d0b8b1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATE_EDITION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="0" width="44" height="15" uuid="64dea17e-84a3-4455-98aa-cb14dab68df5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Imprimé le ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="507" y="0" width="10" height="15" uuid="bd363f3d-c048-4977-a486-0dfcaf48673d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="0" width="154" height="15" uuid="a389e62d-69d5-4ab8-99b8-d555bad62f8a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

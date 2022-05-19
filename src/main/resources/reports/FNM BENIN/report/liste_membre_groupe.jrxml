@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="liste_membre_groupe" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="486af1ff-6e4c-42b3-9cf5-dcdab4fde280">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <style name="table_CH" mode="Opaque" backcolor="#E5E5E5" fontSize="10" isItalic="false" isUnderline="false" isStrikeThrough="false">
+        <box>
+            <topPen lineWidth="0.5"/>
+            <leftPen lineWidth="0.5"/>
+            <bottomPen lineWidth="0.5"/>
+            <rightPen lineWidth="0.5"/>
+        </box>
+    </style>
+    <style name="table_TD_Chaine" hAlign="Left" vAlign="Middle" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+        <box>
+            <topPen lineWidth="0.5"/>
+            <leftPen lineWidth="0.5"/>
+            <bottomPen lineWidth="0.5"/>
+            <rightPen lineWidth="0.5"/>
+        </box>
+        <paragraph leftIndent="3"/>
+    </style>
+    <style name="table_TD_Nombre" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+        <box>
+            <topPen lineWidth="0.5"/>
+            <leftPen lineWidth="0.5"/>
+            <bottomPen lineWidth="0.5"/>
+            <rightPen lineWidth="0.5"/>
+        </box>
+        <paragraph rightIndent="3"/>
+    </style>
+    <parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["G:\\java\\dev\\microfina\\src\\main\\webapp\\resources\\report\\"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="LIBELLE_AGENCE" class="java.lang.String"/>
+    <parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+    <parameter name="DATE_EDITION" class="java.lang.String"/>
+    <parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+    <parameter name="BP_AGENCE" class="java.lang.String"/>
+    <parameter name="TEL_AGENCE" class="java.lang.String"/>
+    <parameter name="TITRE_ETAT" class="java.lang.String"/>
+    <field name="libelle" class="java.lang.String"/>
+    <field name="nombreHommeFormate" class="java.lang.String"/>
+    <field name="nombreFemmeFormate" class="java.lang.String"/>
+    <field name="nombreEntrepriseFormate" class="java.lang.String"/>
+    <field name="nombreGroupeFormate" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="79" splitType="Stretch">
+            <subreport>
+                <reportElement x="0" y="0" width="555" height="79" uuid="12d3acca-dc21-4104-9621-981545bef701"/>
+                <subreportParameter name="ADRESSE_AGENCE">
+                    <subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="LIBELLE_AGENCE">
+                    <subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="BP_AGENCE">
+                    <subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="TEL_AGENCE">
+                    <subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="DATE_EDITION">
+                    <subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="TITRE_ETAT">
+                    <subreportParameterExpression><![CDATA[$P{TITRE_ETAT}]]></subreportParameterExpression>
+                </subreportParameter>
+                <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "entete_de_page.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="20" splitType="Stretch">
+            <staticText>
+                <reportElement style="table_CH" x="476" y="0" width="79" height="20" uuid="4db6e590-0bea-4159-9fb1-aa6159440780"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="10" isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <text><![CDATA[Entreprise]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="0" y="0" width="231" height="20" uuid="06352ee3-ed20-446c-8f78-2a2e4486941b"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="10" isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <text><![CDATA[Libellé]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="315" y="0" width="82" height="20" uuid="03e236e7-d17c-45a8-b3b4-fa5b60df0393"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="10" isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <text><![CDATA[Femme]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="231" y="0" width="84" height="20" uuid="cb983b72-a6d5-4b81-acc8-8a4c563547cf"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="10" isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <text><![CDATA[Homme]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="397" y="0" width="79" height="20" uuid="39e1116e-4514-430b-9385-2883cd980b7e"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="10" isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <text><![CDATA[Groupe]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="40" splitType="Stretch">
+            <textField>
+                <reportElement style="table_TD_Chaine" x="0" y="0" width="231" height="20" isRemoveLineWhenBlank="true" uuid="d8935ef0-3ec4-4628-bc92-957cae03126b">
+                    <printWhenExpression><![CDATA[!($F{libelle}.equalsIgnoreCase("totaux"))]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="231" y="0" width="84" height="20" isRemoveLineWhenBlank="true" uuid="b70fc9ce-3aab-4c38-aeee-a673027d6e44">
+                    <printWhenExpression><![CDATA[!($F{libelle}.equalsIgnoreCase("totaux"))]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{nombreHommeFormate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="315" y="0" width="82" height="20" isRemoveLineWhenBlank="true" uuid="a0669eef-3cb6-4e70-8d69-98793521bd94">
+                    <printWhenExpression><![CDATA[!($F{libelle}.equalsIgnoreCase("totaux"))]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{nombreFemmeFormate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="397" y="0" width="79" height="20" isRemoveLineWhenBlank="true" uuid="d5420ecc-598e-4c06-a50d-bb8f61c174e7">
+                    <printWhenExpression><![CDATA[!($F{libelle}.equalsIgnoreCase("totaux"))]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{nombreEntrepriseFormate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" x="476" y="0" width="79" height="20" isRemoveLineWhenBlank="true" uuid="5ca77061-308e-4fb9-b270-f633cb865072">
+                    <printWhenExpression><![CDATA[!($F{libelle}.equalsIgnoreCase("totaux"))]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{nombreGroupeFormate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" mode="Opaque" x="315" y="20" width="82" height="20" isRemoveLineWhenBlank="true" backcolor="#E5E5E5" uuid="303925c6-4605-42b2-843e-b198c031aaf8">
+                    <printWhenExpression><![CDATA[$F{libelle}.equalsIgnoreCase("totaux")]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{nombreFemmeFormate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" mode="Opaque" x="476" y="20" width="79" height="20" isRemoveLineWhenBlank="true" backcolor="#E5E5E5" uuid="67a1ee2f-8547-4166-b652-44f329a2b464">
+                    <printWhenExpression><![CDATA[$F{libelle}.equalsIgnoreCase("totaux")]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{nombreGroupeFormate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" mode="Opaque" x="231" y="20" width="84" height="20" isRemoveLineWhenBlank="true" backcolor="#E5E5E5" uuid="8fd326f2-708e-4744-bbfc-3ee0f19a417f">
+                    <printWhenExpression><![CDATA[$F{libelle}.equalsIgnoreCase("totaux")]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{nombreHommeFormate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Chaine" mode="Opaque" x="0" y="20" width="231" height="20" isRemoveLineWhenBlank="true" backcolor="#E5E5E5" uuid="16beead2-8c1b-479b-9dd5-fad9bd3cb01b">
+                    <printWhenExpression><![CDATA[$F{libelle}.equalsIgnoreCase("totaux")]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD_Nombre" mode="Opaque" x="397" y="20" width="79" height="20" isRemoveLineWhenBlank="true" backcolor="#E5E5E5" uuid="4e9e11c2-9402-4a13-864b-4b256e6c8f3e">
+                    <printWhenExpression><![CDATA[$F{libelle}.equalsIgnoreCase("totaux")]]></printWhenExpression>
+                </reportElement>
+                <textFieldExpression><![CDATA[$F{nombreEntrepriseFormate}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <pageFooter>
+        <band height="54" splitType="Stretch">
+            <subreport>
+                <reportElement x="0" y="0" width="555" height="54" uuid="bbcae6d5-ae38-40b0-b368-2283bbf3f5cc"/>
+                <subreportParameter name="LIBELLE_APPLICATION">
+                    <subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+                </subreportParameter>
+                <dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>
+                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+    </pageFooter>
+    <summary>
+        <band height="42" splitType="Stretch"/>
+    </summary>
+</jasperReport>

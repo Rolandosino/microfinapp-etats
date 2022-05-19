@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="virement" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+    <property name="ireport.zoom" value="1.5"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="table_TD" mode="Opaque" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <parameter name="paradebut" class="java.lang.String"/>
+    <parameter name="parafin" class="java.lang.String"/>
+    <parameter name="sommedebit" class="java.lang.String"/>
+    <parameter name="sommecredit" class="java.lang.String"/>
+    <field name="date" class="java.lang.String"/>
+    <field name="numPiece" class="java.lang.String"/>
+    <field name="numMembre" class="java.lang.String"/>
+    <field name="numCompte" class="java.lang.String"/>
+    <field name="libelle" class="java.lang.String"/>
+    <field name="debit" class="java.lang.String"/>
+    <field name="credit" class="java.lang.String"/>
+    <field name="utilisateur" class="java.lang.String"/>
+    <field name="nomclient" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="79" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="31" width="555" height="30"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA["LISTE DES VIREMENTS DU  " + $P{paradebut} +"  AU  " + $P{parafin}]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <columnHeader>
+        <band height="20" splitType="Stretch">
+            <staticText>
+                <reportElement style="table_CH" x="0" y="0" width="57" height="20" backcolor="#EFEFEF"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10" isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <text><![CDATA[Date]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="57" y="0" width="56" height="20" backcolor="#EFEFEF"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10" isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <text><![CDATA[N° Pièce]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="291" y="0" width="174" height="19" backcolor="#EFEFEF"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10" isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <text><![CDATA[Libellé]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="465" y="0" width="45" height="19" backcolor="#EFEFEF"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10" isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <text><![CDATA[Débit]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="510" y="0" width="45" height="20" backcolor="#EFEFEF"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10" isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <text><![CDATA[Crédit]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="177" y="0" width="114" height="20" backcolor="#EFEFEF"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10" isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <text><![CDATA[Nom client]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="113" y="0" width="64" height="20" backcolor="#EFEFEF"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="10" isBold="true"/>
+                    <paragraph leftIndent="3"/>
+                </textElement>
+                <text><![CDATA[N° Membre]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="18" splitType="Stretch">
+            <textField>
+                <reportElement style="table_TD" mode="Opaque" x="0" y="0" width="57" height="17"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="SansSerif" size="8" isBold="false"/>
+                    <paragraph leftIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" mode="Opaque" x="57" y="0" width="56" height="17"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="SansSerif" size="8" isBold="false"/>
+                    <paragraph leftIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{numPiece}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" mode="Opaque" x="113" y="0" width="64" height="17"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="SansSerif" size="8" isBold="false"/>
+                    <paragraph leftIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{numMembre}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" mode="Opaque" x="510" y="0" width="45" height="17"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font fontName="SansSerif" size="8" isBold="false"/>
+                    <paragraph rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{credit}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" mode="Opaque" x="291" y="0" width="174" height="17"/>
+                <textElement verticalAlignment="Middle">
+                    <font fontName="SansSerif" size="8" isBold="false"/>
+                    <paragraph leftIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{libelle}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" mode="Opaque" x="465" y="0" width="45" height="17"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <font fontName="SansSerif" size="8" isBold="false"/>
+                    <paragraph rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{debit}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="177" y="0" width="114" height="17"/>
+                <textElement>
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{nomclient}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <pageFooter>
+        <band height="20">
+            <textField>
+                <reportElement x="465" y="0" width="49" height="20"/>
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+            </textField>
+            <textField evaluationTime="Report">
+                <reportElement x="514" y="0" width="40" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+    <summary>
+        <band height="16" splitType="Stretch">
+            <textField>
+                <reportElement style="table_TD" x="466" y="0" width="44" height="16"/>
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{sommedebit}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement style="table_TD" x="510" y="0" width="45" height="16"/>
+                <textElement textAlignment="Right">
+                    <font size="8"/>
+                    <paragraph leftIndent="4" rightIndent="4"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{sommecredit}]]></textFieldExpression>
+            </textField>
+        </band>
+    </summary>
+</jasperReport>

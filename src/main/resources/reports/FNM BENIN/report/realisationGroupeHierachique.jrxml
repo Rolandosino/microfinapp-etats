@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8103a036-211a-4eaf-8a4a-1d08ff47cc97">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <style name="table_TD_Chaine" hAlign="Left" vAlign="Middle" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+        <box>
+            <leftPen lineWidth="0.5"/>
+            <bottomPen lineWidth="0.5"/>
+        </box>
+        <paragraph leftIndent="3"/>
+    </style>
+    <style name="table_TD_Nombre" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false">
+        <box>
+            <leftPen lineWidth="0.5"/>
+            <bottomPen lineWidth="0.5"/>
+        </box>
+        <paragraph rightIndent="3"/>
+    </style>
+    <style name="table_CH" mode="Opaque" backcolor="#E5E5E5" hAlign="Center" vAlign="Middle" fontSize="10" isItalic="false" isUnderline="false" isStrikeThrough="false">
+        <box>
+            <topPen lineWidth="0.5"/>
+            <leftPen lineWidth="0.5"/>
+            <bottomPen lineWidth="0.5"/>
+        </box>
+    </style>
+    <parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+    </parameter>
+    <queryString>
+		<![CDATA[select s.ID_STRUCT_ADMIN AS codeRegion from STRUCTURE_ADMIN s INNER JOIN TYPE_STRUCT_ADMIN t ON s.CODE_TYPE_STRUCT = t.CODE_TYPE_STRUCT WHERE t.CODE_TYPE_STRUCT = 'REG']]>
+    </queryString>
+    <field name="codeRegion" class="java.lang.Integer"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="79" splitType="Stretch"/>
+    </title>
+    <pageHeader>
+        <band height="35" splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="40" splitType="Stretch">
+            <staticText>
+                <reportElement style="table_CH" x="562" y="0" width="174" height="20" uuid="e20b3209-a906-4977-8f63-f2633469b2d6"/>
+                <box>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <text><![CDATA[Total]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="214" y="20" width="63" height="20" uuid="7649a1cc-138a-4eee-9427-627465cd7feb"/>
+                <text><![CDATA[Nombre]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="388" y="0" width="174" height="20" uuid="306937c4-a4ff-4c36-809c-19bd46783c35"/>
+                <text><![CDATA[Femme]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="451" y="20" width="111" height="20" uuid="7b63a37b-3691-4b2a-b5bc-935022bd7ec9"/>
+                <text><![CDATA[Montant]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="0" y="0" width="214" height="40" uuid="348f24e5-e832-42b3-aa30-64ac459c81e4"/>
+                <text><![CDATA[Structure administrative]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="214" y="0" width="174" height="20" uuid="072b4174-43d4-4bd3-85f0-3b56381ccb3b"/>
+                <text><![CDATA[Homme]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="562" y="20" width="63" height="20" uuid="07f4e070-bf54-4c11-9e43-0ee0d3159521"/>
+                <text><![CDATA[Nombre]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="277" y="20" width="111" height="20" uuid="3791f8ce-7630-44a8-aa54-dcf2972828d8"/>
+                <text><![CDATA[Montant]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="625" y="20" width="111" height="20" uuid="03368c8c-3fe7-4d16-b39c-7d494c919838"/>
+                <box>
+                    <rightPen lineWidth="0.5"/>
+                </box>
+                <text><![CDATA[Montant]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" x="388" y="20" width="63" height="20" uuid="42182ab5-2796-4175-90cd-0d3e395e0c69"/>
+                <text><![CDATA[Nombre]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="20" splitType="Stretch">
+            <subreport>
+                <reportElement x="0" y="0" width="736" height="20" uuid="b661afc7-d698-4808-905a-08090b134e3e"/>
+                <subreportParameter name="NUM_REGION">
+                    <subreportParameterExpression><![CDATA[$F{codeRegion}]]></subreportParameterExpression>
+                </subreportParameter>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "sousEtat_realisation_grouper.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="45" splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band height="54" splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band height="42" splitType="Stretch"/>
+    </summary>
+</jasperReport>

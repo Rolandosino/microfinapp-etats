@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="creditEncoursEmploye" language="groovy" pageWidth="725" pageHeight="842" columnWidth="685" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="42edc5b8-e335-406a-844a-34ffe8286750">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <style name="table_TD" mode="Opaque" fill="Solid">
+        <box>
+            <pen lineWidth="0.5" lineColor="#000000"/>
+        </box>
+    </style>
+    <parameter name="LIBELLE_AGENCE" class="java.lang.String">
+        <defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="TITRE_ETAT" class="java.lang.String"/>
+    <parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+    <parameter name="BP_AGENCE" class="java.lang.String"/>
+    <parameter name="DATE_EDITION" class="java.lang.String">
+        <defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+    </parameter>
+    <parameter name="TEL_AGENCE" class="java.lang.String">
+        <defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+    <parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+        <defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+    </parameter>
+    <queryString>
+		<![CDATA[]]>
+    </queryString>
+    <field name="nummembre" class="java.lang.String"/>
+    <field name="numcredit" class="java.lang.String"/>
+    <field name="numDetail" class="java.lang.String"/>
+    <field name="datedeblocage" class="java.lang.String"/>
+    <field name="encours" class="java.lang.String"/>
+    <field name="declassement" class="java.lang.String"/>
+    <field name="suivi" class="java.lang.String"/>
+    <field name="terme" class="java.lang.String"/>
+    <field name="montantcapital" class="java.math.BigDecimal"/>
+    <field name="montantpret" class="java.lang.String"/>
+    <field name="nomprenom" class="java.lang.String"/>
+    <variable name="summePret" class="java.math.BigDecimal" calculation="Sum">
+        <variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{montantpret}))]]></variableExpression>
+    </variable>
+    <variable name="sommeEncours" class="java.math.BigDecimal">
+        <variableExpression><![CDATA[new BigDecimal(java.text.NumberFormat.getInstance().parse($F{encours}))]]></variableExpression>
+    </variable>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="157" splitType="Stretch">
+            <subreport>
+                <reportElement x="4" y="2" width="681" height="100" uuid="58c5d675-3f71-4b0b-b610-aa583595772d"/>
+                <subreportParameter name="LIBELLE_AGENCE">
+                    <subreportParameterExpression><![CDATA[$P{LIBELLE_AGENCE}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="TITRE_ETAT">
+                    <subreportParameterExpression><![CDATA[$P{TITRE_ETAT}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="ADRESSE_AGENCE">
+                    <subreportParameterExpression><![CDATA[$P{ADRESSE_AGENCE}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="BP_AGENCE">
+                    <subreportParameterExpression><![CDATA[$P{BP_AGENCE}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="DATE_EDITION">
+                    <subreportParameterExpression><![CDATA[$P{DATE_EDITION}]]></subreportParameterExpression>
+                </subreportParameter>
+                <subreportParameter name="TEL_AGENCE">
+                    <subreportParameterExpression><![CDATA[$P{TEL_AGENCE}]]></subreportParameterExpression>
+                </subreportParameter>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "entete_de_page.jasper"]]></subreportExpression>
+            </subreport>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="360" y="118" width="112" height="39" backcolor="#EFEFEF" uuid="ec70c303-dcce-4531-a5c7-91a84df6c1dd"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[  Montant prêt]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="84" y="118" width="95" height="39" backcolor="#EFEFEF" uuid="9c05c50d-1df5-4ff9-b9f4-64c5f659612d"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[  N° Membre]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="0" y="118" width="84" height="39" backcolor="#EFEFEF" uuid="0df47b83-5e6a-45d9-9fb4-9f34d6871c74"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[  N° Crédit]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="472" y="118" width="85" height="39" backcolor="#EFEFEF" uuid="406e2f2a-b2e5-4bd6-aaec-febf713cc6bb"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[  Date déblocage]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="557" y="118" width="127" height="39" backcolor="#EFEFEF" uuid="f87c8f55-c7ef-44c2-aceb-b48960043799"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[Encours prêt]]></text>
+            </staticText>
+            <staticText>
+                <reportElement style="table_CH" mode="Opaque" x="179" y="118" width="181" height="39" backcolor="#EFEFEF" uuid="252d08e6-c62e-41a0-8fd3-3d9986e42f06"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                </textElement>
+                <text><![CDATA[  Nom et Prénoms]]></text>
+            </staticText>
+        </band>
+    </title>
+    <detail>
+        <band height="21" splitType="Stretch">
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="180" y="1" width="180" height="20" uuid="d48740ea-32f1-4ec8-a7e4-19728e0bc006"/>
+                <textElement verticalAlignment="Middle"/>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="85" y="1" width="95" height="20" uuid="38b2b1f9-4025-4fd8-ae0b-e963c961e5cc"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{nummembre}]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00">
+                <reportElement style="table_TD" x="361" y="1" width="112" height="20" uuid="283bde02-8ecf-4b48-84a3-7193ccece4b2"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{montantpret}]]></textFieldExpression>
+            </textField>
+            <textField pattern="dd/MM/yyyy">
+                <reportElement style="table_TD" x="473" y="1" width="85" height="20" uuid="6ad5e927-daa1-4c6e-856f-98de12c0b0ba"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{datedeblocage}]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00">
+                <reportElement style="table_TD" x="558" y="1" width="127" height="20" uuid="31c019fa-f49f-493f-9797-cc60092b5a19"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{encours}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="0" y="1" width="85" height="20" uuid="f9ad7247-4a9e-4093-be93-bbd2cb62606a"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{numcredit}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="180" y="1" width="180" height="20" uuid="b4299ea2-86b0-42a1-8b78-7343167fb18e"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{nomprenom}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <pageFooter>
+        <band splitType="Stretch"/>
+    </pageFooter>
+    <lastPageFooter>
+        <band height="47">
+            <subreport>
+                <reportElement x="4" y="0" width="681" height="42" uuid="442bb640-9c75-452c-9ec7-5db816bd8efe"/>
+                <subreportParameter name="LIBELLE_APPLICATION">
+                    <subreportParameterExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></subreportParameterExpression>
+                </subreportParameter>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "pied_de_page.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+    </lastPageFooter>
+    <summary>
+        <band height="29">
+            <textField>
+                <reportElement style="table_TD" x="1" y="0" width="84" height="20" uuid="e13396a4-8670-4023-a5b6-d8e076c52159"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+                <textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00">
+                <reportElement style="table_TD" x="361" y="0" width="112" height="20" uuid="4818fa9e-3bf2-4c94-a7a1-152dda37b34b"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{summePret}]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00">
+                <reportElement style="table_TD" x="558" y="0" width="127" height="20" uuid="776f0535-b6fd-4f13-ae64-9040bb7eaed0"/>
+                <textElement textAlignment="Right" verticalAlignment="Middle">
+                    <paragraph rightIndent="5"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$V{sommeEncours}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="85" y="0" width="95" height="20" uuid="afc52367-b97e-4706-bf3c-c2033e63a482"/>
+                <textElement verticalAlignment="Middle"/>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="180" y="0" width="180" height="20" uuid="7875465a-23f0-4c32-b1c2-ead39a7c5c67"/>
+                <textElement verticalAlignment="Middle"/>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement style="table_TD" x="473" y="0" width="85" height="20" uuid="18d46ca9-826a-454a-b2cc-43109c253d16"/>
+                <textElement verticalAlignment="Middle"/>
+            </textField>
+        </band>
+    </summary>
+</jasperReport>

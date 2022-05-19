@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="10" isSummaryWithPageHeaderAndFooter="true" isFloatColumnFooter="true" uuid="d1c4e35d-80b0-4a81-8c76-e6578f41eb47">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="LIBELLE_CAISSE" class="java.lang.String"/>
+	<parameter name="DATE_DEBUT" class="java.lang.String"/>
+	<parameter name="DATE_FIN" class="java.lang.String"/>
+	<parameter name="LIBELLE_APPLICATION" class="java.lang.String"/>
+	<parameter name="LIBELLE_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["A.S.J.D SIEGE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TITRE_ETAT" class="java.lang.String">
+		<defaultValueExpression><![CDATA["JOURNAL DES OPERATIONS DE CAISSE : "+$P{LIBELLE_CAISSE}+"\n"+$P{DATE_DEBUT}+" au "+$P{DATE_FIN}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ADRESSE_AGENCE" class="java.lang.String"/>
+	<parameter name="BP_AGENCE" class="java.lang.String"/>
+	<parameter name="DATE_EDITION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Edité le "+(new java.text.SimpleDateFormat("dd/MM/yyyy")).format(new java.util.Date())]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TEL_AGENCE" class="java.lang.String">
+		<defaultValueExpression><![CDATA["(228) 22 25 54 65"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SIGNATAIRE" class="java.lang.String"/>
+	<parameter name="REPORT" class="java.lang.String"/>
+	<parameter name="TOTAL_DEBIT" class="java.lang.String"/>
+	<parameter name="TOTAL_CREDIT" class="java.lang.String"/>
+	<parameter name="TOTAL_SOLDE" class="java.lang.String"/>
+	<parameter name="SOLDE_CAISSE" class="java.lang.String"/>
+	<parameter name="BON_CAISSE" class="java.lang.String"/>
+	<parameter name="SOLDE_CAISSE_EN_LETTRE" class="java.lang.String"/>
+	<parameter name="DATA_SOURCE_BILLETAGE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="DATA_SOURCE_DETAIL_ARRETE_CAISSE" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="INSTITUTION" class="java.lang.String">
+		<defaultValueExpression><![CDATA["COCEC"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="CAISSIER" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Caissier"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="EDITEUR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["ADMINISTRATEUR"]]></defaultValueExpression>
+	</parameter>
+	<field name="numCompte" class="java.lang.String"/>
+	<field name="intituleCompte" class="java.lang.String"/>
+	<field name="debit" class="java.lang.String"/>
+	<field name="credit" class="java.lang.String"/>
+	<field name="solde" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="144" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="40" width="264" height="20" uuid="a6587865-834a-4389-b8f1-47ea345ba7f3"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ADRESSE_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="343" y="40" width="62" height="20" uuid="ef4bdaf3-418f-4157-97ff-f10a11688fe6"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Caisse     : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="20" width="55" height="20" uuid="d80338a3-e01a-468c-a5ca-f1bf5eb6a5de"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATE_FIN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="343" y="80" width="62" height="20" uuid="f9c1e81f-2d2d-4a57-acd0-689bc6db4cf1"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Edité par : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="80" width="150" height="20" uuid="2809ad89-fde1-4df3-9381-40ea93801a6d"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{EDITEUR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="60" width="264" height="20" uuid="a1ec5206-3c48-4f27-b67d-72de8add819e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA["BP : "+$P{BP_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="20" width="56" height="20" uuid="163627a3-baf4-4832-9530-42a03f229318"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{DATE_DEBUT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="60" width="150" height="20" uuid="50935f8d-a905-49cc-9d9b-75d35a90a4ce"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CAISSIER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="343" y="60" width="62" height="20" uuid="17f65544-e60c-436e-9641-0f46d37a1159"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Caissier   : "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="80" width="264" height="20" uuid="990c46fd-4dd4-44e5-893a-8ae57437e076"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TEL: "+$P{TEL_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="343" y="20" width="73" height="20" uuid="8f2a1e4c-3d61-45df-accf-b6c4e42da82a"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Période : Du "+$P{DATE_DEBUT}+"AU : "+$P{DATE_FIN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="20" width="264" height="20" uuid="e68e1180-30e7-47c3-8310-2d3324275ad1"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_AGENCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="40" width="150" height="20" uuid="70d5422c-87cb-428e-93e3-5f2abed82b9e"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_CAISSE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="343" y="0" width="212" height="20" uuid="ee220187-a469-438f-af21-a0f63fa75890"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Arrêté de caisse "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="264" height="20" uuid="0cf0c18d-58ac-478a-9427-ae36fd8186dd"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{INSTITUTION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="472" y="20" width="28" height="20" uuid="85f494fc-bd01-4132-a51b-698f6bc5c736"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" AU "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="124" width="278" height="20" uuid="c5256f10-969b-407b-824a-853aff7317d4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SOLDE REPORT : "+$P{REPORT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="20" uuid="ad880200-4749-45b3-8b26-4d2e86e769e6"/>
+				<subreportParameter name="TOTAL_SOLDE">
+					<subreportParameterExpression><![CDATA[$P{TOTAL_SOLDE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TOTAL_DEBIT">
+					<subreportParameterExpression><![CDATA[$P{TOTAL_DEBIT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="REPORT">
+					<subreportParameterExpression><![CDATA[new java.math.BigDecimal(java.text.NumberFormat.getInstance().parse($P{REPORT}).toString())]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="TOTAL_CREDIT">
+					<subreportParameterExpression><![CDATA[$P{TOTAL_CREDIT}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{DATA_SOURCE_DETAIL_ARRETE_CAISSE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "detailArreteCaisse.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="134" height="15" uuid="940457a2-b8b4-467a-ae03-3f038dc88656"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Imprimer le "+$P{DATE_EDITION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="186" y="0" width="174" height="15" uuid="354ce37d-2d6d-4d54-ac1c-597f1d66434b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{LIBELLE_APPLICATION}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="518" y="0" width="37" height="15" uuid="d2348387-472c-4bb0-a75f-25a2c41d636c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="463" y="0" width="55" height="15" uuid="2b5ac40a-a0ab-418f-9bac-c22db93bc633"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" /"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="20" uuid="ad4eaefa-0111-4a15-8421-ee19db29720d"/>
+				<subreportParameter name="SIGNATAIRE">
+					<subreportParameterExpression><![CDATA[$P{SIGNATAIRE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="BON_CAISSE">
+					<subreportParameterExpression><![CDATA[$P{BON_CAISSE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SOLDE_CAISSE">
+					<subreportParameterExpression><![CDATA[$P{SOLDE_CAISSE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SOLDE_CAISSE_EN_LETTRE">
+					<subreportParameterExpression><![CDATA[$P{SOLDE_CAISSE_EN_LETTRE}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{DATA_SOURCE_BILLETAGE}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "billetage.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

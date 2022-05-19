@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="declarationCotisationtrimestrielle" pageWidth="842" pageHeight="700" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="c59749ce-b9bd-40ab-98a6-5958866680e4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table_CH" mode="Opaque" backcolor="#CCCCCC" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" fill="Solid">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="paratotalCotisation" class="java.lang.String"/>
+	<parameter name="paraTotalEnLettres" class="java.lang.String"/>
+	<parameter name="paraO_designation" class="java.lang.String"/>
+	<parameter name="para_BP" class="java.lang.String"/>
+	<parameter name="para_tel" class="java.lang.String"/>
+	<parameter name="para_fax" class="java.lang.String"/>
+	<parameter name="para_Compte" class="java.lang.String"/>
+	<parameter name="premierMoisTrimestre" class="java.lang.String"/>
+	<parameter name="deuxiemeMoisTrimestre" class="java.lang.String"/>
+	<parameter name="totalDeduit" class="java.lang.String"/>
+	<parameter name="totalPayer" class="java.lang.String"/>
+	<parameter name="dateEmission" class="java.lang.String"/>
+	<parameter name="para_adresse" class="java.lang.String"/>
+	<field name="libCompo" class="java.lang.String"/>
+	<field name="taux" class="java.lang.String"/>
+	<field name="montant" class="java.lang.String"/>
+	<field name="calculmontant" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="126">
+			<line>
+				<reportElement x="0" y="90" width="802" height="1" uuid="879c7d20-2abd-496b-af69-13b132e9f86f"/>
+			</line>
+			<staticText>
+				<reportElement x="370" y="0" width="366" height="15" uuid="c9979638-2072-43ca-a289-2be132395708"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[DECLARATION TRIMESTRIELLE DE SALAIRES ET DE COTISATIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="23" width="400" height="50" uuid="2dfebf5b-3120-4521-b8bd-bf85968faea8"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[A renvoyer à l'office du règlement et de la liste nominative du personnel avant
+le 15 du premier mois du trimestre suivant sous peine d'une majoration de retrad de 1,5%  par mois ou fraction de mois de retard.]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="14" y="8" width="347" height="15" uuid="d67bab93-5357-4a6b-998c-2da87d60765d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paraO_designation}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="14" y="23" width="211" height="15" uuid="a4c4d511-4882-46d1-8e00-b66d44536093"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{para_BP}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="370" y="0" width="1" height="91" uuid="a6c005cc-0e08-4394-bf8f-c4501c60ddb5"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="225" y="23" width="136" height="15" uuid="34308bc2-1aa3-468b-9e74-e663e8f2df13"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{para_tel}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="14" y="38" width="347" height="35" uuid="f5fdab41-afc0-4a1c-ab99-fb469e3328fd"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{para_adresse}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="66">
+			<staticText>
+				<reportElement x="2" y="14" width="524" height="17" uuid="7eaf1316-7f9c-4638-9222-150f988f3dc9"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[MONTANT TOTAL DES CONGES PAYES DURANT LE TRIMESTRE DE REFERENCE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="602" y="18" width="37" height="16" uuid="a4e356f5-32c1-4d2c-82b0-fe379515dd90"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[S =]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="48" width="122" height="17" uuid="179f7778-fe88-4abc-b649-79cf39649e28"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[COTISATION DU]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="639" y="19" width="135" height="15" uuid="570ab9ec-801f-4d41-94ad-05cd70becf7e"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="31" width="340" height="15" uuid="ef2dd3bc-33c3-4604-a02b-704b485b2ad5"/>
+				<textElement>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18">
+			<textField isBlankWhenNull="true">
+				<reportElement x="68" y="0" width="139" height="18" uuid="2435059b-bd19-44c3-a5c4-c1e6432afe9f"/>
+				<textElement verticalAlignment="Middle" markup="none"/>
+				<textFieldExpression><![CDATA[$F{libCompo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="235" y="15" width="153" height="1" uuid="e379ad93-f6af-4d9a-8a09-8f35ebb359ab"/>
+				<graphicElement>
+					<pen lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="207" y="0" width="28" height="17" uuid="edef8df8-9c9a-46f0-947f-c2f5a1aa8ea0"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[: S]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="1" width="28" height="17" uuid="23df0a1f-b3fb-4ec9-826b-8c2b08740bfd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[X]]></text>
+			</staticText>
+			<line>
+				<reportElement x="445" y="15" width="53" height="1" uuid="01c98663-940e-4367-a970-4527f80702e8"/>
+				<graphicElement>
+					<pen lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="526" y="1" width="28" height="17" uuid="80ea9755-7ea1-48ed-809d-1eb2b3fdcffb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[=]]></text>
+			</staticText>
+			<line>
+				<reportElement x="617" y="14" width="153" height="1" uuid="b47d2923-9688-4b2c-a8a4-304d408640f1"/>
+				<graphicElement>
+					<pen lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="439" y="3" width="45" height="15" uuid="d853b8e3-8d3c-4d77-8b34-1f559084e418"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{taux}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="479" y="1" width="22" height="17" uuid="9098e3c0-cf5c-4085-93d3-ca325be72647"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="273" y="3" width="115" height="14" uuid="75cc23f4-ccb9-469e-9cf6-07dc0dae1935"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montant}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="601" y="3" width="173" height="14" uuid="b403c0b0-b76e-4ae4-a1ee-ad6095fbde30"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{calculmontant}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="334">
+			<staticText>
+				<reportElement x="225" y="2" width="175" height="17" uuid="fdcf4dc5-6958-4032-801c-56752743c056"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Total des cotisations]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="362" y="113" width="139" height="17" uuid="be6d6111-4030-4c5e-9fc6-caa434c87f08"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Total à déduire]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="527" y="0" width="28" height="17" uuid="905170ca-e345-4ba9-ae05-30eb9add5997"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[=]]></text>
+			</staticText>
+			<line>
+				<reportElement x="620" y="16" width="153" height="1" uuid="bc9bb1ea-bfa8-49ac-8f4f-5235e9065b0e"/>
+				<graphicElement>
+					<pen lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="43" width="237" height="17" uuid="d14ca2b1-5ae9-410a-9f11-f0a746b67a9d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Pour les employeurs versant mensuellement les cotisations :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="237" height="17" uuid="bacc7cb2-77a5-4d18-9514-1217e86d03fe"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Cotisations versées pour le 1er mois du trimestre :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="77" width="237" height="17" uuid="19a8f7d2-e577-4380-afe5-6b6a79070990"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Cotisations versées pour le 2ème mois du trimestre :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="237" y="72" width="153" height="1" uuid="13ad42b2-617c-471f-997e-9eab42742457"/>
+				<graphicElement>
+					<pen lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="237" y="91" width="153" height="1" uuid="10f3ef60-e041-4a95-bb8b-7fe61db8451d"/>
+				<graphicElement>
+					<pen lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="361" y="142" width="139" height="17" uuid="863f8557-0fb2-4e95-a11b-9411158e1976"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Total à payer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="529" y="115" width="28" height="17" uuid="89007413-92dd-40d7-a8d4-30cd6a311ec6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[=]]></text>
+			</staticText>
+			<line>
+				<reportElement x="619" y="125" width="153" height="1" uuid="5a7d47cc-34de-437a-8c1a-af140b3f4bfd"/>
+				<graphicElement>
+					<pen lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="619" y="154" width="153" height="1" uuid="069faeef-e3ea-4365-af6b-3103370cf0dc"/>
+				<graphicElement>
+					<pen lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="602" y="4" width="172" height="15" uuid="ce917efd-a998-42d8-81bd-91c38af99973"/>
+				<textElement textAlignment="Right">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paratotalCotisation}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="207" width="475" height="15" uuid="c6b105c8-cb3f-432a-9fec-8b743926b9e4"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paraTotalEnLettres}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="188" width="297" height="17" uuid="80dc68c4-2cf5-4dbf-afd8-29ae9358fe2f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Arrêté la  présente déclaration à la  somme  de (en lettres) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="269" width="139" height="15" uuid="7e263c88-6367-42d6-9311-6ec1f6fa015e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Réservé à l'office]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="463" y="239" width="139" height="15" uuid="df7479d9-6f4f-435f-8692-67d8de0b7852"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Certifié conforme à nos livres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="222" width="237" height="17" uuid="d8d91e70-282f-47d0-92ba-639e80011512"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[qui  est versée par chèque.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="239" width="237" height="17" uuid="d2cc7316-024a-4fc6-8f2f-e014f5fd941e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[(1) Un exemple de cette déclaration est à conserver par l'employeur]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="268" width="253" height="1" uuid="afd0beab-8caf-4475-8217-94de18bb5d5c"/>
+			</line>
+			<line>
+				<reportElement x="254" y="269" width="1" height="65" uuid="faf471eb-8e33-4c9d-86a3-e50ac8ba5631"/>
+			</line>
+			<line>
+				<reportElement x="2" y="269" width="1" height="65" uuid="a240513b-9cf3-4766-88dc-552555ee4930"/>
+			</line>
+			<staticText>
+				<reportElement x="463" y="317" width="203" height="17" uuid="fca51597-db1b-415a-baf8-2e9a31cf88da"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Signature et cachet]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="463" y="253" width="269" height="15" uuid="c94bfa37-dd04-4cc3-b700-8e06b5e1fd63"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dateEmission}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="620" y="143" width="154" height="17" uuid="985c8e08-040c-4ba6-b659-335e2a02f4aa"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalPayer}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="620" y="114" width="154" height="17" uuid="51055dd2-d951-40c5-9427-db0d2da6e052"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalDeduit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="529" y="142" width="28" height="17" uuid="68e13eb2-a47c-4cb8-a07a-8eebe2645787"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[=]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="242" y="60" width="148" height="17" uuid="af91788d-938c-4c70-b4a6-0731eb4fc001"/>
+				<textElement textAlignment="Right">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{premierMoisTrimestre}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="242" y="79" width="148" height="17" uuid="49332350-8c7f-43d2-86ab-16af906c2d34"/>
+				<textElement textAlignment="Right">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{deuxiemeMoisTrimestre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>
